@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: f4c652b2abc1af146902201f978e4591
+timeCreated: 1478100136
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - waveRef: {instanceID: 0}
+  - uicontroller: {instanceID: 0}
+  - playerObj: {instanceID: 0}
+  - medikit: {fileID: 1000011869629676, guid: 374df367aac17d041ad6ff643d291399, type: 2}
+  - headRef: {instanceID: 0}
+  - navRef: {instanceID: 0}
+  - flyCamRef: {instanceID: 0}
+  - toOutline: {instanceID: 0}
+  - occlusionMaterial: {instanceID: 0}
+  - defaultMaterial: {instanceID: 0}
+  - enemyRb: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - ArenaBorder
+  - enemy_weapon
+  - Fire
+  - trap
+  - soldier
+  - Destructible
+  - Arena
+  - Terrain
+  - noteocclusion
+  - noteocclusion+
+  - notWalkable
+  - ringhiera
+  - Health_PickUp
+  - Ammo_PickUp
+  - Weapon_PickUp
+  - Armor_PickUp
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Floor
+  - Shootable
+  - LightMask
+  - Invisible
+  - Box
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
