@@ -26,6 +26,13 @@ public class RangedEnemy : Enemy
         }
     }
 
+    public override IEnumerator Die()
+    {
+        poolP.SetActive(false);
+        return base.Die();
+
+    }
+
     public override void Attack()
     {
         StartCoroutine(GetComponent<RangedEnemyFire>().Shooting());
@@ -33,18 +40,10 @@ public class RangedEnemy : Enemy
 
     void Update()
     {
-        if (isActive)
+        //Occlusion();
+        if (navRef && navRef.isActiveAndEnabled)
         {
-            //Occlusion();
-
-            if (!knockbacked)
-            {
-                navRef.enabled = true;
-            }
-            else
-            {
-                navRef.enabled = false;
-            }
+            transform.LookAt(new Vector3(playerObj.transform.position.x, this.transform.position.y, playerObj.transform.position.z));
         }
     }
 }

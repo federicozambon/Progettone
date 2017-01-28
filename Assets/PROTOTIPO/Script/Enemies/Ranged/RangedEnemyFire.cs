@@ -17,8 +17,7 @@ public class RangedEnemyFire : MonoBehaviour
 
     void Start()
     {
-        playerGo = FindObjectOfType<Player>().gameObject;
-        StartCoroutine(Shooting());        
+        playerGo = FindObjectOfType<Player>().gameObject;       
     }
 
     public void GetPool()
@@ -38,18 +37,14 @@ public class RangedEnemyFire : MonoBehaviour
         {
             if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(playerGo.transform.position, this.transform.position) < 15)
             {
-                ParticleActivator(playerGo.transform.position);
-                //GameObject newBullet = Instantiate(bulletPrefab, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
-                //newBullet.GetComponentInChildren<EffectSettings>().Target = playerGo;
+                ParticleActivator(playerGo.transform.FindChild("Head").position);
             }
             else if (!GetComponent<RangedEnemy>().isActive)
             {
                 ParticleActivator(playerGo.transform.position);
-                //GameObject newBullet = Instantiate(bulletPrefab, this.transform.position+transform.forward, Quaternion.identity) as GameObject;
-                //newBullet.GetComponentInChildren<EffectSettings>().Target = playerGo;
             }
         }
-        yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
+        yield return new WaitForSeconds(1.5f);
 
         if (sparo == true && GetComponent<RangedEnemy>().hPoints > 0)
         {
@@ -72,7 +67,7 @@ public class RangedEnemyFire : MonoBehaviour
             {
                 transformTr = GetComponentsInChildren<Transform>()[1];
                 transformTr.position = position;
-                pool.GetComponentInChildren<EffectSettings>(true).transform.position = this.transform.position;
+                pool.GetComponentInChildren<EffectSettings>(true).transform.position = weapon.transform.position;
                 pool.GetComponentInChildren<EffectSettings>(true).Target = transformTr.gameObject;
                 pool.GetComponentInChildren<EffectSettings>(true).gameObject.SetActive(true);
             }

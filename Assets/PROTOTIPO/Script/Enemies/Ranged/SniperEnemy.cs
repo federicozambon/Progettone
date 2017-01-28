@@ -4,19 +4,14 @@ using UnityEngine.UI;
 
 public class SniperEnemy : Enemy
 {
-    public int clockWise;
+    public GameObject particlePoolPrefab;
+    public GameObject poolP;
+    public Coroutine attacking;
 
     void Start()
     {
-        if (Random.value>0.5f)
-        {
-            clockWise = 1;
-        }
-        else
-        {
-            clockWise = -1;
-        }
-
+        poolP = (GameObject)Instantiate(particlePoolPrefab, this.transform.position, Quaternion.identity);
+        GetComponent<SniperEnemyFire>().GetPool();
         hPoints = 25;
         comboValue = 10;
         remainHPoints = hPoints;
@@ -24,47 +19,29 @@ public class SniperEnemy : Enemy
         navRef = GetComponent<NavMeshAgent>();
         remainHPoints = hPoints;
         playerObj = FindObjectOfType<Player>().gameObject;
+    }
 
-        if (flyCamRef.endedCutScene)
+    public override void Attack()
+    {
+        if (attacking == null)
         {
-            isActive = true;
+            attacking = StartCoroutine(GetComponent<SniperEnemyFire>().Shooting());
         }
+    }
+
+    public override IEnumerator Die()
+    {
+        pool.SetActive(false);
+        return base.Die();
     }
 
     void Update()
     {
-        if (isActive)
-        {
-            Occlusion();
+          //Occlusion();
 
-            if (!knockbacked)
-            {
-                navRef.enabled = true;
-            }
-            else
-            {
-                navRef.enabled = false;
-            }
-
-            if (navRef && navRef.isActiveAndEnabled)
-            {
-                //navRef.destination = playerObj.transform.position;
-                //navRef.updateRotation = false;
-                transform.LookAt(playerObj.transform);
-            }
-        }
-        else
+        if (navRef && navRef.isActiveAndEnabled)
         {
-            this.transform.Rotate(Vector3.up, clockWise * 60 * Time.deltaTime);
-            navRef.enabled = false;
+            transform.LookAt(new Vector3(playerObj.transform.position.x,this.transform.position.y,playerObj.transform.position.z));
         }
     }
-
-    /* public override IEnumerator KnockbackTimer(float time)
-     {
-         yield return new WaitForSeconds(time);
-         knockbacked = false;
-         StopCoroutine("KnockbackTimer");
-     }*/
-
 }

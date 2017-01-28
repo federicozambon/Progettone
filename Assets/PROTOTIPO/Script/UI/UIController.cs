@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     public Image godMode;
     public Text ammo;
     public Text thisWave;
+    public Text waveEnd;
     public Text numberWave;
     WaveController wElements;
     public Text actualScore;
@@ -208,14 +209,13 @@ public class UIController : MonoBehaviour
 
     public IEnumerator NextWave()
     {
-        thisWave.color = Color.green;
-        thisWave.text = "finish wave";
-        numberWave.color = Color.green;
+        waveEnd.color = Color.green;
+        waveEnd.text = "finish wave";
+        waveEnd.color = Color.green;
 
         yield return new WaitForSeconds(2f);
 
-        thisWave.text = "current wave";
-        thisWave.color = Color.red;
+        waveEnd.text = "";
         numberWave.text = wElements.currentWaveNumber.ToString();
         numberWave.color = Color.red;
     }

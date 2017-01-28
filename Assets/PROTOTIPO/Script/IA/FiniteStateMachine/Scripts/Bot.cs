@@ -321,25 +321,15 @@ namespace FSM
                             {
                                 if (sm.currentState.timer >= attackTimer)
                                 {
-                                    //enemyRef.Attack();
+                                    enemyRef.Attack();
                                 }
                             }
                             else
                             {
-                                if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 15)
+                                if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 10)
                                 {
                                     sm.HandleInput(Inputs.Attack);
                                     //  Debug.LogError("PlayerFar");
-                                }
-                                if (Vector3.Distance(this.transform.position, playerRef.transform.position) < 3f)
-                                {
-                                    sm.HandleInput(Inputs.PlayerRangeA);
-                                    //  Debug.LogError("PlayerClose");
-                                }
-                                if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 3f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 15)
-                                {
-                                    sm.HandleInput(Inputs.PlayerRangeB);
-                                    //  Debug.LogError("PlayerMedium");
                                 }
                             }                             
                         }
@@ -350,7 +340,7 @@ namespace FSM
                     }
                     sm.StateHandle();
 
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                     StartCoroutine(CheckInputs());
                     break;
             }
