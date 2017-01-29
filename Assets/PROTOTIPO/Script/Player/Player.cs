@@ -83,6 +83,7 @@ public class Player: MonoBehaviour
                     uicontroller.score -= (int)(baseCost[0] * costModifier[0]);
                     uicontroller.UpdateScore();
                     currentHealth = maxHealth;
+                    uicontroller.IncreaseLife();
                 }
                 else
                 {
@@ -121,9 +122,10 @@ public class Player: MonoBehaviour
                 if (uicontroller.score >= baseCost[2] * costModifier[2])
                 {
                     damageModifier += 0.25f;
-                    uicontroller.UpdateWeaponUpgrade(Mathf.RoundToInt(damageModifier*100));
+                    uicontroller.UpdateWeaponUpgrade(25);
                     uicontroller.score -= (int)(baseCost[2] * costModifier[2]);
-                    uicontroller.UpdateScore();               
+                    uicontroller.UpdateScore();
+                    uicontroller.UpdateWeaponUpgrade(25);             
                 }
                 else
                 {
@@ -145,7 +147,7 @@ public class Player: MonoBehaviour
                     uicontroller.UpdateScore();
                     maxHealth += 25;
                     armorUpgrade += 25;
-                    uicontroller.UpdateWeaponUpgrade(armorUpgrade);
+                    uicontroller.UpdateWeaponUpgrade(25);
                 }
                 else
                 {
@@ -164,7 +166,6 @@ public class Player: MonoBehaviour
             uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
             coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[0] * costModifier[0] + "\n" + "Restore Health";
-            currentHealth = maxHealth;
         }
 
         if (coll.tag == "Ammo_PickUp")
@@ -172,8 +173,6 @@ public class Player: MonoBehaviour
             uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
             coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[1] * costModifier[1] + "\n" + "Reload Rockets";
-            rocketAmmo += 5;
-            uicontroller.ammo.text = rocketAmmo.ToString();
         }
 
         if (coll.tag == "Weapon_PickUp")
@@ -181,7 +180,6 @@ public class Player: MonoBehaviour
             uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
             coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[2] * costModifier[2] + "\n" + "Empower Weapons";
-            damageModifier += 0.3f;
         }
 
         if (coll.tag == "Armor_PickUp")
@@ -189,8 +187,6 @@ public class Player: MonoBehaviour
             uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
             coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[3] * costModifier[3] + "\n" + "Empower shields";
-            maxHealth += 25;
-            //uicontroller.armor.text = (maxHealth-100).ToString();
         }
     }
 

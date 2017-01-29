@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 public class MeleeExplosiveEnemy : Enemy
 {
+    public Coroutine destroying;
     void Start()
     {
-        myColor = toOutline.material.color;
         hPoints = 50;
         comboValue = 10;
     }
@@ -22,29 +22,20 @@ public class MeleeExplosiveEnemy : Enemy
         isAttacking = true;     
     }
 
-    public Color myColor;
-
     IEnumerator ChargeAttack()
     {
-        toOutline.material.color += new Color(0.15f,0,0);
         yield return new WaitForSeconds(0.1f);
         if (isAttacking)
         {
             StartCoroutine(ChargeAttack());
         }
-        else
-        {
-            toOutline.material.color = myColor;
-        }
     }
 
     public override void Attack()
     {
-        myColor = toOutline.material.color;
         fxRef.gameObject.SetActive(true);
         waveRef.killedCounter++;
         Debug.LogError("esploso");
-        //fxRef.ParticleExplosion();
         if (Vector3.Distance(this.transform.position, playerObj.transform.position) < 4f)
         {
             playerObj.GetComponent<Player>().TakeDamage(damage);
@@ -52,7 +43,10 @@ public class MeleeExplosiveEnemy : Enemy
 
         isAttacking = false;
         timer = 0;
-        StartCoroutine(Destroy());
+        if (destroying == null)
+        {
+            destroying = StartCoroutine(Destroy());
+        }
     }
 
     IEnumerator Destroy()
@@ -63,10 +57,6 @@ public class MeleeExplosiveEnemy : Enemy
 
     public void Update()
     {
-        if (Vector3.Distance(this.transform.position, playerObj.transform.position) > 3)
-        {
-
-        }
         if (isAttacking)
         {
             timer += Time.deltaTime;
@@ -75,18 +65,7 @@ public class MeleeExplosiveEnemy : Enemy
         {
             Attack();
         }
-
-        if (isActive)
-        {
-            Occlusion();
-        }
     }
-
-   /* public override IEnumerator KnockbackTimer(float time)
-    {
-        yield return new WaitForSeconds(time);
-        knockbacked = false;
-    }*/
 }
 
 

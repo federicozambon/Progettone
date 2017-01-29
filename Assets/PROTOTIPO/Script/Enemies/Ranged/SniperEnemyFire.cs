@@ -6,6 +6,7 @@ public class SniperEnemyFire : MonoBehaviour
     public Transform weapon;
     public GameObject bulletPrefab;
     public LineRenderer aimLine;
+    public int damage = 25;
 
     RaycastHit losRayHit;
 
@@ -47,7 +48,8 @@ public class SniperEnemyFire : MonoBehaviour
                 if (timer > 3)
                 {
                     aimLine.enabled = false;
-                    ParticleActivator(playerTr.transform.position);
+                    FindObjectOfType<Player>().TakeDamage(damage);
+                    ParticleActivator(playerTr.transform.position);                 
                     isShooting = false;
                     break;
                 }
@@ -82,7 +84,7 @@ public class SniperEnemyFire : MonoBehaviour
         {
             if (!pool.GetComponentInChildren<EffectSettings>(true).gameObject.activeInHierarchy)
             {
-                transformTr = GetComponentsInChildren<Transform>()[1];
+                transformTr = pool.GetComponentsInChildren<Transform>()[1];
                 transformTr.position = position;
                 pool.GetComponentInChildren<EffectSettings>(true).transform.position = weapon.transform.position;
                 pool.GetComponentInChildren<EffectSettings>(true).Target = transformTr.gameObject;

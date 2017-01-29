@@ -5,64 +5,96 @@ using System.Collections.Generic;
 
 public class MeleeEnemy : Enemy
 {
+    public Transform face;
+    public GameObject bulletPrefab;
+    GameObject playerGo;
+
+    public GameObject particlePoolPrefab;
+    public GameObject poolP;
+
+    RaycastHit losRayHit;
+    public bool isShooting;
+
     void Start()
     {
+        face = headRef;
+        poolP = (GameObject)Instantiate(particlePoolPrefab, this.transform.position, Quaternion.identity);
+        playerGo = FindObjectOfType<Player>().gameObject;
         hPoints = 50;
         comboValue = 10;
     }
 
-    public float timer;
-    public float attackTimer = 0.2f;
-    public bool isAttacking = false;
+    public float attackTimer = 1;
 
     public void StartAttack()
     {
-        isAttacking = true;
-        fxRef.enabledParticle();
+        if (!isShooting)
+        {
+            StartCoroutine(Shooting());
+        }  
     }
 
     public override void Attack()
     {
-        if (Vector3.Distance(this.transform.position, playerObj.transform.position) < 3)
-        {
-            timer = 0;
-            Debug.LogError("attaccato");
-            fxRef.ParticleExplosion();
-            playerObj.GetComponent<Player>().TakeDamage(damage);
-            isAttacking = false;
-        }
-
+        Debug.LogError("attaccato");
+        AttackParticleActivator(face.transform.position);
+        playerObj.GetComponent<Player>().TakeDamage(damage);
+        StartCoroutine(AttackCd());
     }
 
-    public void Update()
+    public IEnumerator AttackCd()
     {
-        if (Vector3.Distance(this.transform.position, playerObj.transform.position) > 3)
-        {
-            //isAttacking = false;
-            //fxRef.StopParticle();
-            timer = 0;
-        }
-        if (isAttacking)
-        {
-            //transform.LookAt(playerObj.transform);
-            timer += Time.deltaTime;
-        }
-        if (timer >= attackTimer)
-        {
-            Attack();
-        }
+        yield return new WaitForSeconds(2);
+        isShooting = false;
+    }
 
-        if (isActive)
+    public IEnumerator Shooting()
+    {
+        float timer = 0;
+        isShooting = true;
+
+        while (Physics.Linecast(face.transform.position, playerGo.transform.position, out losRayHit))
         {
-            Occlusion();
+            if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(face.transform.position, playerGo.transform.position) < 3)
+            {
+                //transform.LookAt(new Vector3(playerGo.transform.position.x, this.transform.position.y, playerGo.transform.position.z));
+                timer += Time.deltaTime;
+                yield return null;
+                if (timer > attackTimer)
+                {
+                    Attack();      
+                    break;
+                }
+            }
+            else
+            {
+                timer = 0;
+                isShooting = false;
+                break;
+            }
+        }
+        if (GetComponent<MeleeEnemy>().hPoints <= 0)
+        {
+            StopAllCoroutines();
         }
     }
 
-   /* public override IEnumerator KnockbackTimer(float time)
+    public Transform transformTr;
+
+    public void AttackParticleActivator(Vector3 position)
     {
-        yield return new WaitForSeconds(time);
-        knockbacked = false;
-    }*/
+        if (pool)
+        {
+            if (!pool.GetComponentInChildren<EffectSettings>(true).gameObject.activeInHierarchy)
+            {
+                transformTr = GetComponentsInChildren<Transform>()[1];
+                transformTr.position = position;
+                pool.GetComponentInChildren<EffectSettings>(true).transform.position = face.transform.position;
+                pool.GetComponentInChildren<EffectSettings>(true).Target = transformTr.gameObject;
+                pool.GetComponentInChildren<EffectSettings>(true).gameObject.SetActive(true);
+            }
+        }
+    }
 }
 
 

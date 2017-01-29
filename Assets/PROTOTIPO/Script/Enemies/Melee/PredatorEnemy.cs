@@ -20,22 +20,8 @@ public class PredatorEnemy : Enemy
     {
         if (isActive)
         {
-            Occlusion();
-            /*
-            if (!knockbacked)
-            {
-                navRef.enabled = true;
-            }
-            else
-            {
-                navRef.enabled = false;
-            }
-            */
             if (navRef.isActiveAndEnabled)
             {
-                //navRef.destination = playerObj.transform.position;
-                //navRef.updateRotation = false;
-                //transform.LookAt(playerObj.transform);
             }
         }
         else
@@ -43,12 +29,6 @@ public class PredatorEnemy : Enemy
             navRef.enabled = false;
         }
     }
-
-   /* public override IEnumerator KnockbackTimer(float time)
-    {
-        yield return new WaitForSeconds(time);
-        knockbacked = false;
-    }*/
 }
 
 

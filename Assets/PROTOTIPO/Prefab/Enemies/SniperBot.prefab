@@ -380,7 +380,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014214477800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.57647, y: 116.759995, z: 55.26043}
+  m_LocalPosition: {x: -122.55214, y: 142.92554, z: -6.76565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -629,6 +629,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1000012650567204, guid: edd5f6f259ed3564cb98afbcf0373c9a,
     type: 2}
   aimLine: {fileID: 120000010382262380}
+  damage: 25
   speed: 10
   playerTr: {fileID: 0}
   pool: {fileID: 1000012386280582, guid: edd5f6f259ed3564cb98afbcf0373c9a, type: 2}

@@ -17,7 +17,7 @@ public class Medikit : MonoBehaviour {
     {
         if (coll.tag == "Player" && player.currentHealth < player.maxHealth)
         {
-            player.currentHealth += 5;
+            player.currentHealth += 25;
             elementiUi.IncreaseLife();
 
             if (player.currentHealth > player.maxHealth)

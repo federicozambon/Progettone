@@ -30,6 +30,7 @@ public class UIController : MonoBehaviour
     public Image promptButton;
     public Text weaponUpgrade;
     public Text armorUpgrade;
+    public Player playerRef;
 
     Canvas canvas;
 
@@ -54,6 +55,7 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
+        playerRef = FindObjectOfType<Player>();
         canvas = GetComponent<Canvas>();
         wElements = FindObjectOfType<WaveController>();
         CanvasOff();           
@@ -68,7 +70,7 @@ public class UIController : MonoBehaviour
 
     public void IncreaseLife()
     {
-        life.size += 0.05f;
+        life.size = playerRef.currentHealth / playerRef.maxHealth;
     }
 
     public void UpdateScore()

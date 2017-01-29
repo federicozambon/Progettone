@@ -49,7 +49,7 @@ public class StateMachine
         foreach (var transition in transitionList)
         {
             if (transition.input == i && transition.fromState == this.currentState)
-            {
+            {         
                 currentState.ExitStateLogic();
                 currentState = transition.targetState;
                 currentState.EnterStateLogic();
@@ -72,7 +72,7 @@ public class StateMachine
         transitionList.Add(new Transition(stateIdle, Inputs.Attack, attackState));
         //rangeC to
         transitionList.Add(new Transition(stateFollowC, Inputs.PlayerRangeB, stateFollowB));
-        transitionList.Add(new Transition(stateFollowC, Inputs.PlayerRangeC, stateFollowC));
+        transitionList.Add(new Transition(stateFollowC, Inputs.PlayerRangeA, stateFollowA));
         transitionList.Add(new Transition(stateFollowC, Inputs.IceTrapped, iceTrapState));
         transitionList.Add(new Transition(stateFollowC, Inputs.AttractionTrapped, attractionTrapState));
         transitionList.Add(new Transition(stateFollowC, Inputs.ElectricTrapped, electricTrapState));
@@ -119,7 +119,7 @@ public class StateMachine
         transitionList.Add(new Transition(electricTrapState, Inputs.Death, stateIdle));
         transitionList.Add(new Transition(electricTrapState, Inputs.Attack, attackState));
         //attack to
-    //    transitionList.Add(new Transition(attackState, Inputs.PlayerRangeA, stateFollowA));
+        transitionList.Add(new Transition(attackState, Inputs.PlayerRangeA, stateFollowA));
         transitionList.Add(new Transition(attackState, Inputs.PlayerRangeB, stateFollowB));
         transitionList.Add(new Transition(attackState, Inputs.PlayerRangeC, stateFollowC));
         transitionList.Add(new Transition(attackState, Inputs.IceTrapped, iceTrapState));

@@ -16,7 +16,7 @@ public class StateFollowC : State
             case "fante":
                 navRef.speed = botMovement.rangeCspeed;
                 botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 1.5f;
+                navRef.stoppingDistance = 0.5f;
                 break;
             case "furiaesplosiva":
                 navRef.speed = botMovement.rangeCspeed;

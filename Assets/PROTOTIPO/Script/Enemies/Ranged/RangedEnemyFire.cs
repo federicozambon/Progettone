@@ -3,9 +3,9 @@ using System.Collections;
 
 public class RangedEnemyFire : MonoBehaviour
 {
-
     public Transform weapon;
     public GameObject bulletPrefab;
+    public bool isShooting;
 
     RaycastHit losRayHit;
 
@@ -32,7 +32,7 @@ public class RangedEnemyFire : MonoBehaviour
 
     public IEnumerator Shooting()
     {
-        
+        isShooting = true;
         if (Physics.Linecast(weapon.transform.position, playerGo.transform.position, out losRayHit))
         {
             if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(playerGo.transform.position, this.transform.position) < 15)
@@ -45,12 +45,9 @@ public class RangedEnemyFire : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(1.5f);
+        isShooting = false;
 
-        if (sparo == true && GetComponent<RangedEnemy>().hPoints > 0)
-        {
-            StartCoroutine(Shooting());
-        }
-        else
+        if (GetComponent<RangedEnemy>().hPoints < 0)
         {
             StopAllCoroutines();
         }
@@ -65,7 +62,7 @@ public class RangedEnemyFire : MonoBehaviour
         {
             if (!pool.GetComponentInChildren<EffectSettings>(true).gameObject.activeInHierarchy)
             {
-                transformTr = GetComponentsInChildren<Transform>()[1];
+                transformTr = pool.GetComponentsInChildren<Transform>()[1];
                 transformTr.position = position;
                 pool.GetComponentInChildren<EffectSettings>(true).transform.position = weapon.transform.position;
                 pool.GetComponentInChildren<EffectSettings>(true).Target = transformTr.gameObject;

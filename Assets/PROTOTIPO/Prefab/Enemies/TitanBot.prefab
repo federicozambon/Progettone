@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1000014034687902}
   m_IsPrefabParent: 1
+--- !u!1 &1000010264599786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013705683504}
+  m_Layer: 0
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000010594694276
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,6 +58,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000011260912318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013866584408}
+  - 114: {fileID: 114000011162961334}
+  m_Layer: 0
+  m_Name: Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000011525371938
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,6 +87,21 @@ GameObject:
   - 95: {fileID: 95000011646146532}
   m_Layer: 0
   m_Name: MON_Minigun_Titano
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000012230850652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012859958382}
+  m_Layer: 0
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,11 +214,11 @@ GameObject:
   - 95: {fileID: 95000012063440282}
   - 54: {fileID: 54000011773062774}
   - 195: {fileID: 195000013020794968}
-  - 114: {fileID: 114000011573640808}
   - 65: {fileID: 65000013087649832}
   - 114: {fileID: 114000011154280632}
-  - 114: {fileID: 114000011874275694}
   - 114: {fileID: 114000010909765190}
+  - 114: {fileID: 114000014103705118}
+  - 114: {fileID: 114000012896855220}
   m_Layer: 0
   m_Name: TitanBot
   m_TagString: Enemy
@@ -242,7 +288,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014034687902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -59.11, y: 114.2, z: 49.14}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -256,6 +302,9 @@ Transform:
   - {fileID: 4000011292312560}
   - {fileID: 4000011337272492}
   - {fileID: 4000013198073778}
+  - {fileID: 4000013866584408}
+  - {fileID: 4000012859958382}
+  - {fileID: 4000013705683504}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000011292312560
@@ -336,6 +385,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000011043537308}
   m_RootOrder: 3
+--- !u!4 &4000012859958382
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012230850652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.383, y: 2.408, z: 1.579}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000011043537308}
+  m_RootOrder: 11
 --- !u!4 &4000013198073778
 Transform:
   m_ObjectHideFlags: 1
@@ -349,6 +411,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000011043537308}
   m_RootOrder: 9
+--- !u!4 &4000013705683504
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010264599786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.953, y: 1.427, z: 2.871}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000011043537308}
+  m_RootOrder: 12
+--- !u!4 &4000013866584408
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011260912318}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000011043537308}
+  m_RootOrder: 10
 --- !u!23 &23000013644958934
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -493,6 +581,23 @@ MonoBehaviour:
     type: 2}
   enemyRef: {fileID: 0}
   attackTimer: 1.5
+  canSeePlayer: 0
+--- !u!114 &114000011162961334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011260912318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e5d941cfe7ee447b490a63c373269b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyRef: {fileID: 0}
+  navRef: {fileID: 0}
+  enemyType: 
+  attractionTransform: {fileID: 0}
+  timer: 0
 --- !u!114 &114000011356302570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -509,52 +614,6 @@ MonoBehaviour:
   enemyType: 
   attractionTransform: {fileID: 0}
   timer: 0
---- !u!114 &114000011573640808
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014034687902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 989093fd73bbf0b4d849a00d0a1eb302, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveRef: {fileID: 0}
-  uicontroller: {fileID: 0}
-  playerObj: {fileID: 0}
-  medikit: {fileID: 1000011869629676, guid: 374df367aac17d041ad6ff643d291399, type: 2}
-  enemyType: titano
-  hPoints: 100
-  remainHPoints: 100
-  damage: 10
-  scoreValue: 1000
-  spawnObject: 2
-  spawnable: 1
-  grenade: 1
-  repulsion: 0
-  trapped: 0
-  isActive: 0
-  dieController: 1
-  dead: 0
-  comboValue: 20
-  isCharging: 0
-  knockbacked: 0
-  headRef: {fileID: 0}
-  navRef: {fileID: 0}
-  flyCamRef: {fileID: 114000010090104160, guid: 704c927664f2ca246a43e801daf1ee85,
-    type: 2}
-  toOutline: {fileID: 0}
-  occlusionMaterial: {fileID: 2100000, guid: 2d8e93e3b84d5f245afe0871f80c7e4a, type: 2}
-  defaultMaterial: {fileID: 0}
-  occludedGoList: []
-  enemyRb: {fileID: 0}
-  isActiveAttractionTrap: 0
-  isActiveElectricTrap: 0
-  isActiveIceTrap: 0
-  attractionTrap: {fileID: 0}
-  fxRef: {fileID: 0}
-  clockWise: 0
 --- !u!114 &114000011810530054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -570,19 +629,6 @@ MonoBehaviour:
   navRef: {fileID: 0}
   enemyType: 
   attractionTransform: {fileID: 0}
-  timer: 0
---- !u!114 &114000011874275694
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014034687902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 930f09eb94cdc334ca81310d8e2ba3cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
   timer: 0
 --- !u!114 &114000012473745712
 MonoBehaviour:
@@ -616,6 +662,23 @@ MonoBehaviour:
   enemyType: 
   attractionTransform: {fileID: 0}
   timer: 0
+--- !u!114 &114000012896855220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014034687902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac79729c0ac2efe4083aa6eb1f711b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 4000013705683504}
+  bulletPrefab: {fileID: 0}
+  isShooting: 0
+  speed: 10
+  pool: {fileID: 0}
+  transformTr: []
 --- !u!114 &114000013090795366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -682,6 +745,49 @@ MonoBehaviour:
   timer: 0
   randomDestination: {x: 0, y: 0, z: 0}
   timeToWait: 5
+--- !u!114 &114000014103705118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014034687902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86aff1e2e88e4f848b22ddb5294af377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveRef: {fileID: 0}
+  uicontroller: {fileID: 0}
+  playerObj: {fileID: 0}
+  medikit: {fileID: 0}
+  enemyType: titano
+  remainHPoints: 0
+  hPoints: 250
+  damage: 15
+  scoreValue: 1000
+  spawnObject: 1
+  spawnable: 1
+  grenade: 1
+  repulsion: 0
+  trapped: 0
+  isActive: 0
+  dieController: 1
+  dead: 0
+  comboValue: 0
+  isCharging: 0
+  knockbacked: 0
+  headRef: {fileID: 4000012859958382}
+  navRef: {fileID: 0}
+  flyCamRef: {fileID: 0}
+  isActiveAttractionTrap: 0
+  isActiveElectricTrap: 0
+  isActiveIceTrap: 0
+  attractionTrap: {fileID: 0}
+  fxRef: {fileID: 0}
+  pool: {fileID: 0}
+  particlePoolPrefab: {fileID: 1000012386280582, guid: a2cd9c817bd54564dbf8645766f8f334,
+    type: 2}
+  poolP: {fileID: 0}
 --- !u!195 &195000013020794968
 NavMeshAgent:
   m_ObjectHideFlags: 1
