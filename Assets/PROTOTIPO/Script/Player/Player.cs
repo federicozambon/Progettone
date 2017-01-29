@@ -54,6 +54,7 @@ public class Player: MonoBehaviour
     public Ray antiOcclusionRay;
     public RaycastHit[] antiOcclusionHit;
     public List<OccludedObject> occludedGoList = new List<OccludedObject>();
+    GameObject[] allEnemies;
 
     void Awake()
     {
@@ -68,6 +69,18 @@ public class Player: MonoBehaviour
         uicontroller = FindObjectOfType<UIController>();
         dialoghi = FindObjectOfType<DialogueSystem>();
         
+    }
+
+    public void DestroyAllEnemies()
+    {
+        allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (var enemy in allEnemies)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(200);
+        }
+
+        Debug.LogWarning("ci sono");
     }
 
     void OnTriggerStay(Collider coll)
@@ -305,6 +318,11 @@ public class Player: MonoBehaviour
         if (Input.GetButtonDown("Selection") && Input.GetButtonDown("GodMode"))
         {
             SceneManager.LoadScene("Menu Alfa");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DestroyAllEnemies();
         }
 
 
