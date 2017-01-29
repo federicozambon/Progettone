@@ -342,7 +342,6 @@ GameObject:
   - 54: {fileID: 54000011428044278}
   - 195: {fileID: 195000010684708146}
   - 65: {fileID: 65000012075123158}
-  - 114: {fileID: 114000010360068492}
   - 114: {fileID: 114000011619781926}
   - 114: {fileID: 114000010416241308}
   - 114: {fileID: 114000010019827064}
@@ -817,7 +816,7 @@ MonoBehaviour:
   enemyType: furiaesplosiva
   remainHPoints: 0
   hPoints: 0
-  damage: 40
+  damage: 25
   scoreValue: 300
   spawnObject: 1
   spawnable: 1
@@ -903,23 +902,6 @@ MonoBehaviour:
   FadeOutSpeed: 0.3
   FadeOutAfterCollision: 0
   UseHideStatus: 0
---- !u!114 &114000010360068492
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014214477800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 930f09eb94cdc334ca81310d8e2ba3cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookAt: {fileID: 0}
-  player: {fileID: 0}
-  speed: 5
-  enemyScript: {fileID: 0}
-  timer: 0
-  velocity: 0
 --- !u!114 &114000010416241308
 MonoBehaviour:
   m_ObjectHideFlags: 1

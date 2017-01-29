@@ -7019,10 +7019,10 @@ MonoBehaviour:
   MoveVector: {x: 0, y: 0, z: 1}
   MoveSpeed: 40
   IsHomingMove: 0
-  MoveDistance: 45
+  MoveDistance: 60
   IsVisible: 1
   InstanceBehaviour: 0
-  DeactivateTimeDelay: 0.5
+  DeactivateTimeDelay: 0.1
   DestroyTimeDelay: 10
   LayerMask:
     serializedVersion: 2
@@ -7093,10 +7093,10 @@ MonoBehaviour:
   MoveVector: {x: 0, y: 0, z: 1}
   MoveSpeed: 40
   IsHomingMove: 0
-  MoveDistance: 45
+  MoveDistance: 60
   IsVisible: 1
   InstanceBehaviour: 0
-  DeactivateTimeDelay: 0.5
+  DeactivateTimeDelay: 0.1
   DestroyTimeDelay: 10
   LayerMask:
     serializedVersion: 2
@@ -7148,10 +7148,10 @@ MonoBehaviour:
   MoveVector: {x: 0, y: 0, z: 1}
   MoveSpeed: 40
   IsHomingMove: 0
-  MoveDistance: 45
+  MoveDistance: 60
   IsVisible: 1
   InstanceBehaviour: 0
-  DeactivateTimeDelay: 0.5
+  DeactivateTimeDelay: 0.1
   DestroyTimeDelay: 10
   LayerMask:
     serializedVersion: 2
@@ -7283,10 +7283,10 @@ MonoBehaviour:
   MoveVector: {x: 0, y: 0, z: 1}
   MoveSpeed: 40
   IsHomingMove: 0
-  MoveDistance: 45
+  MoveDistance: 60
   IsVisible: 1
   InstanceBehaviour: 0
-  DeactivateTimeDelay: 0.5
+  DeactivateTimeDelay: 0.1
   DestroyTimeDelay: 10
   LayerMask:
     serializedVersion: 2
@@ -7310,10 +7310,10 @@ MonoBehaviour:
   MoveVector: {x: 0, y: 0, z: 1}
   MoveSpeed: 40
   IsHomingMove: 0
-  MoveDistance: 45
+  MoveDistance: 60
   IsVisible: 1
   InstanceBehaviour: 0
-  DeactivateTimeDelay: 0.5
+  DeactivateTimeDelay: 0.1
   DestroyTimeDelay: 10
   LayerMask:
     serializedVersion: 2
@@ -7608,10 +7608,10 @@ MonoBehaviour:
   MoveVector: {x: 0, y: 0, z: 1}
   MoveSpeed: 40
   IsHomingMove: 0
-  MoveDistance: 45
+  MoveDistance: 60
   IsVisible: 1
   InstanceBehaviour: 0
-  DeactivateTimeDelay: 0.5
+  DeactivateTimeDelay: 0.1
   DestroyTimeDelay: 10
   LayerMask:
     serializedVersion: 2
@@ -7652,10 +7652,10 @@ MonoBehaviour:
   MoveVector: {x: 0, y: 0, z: 1}
   MoveSpeed: 40
   IsHomingMove: 0
-  MoveDistance: 45
+  MoveDistance: 60
   IsVisible: 1
   InstanceBehaviour: 0
-  DeactivateTimeDelay: 0.5
+  DeactivateTimeDelay: 0.1
   DestroyTimeDelay: 10
   LayerMask:
     serializedVersion: 2
@@ -7709,10 +7709,10 @@ MonoBehaviour:
   MoveVector: {x: 0, y: 0, z: 1}
   MoveSpeed: 40
   IsHomingMove: 0
-  MoveDistance: 45
+  MoveDistance: 60
   IsVisible: 1
   InstanceBehaviour: 0
-  DeactivateTimeDelay: 0.5
+  DeactivateTimeDelay: 0.1
   DestroyTimeDelay: 10
   LayerMask:
     serializedVersion: 2
@@ -8150,10 +8150,10 @@ MonoBehaviour:
   MoveVector: {x: 0, y: 0, z: 1}
   MoveSpeed: 40
   IsHomingMove: 0
-  MoveDistance: 45
+  MoveDistance: 60
   IsVisible: 1
   InstanceBehaviour: 0
-  DeactivateTimeDelay: 0.5
+  DeactivateTimeDelay: 0.1
   DestroyTimeDelay: 10
   LayerMask:
     serializedVersion: 2
@@ -8300,10 +8300,10 @@ MonoBehaviour:
   MoveVector: {x: 0, y: 0, z: 1}
   MoveSpeed: 40
   IsHomingMove: 0
-  MoveDistance: 45
+  MoveDistance: 60
   IsVisible: 1
   InstanceBehaviour: 0
-  DeactivateTimeDelay: 0.5
+  DeactivateTimeDelay: 0.1
   DestroyTimeDelay: 10
   LayerMask:
     serializedVersion: 2
