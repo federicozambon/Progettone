@@ -532,7 +532,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0000002
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_IsPrefabParent: 0
 --- !u!1001 &17400780
@@ -805,6 +806,23 @@ Transform:
   - {fileID: 2005167107}
   m_Father: {fileID: 2062198652}
   m_RootOrder: 9
+--- !u!1 &32565570 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
+  m_PrefabInternal: {fileID: 1492076680}
+--- !u!136 &32565571
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 32565570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 4.7335043
+  m_Height: 17.613485
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &32762301 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011945758836, guid: 90957f4c3e2e9e944800f1d3bf13fb8e,
@@ -2442,6 +2460,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 72022430}
   - 95: {fileID: 72022431}
+  - 136: {fileID: 72022432}
   m_Layer: 0
   m_Name: RobaCheFluttua (3)
   m_TagString: Untagged
@@ -2483,6 +2502,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &72022432
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 72022429}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!1001 &74146242
 Prefab:
   m_ObjectHideFlags: 0
@@ -4893,7 +4925,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &160149454 stripped
@@ -7013,6 +7046,23 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011121028690, guid: d3fd3fc05cb01174c9940e19b4cd5744,
     type: 2}
   m_PrefabInternal: {fileID: 247930024}
+--- !u!1 &248605591 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
+  m_PrefabInternal: {fileID: 1073977325}
+--- !u!136 &248605592
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 248605591}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 4.7335043
+  m_Height: 17.613485
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &255400024
 Prefab:
   m_ObjectHideFlags: 0
@@ -10874,6 +10924,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 432627950}
   - 95: {fileID: 432627951}
+  - 136: {fileID: 432627952}
   m_Layer: 0
   m_Name: RobaCheFluttua
   m_TagString: Untagged
@@ -10914,6 +10965,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &432627952
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 432627949}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!1001 &434136599
 Prefab:
   m_ObjectHideFlags: 0
@@ -11886,6 +11950,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 472034647}
   - 95: {fileID: 472034648}
+  - 136: {fileID: 472034649}
   m_Layer: 0
   m_Name: RobaCheFluttua (3)
   m_TagString: Untagged
@@ -11927,6 +11992,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &472034649
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 472034646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!4 &474410950 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011945758836, guid: 90957f4c3e2e9e944800f1d3bf13fb8e,
@@ -13688,7 +13766,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_IsPrefabParent: 0
 --- !u!1 &580459209
@@ -14040,7 +14119,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_IsPrefabParent: 0
 --- !u!1 &603640824
@@ -15267,6 +15347,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 658339328}
   - 95: {fileID: 658339327}
+  - 136: {fileID: 658339329}
   m_Layer: 0
   m_Name: RobaCheFluttua (3)
   m_TagString: Untagged
@@ -15308,6 +15389,19 @@ Transform:
   - {fileID: 24106884}
   m_Father: {fileID: 711149313}
   m_RootOrder: 3
+--- !u!136 &658339329
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 658339326}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!1001 &668536828
 Prefab:
   m_ObjectHideFlags: 0
@@ -15518,6 +15612,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 676076124}
   - 95: {fileID: 676076125}
+  - 136: {fileID: 676076126}
   m_Layer: 0
   m_Name: RobaCheFluttua (2)
   m_TagString: Untagged
@@ -15559,6 +15654,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &676076126
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 676076123}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!1 &676786238
 GameObject:
   m_ObjectHideFlags: 0
@@ -15960,7 +16068,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0000002
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_IsPrefabParent: 0
 --- !u!1001 &698895913
@@ -18525,7 +18634,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_IsPrefabParent: 0
 --- !u!1001 &814093040
@@ -19193,7 +19303,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0000002
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_IsPrefabParent: 0
 --- !u!1 &834075767
@@ -19741,6 +19852,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 860362710}
   - 95: {fileID: 860362711}
+  - 136: {fileID: 860362712}
   m_Layer: 0
   m_Name: RobaCheFluttua (3)
   m_TagString: Untagged
@@ -19782,6 +19894,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &860362712
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 860362709}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!4 &860974206 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000012331462192, guid: e742dde8bbd5af5439bed79c9cdca6fa,
@@ -21079,7 +21204,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_IsPrefabParent: 0
 --- !u!1 &903273502
@@ -23115,6 +23241,23 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011121028690, guid: d3fd3fc05cb01174c9940e19b4cd5744,
     type: 2}
   m_PrefabInternal: {fileID: 973268308}
+--- !u!1 &974360989 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
+  m_PrefabInternal: {fileID: 1309960315}
+--- !u!136 &974360990
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 974360989}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 4.7335043
+  m_Height: 17.613485
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &975214657 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013447232902, guid: 860dc98bbce4f7a428e2ac87f64c62eb,
@@ -23239,7 +23382,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0000002
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_IsPrefabParent: 0
 --- !u!1001 &981460662
@@ -24765,6 +24909,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1053541277}
   - 95: {fileID: 1053541276}
+  - 136: {fileID: 1053541278}
   m_Layer: 0
   m_Name: RobaCheFluttua (1)
   m_TagString: Untagged
@@ -24805,6 +24950,19 @@ Transform:
   - {fileID: 106234548}
   m_Father: {fileID: 711149313}
   m_RootOrder: 1
+--- !u!136 &1053541278
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1053541275}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!4 &1060875620 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011945758836, guid: 90957f4c3e2e9e944800f1d3bf13fb8e,
@@ -25183,7 +25341,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0000002
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_IsPrefabParent: 0
 --- !u!1001 &1074856010
@@ -29158,6 +29317,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1204872075}
   - 95: {fileID: 1204872076}
+  - 136: {fileID: 1204872077}
   m_Layer: 0
   m_Name: RobaCheFluttua
   m_TagString: Untagged
@@ -29198,6 +29358,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &1204872077
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1204872074}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!4 &1205555382 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000014033835098, guid: 7d0c75efabf764f42a91abcd6f4bdde7,
@@ -31281,7 +31454,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0000002
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_IsPrefabParent: 0
 --- !u!1001 &1310094565
@@ -31880,6 +32054,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1331288642}
   - 95: {fileID: 1331288641}
+  - 136: {fileID: 1331288643}
   m_Layer: 0
   m_Name: RobaCheFluttua
   m_TagString: Untagged
@@ -31920,6 +32095,19 @@ Transform:
   - {fileID: 2089722709}
   m_Father: {fileID: 711149313}
   m_RootOrder: 0
+--- !u!136 &1331288643
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1331288640}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!1001 &1331304299
 Prefab:
   m_ObjectHideFlags: 0
@@ -34131,6 +34319,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1433801537}
   - 95: {fileID: 1433801538}
+  - 136: {fileID: 1433801539}
   m_Layer: 0
   m_Name: RobaCheFluttua (1)
   m_TagString: Untagged
@@ -34171,6 +34360,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &1433801539
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1433801536}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!1001 &1438653927
 Prefab:
   m_ObjectHideFlags: 0
@@ -35463,6 +35665,23 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011121028690, guid: d3fd3fc05cb01174c9940e19b4cd5744,
     type: 2}
   m_PrefabInternal: {fileID: 1489037945}
+--- !u!1 &1489614659 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
+  m_PrefabInternal: {fileID: 980627010}
+--- !u!136 &1489614660
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1489614659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 4.7335043
+  m_Height: 17.613485
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1492076680
 Prefab:
   m_ObjectHideFlags: 0
@@ -35514,7 +35733,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0000002
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_IsPrefabParent: 0
 --- !u!1001 &1493156539
@@ -36201,6 +36421,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1529070276}
   - 95: {fileID: 1529070277}
+  - 136: {fileID: 1529070278}
   m_Layer: 0
   m_Name: RobaCheFluttua (1)
   m_TagString: Untagged
@@ -36241,6 +36462,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &1529070278
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1529070275}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!1 &1533624446
 GameObject:
   m_ObjectHideFlags: 0
@@ -36707,6 +36941,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.49779773, y: 5.4270215, z: 18.064905}
   m_Center: {x: 0.019001007, y: 1.7991307, z: -7.9237785}
+--- !u!1 &1548789265 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
+  m_PrefabInternal: {fileID: 694891313}
+--- !u!136 &1548789266
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1548789265}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 4.7335043
+  m_Height: 17.613485
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1550786759
 Prefab:
   m_ObjectHideFlags: 0
@@ -37608,7 +37859,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0000002
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
   m_IsPrefabParent: 0
 --- !u!1001 &1584478621
@@ -39187,6 +39439,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1663466735}
   - 95: {fileID: 1663466736}
+  - 136: {fileID: 1663466737}
   m_Layer: 0
   m_Name: RobaCheFluttua (2)
   m_TagString: Untagged
@@ -39228,6 +39481,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &1663466737
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1663466734}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!1001 &1667563945
 Prefab:
   m_ObjectHideFlags: 0
@@ -40524,7 +40790,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_IsPrefabParent: 0
 --- !u!1001 &1721252844
@@ -40794,6 +41061,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1727762642}
   - 95: {fileID: 1727762643}
+  - 136: {fileID: 1727762644}
   m_Layer: 0
   m_Name: RobaCheFluttua (2)
   m_TagString: Untagged
@@ -40835,6 +41103,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &1727762644
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1727762641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!1 &1728542452 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 291d043e3eec45c46904ca66f6650139, type: 3}
@@ -43746,6 +44027,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1883961926}
   - 95: {fileID: 1883961925}
+  - 136: {fileID: 1883961927}
   m_Layer: 0
   m_Name: RobaCheFluttua (2)
   m_TagString: Untagged
@@ -43787,6 +44069,19 @@ Transform:
   - {fileID: 266795010}
   m_Father: {fileID: 711149313}
   m_RootOrder: 2
+--- !u!136 &1883961927
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1883961924}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!1 &1888023237
 GameObject:
   m_ObjectHideFlags: 0
@@ -44739,7 +45034,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_IsPrefabParent: 0
 --- !u!1 &1936217922
@@ -44849,6 +45145,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1947653963}
   - 95: {fileID: 1947653964}
+  - 136: {fileID: 1947653965}
   m_Layer: 0
   m_Name: RobaCheFluttua
   m_TagString: Untagged
@@ -44889,6 +45186,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &1947653965
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1947653962}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!1001 &1948545606
 Prefab:
   m_ObjectHideFlags: 0
@@ -47888,6 +48198,23 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90957f4c3e2e9e944800f1d3bf13fb8e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2071468836 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
+  m_PrefabInternal: {fileID: 1580772217}
+--- !u!136 &2071468837
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2071468836}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 4.7335043
+  m_Height: 17.613485
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &2072958357 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010600555642, guid: 7c3d4b43a47707041ad355d42e7594b4,
@@ -48588,9 +48915,27 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 29468db5366edc246a37714529a6cd26, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &2110019568 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
+  m_PrefabInternal: {fileID: 828399337}
+--- !u!136 &2110019569
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2110019568}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 4.7335043
+  m_Height: 17.613485
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2110051195
 GameObject:
   m_ObjectHideFlags: 0
@@ -48724,6 +49069,23 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010600555642, guid: 7c3d4b43a47707041ad355d42e7594b4,
     type: 2}
   m_PrefabInternal: {fileID: 835103369}
+--- !u!1 &2129676990 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 2e86ef58bd9f317479008444d4f2fb2b, type: 3}
+  m_PrefabInternal: {fileID: 16278874}
+--- !u!136 &2129676991
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2129676990}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 4.7335043
+  m_Height: 17.613485
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2130100182
 Prefab:
   m_ObjectHideFlags: 0
@@ -49052,6 +49414,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2142115661}
   - 95: {fileID: 2142115662}
+  - 136: {fileID: 2142115663}
   m_Layer: 0
   m_Name: RobaCheFluttua (1)
   m_TagString: Untagged
@@ -49092,6 +49455,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &2142115663
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2142115660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3474236
+  m_Height: 13.080184
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 3.82}
 --- !u!1001 &2146274301
 Prefab:
   m_ObjectHideFlags: 0
