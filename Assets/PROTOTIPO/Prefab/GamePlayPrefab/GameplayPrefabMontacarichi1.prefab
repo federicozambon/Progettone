@@ -482,7 +482,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010969816912}
   m_Layer: 0
-  m_Name: GameplayPrefab
+  m_Name: GameplayPrefabMontacarichi1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
