@@ -97,68 +97,71 @@ public class Tutorial : MonoBehaviour {
 
     void Update ()
     {
-        if (Input.GetButtonDown("Fire1") && step == 0)
+        if (currentScene == "Tutorial")
         {
-            
-            transform.GetChild(6).gameObject.SetActive(false);
-            step = 1;
-        }
+            if (Input.GetButtonDown("Fire1") && step == 0)
+            {
 
-        if (Input.GetButtonDown("Fire1") && step == 1 )
-        {
-            HideStep();
-            player.tutorial = false;
-        }
+                transform.GetChild(6).gameObject.SetActive(false);
+                step = 1;
+            }
 
-        if (Input.GetButtonDown("Fire1") && step == 2)
-        {
-            HideStep();
-            player.dashAttivo = true;
-        }
-        if (Input.GetButtonDown("Fire1") && step == 3)
-        {
-            HideStep();
-            player.noWeapons = false;
-            nemico1.gameObject.SetActive(true);
-        }
+            if (Input.GetButtonDown("Fire1") && step == 1)
+            {
+                HideStep();
+                player.tutorial = false;
+            }
 
-   
-        if (Input.GetButtonDown("Next Weapon") && step == 4)
-        {
-            HideStep();
-            
-            nemico2.gameObject.SetActive(true);
-        }
+            if (Input.GetButtonDown("Fire1") && step == 2)
+            {
+                HideStep();
+                player.dashAttivo = true;
+            }
+            if (Input.GetButtonDown("Fire1") && step == 3)
+            {
+                HideStep();
+                player.noWeapons = false;
+                nemico1.gameObject.SetActive(true);
+            }
 
-        if (Input.GetButtonDown("Previous Weapon") && step == 5)
-        {
-            HideStep();
-            
-            nemico3.gameObject.SetActive(true);
-        }
 
-        if (step == 3 && nemico1.gameObject == null)
-        {
-            NextStep();
-        }
+            if (Input.GetButtonDown("Next Weapon") && step == 4)
+            {
+                HideStep();
 
-        if (step == 4 && nemico2.gameObject == null)
-        {
-            NextStep();
-        }
+                nemico2.gameObject.SetActive(true);
+            }
 
-        if (step == 5 && nemico3.gameObject == null)
-        {
-            NextStep();
-        }
+            if (Input.GetButtonDown("Previous Weapon") && step == 5)
+            {
+                HideStep();
 
-        if (Input.GetButtonDown("Fire1") && step == 6)
-        {
-            HideStep();
+                nemico3.gameObject.SetActive(true);
+            }
 
-            int indexSC = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(indexSC + 1);
+            if (step == 3 && nemico1.gameObject == null)
+            {
+                NextStep();
+            }
 
+            if (step == 4 && nemico2.gameObject == null)
+            {
+                NextStep();
+            }
+
+            if (step == 5 && nemico3.gameObject == null)
+            {
+                NextStep();
+            }
+
+            if (Input.GetButtonDown("Fire1") && step == 6)
+            {
+                HideStep();
+
+                int indexSC = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(indexSC + 1);
+
+            }
         }
     }
 }
