@@ -5,21 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scena/Lv1 + tutorial.unity
-  - enabled: 0
-    path: Assets/_CompletedAssets/Scenes/Level 01 5.x.unity
-  - enabled: 0
-    path: Assets/Scena/Daniele_VideoTest.unity
-  - enabled: 0
-    path: "Assets/SevesoNicol\xF2/Lv1 + tutorial.unity"
-  - enabled: 0
-    path: Assets/Scena/New Alpha C.unity
   - enabled: 1
-    path: Assets/Gianluca/Menu Alfa.unity
+    path: Assets/Roba/Gianluca/Menu Alfa.unity
   - enabled: 1
-    path: "Assets/SevesoNicol\xF2/Scenes/Montacarichi1.unity"
+    path: Assets/SceneDEFINITIVE/Tutorial.unity
   - enabled: 1
-    path: "Assets/SevesoNicol\xF2/Scenes/Lv1 + tutorial.unity"
+    path: Assets/SceneDEFINITIVE/Montacarichi1.unity
   - enabled: 1
-    path: "Assets/SevesoNicol\xF2/Scenes/Montacarichi2.unity"
+    path: Assets/SceneDEFINITIVE/Discarica.unity
+  - enabled: 1
+    path: Assets/SceneDEFINITIVE/Montacarichi2.unity
+  - enabled: 1
+    path: Assets/SceneDEFINITIVE/Tetto.unity

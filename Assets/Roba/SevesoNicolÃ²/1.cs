@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class 1 : MonoBehaviour {
+public class Ciao : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
