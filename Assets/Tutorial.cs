@@ -36,7 +36,7 @@ public class Tutorial : MonoBehaviour {
     {
         if (currentScene == "Tutorial")
         {
-            NextStep();
+            transform.GetChild(6).gameObject.SetActive(true);
             flyElements.Skip();
         }
     }
@@ -97,7 +97,14 @@ public class Tutorial : MonoBehaviour {
 
     void Update ()
     {
-	    if (Input.GetButtonDown("Fire1") && step == 1 )
+        if (Input.GetButtonDown("Fire1") && step == 0)
+        {
+            
+            transform.GetChild(6).gameObject.SetActive(false);
+            step = 1;
+        }
+
+        if (Input.GetButtonDown("Fire1") && step == 1 )
         {
             HideStep();
             player.tutorial = false;
