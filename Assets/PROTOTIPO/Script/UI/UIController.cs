@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     public Image godMode;
     public Text ammo;
     public Text thisWave;
+    public Text waveEnd;
     public Text numberWave;
     WaveController wElements;
     public Text actualScore;
@@ -29,6 +30,7 @@ public class UIController : MonoBehaviour
     public Image promptButton;
     public Text weaponUpgrade;
     public Text armorUpgrade;
+    public Player playerRef;
 
     Canvas canvas;
 
@@ -53,6 +55,7 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
+        playerRef = FindObjectOfType<Player>();
         canvas = GetComponent<Canvas>();
         wElements = FindObjectOfType<WaveController>();
         CanvasOff();           
@@ -67,7 +70,7 @@ public class UIController : MonoBehaviour
 
     public void IncreaseLife()
     {
-        life.size += 0.05f;
+        life.size = playerRef.currentHealth / playerRef.maxHealth;
     }
 
     public void UpdateScore()
@@ -208,14 +211,13 @@ public class UIController : MonoBehaviour
 
     public IEnumerator NextWave()
     {
-        thisWave.color = Color.green;
-        thisWave.text = "finish wave";
-        numberWave.color = Color.green;
+        waveEnd.color = Color.green;
+        waveEnd.text = "finish wave";
+        waveEnd.color = Color.green;
 
         yield return new WaitForSeconds(2f);
 
-        thisWave.text = "current wave";
-        thisWave.color = Color.red;
+        waveEnd.text = "";
         numberWave.text = wElements.currentWaveNumber.ToString();
         numberWave.color = Color.red;
     }

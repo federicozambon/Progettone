@@ -35,16 +35,19 @@ public abstract class Enemy : MonoBehaviour
     public NavMeshAgent navRef;
     public FlyCamManager flyCamRef;
 
+    /*
     public MeshRenderer toOutline;
     public Material occlusionMaterial;
     public Material defaultMaterial;
-
+    */
+    /*
     public Ray occlusionRay;
     public RaycastHit[] occlusionHit;
     public Ray antiOcclusionRay;
     public RaycastHit[] antiOcclusionHit;
     public List<GameObject> occludedGoList = new List<GameObject>();
     public Rigidbody enemyRb;
+    */
 
     public bool isActiveAttractionTrap;
     public bool isActiveElectricTrap;
@@ -64,13 +67,13 @@ public abstract class Enemy : MonoBehaviour
         {
             fxRef = GetComponentInChildren<FX>();
         }
-        defaultMaterial = this.GetComponentInChildren<MeshRenderer>().material;
+        //defaultMaterial = this.GetComponentInChildren<MeshRenderer>().material;
         flyCamRef = FindObjectOfType<FlyCamManager>();
         waveRef = FindObjectOfType<WaveController>();
         uicontroller = FindObjectOfType<UIController>();
         playerObj = FindObjectOfType<Player>().gameObject;
         navRef = GetComponent<NavMeshAgent>();
-        enemyRb = GetComponent<Rigidbody>();
+        //enemyRb = GetComponent<Rigidbody>();
         uicontroller.GetComponent<MiniMap>().NewEnemy(this.gameObject);
     }
 
@@ -128,9 +131,7 @@ public abstract class Enemy : MonoBehaviour
 
     virtual public IEnumerator Die()
     {
-
         yield return null;
-
         if (dieController == true)
         {
             ParticleActivator(this.transform.position);
@@ -138,14 +139,7 @@ public abstract class Enemy : MonoBehaviour
             waveRef.IsWaveFinished();
             dieController = false;
             uicontroller.IncreaseScore((int)scoreValue);
-        }
-        //lo spawn del medikit avviene prima della distruzione del nemico
-        /*if (spawnable == true)
-        {          
-            spawnable = false;
-            SpawnMedikit();
-        }*/
-        
+        }      
         Destroy(this.gameObject);
     }
 
@@ -153,7 +147,6 @@ public abstract class Enemy : MonoBehaviour
     {        
         for (int i = 0; i < spawnObject; i++)
         {
-
             int nRandom;
             nRandom = Random.Range(1, 10);
             Debug.Log(nRandom);
@@ -168,7 +161,7 @@ public abstract class Enemy : MonoBehaviour
             }
         }   
     }
-
+    /*
     virtual public void Occlusion()
     {
         if (!FindObjectOfType<FlyCamManager>().cutScene)
@@ -227,8 +220,6 @@ public abstract class Enemy : MonoBehaviour
 
     public IEnumerator LerpAlpha(GameObject go, int sign)
     {
-   
-
         if (sign > 0)
         {
             this.GetComponentInChildren<MeshRenderer>().material = occlusionMaterial;
@@ -243,12 +234,5 @@ public abstract class Enemy : MonoBehaviour
         }
         occludedGoList.Remove(go);
     }
-
-    private void OnCollisionEnter(Collision coll)
-    {
-        if (repulsion == true)
-        {
-            StartCoroutine(this.GetComponent<RotationPostExplosion>().Looking());
-        }       
-    }
+    */
 }

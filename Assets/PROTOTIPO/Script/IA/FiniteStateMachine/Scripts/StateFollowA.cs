@@ -6,25 +6,22 @@ public class StateFollowA : State
 {
     public override void EnterStateLogic()
     {
-        botMovement.destination = playerTr.position;
+        //botMovement.destination = playerTr.position;
     }
 
     public override void Handle()
-    {
-      
+    {    
         switch (enemyType)
         {
             case "furia":
                 navRef.speed = botMovement.rangeAspeed;
                 botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0.1f;
-                //attack             
+                navRef.stoppingDistance = 0.1f;           
                 break;
             case "fante":
-                Vector3 playerToBot = (-playerTr.position + transform.position);
-                navRef.speed = botMovement.rangeAspeed;
-                botMovement.destination = -playerToBot.normalized;
-                navRef.stoppingDistance = 2f;
+                navRef.speed = 15;
+                botMovement.destination = enemyRef.transform.position-enemyRef.transform.forward*10;
+                navRef.stoppingDistance = 0.1f;
                 break;
             case "furiaesplosiva":
                 navRef.speed = botMovement.rangeAspeed;
@@ -37,9 +34,9 @@ public class StateFollowA : State
                 navRef.stoppingDistance = 0;
                 break;
             case "titano":
-                navRef.speed = botMovement.rangeAspeed;
-                botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0;
+                navRef.speed = 25;
+                botMovement.destination = enemyRef.transform.position - enemyRef.transform.forward * 10;
+                navRef.stoppingDistance = 0.1f;
                 break;
             case "cecchino":
                 navRef.speed = botMovement.rangeAspeed;

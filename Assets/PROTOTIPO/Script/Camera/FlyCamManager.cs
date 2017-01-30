@@ -127,7 +127,7 @@ public class FlyCamManager : MonoBehaviour
                 yield return null;
             }
         }
-        else if (SceneManager.GetActiveScene().name == "Discarica")
+        else if (SceneManager.GetActiveScene().name == "Discarica" || SceneManager.GetActiveScene().name == "Discarica 1")
         {
             StartCoroutine(LerpPosition(camArray[0], 100f, true, 0));
             while (cutScene)

@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class RangedEnemy : Enemy
 {
-    public int clockWise;
     public GameObject particlePoolPrefab;
     public GameObject poolP;
 
@@ -26,25 +25,25 @@ public class RangedEnemy : Enemy
         }
     }
 
+    public override IEnumerator Die()
+    {
+        poolP.SetActive(false);
+        return base.Die();
+    }
+
     public override void Attack()
     {
-        StartCoroutine(GetComponent<RangedEnemyFire>().Shooting());
+        if (!GetComponent<RangedEnemyFire>().isShooting)
+        {
+            StartCoroutine(GetComponent<RangedEnemyFire>().Shooting());
+        }
     }
 
     void Update()
     {
-        if (isActive)
+        if (navRef && navRef.isActiveAndEnabled)
         {
-            //Occlusion();
-
-            if (!knockbacked)
-            {
-                navRef.enabled = true;
-            }
-            else
-            {
-                navRef.enabled = false;
-            }
+            transform.LookAt(new Vector3(playerObj.transform.position.x, this.transform.position.y, playerObj.transform.position.z));
         }
     }
 }

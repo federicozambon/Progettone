@@ -27,13 +27,6 @@ public abstract class State : MonoBehaviour
 
     public virtual void EnterStateLogic()
     {
-        //enemyRef = GetComponentInParent<Enemy>();
-        //enemyType = enemyRef.enemyType;
-        //botMovement = GetComponentInParent<Movement>();
-        //navRef = GetComponentInParent<NavMeshAgent>();
-        //playerTr = FindObjectOfType<Player>().transform;
-        //botTr = transform.parent.transform;
-        //attractionTransform = GetComponentInParent<Enemy>().attractionTrap;
     }
 
     public virtual void ExitStateLogic()
@@ -43,12 +36,5 @@ public abstract class State : MonoBehaviour
 
     public virtual void Initialize()
     {
-        //enemyRef = GetComponentInParent<Enemy>();
-        //enemyType = GetComponentInParent<Enemy>().enemyType;
-        //botMovement = GetComponentInParent<Movement>();
-        //navRef = GetComponentInParent<NavMeshAgent>();
-        //playerTr = FindObjectOfType<Player>().transform;
-        //botTr = transform.parent.transform;
-        //attractionTransform = GetComponentInParent<Enemy>().attractionTrap;
     }
 }

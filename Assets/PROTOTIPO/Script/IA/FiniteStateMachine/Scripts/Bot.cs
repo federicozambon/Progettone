@@ -9,6 +9,7 @@ namespace FSM
         public Player playerRef;
         public Enemy enemyRef;
         public float attackTimer= 1.5f;
+        public bool canSeePlayer = false;
 
         void Update()
         {
@@ -76,12 +77,12 @@ namespace FSM
                             {
                                 sm.HandleInput(Inputs.Attack);
                             }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 3f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 10)
+                            else if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 3f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 10)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeB);
                                 //  Debug.LogError("PlayerMedium");
                             }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 10)
+                            else if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 10)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                                 //  Debug.LogError("PlayerFar");
@@ -94,7 +95,7 @@ namespace FSM
                     }
                     sm.StateHandle();
 
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                     StartCoroutine(CheckInputs());
                     break;
                 //trooper statechoose
@@ -117,19 +118,37 @@ namespace FSM
                             }
                         }
                         else
-                        {                   
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 3f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 10)
+                        {
+
+                            RaycastHit losRayOut;
+                            if (Physics.Linecast(enemyRef.GetComponent<RangedEnemyFire>().weapon.position, playerRef.transform.position, out losRayOut))
                             {
-                                sm.HandleInput(Inputs.Attack);
+                                if (losRayOut.collider.tag == "Player")
+                                {
+                                    canSeePlayer = true;
+                                }
+                                else
+                                {
+                                    canSeePlayer = false;
+                                }
                             }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) < 3f)
+           
+                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 15)
+                            {
+                                sm.HandleInput(Inputs.PlayerRangeC);
+                            }
+                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) < 4f)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeA);
                             }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 10)
+                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 4f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 15 && canSeePlayer)
+                            {
+                                sm.HandleInput(Inputs.Attack);
+                            }
+                            else if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 4f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 15 && !canSeePlayer)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
-                            }                     
+                            }
                         }
                     }
                     else
@@ -138,7 +157,7 @@ namespace FSM
                     }
                     sm.StateHandle();
 
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                     StartCoroutine(CheckInputs());
                     break;
                 //furiaesplosiva statechoose
@@ -188,7 +207,7 @@ namespace FSM
                     }
                     sm.StateHandle();
 
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                     StartCoroutine(CheckInputs());
                     break;
                 //predatore statechoose
@@ -238,7 +257,7 @@ namespace FSM
                     }
                     sm.StateHandle();
 
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                     StartCoroutine(CheckInputs());
                     break;
                 //titano statechoose
@@ -262,28 +281,35 @@ namespace FSM
                         }
                         else
                         {
-                            if (sm.currentState == sm.attackState)
+
+                            RaycastHit losRayOut;
+                            if (Physics.Linecast(enemyRef.GetComponent<TitanoEnemyFire>().weapon.position, playerRef.transform.position, out losRayOut))
                             {
-                                if (sm.currentState.timer >= attackTimer)
+                                if (losRayOut.collider.tag == "Player")
                                 {
-                                    //enemyRef.Attack();
+                                    canSeePlayer = true;
+                                }
+                                else
+                                {
+                                    canSeePlayer = false;
                                 }
                             }
-                            else if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 3f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 10)
-                            {
-                                sm.HandleInput(Inputs.Attack);
-                                //  Debug.LogError("PlayerMedium");
-                            }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) < 3f)
-                            {
-                                sm.HandleInput(Inputs.PlayerRangeA);
-                                //  Debug.LogError("PlayerClose");
-                            }
-                   
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 10)
+
+                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 30)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
-                                //  Debug.LogError("PlayerFar");
+                            }
+                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) < 20f)
+                            {
+                                sm.HandleInput(Inputs.PlayerRangeA);
+                            }
+                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 15f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 30 && canSeePlayer)
+                            {
+                                sm.HandleInput(Inputs.Attack);
+                            }
+                            else if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 15f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 30 && !canSeePlayer)
+                            {
+                                sm.HandleInput(Inputs.PlayerRangeC);
                             }
                         }
                     }
@@ -293,7 +319,7 @@ namespace FSM
                     }
                     sm.StateHandle();
 
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                     StartCoroutine(CheckInputs());
                     break;
                 //sniper statechoose
@@ -321,25 +347,15 @@ namespace FSM
                             {
                                 if (sm.currentState.timer >= attackTimer)
                                 {
-                                    //enemyRef.Attack();
+                                    enemyRef.Attack();
                                 }
                             }
                             else
                             {
-                                if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 15)
+                                if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 10)
                                 {
                                     sm.HandleInput(Inputs.Attack);
                                     //  Debug.LogError("PlayerFar");
-                                }
-                                if (Vector3.Distance(this.transform.position, playerRef.transform.position) < 3f)
-                                {
-                                    sm.HandleInput(Inputs.PlayerRangeA);
-                                    //  Debug.LogError("PlayerClose");
-                                }
-                                if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 3f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 15)
-                                {
-                                    sm.HandleInput(Inputs.PlayerRangeB);
-                                    //  Debug.LogError("PlayerMedium");
                                 }
                             }                             
                         }
@@ -350,7 +366,7 @@ namespace FSM
                     }
                     sm.StateHandle();
 
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                     StartCoroutine(CheckInputs());
                     break;
             }
