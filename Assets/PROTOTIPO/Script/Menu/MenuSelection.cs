@@ -11,7 +11,7 @@ public class MenuSelection : MonoBehaviour {
 
     public void Tutorial()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("Intro");
     }
 
     public void Montacarichi1()
