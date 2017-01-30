@@ -9,9 +9,9 @@ public class Muoviti : MonoBehaviour {
 	void Start ()
 
     {
-	
+        //CurrentPos = MainPos;
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -20,6 +20,8 @@ public class Muoviti : MonoBehaviour {
         transform.localRotation = Quaternion.Slerp(transform.localRotation, CurrentPos.rotation, 0.05f);
 	
 	}
+
+
 
     public void Menu()
 

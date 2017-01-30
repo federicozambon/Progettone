@@ -10,25 +10,25 @@ public class MenuSelection : MonoBehaviour {
 	}
 	
 	
-	public void  Menu()
-    {
-        SceneManager.LoadScene("Menu Alfa");
-    }
-
-    public void Livello1()
+	public void Montacarichi1()
     {
         SceneManager.LoadScene("Montacarichi1");
+    }
+
+    public void Discarica()
+    {
+        SceneManager.LoadScene("Discarica 1");
    
     }
 
-    public void Livello2()
-    {
-        SceneManager.LoadScene("Lv1 + tutorial");
-    }
-
-    public void Livello3()
+    public void Montacarichi2()
     {
         SceneManager.LoadScene("Montacarichi2");
+    }
+
+    public void Tetto()
+    {
+        SceneManager.LoadScene("BOSSFIGHT");
 
     }
 }
