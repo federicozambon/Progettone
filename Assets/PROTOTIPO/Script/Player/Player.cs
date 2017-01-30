@@ -15,7 +15,7 @@ public class Player: MonoBehaviour
 
     FlyCamManager flyCamRef;
     Rigidbody playerRigidbody;
-    private NavMeshAgent _navAgent;
+    private UnityEngine.AI.NavMeshAgent _navAgent;
     DialogueSystem dialoghi;
     UIController uicontroller;
     Tutorial tutorialElements;
