@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour {
 
@@ -10,23 +11,34 @@ public class Tutorial : MonoBehaviour {
     public GameObject nemico2;
     public GameObject nemico3;
 
+    string currentScene;
+
     void Awake ()
     {
-        FindObjectOfType<FlyCamManager>().tutorial = true;
-        flyElements = FindObjectOfType<FlyCamManager>();
-        player = FindObjectOfType<Player>();
-        player.tutorial = true;
-        player.stepTutorial = true;
-        player.dashAttivo = false;
-        player.noWeapons = true;
-        player.tutorialMode = true;
+        currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene == "TutorialProva")
+        {
+            FindObjectOfType<FlyCamManager>().tutorial = true;
+            flyElements = FindObjectOfType<FlyCamManager>();
+            player = FindObjectOfType<Player>();
+            player.tutorial = true;
+            player.stepTutorial = true;
+            player.dashAttivo = false;
+            player.noWeapons = true;
+            player.tutorialMode = true;
+        }
+
+        
         
 	}
 
     void Start()
     {
-        NextStep();
-        flyElements.Skip();
+        if (currentScene == "TutorialProva")
+        {
+            NextStep();
+            flyElements.Skip();
+        }
     }
 	
     public void NextStep()
@@ -137,7 +149,8 @@ public class Tutorial : MonoBehaviour {
         {
             HideStep();
 
-            //inserire qui il comando di avvio wave perchè è terminato il tutorial
+            int indexSC = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(indexSC + 1);
 
         }
     }
