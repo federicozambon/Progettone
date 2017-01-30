@@ -9,7 +9,7 @@ public abstract class State : MonoBehaviour
     protected Movement botMovement;
     protected Transform playerTr;
     protected Transform botTr;
-    public UnityEngine.AI.NavMeshAgent navRef;
+    public NavMeshAgent navRef;
     public string enemyType;
     public Transform attractionTransform;
     public float timer;
@@ -19,7 +19,7 @@ public abstract class State : MonoBehaviour
         enemyRef = GetComponentInParent<Enemy>();
         enemyType = enemyRef.enemyType;
         botMovement = GetComponentInParent<Movement>();
-        navRef = GetComponentInParent<UnityEngine.AI.NavMeshAgent>();
+        navRef = GetComponentInParent<NavMeshAgent>();
         playerTr = FindObjectOfType<Player>().transform;
         botTr = transform.parent.transform;
         attractionTransform = GetComponentInParent<Enemy>().attractionTrap;

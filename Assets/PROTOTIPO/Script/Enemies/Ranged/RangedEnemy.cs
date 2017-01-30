@@ -15,7 +15,7 @@ public class RangedEnemy : Enemy
         comboValue = 10;
         remainHPoints = hPoints;
 
-        navRef = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navRef = GetComponent<NavMeshAgent>();
         remainHPoints = hPoints;
         playerObj = FindObjectOfType<Player>().gameObject;
 

@@ -15,7 +15,7 @@ public class TitanoEnemy : Enemy
         comboValue = 1000;
         remainHPoints = hPoints;
 
-        navRef = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navRef = GetComponent<NavMeshAgent>();
         remainHPoints = hPoints;
         playerObj = FindObjectOfType<Player>().gameObject;
 

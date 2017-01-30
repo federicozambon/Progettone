@@ -32,7 +32,7 @@ public abstract class Enemy : MonoBehaviour
     public bool knockbacked;
 
     public Transform headRef;
-    public UnityEngine.AI.NavMeshAgent navRef;
+    public NavMeshAgent navRef;
     public FlyCamManager flyCamRef;
 
     /*
@@ -68,7 +68,7 @@ public abstract class Enemy : MonoBehaviour
         waveRef = FindObjectOfType<WaveController>();
         uicontroller = FindObjectOfType<UIController>();
         playerObj = FindObjectOfType<Player>().gameObject;
-        navRef = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navRef = GetComponent<NavMeshAgent>();
         //enemyRb = GetComponent<Rigidbody>();
         uicontroller.GetComponent<MiniMap>().NewEnemy(this.gameObject);
     }
