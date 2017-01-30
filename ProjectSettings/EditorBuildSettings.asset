@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Roba/Gianluca/Menu Alfa.unity
+    path: Assets/SceneDEFINITIVE/Menu.unity
   - enabled: 1
     path: Assets/SceneDEFINITIVE/Tutorial.unity
   - enabled: 1
