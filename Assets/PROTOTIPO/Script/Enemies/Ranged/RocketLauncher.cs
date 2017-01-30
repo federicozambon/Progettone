@@ -6,6 +6,7 @@ public class RocketLauncher : Weapon
 
     public Transform weapon;
     public GameObject projectile;
+    AudioSource shootSound;
   
     public float speed = 10;
     
@@ -20,12 +21,21 @@ public class RocketLauncher : Weapon
         wSelector = FindObjectOfType<WeaponSelector>();
         uiElements = FindObjectOfType<UIController>();
         playerElements = FindObjectOfType<Player>();
+        shootSound = this.GetComponent<AudioSource>();
     }
 
     public void Shooting()
     {  
         GameObject newBullet = (GameObject)Instantiate(projectile, this.transform.position, Quaternion.identity);
         newBullet.transform.forward = weapon.transform.forward;
+        StartCoroutine(GunShotSound());
+    }
+
+    IEnumerator GunShotSound()
+    {
+        shootSound.clip = AudioContainer.Self.RocketLauncher_Sparo;
+        shootSound.Play();
+        yield return new WaitForSeconds(0.2f);
     }
 
     public void Update()

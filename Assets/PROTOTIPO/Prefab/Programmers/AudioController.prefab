@@ -38,7 +38,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e772bd2805a48642bef21b81e0cab52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player_Sparo: {fileID: 8300000, guid: 89b8ad5a0339d3b4a9edb1a1a55397a5, type: 3}
+  Laser_Sparo: {fileID: 8300000, guid: fb5cde55e42368e4b9377756ac76abd9, type: 3}
+  Shotgun_Sparo: {fileID: 8300000, guid: 5ecf4049d06dbec4bb043419642157e6, type: 3}
+  RocketLauncher_Sparo: {fileID: 8300000, guid: b4dce10cb21ae0c4590c971898fe1234,
+    type: 3}
 --- !u!224 &224000010289001978
 RectTransform:
   m_ObjectHideFlags: 1
