@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Movement : MonoBehaviour
 {
-    public NavMeshAgent navRef;
+    public UnityEngine.AI.NavMeshAgent navRef;
     public Vector3 destination;
     public float rangeAspeed = 8;
     public float rangeBspeed = 5;
