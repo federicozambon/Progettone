@@ -273,8 +273,8 @@ public class Player: MonoBehaviour
                 {
                     rotating = true;
                     shootDirection = map.transform.right * Input.GetAxis("Horizontal_Stick") + map.transform.forward * Input.GetAxis("Vertical_Stick");
-                    shootDirection.x = rx * Mathf.Cos(Mathf.Deg2Rad * (map.transform.eulerAngles.y - 90)) + ry * Mathf.Sin(Mathf.Deg2Rad * (map.transform.eulerAngles.y - 90));
-                    shootDirection.z = -rx * Mathf.Sin(Mathf.Deg2Rad * (map.transform.eulerAngles.y - 90)) + ry * Mathf.Cos(Mathf.Deg2Rad * (map.transform.eulerAngles.y - 90));
+                    shootDirection.x = rx * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + ry * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
+                    shootDirection.z = -rx * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + ry * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
                     transform.rotation = Quaternion.LookRotation(shootDirection, Vector3.up);
                 }
                 lastRotation = transform.rotation;
@@ -392,8 +392,8 @@ public class Player: MonoBehaviour
         if (isGrounded)
         {
             movement.Set(h, 0f, v);
-            movement.x = h * Mathf.Cos(Mathf.Deg2Rad * (map.transform.eulerAngles.y-90)) + v * Mathf.Sin(Mathf.Deg2Rad * (map.transform.eulerAngles.y-90));
-            movement.z = -h * Mathf.Sin(Mathf.Deg2Rad * (map.transform.eulerAngles.y-90)) + v * Mathf.Cos(Mathf.Deg2Rad * (map.transform.eulerAngles.y- 90));
+            movement.x = h * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + v * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
+            movement.z = -h * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + v * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
             movement = movement.normalized * speed * Time.fixedDeltaTime;
             playerRigidbody.MovePosition(transform.position + movement);
         }
