@@ -319,7 +319,7 @@ public class Player: MonoBehaviour
 
         if (Input.GetButtonDown("Selection") && Input.GetButtonDown("GodMode"))
         {
-            SceneManager.LoadScene("Menu Alfa");
+            SceneManager.LoadScene("Prova Menu modifica");
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

@@ -16,7 +16,7 @@ public class Tutorial : MonoBehaviour {
     void Awake ()
     {
         currentScene = SceneManager.GetActiveScene().name;
-        if (currentScene == "TutorialProva")
+        if (currentScene == "Tutorial")
         {
             FindObjectOfType<FlyCamManager>().tutorial = true;
             flyElements = FindObjectOfType<FlyCamManager>();
@@ -34,7 +34,7 @@ public class Tutorial : MonoBehaviour {
 
     void Start()
     {
-        if (currentScene == "TutorialProva")
+        if (currentScene == "Tutorial")
         {
             NextStep();
             flyElements.Skip();
