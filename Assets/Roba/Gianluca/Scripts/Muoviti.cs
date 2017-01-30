@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Muoviti : MonoBehaviour {
     public Transform CurrentPos, MainPos, MontacarichiPos, DiscaricaPos, TettoPos, FonderiaPos, PalazzoPos;
+    public GameObject button;
 
 	// Use this for initialization
 	void Start ()
@@ -27,6 +28,8 @@ public class Muoviti : MonoBehaviour {
 
     {
         CurrentPos = MainPos;
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(button);
 
     }
 
