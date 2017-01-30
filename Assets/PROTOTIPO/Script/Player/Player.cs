@@ -272,7 +272,9 @@ public class Player: MonoBehaviour
                 else
                 {
                     rotating = true;
-                    shootDirection = Vector3.right * Input.GetAxis("Horizontal_Stick") + Vector3.forward * Input.GetAxis("Vertical_Stick");
+                    shootDirection = map.transform.right * Input.GetAxis("Horizontal_Stick") + map.transform.forward * Input.GetAxis("Vertical_Stick");
+                    shootDirection.x = rx * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + ry * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
+                    shootDirection.z = -rx * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + ry * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
                     transform.rotation = Quaternion.LookRotation(shootDirection, Vector3.up);
                 }
                 lastRotation = transform.rotation;
@@ -317,7 +319,7 @@ public class Player: MonoBehaviour
 
         if (Input.GetButtonDown("Selection") && Input.GetButtonDown("GodMode"))
         {
-            SceneManager.LoadScene("Menu Alfa");
+            SceneManager.LoadScene("Prova Menu modifica");
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -383,12 +385,15 @@ public class Player: MonoBehaviour
 
     public BoxCollider groundTrigger;
     public bool isGrounded = true;
+    public GameObject map;
 
     void Move(float h, float v)
     {
         if (isGrounded)
         {
             movement.Set(h, 0f, v);
+            movement.x = h * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + v * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
+            movement.z = -h * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + v * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
             movement = movement.normalized * speed * Time.fixedDeltaTime;
             playerRigidbody.MovePosition(transform.position + movement);
         }

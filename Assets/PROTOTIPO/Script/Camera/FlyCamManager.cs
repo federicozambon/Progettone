@@ -111,7 +111,7 @@ public class FlyCamManager : MonoBehaviour
     public IEnumerator CutSceneManager()
     {
         SwitchCamera(mainCamera, camArray[0]);
-  
+
         if (SceneManager.GetActiveScene().name == "Montacarichi1")
         {
             StartCoroutine(LerpPosition(camArray[0], 600f, true, 1));
@@ -120,14 +120,14 @@ public class FlyCamManager : MonoBehaviour
                 yield return null;
             }
             yield return new WaitForSeconds(1f);
-  
+
             StartCoroutine(LerpRotateAround(camArray[0], 0.5f, 15, true, 1, true));
             while (cutScene)
             {
                 yield return null;
             }
         }
-        else if (SceneManager.GetActiveScene().name == "Discarica" || SceneManager.GetActiveScene().name == "Discarica 1")
+        else if (SceneManager.GetActiveScene().name == "Discarica")
         {
             StartCoroutine(LerpPosition(camArray[0], 100f, true, 0));
             while (cutScene)
@@ -150,7 +150,67 @@ public class FlyCamManager : MonoBehaviour
                 yield return null;
             }
         }
+        else if (SceneManager.GetActiveScene().name == "Montacarichi2")
+        {
+            StartCoroutine(LerpPosition(camArray[0], 100f, true, 0));
+            while (cutScene)
+            {
+                yield return null;
+            }
+            StartCoroutine(LerpPosition(camArray[0], 100f, true, 1));
+            while (cutScene)
+            {
+                yield return null;
+            }
+            StartCoroutine(LerpRotateAround(camArray[0], 0.1f, 40, true, 0, true));
+            while (cutScene)
+            {
+                yield return null;
+            }
+            StartCoroutine(LerpRotateAround(camArray[0], 0.1f, 40, true, 1, false));
+            while (cutScene)
+            {
+                yield return null;
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == "Tetto")
+        {
+            StartCoroutine(LerpPosition(camArray[0], 100f, true, 0));
+            while (cutScene)
+            {
+                yield return null;
+            }
+            StartCoroutine(LerpPosition(camArray[0], 100f, true, 1));
+            while (cutScene)
+            {
+                yield return null;
+            }
+            StartCoroutine(LerpRotateAround(camArray[0], 0.1f, 40, true, 0, true));
+            while (cutScene)
+            {
+                yield return null;
+            }
+            StartCoroutine(LerpRotateAround(camArray[0], 0.1f, 40, true, 1, false));
+            while (cutScene)
+            {
+                yield return null;
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            StartCoroutine(LerpPosition(camArray[0], 600f, true, 1));
+            while (cutScene)
+            {
+                yield return null;
+            }
+            yield return new WaitForSeconds(1f);
 
+            StartCoroutine(LerpRotateAround(camArray[0], 0.5f, 15, true, 1, true));
+            while (cutScene)
+            {
+                yield return null;
+            }
+        }
         SwitchCamera(camArray[1], mainCamera);
         SwitchCamera(camArray[0], mainCamera);
         playerGo.gameObject.SetActive(true);
@@ -189,13 +249,7 @@ public class FlyCamManager : MonoBehaviour
      
             moving = false;
             rotating = false;
-            /*
 
-            cupole[1].SetActive(true);
-            cupole[0].SetActive(false);
-            cupole[3].SetActive(true);
-            cupole[2].SetActive(false);
-            */
             endedCutScene = true;
             cutScene = false;
             elementsUI.CanvasOn();
@@ -226,13 +280,7 @@ public class FlyCamManager : MonoBehaviour
 
         moving = false;
         rotating = false;
-        /*
 
-        cupole[1].SetActive(true);
-        cupole[0].SetActive(false);
-        cupole[3].SetActive(true);
-        cupole[2].SetActive(false);
-        */
         endedCutScene = true;
         cutScene = false;
         elementsUI.CanvasOn();

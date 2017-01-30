@@ -63,7 +63,6 @@ public abstract class Enemy : MonoBehaviour
     void Awake()
     {
         pool = GameObject.Find("ParticleEnemyExplosion");
-        Debug.LogError(GameObject.Find("ParticleEnemyExplosion"));
         //defaultMaterial = this.GetComponentInChildren<MeshRenderer>().material;
         flyCamRef = FindObjectOfType<FlyCamManager>();
         waveRef = FindObjectOfType<WaveController>();
