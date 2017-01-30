@@ -272,7 +272,7 @@ public class Player: MonoBehaviour
                 else
                 {
                     rotating = true;
-                    shootDirection = map.transform.right * Input.GetAxis("Horizontal_Stick") + map.transform.forward * Input.GetAxis("Vertical_Stick");
+                    shootDirection = transform.parent.transform.right * Input.GetAxis("Horizontal_Stick") + transform.parent.transform.right * Input.GetAxis("Vertical_Stick");
                     shootDirection.x = rx * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + ry * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
                     shootDirection.z = -rx * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + ry * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
                     transform.rotation = Quaternion.LookRotation(shootDirection, Vector3.up);
