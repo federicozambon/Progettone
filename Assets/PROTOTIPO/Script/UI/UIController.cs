@@ -53,12 +53,18 @@ public class UIController : MonoBehaviour
         promptButton.enabled = false;
     }
 
+    void Awake()
+    {
+        canvas = GetComponent<Canvas>();
+        CanvasOff();
+    }
+
     void Start()
     {
         playerRef = FindObjectOfType<Player>();
-        canvas = GetComponent<Canvas>();
+        
         wElements = FindObjectOfType<WaveController>();
-        CanvasOff();           
+                 
     }
 
     public void DecrementLife(float damageTaken)
