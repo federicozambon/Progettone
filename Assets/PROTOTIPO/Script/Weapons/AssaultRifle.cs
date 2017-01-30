@@ -76,9 +76,11 @@ public class AssaultRifle : Weapon
         }
     }
 
+    
+
     IEnumerator GunShotSound()
     {
-        shootSound.clip = AudioContainer.Self.Player_Sparo;
+        shootSound.clip = AudioContainer.Self.Laser_Sparo;
         shootSound.Play();
         yield return new WaitForSeconds(0.2f);
     }

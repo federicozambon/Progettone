@@ -16,8 +16,10 @@ public class AudioContainer : MonoBehaviour {
         }
     }
 
-    public AudioClip Player_Sparo;
-   
+    public AudioClip Laser_Sparo;
+    public AudioClip Shotgun_Sparo;
+    public AudioClip RocketLauncher_Sparo;
+
 
     void Start ()
     {

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class LaserShotgun : Weapon
 {
@@ -11,6 +12,7 @@ public class LaserShotgun : Weapon
     WeaponSelector wSelector;
     public Transform[] transformTr;
     Player player;
+    AudioSource shootSound;
 
     void Awake()
     {
@@ -32,7 +34,10 @@ public class LaserShotgun : Weapon
         deltaDegrees = 90;
 
         player = FindObjectOfType<Player>();
+        shootSound = this.GetComponent<AudioSource>();
     }
+    
+    
 
     void Update()
     {
@@ -72,7 +77,15 @@ public class LaserShotgun : Weapon
         if (rotRef.rotating && timer >= timeBetweenBullets && Time.timeScale != 0 && player.noWeapons == false)
         {
             Shoot();
+            StartCoroutine(GunShotSound());
         }
+    }
+
+    IEnumerator GunShotSound()
+    {
+        shootSound.clip = AudioContainer.Self.Shotgun_Sparo;
+        shootSound.Play();
+        yield return new WaitForSeconds(0.2f);
     }
 
     public void Shoot()
@@ -165,6 +178,8 @@ public class LaserShotgun : Weapon
     }
 
     public GameObject pool;
+
+    
 
     public void ParticleActivator(Vector3 position)
     {
