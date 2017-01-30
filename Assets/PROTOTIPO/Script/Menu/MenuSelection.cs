@@ -8,16 +8,20 @@ public class MenuSelection : MonoBehaviour {
 	void Start () {
 	
 	}
-	
-	
-	public void Montacarichi1()
+
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
+    public void Montacarichi1()
     {
         SceneManager.LoadScene("Montacarichi1");
     }
 
     public void Discarica()
     {
-        SceneManager.LoadScene("Discarica 1");
+        SceneManager.LoadScene("Discarica");
    
     }
 
@@ -28,7 +32,7 @@ public class MenuSelection : MonoBehaviour {
 
     public void Tetto()
     {
-        SceneManager.LoadScene("BOSSFIGHT");
+        SceneManager.LoadScene("Tetto");
 
     }
 }
