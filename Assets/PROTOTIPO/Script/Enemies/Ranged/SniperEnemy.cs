@@ -31,7 +31,7 @@ public class SniperEnemy : Enemy
 
     public override IEnumerator Die()
     {
-        pool.SetActive(false);
+        poolP.SetActive(false);
         return base.Die();
     }
 

@@ -618,7 +618,7 @@ MonoBehaviour:
   enemyType: furia
   remainHPoints: 50
   hPoints: 50
-  damage: 20
+  damage: 15
   scoreValue: 150
   spawnObject: 1
   spawnable: 1

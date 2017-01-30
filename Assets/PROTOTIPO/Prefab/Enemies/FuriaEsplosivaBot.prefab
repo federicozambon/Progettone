@@ -816,7 +816,7 @@ MonoBehaviour:
   enemyType: furiaesplosiva
   remainHPoints: 0
   hPoints: 0
-  damage: 25
+  damage: 20
   scoreValue: 300
   spawnObject: 1
   spawnable: 1
