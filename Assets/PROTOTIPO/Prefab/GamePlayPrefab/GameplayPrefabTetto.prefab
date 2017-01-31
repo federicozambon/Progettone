@@ -65,7 +65,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013362757780}
   m_Layer: 8
-  m_Name: SpawnFanteW1 (7)
+  m_Name: 1.6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,7 +260,22 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011646490754}
   m_Layer: 8
-  m_Name: SpawnFuriaEsplW2
+  m_Name: Spawn6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000010389050870
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012592762800}
+  m_Layer: 8
+  m_Name: 1.7 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,7 +459,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012748642650}
   m_Layer: 8
-  m_Name: SpawnFuriaW2
+  m_Name: Spawn5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -641,7 +656,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011469996274}
   m_Layer: 8
-  m_Name: SpawnFanteW1 (2)
+  m_Name: 1.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -671,7 +686,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012822459342}
   m_Layer: 8
-  m_Name: SpawnFanteW3
+  m_Name: Spawn7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -797,6 +812,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000011431598524
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012549286262}
+  m_Layer: 8
+  m_Name: 1.7 (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000011461746514
 GameObject:
   m_ObjectHideFlags: 1
@@ -806,7 +836,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012008290948}
   m_Layer: 8
-  m_Name: SpawnFanteW1 (4)
+  m_Name: 1.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -960,7 +990,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000014016399340}
   m_Layer: 8
-  m_Name: SpawnFanteW1 (3)
+  m_Name: 1.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -976,6 +1006,21 @@ GameObject:
   - 4: {fileID: 4000012079659424}
   m_Layer: 8
   m_Name: SpawnFuriaEsplW2 (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000011687663576
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012633938506}
+  m_Layer: 8
+  m_Name: 1.7 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1177,6 +1222,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000012007618270
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010713296696}
+  m_Layer: 8
+  m_Name: 1.7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000012014877554
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013430514686}
+  m_Layer: 8
+  m_Name: 1.7 (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000012036159470
 GameObject:
   m_ObjectHideFlags: 1
@@ -1192,6 +1267,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000012071009368
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010309959534}
+  m_Layer: 8
+  m_Name: 1.7 (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000012086113118
 GameObject:
   m_ObjectHideFlags: 1
@@ -1201,7 +1291,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012006071866}
   m_Layer: 8
-  m_Name: SpawnFuriaEsplW3
+  m_Name: Spawn8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1231,7 +1321,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012308130624}
   m_Layer: 8
-  m_Name: SpawnFanteW1 (5)
+  m_Name: 1.4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1383,7 +1473,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011039099852}
   m_Layer: 8
-  m_Name: SpawnFanteW1 (6)
+  m_Name: 1.5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1550,7 +1640,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011507465206}
   m_Layer: 8
-  m_Name: SpawnFuriaW1
+  m_Name: Spawn2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1734,7 +1824,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013359947990}
   m_Layer: 8
-  m_Name: SpawnPredatoreW1
+  m_Name: Spawn9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1952,6 +2042,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000013028491124
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000014218430550}
+  m_Layer: 8
+  m_Name: 1.7 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000013041672764
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,7 +2238,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012370034532}
   m_Layer: 8
-  m_Name: SpawnFuriaEsplW1
+  m_Name: Spawn3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2383,7 +2488,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012829051820}
   m_Layer: 8
-  m_Name: SpawnFanteW1
+  m_Name: Spawn1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2429,6 +2534,21 @@ GameObject:
   - 4: {fileID: 4000010579147414}
   m_Layer: 8
   m_Name: SpawnPR41Third
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000013669608350
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000014224080076}
+  m_Layer: 8
+  m_Name: 1.7 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2662,6 +2782,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000014090261582
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010934748196}
+  m_Layer: 8
+  m_Name: 1.7 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000014095427506
 GameObject:
   m_ObjectHideFlags: 1
@@ -2721,7 +2856,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012726965800}
   m_Layer: 8
-  m_Name: SpawnFanteW1 (1)
+  m_Name: 1.0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2783,7 +2918,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010922841694}
   m_Layer: 8
-  m_Name: SpawnFanteW2
+  m_Name: Spawn4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3047,6 +3182,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000012370034532}
   m_RootOrder: 6
+--- !u!4 &4000010309959534
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012071009368}
+  m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
+  m_LocalPosition: {x: 8.8, y: 0.8, z: -0.8}
+  m_LocalScale: {x: 1, y: 0.9999977, z: 1.0000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012829051820}
+  m_RootOrder: 15
 --- !u!4 &4000010344419094
 Transform:
   m_ObjectHideFlags: 1
@@ -3150,7 +3298,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012238735956}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.39, y: 8.6, z: -15.36}
+  m_LocalPosition: {x: -52.4, y: 12.64, z: -11.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -3303,6 +3451,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000011875713580}
   m_RootOrder: 54
+--- !u!4 &4000010713296696
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012007618270}
+  m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
+  m_LocalPosition: {x: 17.12, y: 0.06, z: -0.8}
+  m_LocalScale: {x: 1, y: 0.9999988, z: 1.0000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012829051820}
+  m_RootOrder: 7
 --- !u!4 &4000010747800760
 Transform:
   m_ObjectHideFlags: 1
@@ -3468,6 +3629,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000010598228280}
   m_RootOrder: 1
+--- !u!4 &4000010934748196
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014090261582}
+  m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
+  m_LocalPosition: {x: 1.83, y: 29.1, z: -0.8}
+  m_LocalScale: {x: 1, y: 0.99999845, z: 1.0000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012829051820}
+  m_RootOrder: 9
 --- !u!4 &4000010951310502
 Transform:
   m_ObjectHideFlags: 1
@@ -3527,7 +3701,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012307301310}
   m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
-  m_LocalPosition: {x: 1.07, y: 8.22, z: -0.8}
+  m_LocalPosition: {x: -5.2, y: -4.05, z: -0.8}
   m_LocalScale: {x: 1, y: 0.99999917, z: 1.0000001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -3657,7 +3831,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014287362906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29.2, y: -8.4, z: 15.9}
+  m_LocalPosition: {x: 31.06, y: -4.29, z: 15.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -3709,7 +3883,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011111213780}
   m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
-  m_LocalPosition: {x: 0.28, y: 1.99, z: -0}
+  m_LocalPosition: {x: -10.9, y: 9.02, z: 0}
   m_LocalScale: {x: 1, y: 0.9999999, z: 1.0000001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -4139,7 +4313,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011461746514}
   m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
-  m_LocalPosition: {x: 5.88, y: 4.77, z: -0.8}
+  m_LocalPosition: {x: 17.84, y: 18.32, z: -0.8}
   m_LocalScale: {x: 1, y: 0.9999996, z: 1.0000001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -4309,7 +4483,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012109524210}
   m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
-  m_LocalPosition: {x: 4.73, y: 8.31, z: -0.8}
+  m_LocalPosition: {x: 3.67, y: 8.98, z: -0.8}
   m_LocalScale: {x: 1, y: 0.99999934, z: 1.0000001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -4413,6 +4587,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000012006071866}
   m_RootOrder: 10
+--- !u!4 &4000012549286262
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011431598524}
+  m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
+  m_LocalPosition: {x: 9.4, y: -3.7, z: -0.8}
+  m_LocalScale: {x: 1, y: 0.9999979, z: 1.0000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012829051820}
+  m_RootOrder: 13
 --- !u!4 &4000012557013582
 Transform:
   m_ObjectHideFlags: 1
@@ -4452,6 +4639,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000013809368706}
   m_RootOrder: 8
+--- !u!4 &4000012592762800
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010389050870}
+  m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
+  m_LocalPosition: {x: 4.3, y: -6.3, z: -0.8}
+  m_LocalScale: {x: 1, y: 0.99999785, z: 1.0000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012829051820}
+  m_RootOrder: 14
 --- !u!4 &4000012593216092
 Transform:
   m_ObjectHideFlags: 1
@@ -4465,6 +4665,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000011875713580}
   m_RootOrder: 22
+--- !u!4 &4000012633938506
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011687663576}
+  m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
+  m_LocalPosition: {x: 2.6, y: 0.6, z: -0.8}
+  m_LocalScale: {x: 1, y: 0.9999981, z: 1.0000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012829051820}
+  m_RootOrder: 12
 --- !u!4 &4000012638268028
 Transform:
   m_ObjectHideFlags: 1
@@ -4524,7 +4737,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014157367474}
   m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
-  m_LocalPosition: {x: 2.41, y: -0.98, z: 0}
+  m_LocalPosition: {x: -5.61, y: -19.43, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -4625,6 +4838,15 @@ Transform:
   - {fileID: 4000012308130624}
   - {fileID: 4000011039099852}
   - {fileID: 4000013362757780}
+  - {fileID: 4000010713296696}
+  - {fileID: 4000014218430550}
+  - {fileID: 4000010934748196}
+  - {fileID: 4000014224080076}
+  - {fileID: 4000013430514686}
+  - {fileID: 4000012633938506}
+  - {fileID: 4000012549286262}
+  - {fileID: 4000012592762800}
+  - {fileID: 4000010309959534}
   m_Father: {fileID: 4000011875713580}
   m_RootOrder: 0
 --- !u!4 &4000012831437592
@@ -4712,7 +4934,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014245971722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 56, y: 17.3, z: 56.9}
+  m_LocalPosition: {x: 46.76, y: 33.01, z: 47.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -4829,7 +5051,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012139031714}
   m_LocalRotation: {x: -0, y: 0.27716655, z: -0, w: 0.9608219}
-  m_LocalPosition: {x: -111.4, y: 59.600002, z: -126.36182}
+  m_LocalPosition: {x: -111.4, y: 57.18, z: -64.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 32.289, z: 0}
   m_Children:
@@ -4977,7 +5199,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013574961766}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.86, y: -3.89, z: 5.43}
+  m_LocalPosition: {x: -39.8, y: 36.1, z: 72.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -5007,12 +5229,25 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010060221050}
   m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
-  m_LocalPosition: {x: 1.32, y: 3.31, z: -0.8}
+  m_LocalPosition: {x: 9.38, y: -10.46, z: -0.8}
   m_LocalScale: {x: 1, y: 0.99999905, z: 1.0000001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012829051820}
   m_RootOrder: 6
+--- !u!4 &4000013430514686
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012014877554}
+  m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
+  m_LocalPosition: {x: 10.1, y: -30.8, z: -0.8}
+  m_LocalScale: {x: 1, y: 0.9999982, z: 1.0000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012829051820}
+  m_RootOrder: 11
 --- !u!4 &4000013434926086
 Transform:
   m_ObjectHideFlags: 1
@@ -5345,7 +5580,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011644806720}
   m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
-  m_LocalPosition: {x: 6.3, y: 2.29, z: -0.8}
+  m_LocalPosition: {x: 23.43, y: -12.39, z: -0.8}
   m_LocalScale: {x: 1, y: 0.9999997, z: 1.0000001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -5455,6 +5690,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000011875713580}
   m_RootOrder: 29
+--- !u!4 &4000014218430550
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013028491124}
+  m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
+  m_LocalPosition: {x: 35.78, y: 7.73, z: -0.8}
+  m_LocalScale: {x: 1, y: 0.99999857, z: 1.0000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012829051820}
+  m_RootOrder: 8
+--- !u!4 &4000014224080076
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013669608350}
+  m_LocalRotation: {x: -0, y: 0.000000010536711, z: 0.000000010536713, w: 1}
+  m_LocalPosition: {x: -22.9, y: -10.1, z: -0.8}
+  m_LocalScale: {x: 1, y: 0.99999833, z: 1.0000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012829051820}
+  m_RootOrder: 10
 --- !u!4 &4000014247211376
 Transform:
   m_ObjectHideFlags: 1
@@ -5983,9 +6244,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0
+  m_audioClip: {fileID: 8300000, guid: a14dd361d12107f46bb3c64f50d325ed, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6162,7 +6423,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013534640494}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -6204,6 +6465,7 @@ MonoBehaviour:
   lastRotation: {x: 0, y: 0, z: 0, w: 0}
   groundTrigger: {fileID: 0}
   isGrounded: 1
+  map: {fileID: 0}
   walking: 0
   dashRange: 250
   newRange: 0
@@ -6220,10 +6482,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWaveNumber: 0
-  firstDoorsList: []
-  secondDoorsList: []
-  isWaveFinished: 0
   killedCounter: 0
+  isWaveFinished: 0
 --- !u!114 &114000010642403224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6324,7 +6584,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014163488192}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -6342,283 +6602,643 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstWave:
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000014157367474}
+    timerEnemy: 0.5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011111213780}
+    timerEnemy: 0.6
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011644806720}
+    timerEnemy: 0.7
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      type: 2}
+    spawnEnemy: {fileID: 1000011644806720}
+    timerEnemy: 0.8
   - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
       type: 2}
-    spawnEnemy: {fileID: 1000013636735762}
-    timerEnemy: 0
+    spawnEnemy: {fileID: 1000012109524210}
+    timerEnemy: 3.9
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011644806720}
+    timerEnemy: 4
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011461746514}
+    timerEnemy: 4.1
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000014157367474}
+    timerEnemy: 4.2
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011644806720}
+    timerEnemy: 4.2
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011111213780}
+    timerEnemy: 4.2
   secondWave:
   - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
     spawnEnemy: {fileID: 1000014167753382}
     timerEnemy: 0
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      type: 2}
+    spawnEnemy: {fileID: 1000014157367474}
+    timerEnemy: 1.1
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011111213780}
+    timerEnemy: 1.1
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      type: 2}
+    spawnEnemy: {fileID: 1000011644806720}
+    timerEnemy: 1.1
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011461746514}
+    timerEnemy: 1.1
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      type: 2}
+    spawnEnemy: {fileID: 1000012109524210}
+    timerEnemy: 2
   - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000010572149430}
-    timerEnemy: 0
+    spawnEnemy: {fileID: 1000010060221050}
+    timerEnemy: 2.5
   - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000011280479400}
-    timerEnemy: 0
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000012680837148}
-    timerEnemy: 0
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000011874534054}
-    timerEnemy: 0
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000010314394054}
+    spawnEnemy: {fileID: 1000012007618270}
     timerEnemy: 3
   - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000014158944018}
-    timerEnemy: 3
+    spawnEnemy: {fileID: 1000013028491124}
+    timerEnemy: 3.5
   - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000012886024814}
-    timerEnemy: 3
+    spawnEnemy: {fileID: 1000014090261582}
+    timerEnemy: 7
   - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000013348082016}
-    timerEnemy: 3
+    spawnEnemy: {fileID: 1000013669608350}
+    timerEnemy: 8
   - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000011642693616}
-    timerEnemy: 3
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+    spawnEnemy: {fileID: 1000012014877554}
+    timerEnemy: 8
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000010379778852}
-    timerEnemy: 10
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+    spawnEnemy: {fileID: 1000011687663576}
+    timerEnemy: 8
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000013307723124}
-    timerEnemy: 10
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 9
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000014135040570}
-    timerEnemy: 10
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000013016834900}
-    timerEnemy: 15
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000011645263048}
-    timerEnemy: 15
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000012179188418}
-    timerEnemy: 15
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000012336568920}
-    timerEnemy: 15
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000011952546602}
-    timerEnemy: 15
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000010152572390}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000010083794956}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000012143385102}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000012122194996}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000012622079100}
-    timerEnemy: 30
-  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
-      type: 2}
-    spawnEnemy: {fileID: 1000010679903874}
-    timerEnemy: 30
-  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
-      type: 2}
-    spawnEnemy: {fileID: 1000012408293840}
-    timerEnemy: 30
-  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
-      type: 2}
-    spawnEnemy: {fileID: 1000011557838992}
-    timerEnemy: 30
-  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
-      type: 2}
-    spawnEnemy: {fileID: 1000013572752128}
-    timerEnemy: 30
-  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
-      type: 2}
-    spawnEnemy: {fileID: 1000012802760642}
-    timerEnemy: 30
-  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
-      type: 2}
-    spawnEnemy: {fileID: 1000013643717418}
-    timerEnemy: 30
-  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
-      type: 2}
-    spawnEnemy: {fileID: 1000012606799218}
-    timerEnemy: 30
+    spawnEnemy: {fileID: 1000010389050870}
+    timerEnemy: 9
   thirdWave:
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
       type: 2}
-    spawnEnemy: {fileID: 1000011165770684}
-    timerEnemy: 0
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+    spawnEnemy: {fileID: 1000014157367474}
+    timerEnemy: 0.5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
       type: 2}
-    spawnEnemy: {fileID: 1000011199982442}
-    timerEnemy: 0
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000011072272380}
-    timerEnemy: 0
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000013520485788}
-    timerEnemy: 0
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000011319432602}
-    timerEnemy: 0
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000014164785710}
-    timerEnemy: 0
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000011623366402}
+    spawnEnemy: {fileID: 1000014157367474}
     timerEnemy: 5
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
       type: 2}
-    spawnEnemy: {fileID: 1000012954474124}
-    timerEnemy: 5
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000011476965166}
-    timerEnemy: 5
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000012804084718}
-    timerEnemy: 5
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000011486337078}
-    timerEnemy: 5
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000011858058050}
-    timerEnemy: 5
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
-      type: 2}
-    spawnEnemy: {fileID: 1000012536118488}
+    spawnEnemy: {fileID: 1000014157367474}
     timerEnemy: 10
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
       type: 2}
-    spawnEnemy: {fileID: 1000013063525184}
+    spawnEnemy: {fileID: 1000014157367474}
+    timerEnemy: 15
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011111213780}
+    timerEnemy: 0.5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011111213780}
+    timerEnemy: 5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011111213780}
     timerEnemy: 10
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
       type: 2}
-    spawnEnemy: {fileID: 1000010917240908}
+    spawnEnemy: {fileID: 1000011111213780}
+    timerEnemy: 15
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011644806720}
+    timerEnemy: 0.5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011644806720}
+    timerEnemy: 5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011644806720}
     timerEnemy: 10
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
       type: 2}
-    spawnEnemy: {fileID: 1000012569580202}
+    spawnEnemy: {fileID: 1000011644806720}
+    timerEnemy: 15
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011461746514}
+    timerEnemy: 0.5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011461746514}
+    timerEnemy: 5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011461746514}
     timerEnemy: 10
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
       type: 2}
-    spawnEnemy: {fileID: 1000012086113118}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+    spawnEnemy: {fileID: 1000011461746514}
+    timerEnemy: 15
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
       type: 2}
-    spawnEnemy: {fileID: 1000010188483692}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+    spawnEnemy: {fileID: 1000014157367474}
+    timerEnemy: 16
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
       type: 2}
-    spawnEnemy: {fileID: 1000012771547746}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+    spawnEnemy: {fileID: 1000012109524210}
+    timerEnemy: 16
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
       type: 2}
-    spawnEnemy: {fileID: 1000010708454320}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+    spawnEnemy: {fileID: 1000011461746514}
+    timerEnemy: 16
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
       type: 2}
-    spawnEnemy: {fileID: 1000013072289198}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000013597351994}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000012617223772}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000012666872060}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000014033180872}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000013828995754}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000013840290262}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000013594444636}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000013783043708}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000012100263960}
-    timerEnemy: 20
-  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
-      type: 2}
-    spawnEnemy: {fileID: 1000012726828534}
-    timerEnemy: 20
+    spawnEnemy: {fileID: 1000010389050870}
+    timerEnemy: 16
   fourthWave:
-  - typeEnemy: {fileID: 1000010836118462, guid: 03c1d191c5a394941a8e24d166e1ec14,
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000012704100796}
-    timerEnemy: 0
-  - typeEnemy: {fileID: 1000010836118462, guid: 03c1d191c5a394941a8e24d166e1ec14,
+    spawnEnemy: {fileID: 1000014157367474}
+    timerEnemy: 2
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000010597515090}
-    timerEnemy: 0
-  - typeEnemy: {fileID: 1000010836118462, guid: 03c1d191c5a394941a8e24d166e1ec14,
+    spawnEnemy: {fileID: 1000011111213780}
+    timerEnemy: 2.5
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000013494864574}
+    spawnEnemy: {fileID: 1000011644806720}
+    timerEnemy: 3
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011461746514}
+    timerEnemy: 3.5
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000012109524210}
+    timerEnemy: 4
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000012307301310}
+    timerEnemy: 4.5
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000010060221050}
+    timerEnemy: 5
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000012007618270}
+    timerEnemy: 5.5
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000013028491124}
+    timerEnemy: 6
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000014090261582}
+    timerEnemy: 6.5
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000013669608350}
+    timerEnemy: 7
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000012014877554}
+    timerEnemy: 7.5
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011687663576}
+    timerEnemy: 8
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 8.5
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000010389050870}
+    timerEnemy: 9
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000012071009368}
+    timerEnemy: 11
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000010389050870}
+    timerEnemy: 11
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000012071009368}
+    timerEnemy: 11
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 11
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011687663576}
+    timerEnemy: 11
+  fifthWave:
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
+      type: 2}
+    spawnEnemy: {fileID: 1000012109524210}
+    timerEnemy: 1
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
+      type: 2}
+    spawnEnemy: {fileID: 1000012307301310}
+    timerEnemy: 1
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
+      type: 2}
+    spawnEnemy: {fileID: 1000010060221050}
+    timerEnemy: 1
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
+      type: 2}
+    spawnEnemy: {fileID: 1000012007618270}
+    timerEnemy: 1
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      type: 2}
+    spawnEnemy: {fileID: 0}
+    timerEnemy: 0.5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 0}
+    timerEnemy: 0.5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 0}
+    timerEnemy: 0.6
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 0}
+    timerEnemy: 0.65
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      type: 2}
+    spawnEnemy: {fileID: 0}
+    timerEnemy: 0.7
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 0}
+    timerEnemy: 0.8
+  sixthWave:
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000014157367474}
+    timerEnemy: 1
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000010060221050}
+    timerEnemy: 2
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000012007618270}
+    timerEnemy: 3
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000013669608350}
+    timerEnemy: 4
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011687663576}
+    timerEnemy: 5
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000012071009368}
+    timerEnemy: 6
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000010060221050}
+    timerEnemy: 7
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000010060221050}
+    timerEnemy: 8
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011644806720}
+    timerEnemy: 9
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000014157367474}
     timerEnemy: 10
-  - typeEnemy: {fileID: 1000010836118462, guid: 03c1d191c5a394941a8e24d166e1ec14,
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000013017266112}
-    timerEnemy: 10
-  - typeEnemy: {fileID: 1000010836118462, guid: 03c1d191c5a394941a8e24d166e1ec14,
+    spawnEnemy: {fileID: 1000012071009368}
+    timerEnemy: 11
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
       type: 2}
-    spawnEnemy: {fileID: 1000013646641346}
+    spawnEnemy: {fileID: 1000012007618270}
+    timerEnemy: 12
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000014157367474}
+    timerEnemy: 13
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000013028491124}
+    timerEnemy: 14
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000013669608350}
+    timerEnemy: 15
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000012071009368}
+    timerEnemy: 16
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 17
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000013669608350}
+    timerEnemy: 18
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011461746514}
+    timerEnemy: 19
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000012014877554}
     timerEnemy: 20
-  fifthWave: []
-  sixthWave: []
-  seventhWave: []
-  eighthWave: []
-  ninthWave: []
-  tenthWave: []
+  seventhWave:
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000014157367474}
+    timerEnemy: 1
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011111213780}
+    timerEnemy: 1.5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011461746514}
+    timerEnemy: 2
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000010060221050}
+    timerEnemy: 2.4
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000013669608350}
+    timerEnemy: 3
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 3.5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000013669608350}
+    timerEnemy: 4
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011461746514}
+    timerEnemy: 4.5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000012071009368}
+    timerEnemy: 5.5
+  - typeEnemy: {fileID: 1000014034687902, guid: c7133c340afdce3498005131c40380c1,
+      type: 2}
+    spawnEnemy: {fileID: 1000010389050870}
+    timerEnemy: 3
+  eighthWave:
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000010060221050}
+    timerEnemy: 1
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000013669608350}
+    timerEnemy: 2
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000012307301310}
+    timerEnemy: 3
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011687663576}
+    timerEnemy: 4
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 5
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000012307301310}
+    timerEnemy: 6
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000012109524210}
+    timerEnemy: 7
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000012071009368}
+    timerEnemy: 8
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000013669608350}
+    timerEnemy: 9
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 10
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000010060221050}
+    timerEnemy: 11
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000013028491124}
+    timerEnemy: 12
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000012014877554}
+    timerEnemy: 13
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000014157367474}
+    timerEnemy: 14
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011461746514}
+    timerEnemy: 15
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011111213780}
+    timerEnemy: 16
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
+      type: 2}
+    spawnEnemy: {fileID: 1000012007618270}
+    timerEnemy: 10
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
+      type: 2}
+    spawnEnemy: {fileID: 1000010060221050}
+    timerEnemy: 10
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
+      type: 2}
+    spawnEnemy: {fileID: 1000012307301310}
+    timerEnemy: 10
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
+      type: 2}
+    spawnEnemy: {fileID: 1000012109524210}
+    timerEnemy: 10
+  ninthWave:
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000012307301310}
+    timerEnemy: 1
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011111213780}
+    timerEnemy: 2
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000014090261582}
+    timerEnemy: 3
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011461746514}
+    timerEnemy: 4
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000010389050870}
+    timerEnemy: 5
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000011687663576}
+    timerEnemy: 6
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000014090261582}
+    timerEnemy: 7
+  - typeEnemy: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      type: 2}
+    spawnEnemy: {fileID: 1000012307301310}
+    timerEnemy: 8
+  - typeEnemy: {fileID: 1000014034687902, guid: c7133c340afdce3498005131c40380c1,
+      type: 2}
+    spawnEnemy: {fileID: 1000010389050870}
+    timerEnemy: 5
+  - typeEnemy: {fileID: 1000014034687902, guid: c7133c340afdce3498005131c40380c1,
+      type: 2}
+    spawnEnemy: {fileID: 1000012071009368}
+    timerEnemy: 5
+  tenthWave:
+  - typeEnemy: {fileID: 1000014034687902, guid: c7133c340afdce3498005131c40380c1,
+      type: 2}
+    spawnEnemy: {fileID: 1000013028491124}
+    timerEnemy: 0.5
+  - typeEnemy: {fileID: 1000014034687902, guid: c7133c340afdce3498005131c40380c1,
+      type: 2}
+    spawnEnemy: {fileID: 1000014090261582}
+    timerEnemy: 0.6
+  - typeEnemy: {fileID: 1000014034687902, guid: c7133c340afdce3498005131c40380c1,
+      type: 2}
+    spawnEnemy: {fileID: 1000013669608350}
+    timerEnemy: 0.7
+  - typeEnemy: {fileID: 1000014034687902, guid: c7133c340afdce3498005131c40380c1,
+      type: 2}
+    spawnEnemy: {fileID: 1000012014877554}
+    timerEnemy: 0.8
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 1
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000012307301310}
+    timerEnemy: 1
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 1
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000012109524210}
+    timerEnemy: 1
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011111213780}
+    timerEnemy: 2
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000010389050870}
+    timerEnemy: 2
+  - typeEnemy: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
+      type: 2}
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 2
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
+      type: 2}
+    spawnEnemy: {fileID: 1000012109524210}
+    timerEnemy: 2
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
+      type: 2}
+    spawnEnemy: {fileID: 1000012307301310}
+    timerEnemy: 5
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
+      type: 2}
+    spawnEnemy: {fileID: 1000010060221050}
+    timerEnemy: 5
+  - typeEnemy: {fileID: 1000014214477800, guid: e660e18f16fa49f43b43da556b41e555,
+      type: 2}
+    spawnEnemy: {fileID: 1000012007618270}
+    timerEnemy: 5
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      type: 2}
+    spawnEnemy: {fileID: 1000013669608350}
+    timerEnemy: 3
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      type: 2}
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 3
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      type: 2}
+    spawnEnemy: {fileID: 1000011687663576}
+    timerEnemy: 6
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      type: 2}
+    spawnEnemy: {fileID: 1000011431598524}
+    timerEnemy: 6
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      type: 2}
+    spawnEnemy: {fileID: 1000010389050870}
+    timerEnemy: 6
+  - typeEnemy: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      type: 2}
+    spawnEnemy: {fileID: 1000012071009368}
+    timerEnemy: 6
   boss: {fileID: 0}
   isBossDefeated: 0
   isArenaEmpty: 0
@@ -6667,7 +7287,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013014577942}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -6704,7 +7324,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014127852334}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b19dea03a0dc4d64d806ae6d9df8d9c6, type: 3}
   m_Name: 
@@ -6738,7 +7358,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012535301930}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -6822,7 +7442,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013267557264}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -6848,7 +7468,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010461275642}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
