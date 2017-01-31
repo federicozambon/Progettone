@@ -61,10 +61,8 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
-        playerRef = FindObjectOfType<Player>();
-        
-        wElements = FindObjectOfType<WaveController>();
-                 
+        playerRef = FindObjectOfType<Player>();       
+        wElements = FindObjectOfType<WaveController>();                 
     }
 
     public void DecrementLife(float damageTaken)
@@ -138,7 +136,6 @@ public class UIController : MonoBehaviour
         {
             maxComboAchieved = comboMulti;
         }
-
         comboMulti ++;
         UpdateMultiplier();
     }
@@ -215,11 +212,22 @@ public class UIController : MonoBehaviour
         life.gameObject.SetActive(true);
     }
 
-    public IEnumerator NextWave()
+    public IEnumerator WaveFinished()
     {
         waveEnd.color = Color.green;
-        waveEnd.text = "finish wave";
-        waveEnd.color = Color.green;
+        waveEnd.text = "WAVE COMPLETED";
+
+        yield return new WaitForSeconds(2f);
+
+        waveEnd.text = "";
+        numberWave.text = wElements.currentWaveNumber.ToString();
+        numberWave.color = Color.green;
+    }
+
+    public IEnumerator NextWave()
+    {
+        waveEnd.color = Color.red;
+        waveEnd.text = "ENEMIES INCOMING";
 
         yield return new WaitForSeconds(2f);
 
