@@ -1255,7 +1255,7 @@ Prefab:
         type: 2}
       propertyPath: thirdWave.Array.data[3].typeEnemy
       value: 
-      objectReference: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      objectReference: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
         type: 2}
     - target: {fileID: 114000011361842802, guid: c369b4e1a5dcdb9479ad778570e01514,
         type: 2}
@@ -1304,7 +1304,7 @@ Prefab:
         type: 2}
       propertyPath: thirdWave.Array.data[7].typeEnemy
       value: 
-      objectReference: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      objectReference: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
         type: 2}
     - target: {fileID: 114000011361842802, guid: c369b4e1a5dcdb9479ad778570e01514,
         type: 2}
@@ -1368,7 +1368,7 @@ Prefab:
         type: 2}
       propertyPath: thirdWave.Array.data[11].typeEnemy
       value: 
-      objectReference: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      objectReference: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
         type: 2}
     - target: {fileID: 114000011361842802, guid: c369b4e1a5dcdb9479ad778570e01514,
         type: 2}
@@ -1432,7 +1432,7 @@ Prefab:
         type: 2}
       propertyPath: thirdWave.Array.data[15].typeEnemy
       value: 
-      objectReference: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      objectReference: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
         type: 2}
     - target: {fileID: 114000011361842802, guid: c369b4e1a5dcdb9479ad778570e01514,
         type: 2}
