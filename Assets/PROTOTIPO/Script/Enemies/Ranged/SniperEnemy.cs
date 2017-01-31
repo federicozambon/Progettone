@@ -13,7 +13,7 @@ public class SniperEnemy : Enemy
         poolP = (GameObject)Instantiate(particlePoolPrefab, this.transform.position, Quaternion.identity);
         GetComponent<SniperEnemyFire>().GetPool();
         hPoints = 25;
-        comboValue = 10;
+        comboValue = 650;
         remainHPoints = hPoints;
 
         navRef = GetComponent<NavMeshAgent>();

@@ -95,6 +95,7 @@ public class Player: MonoBehaviour
                 {
                     uicontroller.score -= (int)(baseCost[0] * costModifier[0]);
                     costModifier[0] += 0.5f;
+                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[0] * costModifier[0] + "\n" + "Restore Health";
                     uicontroller.UpdateScore();
                     currentHealth = maxHealth;
                     uicontroller.IncreaseLife();
@@ -117,6 +118,7 @@ public class Player: MonoBehaviour
                 {
                     uicontroller.score -= (int)(baseCost[1] * costModifier[1]);
                     costModifier[1] += 0.5f;
+                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[1] * costModifier[1] + "\n" + "Restore Health";
                     uicontroller.UpdateScore();
                     rocketAmmo += 5;
                     uicontroller.ammo.text = rocketAmmo.ToString();
@@ -140,6 +142,7 @@ public class Player: MonoBehaviour
                     uicontroller.UpdateWeaponUpgrade(25);
                     uicontroller.score -= (int)(baseCost[2] * costModifier[2]);
                     costModifier[2] += 0.5f;
+                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[2] * costModifier[2] + "\n" + "Restore Health";
                     uicontroller.UpdateScore();
                     uicontroller.UpdateWeaponUpgrade(25);             
                 }
@@ -161,6 +164,7 @@ public class Player: MonoBehaviour
               
                     uicontroller.score -= (int)(baseCost[3] * costModifier[3]);
                     costModifier[2] += 0.5f;
+                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[3] * costModifier[3] + "\n" + "Restore Health";
                     uicontroller.UpdateScore();
                     maxHealth += 25;
                     armorUpgrade += 25;
