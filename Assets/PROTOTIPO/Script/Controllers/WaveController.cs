@@ -9,7 +9,7 @@ public class WaveController : MonoBehaviour
     FlyCamManager flyRef;
     UIController uiElements;
 
-    public int currentWaveNumber = 0;
+    public int currentWaveNumber;
     public int killedCounter = 0;
     public bool isWaveFinished;
 

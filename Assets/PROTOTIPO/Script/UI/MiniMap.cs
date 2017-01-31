@@ -54,13 +54,15 @@ public class MiniMap : MonoBehaviour
                 newGo.imageRef.GetComponent<Image>().color = Color.blue;
                 break;
             case "sniper":
-                newGo.imageRef.GetComponent<Image>().color = Color.white;
+                newGo.imageRef.GetComponent<Image>().color = Color.magenta;
                 break;
             case "titano":
-                newGo.imageRef.GetComponent<Image>().color = Color.magenta;
+                newGo.imageRef.GetComponent<Image>().color = Color.black;
                 break;
         }
     }
+
+    public GameObject gameplayPrefab;
 
     //method to delete enemy minimap icon when enemy is killed
     public void DeleteEnemy(GameObject go)
@@ -83,7 +85,7 @@ public class MiniMap : MonoBehaviour
             {
                 //enemy position with y normalized to zero
                 enemy.enemyPos = new Vector3(enemy.enemyRef.transform.position.x, 0, enemy.enemyRef.transform.position.z);
-
+                
                 //distance vector enemy to player
                 Vector3 playerToEnemy = enemy.enemyPos - playerPos;
 
@@ -91,16 +93,16 @@ public class MiniMap : MonoBehaviour
                 if (playerToEnemy.magnitude < 45)
                 {
                     enemy.imageRef.transform.position = minimapCenter.position + playerToEnemy.magnitude * 3.35f *
-                        new Vector3(Mathf.Cos(Mathf.Atan2(playerToEnemy.normalized.z, playerToEnemy.normalized.x)),
-                        Mathf.Sin(Mathf.Atan2(playerToEnemy.normalized.z, playerToEnemy.normalized.x)),
+                        new Vector3(Mathf.Cos(Mathf.Atan2(playerToEnemy.normalized.z, playerToEnemy.normalized.x)+gameplayPrefab.transform.eulerAngles.y),
+                        Mathf.Sin(Mathf.Atan2(playerToEnemy.normalized.z, playerToEnemy.normalized.x)+ gameplayPrefab.transform.eulerAngles.y),
                         5);
                 }
                 //if player is outside minimap range
                 else
                 {
                     enemy.imageRef.transform.position = minimapCenter.position + 45 * 3.35f*
-                        new Vector3(Mathf.Cos(Mathf.Atan2(playerToEnemy.normalized.z, playerToEnemy.normalized.x)), 
-                        Mathf.Sin(Mathf.Atan2(playerToEnemy.normalized.z, playerToEnemy.normalized.x)),
+                        new Vector3(Mathf.Cos(Mathf.Atan2(playerToEnemy.normalized.z, playerToEnemy.normalized.x)+ gameplayPrefab.transform.eulerAngles.y), 
+                        Mathf.Sin(Mathf.Atan2(playerToEnemy.normalized.z, playerToEnemy.normalized.x)+ gameplayPrefab.transform.eulerAngles.y),
                         5);
                 }
             }          
