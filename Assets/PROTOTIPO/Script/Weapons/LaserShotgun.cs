@@ -41,7 +41,7 @@ public class LaserShotgun : Weapon
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Grenade"))
         {
             wSelector.ChangeWeapon(1);
             GetComponent<AssaultRifle>().enabled = true;
@@ -49,27 +49,6 @@ public class LaserShotgun : Weapon
             weaponArray[2].gameObject.SetActive(false);
             weaponArray[1].gameObject.SetActive(false);
             this.enabled = false;
-        }
-
-
-        if (Input.GetButtonDown("Previous Weapon"))
-        {
-            wSelector.ChangeWeapon(2);
-            GetComponent<RocketLauncher>().enabled = true;
-            weaponArray[0].gameObject.SetActive(false);
-            weaponArray[2].gameObject.SetActive(false);
-            weaponArray[1].gameObject.SetActive(true);
-            this.enabled = false;
-
-        }
-
-        if (Input.GetButtonDown("Next Weapon"))
-        {
-            wSelector.ChangeWeapon(3);
-            GetComponent<LaserShotgun>().enabled = true;
-            weaponArray[0].gameObject.SetActive(false);
-            weaponArray[2].gameObject.SetActive(true);
-            weaponArray[1].gameObject.SetActive(false);
         }
     
          timer += Time.deltaTime;

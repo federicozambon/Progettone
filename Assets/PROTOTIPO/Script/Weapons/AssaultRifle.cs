@@ -45,29 +45,10 @@ public class AssaultRifle : Weapon
             StartCoroutine(GunShotSound());
         }
 
-        if (Input.GetButtonDown("Fire2"))
-        {
-            wSelector.ChangeWeapon(1);
-            assaultRifle.enabled = true;
-            weaponArray[0].gameObject.SetActive(true);
-            weaponArray[2].gameObject.SetActive(false);
-            weaponArray[1].gameObject.SetActive(false);
-        }
-
-
-        if (Input.GetButtonDown("Previous Weapon"))
+        
+        if (Input.GetButtonDown("Grenade"))
         {
             wSelector.ChangeWeapon(2);
-            GetComponent<RocketLauncher>().enabled = true;
-            weaponArray[0].gameObject.SetActive(false);
-            weaponArray[2].gameObject.SetActive(false);
-            weaponArray[1].gameObject.SetActive(true);
-            this.enabled = false;
-        }
-
-        if (Input.GetButtonDown("Next Weapon"))
-        {
-            wSelector.ChangeWeapon(3);
             laserShotgun.enabled = true;
             weaponArray[0].gameObject.SetActive(false);
             weaponArray[2].gameObject.SetActive(true);

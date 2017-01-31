@@ -7,6 +7,8 @@ public class RocketLauncher : Weapon
     public Transform weapon;
     public GameObject projectile;
     AudioSource shootSound;
+    private bool enabled = false;
+    private bool shoot = true;
   
     public float speed = 10;
     
@@ -40,8 +42,25 @@ public class RocketLauncher : Weapon
 
     public void Update()
     {
-        if (Input.GetButtonDown("Rocket") && playerElements.noWeapons == false)
+        float rocket = Input.GetAxisRaw("RightTrigger");
+        Debug.Log(rocket);
+
+        if (rocket <= 0)
         {
+            enabled = false;
+            shoot = true;
+        }
+            
+        else
+        {
+            enabled = true;
+            
+        }
+
+        if (enabled == true && playerElements.noWeapons == false && shoot == true)
+        {
+            shoot = false;
+
             if (playerElements.rocketAmmo > 0)
             {
                 playerElements.rocketAmmo--;
@@ -50,34 +69,7 @@ public class RocketLauncher : Weapon
             }             
         }
 
-        if (Input.GetButtonDown("Fire2"))
-        {
-            wSelector.ChangeWeapon(1);
-            GetComponent<AssaultRifle>().enabled = true;
-            weaponArray[0].gameObject.SetActive(true);
-            weaponArray[2].gameObject.SetActive(false);
-            weaponArray[1].gameObject.SetActive(false);
-            this.enabled = false;
-        }
-
-        if (Input.GetButtonDown("Previous Weapon"))
-        {
-            wSelector.ChangeWeapon(2);
-            GetComponent<RocketLauncher>().enabled = true;
-            weaponArray[0].gameObject.SetActive(false);
-            weaponArray[2].gameObject.SetActive(false);
-            weaponArray[1].gameObject.SetActive(true);
-        }
-
-        if (Input.GetButtonDown("Next Weapon"))
-        {
-            wSelector.ChangeWeapon(3);
-            GetComponent<LaserShotgun>().enabled = true;
-            weaponArray[0].gameObject.SetActive(false);
-            weaponArray[2].gameObject.SetActive(true);
-            weaponArray[1].gameObject.SetActive(false);
-            this.enabled = false;
-        }
+        
     }
 }    
 
