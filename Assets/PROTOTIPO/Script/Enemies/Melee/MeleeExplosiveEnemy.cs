@@ -43,7 +43,7 @@ public class MeleeExplosiveEnemy : Enemy
             {
                 playerObj.GetComponent<Player>().TakeDamage(damage);
             }
-            Die();
+            StartCoroutine(Die());
         }
     }
 
