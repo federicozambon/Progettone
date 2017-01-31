@@ -38,23 +38,13 @@ public class MeleeExplosiveEnemy : Enemy
         {
             isExploded = true;
             fxRef.gameObject.SetActive(true);
-            waveRef.IsWaveFinished();
             Debug.LogError("esploso");
             if (Vector3.Distance(this.transform.position, playerObj.transform.position) < 4f)
             {
                 playerObj.GetComponent<Player>().TakeDamage(damage);
             }
-            if (destroying == null)
-            {
-                destroying = StartCoroutine(Destroy());
-            }
+            Die();
         }
-    }
-
-    IEnumerator Destroy()
-    {
-        yield return new WaitForSeconds(0.75f);
-        Destroy(this.gameObject);
     }
 
     public void Update()
