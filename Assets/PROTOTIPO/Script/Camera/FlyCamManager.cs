@@ -144,11 +144,6 @@ public class FlyCamManager : MonoBehaviour
             {
                 yield return null;
             }
-            StartCoroutine(LerpRotateAround(camArray[0], 0.1f, 40, true, 1, false));
-            while (cutScene)
-            {
-                yield return null;
-            }
         }
         else if (SceneManager.GetActiveScene().name == "Montacarichi2")
         {
@@ -167,11 +162,6 @@ public class FlyCamManager : MonoBehaviour
             {
                 yield return null;
             }
-            StartCoroutine(LerpRotateAround(camArray[0], 0.1f, 40, true, 1, false));
-            while (cutScene)
-            {
-                yield return null;
-            }
         }
         else if (SceneManager.GetActiveScene().name == "Tetto")
         {
@@ -186,11 +176,6 @@ public class FlyCamManager : MonoBehaviour
                 yield return null;
             }
             StartCoroutine(LerpRotateAround(camArray[0], 0.1f, 40, true, 0, true));
-            while (cutScene)
-            {
-                yield return null;
-            }
-            StartCoroutine(LerpRotateAround(camArray[0], 0.1f, 40, true, 1, false));
             while (cutScene)
             {
                 yield return null;

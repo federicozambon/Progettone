@@ -96,10 +96,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012166252898}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.0017923525, y: 0.70615375, z: -0.001996041, w: 0.70805347}
+  m_LocalPosition: {x: 38.793877, y: 0.102685526, z: -17.68608}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -20, z: 0}
   m_Children:
   - {fileID: 4000010411945662}
   - {fileID: 4000011151154360}
@@ -189,7 +189,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011433826416}
-  m_Text: 'Weapon
+  m_Text: 'WEAPON
 
 '
   m_OffsetZ: 0

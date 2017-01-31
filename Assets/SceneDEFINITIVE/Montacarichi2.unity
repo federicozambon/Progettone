@@ -31923,6 +31923,46 @@ Prefab:
       propertyPath: m_PlayOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4000011488991298, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -18.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011488991298, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 49.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011488991298, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 7.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010023789018, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -11.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010023789018, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -18.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010023789018, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 91.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011118208254, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 43.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011118208254, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 20.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013626306760, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -38.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013626306760, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 20.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b43044067784dda45947c5f382a1b60a, type: 2}
   m_IsPrefabParent: 0
