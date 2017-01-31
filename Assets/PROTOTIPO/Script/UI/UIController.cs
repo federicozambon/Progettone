@@ -220,7 +220,7 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         waveEnd.text = "";
-        numberWave.text = wElements.currentWaveNumber.ToString();
+        numberWave.text = (wElements.currentWaveNumber + 1).ToString();
         numberWave.color = Color.green;
     }
 
@@ -232,7 +232,7 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         waveEnd.text = "";
-        numberWave.text = wElements.currentWaveNumber.ToString();
+        numberWave.text = (wElements.currentWaveNumber+1).ToString();
         numberWave.color = Color.red;
     }
 

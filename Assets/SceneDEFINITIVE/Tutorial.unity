@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0011657035, g: 0.0011647159, b: 0.0011661251, a: 1}
+  m_IndirectSpecularColor: {r: 0.0011652836, g: 0.001164831, b: 0.0011656936, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3589,6 +3589,10 @@ Prefab:
     - target: {fileID: 4000013448505508, guid: 90768ca42ba66a949a1e529c45bc0077, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90768ca42ba66a949a1e529c45bc0077, type: 2}
@@ -7252,6 +7256,11 @@ Prefab:
       propertyPath: nemico3
       value: 
       objectReference: {fileID: 387391675}
+    - target: {fileID: 114000013694872468, guid: 12c1c7d5bf910b94aa35d1df7879e645,
+        type: 2}
+      propertyPath: gameplayPrefab
+      value: 
+      objectReference: {fileID: 1476372144}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12c1c7d5bf910b94aa35d1df7879e645, type: 2}
   m_IsPrefabParent: 0
@@ -13572,6 +13581,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1648ce151e5a0b449afc2a6a4d052ab7, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1476372144 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012970419094, guid: 1648ce151e5a0b449afc2a6a4d052ab7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1476372143}
 --- !u!4 &1479207203 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013167114852, guid: d145aeb45519f7f4f862aa0f70dc4ea9,
