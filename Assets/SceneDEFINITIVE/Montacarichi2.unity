@@ -35260,7 +35260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollTextureX: 0
-  ScrollTextureY: 1
+  ScrollTextureY: 0.5
   TextName: _MainTex
 --- !u!23 &1316155566
 MeshRenderer:
