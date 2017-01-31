@@ -1244,7 +1244,7 @@ Prefab:
         type: 2}
       propertyPath: thirdWave.Array.data[2].typeEnemy
       value: 
-      objectReference: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      objectReference: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
         type: 2}
     - target: {fileID: 114000011361842802, guid: c369b4e1a5dcdb9479ad778570e01514,
         type: 2}
@@ -1827,7 +1827,7 @@ Prefab:
         type: 2}
       propertyPath: firstWave.Array.data[1].typeEnemy
       value: 
-      objectReference: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      objectReference: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
         type: 2}
     - target: {fileID: 114000011361842802, guid: c369b4e1a5dcdb9479ad778570e01514,
         type: 2}
@@ -1838,7 +1838,7 @@ Prefab:
         type: 2}
       propertyPath: firstWave.Array.data[2].typeEnemy
       value: 
-      objectReference: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      objectReference: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
         type: 2}
     - target: {fileID: 114000011361842802, guid: c369b4e1a5dcdb9479ad778570e01514,
         type: 2}
@@ -1849,7 +1849,7 @@ Prefab:
         type: 2}
       propertyPath: firstWave.Array.data[3].typeEnemy
       value: 
-      objectReference: {fileID: 1000014214477800, guid: 90768ca42ba66a949a1e529c45bc0077,
+      objectReference: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
         type: 2}
     - target: {fileID: 114000011361842802, guid: c369b4e1a5dcdb9479ad778570e01514,
         type: 2}
@@ -1926,7 +1926,7 @@ Prefab:
         type: 2}
       propertyPath: firstWave.Array.data[0].typeEnemy
       value: 
-      objectReference: {fileID: 1000014214477800, guid: c3ac9c18dc8538843b83f7015330c564,
+      objectReference: {fileID: 1000014214477800, guid: cc76542844048b54ca074e687f6fa385,
         type: 2}
     - target: {fileID: 114000011361842802, guid: c369b4e1a5dcdb9479ad778570e01514,
         type: 2}
