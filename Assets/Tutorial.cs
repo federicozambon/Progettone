@@ -34,7 +34,7 @@ public class Tutorial : MonoBehaviour
         if (currentScene == "Tutorial")
         {
             NextStep();
-            //flyElements.Skip();
+            flyElements.Skip();
         }
     }
 	
@@ -105,7 +105,6 @@ public class Tutorial : MonoBehaviour
             {
                 HideStep();
                 player.dashAttivo = true;
-                NextStep();
             }
             if (Input.GetButtonDown("Fire1") && step == 3)
             {
