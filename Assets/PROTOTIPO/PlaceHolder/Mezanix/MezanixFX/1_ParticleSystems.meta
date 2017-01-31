@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/PROTOTIPO/PlaceHolder/Mezanix/MezanixFX/1_ParticleSystems.meta
 guid: c00553ae7fa684b4b9e2445f8c8d35b9
 folderAsset: yes
 timeCreated: 1485820565
+=======
+guid: 33f8d3d1e6411ea4b90fe62f0e6e4d13
+folderAsset: yes
+timeCreated: 1485820717
+>>>>>>> 97fb7d9d6bd828dffee6363747e9ebfc9d7aa35e:Assets/PROTOTIPO/PlaceHolder/Mezanix/MezanixFX/1_ParticleSystems.meta
 licenseType: Free
 DefaultImporter:
   userData: 
