@@ -435,17 +435,19 @@ MonoBehaviour:
   EffectType: 0
   ColliderRadius: 0.2
   EffectRadius: 0
-  UseMoveVector: 1
+  UseMoveVector: 0
   Target: {fileID: 0}
   MoveVector: {x: 0, y: -1, z: 0}
-  MoveSpeed: 8
+  MoveSpeed: 0
   IsHomingMove: 0
   MoveDistance: 20
   IsVisible: 1
   InstanceBehaviour: 0
   DeactivateTimeDelay: 10
   DestroyTimeDelay: 10
-  LayerMask: {}
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

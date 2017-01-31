@@ -19143,6 +19143,48 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000011251309632, guid: 1648ce151e5a0b449afc2a6a4d052ab7,
     type: 2}
   m_PrefabInternal: {fileID: 1476372143}
+--- !u!1001 &2056832167
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000010785901094, guid: 67b9f894e6f5af549aa761eb8c31187c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785901094, guid: 67b9f894e6f5af549aa761eb8c31187c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785901094, guid: 67b9f894e6f5af549aa761eb8c31187c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785901094, guid: 67b9f894e6f5af549aa761eb8c31187c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785901094, guid: 67b9f894e6f5af549aa761eb8c31187c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785901094, guid: 67b9f894e6f5af549aa761eb8c31187c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785901094, guid: 67b9f894e6f5af549aa761eb8c31187c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785901094, guid: 67b9f894e6f5af549aa761eb8c31187c, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 67b9f894e6f5af549aa761eb8c31187c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &2058170590 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010756811308, guid: 9c5d2e8a80684be41b1212e46e779fd6,
