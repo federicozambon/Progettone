@@ -9,7 +9,7 @@ public class StateAttack : State
         switch (enemyType)
         {
             case "furia":
-      
+                navRef.updateRotation = true;
                 break;
             case "fante":
                 navRef.updateRotation = false;
@@ -59,10 +59,10 @@ public class StateAttack : State
         {
             case "furia":
                 botMovement.destination = playerTr.position;
-                navRef.speed = 20;
+                navRef.speed = 10;
                 navRef.updateRotation = true;
                 navRef.stoppingDistance = 0f;
-                navRef.angularSpeed = 18000;   
+                navRef.angularSpeed = 1080;   
                 break;
             case "fante":
                 botMovement.destination = this.transform.position;
