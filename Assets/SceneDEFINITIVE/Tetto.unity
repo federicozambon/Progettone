@@ -3747,6 +3747,21 @@ Prefab:
       propertyPath: tenthWave.Array.data[20].timerEnemy
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 82000013938955132, guid: c369b4e1a5dcdb9479ad778570e01514,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000013938955132, guid: c369b4e1a5dcdb9479ad778570e01514,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000013938955132, guid: c369b4e1a5dcdb9479ad778570e01514,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a14dd361d12107f46bb3c64f50d325ed, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c369b4e1a5dcdb9479ad778570e01514, type: 2}
   m_IsPrefabParent: 0

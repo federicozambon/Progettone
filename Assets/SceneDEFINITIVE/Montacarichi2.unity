@@ -31854,6 +31854,33 @@ Prefab:
       propertyPath: tenthWave.Array.data[9].timerEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 82000011993954220, guid: b43044067784dda45947c5f382a1b60a,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 75944b8cfbf8ad64f899960427499f95, type: 3}
+    - target: {fileID: 82000011993954220, guid: b43044067784dda45947c5f382a1b60a,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011386483260, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011386483260, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011386483260, guid: b43044067784dda45947c5f382a1b60a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000011993954220, guid: b43044067784dda45947c5f382a1b60a,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b43044067784dda45947c5f382a1b60a, type: 2}
   m_IsPrefabParent: 0

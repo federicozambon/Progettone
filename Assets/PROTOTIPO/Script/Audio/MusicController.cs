@@ -8,9 +8,9 @@ public class MusicController : MonoBehaviour
 
 	void Start ()
     {
-        audioRef = GetComponent<AudioSource>();
-        GetComponent<AudioSource>().clip = musicFiles[0];
-        audioRef.Play();
+        //audioRef = GetComponent<AudioSource>();
+        //GetComponent<AudioSource>().clip = musicFiles[0];
+        //audioRef.Play();
 	}
 
     IEnumerator Player()

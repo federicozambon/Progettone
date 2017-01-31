@@ -13578,6 +13578,26 @@ Prefab:
       propertyPath: ninthWave.Array.data[2].timerEnemy
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 82000011352104134, guid: 1648ce151e5a0b449afc2a6a4d052ab7,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000011352104134, guid: 1648ce151e5a0b449afc2a6a4d052ab7,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dcbf708ec4ef0bb40a477d2b35acb02b, type: 3}
+    - target: {fileID: 114000014005056666, guid: 1648ce151e5a0b449afc2a6a4d052ab7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000011352104134, guid: 1648ce151e5a0b449afc2a6a4d052ab7,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1648ce151e5a0b449afc2a6a4d052ab7, type: 2}
   m_IsPrefabParent: 0

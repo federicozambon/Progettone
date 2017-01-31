@@ -49412,6 +49412,18 @@ Prefab:
       propertyPath: pool
       value: 
       objectReference: {fileID: 306158964}
+    - target: {fileID: 4000010453428262, guid: 87f2eb1c71820a64cbed81ead385510f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010453428262, guid: 87f2eb1c71820a64cbed81ead385510f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010453428262, guid: 87f2eb1c71820a64cbed81ead385510f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87f2eb1c71820a64cbed81ead385510f, type: 2}
   m_IsPrefabParent: 0

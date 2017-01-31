@@ -94,6 +94,7 @@ public class Player: MonoBehaviour
                 if (uicontroller.score >= baseCost[0] * costModifier[0])
                 {
                     uicontroller.score -= (int)(baseCost[0] * costModifier[0]);
+                    costModifier[0] += 0.5f;
                     uicontroller.UpdateScore();
                     currentHealth = maxHealth;
                     uicontroller.IncreaseLife();
@@ -115,6 +116,7 @@ public class Player: MonoBehaviour
                 if (uicontroller.score >= baseCost[1] * costModifier[1])
                 {
                     uicontroller.score -= (int)(baseCost[1] * costModifier[1]);
+                    costModifier[1] += 0.5f;
                     uicontroller.UpdateScore();
                     rocketAmmo += 5;
                     uicontroller.ammo.text = rocketAmmo.ToString();
@@ -137,6 +139,7 @@ public class Player: MonoBehaviour
                     damageModifier += 0.25f;
                     uicontroller.UpdateWeaponUpgrade(25);
                     uicontroller.score -= (int)(baseCost[2] * costModifier[2]);
+                    costModifier[2] += 0.5f;
                     uicontroller.UpdateScore();
                     uicontroller.UpdateWeaponUpgrade(25);             
                 }
@@ -157,10 +160,11 @@ public class Player: MonoBehaviour
                 {
               
                     uicontroller.score -= (int)(baseCost[3] * costModifier[3]);
+                    costModifier[2] += 0.5f;
                     uicontroller.UpdateScore();
                     maxHealth += 25;
                     armorUpgrade += 25;
-                    uicontroller.UpdateWeaponUpgrade(25);
+                    uicontroller.UpdateArmorUpgrade(25);
                 }
                 else
                 {
