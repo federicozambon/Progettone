@@ -42,9 +42,6 @@ public class MeleeExplosiveEnemy : Enemy
         {
             playerObj.GetComponent<Player>().TakeDamage(damage);
         }
-
-        isAttacking = false;
-        timer = 0;
         if (destroying == null)
         {
             destroying = StartCoroutine(Destroy());
