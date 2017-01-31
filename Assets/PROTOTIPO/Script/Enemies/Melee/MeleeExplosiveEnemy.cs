@@ -15,6 +15,7 @@ public class MeleeExplosiveEnemy : Enemy
     public float timer;
     public float attackTimer = 0.4f;
     public bool isAttacking = false;
+    bool isExploded;
 
     public void StartAttack()
     {
@@ -33,6 +34,7 @@ public class MeleeExplosiveEnemy : Enemy
 
     public override void Attack()
     {
+        isExploded = true;
         fxRef.gameObject.SetActive(true);
         waveRef.killedCounter++;
         Debug.LogError("esploso");
@@ -63,7 +65,10 @@ public class MeleeExplosiveEnemy : Enemy
         }
         if (timer >= attackTimer)
         {
-            Attack();
+            if (!isExploded)
+            {
+                Attack();
+            }
         }
     }
 }
