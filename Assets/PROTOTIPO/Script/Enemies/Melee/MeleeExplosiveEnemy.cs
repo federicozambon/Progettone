@@ -34,17 +34,20 @@ public class MeleeExplosiveEnemy : Enemy
 
     public override void Attack()
     {
-        isExploded = true;
-        fxRef.gameObject.SetActive(true);
-        waveRef.killedCounter++;
-        Debug.LogError("esploso");
-        if (Vector3.Distance(this.transform.position, playerObj.transform.position) < 4f)
+        if (!isExploded)
         {
-            playerObj.GetComponent<Player>().TakeDamage(damage);
-        }
-        if (destroying == null)
-        {
-            destroying = StartCoroutine(Destroy());
+            isExploded = true;
+            fxRef.gameObject.SetActive(true);
+            waveRef.IsWaveFinished();
+            Debug.LogError("esploso");
+            if (Vector3.Distance(this.transform.position, playerObj.transform.position) < 4f)
+            {
+                playerObj.GetComponent<Player>().TakeDamage(damage);
+            }
+            if (destroying == null)
+            {
+                destroying = StartCoroutine(Destroy());
+            }
         }
     }
 
@@ -62,10 +65,7 @@ public class MeleeExplosiveEnemy : Enemy
         }
         if (timer >= attackTimer)
         {
-            if (!isExploded)
-            {
-                Attack();
-            }
+            Attack();
         }
     }
 }
