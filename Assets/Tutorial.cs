@@ -11,9 +11,9 @@ public class Tutorial : MonoBehaviour
     public GameObject nemico2;
     public GameObject nemico3;
 
-    string currentScene;
+    public string currentScene;
 
-    void Awake ()
+    void Start ()
     {
         currentScene = SceneManager.GetActiveScene().name;
         if (currentScene == "Tutorial")
@@ -29,12 +29,12 @@ public class Tutorial : MonoBehaviour
         }     
 	}
 
-    void Start()
+    public void StartTutorial()
     {
         if (currentScene == "Tutorial")
         {
+            Debug.LogError("sasdasd");
             NextStep();
-            flyElements.Skip();
         }
     }
 	

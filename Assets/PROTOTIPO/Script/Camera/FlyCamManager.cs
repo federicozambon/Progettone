@@ -210,7 +210,15 @@ public class FlyCamManager : MonoBehaviour
 
         //Ho spostato la Coroutine prima del wait altrimenti non spawnavano i nemici
         if(tutorial == false)
-            StartCoroutine(wcRef.StartWave());   
+        {
+            StartCoroutine(wcRef.StartWave());
+        }
+        else
+        {
+            FindObjectOfType<Tutorial>().StartTutorial();
+        }
+
+  
         yield return new WaitForSeconds(2);
     }
 
@@ -239,7 +247,13 @@ public class FlyCamManager : MonoBehaviour
             cutScene = false;
             elementsUI.CanvasOn();
             if (tutorial == false)
-                StartCoroutine(wcRef.StartWave());      
+            {
+                StartCoroutine(wcRef.StartWave());
+            }
+            else
+            {
+                FindObjectOfType<Tutorial>().StartTutorial();
+            }
         }
         if (moving)
         {
@@ -271,6 +285,10 @@ public class FlyCamManager : MonoBehaviour
         elementsUI.CanvasOn();
         if (tutorial == false)
             StartCoroutine(wcRef.StartWave());
+        else
+        {
+            FindObjectOfType<Tutorial>().StartTutorial();
+        }
     }
 }
 

@@ -90,7 +90,7 @@ public class MiniMap : MonoBehaviour
                 Vector3 playerToEnemy = enemy.enemyPos - playerPos;
 
                 //if player is into minimap range
-                if (playerToEnemy.magnitude < 45)
+                if (playerToEnemy.magnitude < 35)
                 {
                     enemy.imageRef.transform.position = minimapCenter.position + playerToEnemy.magnitude * 3.35f *
                         new Vector3(Mathf.Cos(Mathf.Atan2(playerToEnemy.normalized.z, playerToEnemy.normalized.x)+gameplayPrefab.transform.eulerAngles.y),
@@ -100,7 +100,7 @@ public class MiniMap : MonoBehaviour
                 //if player is outside minimap range
                 else
                 {
-                    enemy.imageRef.transform.position = minimapCenter.position + 45 * 3.35f*
+                    enemy.imageRef.transform.position = minimapCenter.position + 35 * 3.35f*
                         new Vector3(Mathf.Cos(Mathf.Atan2(playerToEnemy.normalized.z, playerToEnemy.normalized.x)+ gameplayPrefab.transform.eulerAngles.y), 
                         Mathf.Sin(Mathf.Atan2(playerToEnemy.normalized.z, playerToEnemy.normalized.x)+ gameplayPrefab.transform.eulerAngles.y),
                         5);
