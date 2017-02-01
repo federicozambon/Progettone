@@ -20,6 +20,7 @@ public class Activators : MonoBehaviour {
     {
         if (coll.tag == "Player" && isEnabled == true)
         {
+            Debug.Log("Sono dentro");
             isEnabled = false;
             active = false;
 
