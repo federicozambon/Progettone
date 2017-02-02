@@ -7,9 +7,11 @@ public class MeleeExplosiveEnemy : Enemy
 {
     GameObject suicidePool;
     public Coroutine destroying;
-    void Start()
+
+    public override void Awake()
     {
-        suicidePool = GameObject.Find("ParticleEnemySuicide");
+        base.Awake();
+        suicidePool = GameObject.Find("ExplosiveFuriaParticlePool");
         hPoints = 50;
         comboValue = 10;
     }
@@ -54,9 +56,9 @@ public class MeleeExplosiveEnemy : Enemy
             isExploded = true;
             SuicideParticleActivator(this.transform.position);
             Debug.LogError("esploso");
-            if (Vector3.Distance(this.transform.position, playerObj.transform.position) < 4f)
+            if (Vector3.Distance(this.transform.position, refManager.playerObj.transform.position) < 4f)
             {
-                playerObj.GetComponent<Player>().TakeDamage(damage);
+                refManager.playerObj.GetComponent<Player>().TakeDamage(damage);
             }
             StartCoroutine(Die());
         }

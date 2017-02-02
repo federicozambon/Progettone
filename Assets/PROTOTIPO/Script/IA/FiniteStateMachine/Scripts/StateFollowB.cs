@@ -6,37 +6,37 @@ public class StateFollowB : State
 {
     public override void Handle()
     {
-        switch (enemyType)
+        switch (blackRef.enemyType)
         {
             case "furia":
-                navRef.speed = botMovement.rangeBspeed;
-                botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0.1f;
+                blackRef.navRef.speed = blackRef.botMovement.rangeBspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.stoppingDistance = 0.1f;
                 break;
             case "fante":
-                navRef.speed = botMovement.rangeBspeed;
-                botMovement.destination = playerTr.position;
+                blackRef.navRef.speed = blackRef.botMovement.rangeBspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
                 //shoot
                 break;
             case "furiaesplosiva":
-                navRef.speed = botMovement.rangeBspeed;
-                botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0.1f;
+                blackRef.navRef.speed = blackRef.botMovement.rangeBspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.stoppingDistance = 0.1f;
                 break;
             case "predatore":
-                navRef.speed = botMovement.rangeBspeed;
-                botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0;
+                blackRef.navRef.speed = blackRef.botMovement.rangeBspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.stoppingDistance = 0;
                 break;
             case "titano":
-                navRef.speed = botMovement.rangeBspeed;
-                botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0;
+                blackRef.navRef.speed = blackRef.botMovement.rangeBspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.stoppingDistance = 0;
                 break;
             case "cecchino":
-                navRef.speed = botMovement.rangeBspeed;
-                botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0;
+                blackRef.navRef.speed = blackRef.botMovement.rangeBspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.stoppingDistance = 0;
                 break;
         }
     }

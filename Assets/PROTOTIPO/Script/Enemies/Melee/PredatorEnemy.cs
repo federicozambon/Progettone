@@ -10,7 +10,7 @@ public class PredatorEnemy : Enemy
         hPoints = 50;
         comboValue = 10;
 
-        if (flyCamRef.endedCutScene)
+        if (refManager.flyCamRef.endedCutScene)
         {
             isActive = true;
         }
@@ -20,13 +20,13 @@ public class PredatorEnemy : Enemy
     {
         if (isActive)
         {
-            if (navRef.isActiveAndEnabled)
+            if (blackRef.navRef.isActiveAndEnabled)
             {
             }
         }
         else
         {
-            navRef.enabled = false;
+            blackRef.navRef.enabled = false;
         }
     }
 }

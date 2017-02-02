@@ -9,17 +9,17 @@ public class RangedEnemy : Enemy
 
     void Start()
     {
-        poolP = (GameObject)Instantiate(particlePoolPrefab, this.transform.position, Quaternion.identity);
+        poolP = GameObject.Find("FanteParticlePool");
         GetComponent<RangedEnemyFire>().GetPool();
         hPoints = 25;
         comboValue = 10;
         remainHPoints = hPoints;
 
-        navRef = GetComponent<NavMeshAgent>();
+        blackRef.navRef = GetComponent<NavMeshAgent>();
         remainHPoints = hPoints;
-        playerObj = FindObjectOfType<Player>().gameObject;
+        refManager.playerObj = FindObjectOfType<Player>().gameObject;
 
-        if (flyCamRef.endedCutScene)
+        if (refManager.flyCamRef.endedCutScene)
         {
             isActive = true;
         }
@@ -41,9 +41,9 @@ public class RangedEnemy : Enemy
 
     void Update()
     {
-        if (navRef && navRef.isActiveAndEnabled)
+        if (blackRef.navRef && blackRef.navRef.isActiveAndEnabled)
         {
-            transform.LookAt(new Vector3(playerObj.transform.position.x, this.transform.position.y, playerObj.transform.position.z));
+            transform.LookAt(new Vector3(refManager.playerObj.transform.position.x, this.transform.position.y, refManager.playerObj.transform.position.z));
         }
     }
 }

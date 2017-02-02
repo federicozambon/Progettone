@@ -8,25 +8,25 @@ namespace FSM
     {
         public override void Handle()
         {
-            switch (enemyType)
+            switch (blackRef.enemyType)
             {
                 case "furia":
-                    botMovement.destination = transform.position;
+                    blackRef.botMovement.destination = transform.position;
                     break;
                 case "fante":
-                    botMovement.destination = transform.position;
+                    blackRef.botMovement.destination = transform.position;
                     break;
                 case "furiaesplosiva":
-                    botMovement.destination = transform.position;
+                    blackRef.botMovement.destination = transform.position;
                     break;
                 case "predatore":
-                    botMovement.destination = transform.position;
+                    blackRef.botMovement.destination = transform.position;
                     break;
                 case "titano":
-                    botMovement.destination = transform.position;
+                    blackRef.botMovement.destination = transform.position;
                     break;
                 case "cecchino":
-                    botMovement.destination = transform.position;
+                    blackRef.botMovement.destination = transform.position;
                     break;
             }
         }

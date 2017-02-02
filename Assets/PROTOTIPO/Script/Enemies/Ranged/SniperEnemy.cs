@@ -16,9 +16,7 @@ public class SniperEnemy : Enemy
         comboValue = 650;
         remainHPoints = hPoints;
 
-        navRef = GetComponent<NavMeshAgent>();
         remainHPoints = hPoints;
-        playerObj = FindObjectOfType<Player>().gameObject;
     }
 
     public override void Attack()
@@ -41,7 +39,7 @@ public class SniperEnemy : Enemy
 
         if (navRef && navRef.isActiveAndEnabled)
         {
-            transform.LookAt(new Vector3(playerObj.transform.position.x,this.transform.position.y,playerObj.transform.position.z));
+            transform.LookAt(new Vector3(refManager.playerObj.transform.position.x,this.transform.position.y, refManager.playerObj.transform.position.z));
         }
     }
 }

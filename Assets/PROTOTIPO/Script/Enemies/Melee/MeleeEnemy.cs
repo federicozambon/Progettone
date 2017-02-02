@@ -15,11 +15,11 @@ public class MeleeEnemy : Enemy
     RaycastHit losRayHit;
     public bool isShooting;
 
-    void Start()
+    public override void Awake()
     {
+        base.Awake();
         face = headRef;
-        poolP = (GameObject)Instantiate(particlePoolPrefab, this.transform.position, Quaternion.identity);
-        playerGo = FindObjectOfType<Player>().gameObject;
+        //poolP = GameObject.Find("FuriaPool");
         hPoints = 50;
         comboValue = 10;
     }
@@ -38,7 +38,7 @@ public class MeleeEnemy : Enemy
     {
         Debug.LogError("attaccato");
         AttackParticleActivator(face.transform.position);
-        playerObj.GetComponent<Player>().TakeDamage(damage);
+        refManager.playerObj.GetComponent<Player>().TakeDamage(damage);
         StartCoroutine(AttackCd());
     }
 

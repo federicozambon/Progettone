@@ -15,7 +15,7 @@ namespace FSM
         {
             if (sm.currentState == sm.attackState)
             {
-                sm.attackState.timer += Time.deltaTime;
+                sm.attackState.blackRef.timer += Time.deltaTime;
             }
         }
 
@@ -231,7 +231,7 @@ namespace FSM
                         }
                         else
                         {
-                            if (sm.currentState.timer >= attackTimer && sm.currentState == sm.attackState)
+                            if (sm.currentState.blackRef.timer >= attackTimer && sm.currentState == sm.attackState)
                             {
                                 //enemyRef.Attack();
                             }
@@ -345,7 +345,7 @@ namespace FSM
                         {
                             if (sm.currentState == sm.attackState)
                             {
-                                if (sm.currentState.timer >= attackTimer)
+                                if (sm.currentState.blackRef.timer >= attackTimer)
                                 {
                                     enemyRef.Attack();
                                 }

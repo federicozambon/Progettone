@@ -6,26 +6,26 @@ public class StateFlee : State
 {
     public override void Handle()
     {
-        Vector3 playerToBot = (botTr.position - playerTr.position);
-        switch (enemyType)
+        Vector3 playerToBot = (blackRef.botTr.position - blackRef.playerTr.position);
+        switch (blackRef.enemyType)
         {
             case "furia":
-                navRef.destination = playerToBot;
+                blackRef.navRef.destination = playerToBot;
                 break;
             case "fante":
-                navRef.destination = playerToBot;
+                blackRef.navRef.destination = playerToBot;
                 break;
             case "furiaesplosiva":
-                navRef.destination = playerToBot;
+                blackRef.navRef.destination = playerToBot;
                 break;
             case "predatore":
-                navRef.destination = playerToBot;
+                blackRef.navRef.destination = playerToBot;
                 break;
             case "titano":
-                navRef.destination = playerToBot;
+                blackRef.navRef.destination = playerToBot;
                 break;
             case "cecchino":
-                navRef.destination = playerToBot;
+                blackRef.navRef.destination = playerToBot;
                 break;
         }
     }

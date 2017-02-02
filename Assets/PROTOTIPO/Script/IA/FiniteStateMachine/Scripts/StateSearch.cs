@@ -9,25 +9,25 @@ public class StateSearch : State
 
     public override void Handle()
     {
-        switch (enemyType)
+        switch (blackRef.enemyType)
         {
             case "furia":
-                botMovement.destination = randomDestination;
+                blackRef.botMovement.destination = randomDestination;
                 break;
             case "fante":
-                botMovement.destination = randomDestination;
+                blackRef.botMovement.destination = randomDestination;
                 break;
             case "furiaesplosiva":
-                botMovement.destination = randomDestination;
+                blackRef.botMovement.destination = randomDestination;
                 break;
             case "predatore":
-                botMovement.destination = randomDestination;
+                blackRef.botMovement.destination = randomDestination;
                 break;
             case "titano":
-                botMovement.destination = randomDestination;
+                blackRef.botMovement.destination = randomDestination;
                 break;
             case "cecchino":
-                botMovement.destination = randomDestination;
+                blackRef.botMovement.destination = randomDestination;
                 break;
         }
     }
@@ -39,7 +39,7 @@ public class StateSearch : State
 
     public IEnumerator RandomizeDestination()
     {
-        randomDestination = transform.position + new Vector3(UnityEngine.Random.Range(-15, 15), UnityEngine.Random.Range(-15, 15), playerTr.position.z);
+        randomDestination = transform.position + new Vector3(UnityEngine.Random.Range(-15, 15), UnityEngine.Random.Range(-15, 15), blackRef.playerTr.position.z);
         yield return new WaitForSeconds(timeToWait);
         StartCoroutine(RandomizeDestination());
     }

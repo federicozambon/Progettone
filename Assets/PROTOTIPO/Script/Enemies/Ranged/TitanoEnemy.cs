@@ -17,9 +17,9 @@ public class TitanoEnemy : Enemy
 
         navRef = GetComponent<NavMeshAgent>();
         remainHPoints = hPoints;
-        playerObj = FindObjectOfType<Player>().gameObject;
+        refManager.playerObj = FindObjectOfType<Player>().gameObject;
 
-        if (flyCamRef.endedCutScene)
+        if (refManager.flyCamRef.endedCutScene)
         {
             isActive = true;
         }
@@ -43,7 +43,7 @@ public class TitanoEnemy : Enemy
     {
         if (navRef && navRef.isActiveAndEnabled)
         {
-            transform.LookAt(new Vector3(playerObj.transform.position.x, this.transform.position.y, playerObj.transform.position.z));
+            transform.LookAt(new Vector3(refManager.playerObj.transform.position.x, this.transform.position.y, refManager.playerObj.transform.position.z));
         }
     }
 }

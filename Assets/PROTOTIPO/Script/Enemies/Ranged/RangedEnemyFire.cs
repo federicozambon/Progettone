@@ -58,16 +58,13 @@ public class RangedEnemyFire : MonoBehaviour
 
     public void ParticleActivator(Vector3 position)
     {
-        if (pool)
+        if (!pool.GetComponentInChildren<EffectSettings>(true).gameObject.activeInHierarchy)
         {
-            if (!pool.GetComponentInChildren<EffectSettings>(true).gameObject.activeInHierarchy)
-            {
-                transformTr = pool.GetComponentsInChildren<Transform>()[1];
-                transformTr.position = position;
-                pool.GetComponentInChildren<EffectSettings>(true).transform.position = weapon.transform.position;
-                pool.GetComponentInChildren<EffectSettings>(true).Target = transformTr.gameObject;
-                pool.GetComponentInChildren<EffectSettings>(true).gameObject.SetActive(true);
-            }
+            transformTr = pool.GetComponentsInChildren<Transform>(true)[1];
+            transformTr.position = position;
+            pool.GetComponentInChildren<EffectSettings>(true).transform.position = weapon.transform.position;
+            pool.GetComponentInChildren<EffectSettings>(true).Target = transformTr.gameObject;
+            pool.GetComponentInChildren<EffectSettings>(true).gameObject.SetActive(true);
         }
     }
 }

@@ -6,37 +6,37 @@ public class StateFollowC : State
 {
     public override void Handle()
     {
-        switch (enemyType)
+        switch (blackRef.enemyType)
         {
             case "furia":
-                navRef.speed = botMovement.rangeCspeed;
-                botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0.1f;
+                blackRef.navRef.speed = blackRef.botMovement.rangeCspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.stoppingDistance = 0.1f;
                 break;
             case "fante":
-                navRef.speed = botMovement.rangeCspeed;
-                botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0.5f;
+                blackRef.navRef.speed = blackRef.botMovement.rangeCspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.stoppingDistance = 0.5f;
                 break;
             case "furiaesplosiva":
-                navRef.speed = botMovement.rangeCspeed;
-                botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0.1f;
+                blackRef.navRef.speed = blackRef.botMovement.rangeCspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.stoppingDistance = 0.1f;
                 break;
             case "predatore":
-                navRef.speed = botMovement.rangeCspeed;
-                botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0;
+                blackRef.navRef.speed = blackRef.botMovement.rangeCspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.stoppingDistance = 0;
                 break;
             case "titano":
-                navRef.speed = botMovement.rangeCspeed;
-                botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0;
+                blackRef.navRef.speed = blackRef.botMovement.rangeCspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.stoppingDistance = 0;
                 break;
             case "cecchino":
-                navRef.speed = botMovement.rangeCspeed;
-                botMovement.destination = playerTr.position;
-                navRef.stoppingDistance = 0;
+                blackRef.navRef.speed = blackRef.botMovement.rangeCspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.stoppingDistance = 0;
                 break;
         }
     }

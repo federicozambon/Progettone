@@ -5,11 +5,12 @@ using System.Collections.Generic;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public WaveController waveRef;
-    public UIController uicontroller;
-    public GameObject playerObj;
-    public GameObject medikit;
+    public ReferenceManager refManager;
+    public NavMeshAgent navRef;
+
     public string enemyType;
+    public Transform headRef;
+    public GameObject medikit;
 
     public float remainHPoints;
     public float hPoints;
@@ -31,10 +32,6 @@ public abstract class Enemy : MonoBehaviour
     public bool isCharging;
     public bool knockbacked;
 
-    public Transform headRef;
-    public NavMeshAgent navRef;
-    public FlyCamManager flyCamRef;
-
     /*
     public MeshRenderer toOutline;
     public Material occlusionMaterial;
@@ -54,23 +51,25 @@ public abstract class Enemy : MonoBehaviour
     public bool isActiveIceTrap;
     public Transform attractionTrap;
     public FX fxRef;
+    public BlackBoard blackRef;
 
     public virtual void Attack()
     {
 
     }
 
-    void Awake()
+    public virtual void Awake()
+    {
+        refManager = FindObjectOfType<ReferenceManager>();
+        navRef = GetComponent<NavMeshAgent>();
+    }
+
+    void OnEnable()
     {
         pool = GameObject.Find("ParticleEnemyExplosion");
         //defaultMaterial = this.GetComponentInChildren<MeshRenderer>().material;
-        flyCamRef = FindObjectOfType<FlyCamManager>();
-        waveRef = FindObjectOfType<WaveController>();
-        uicontroller = FindObjectOfType<UIController>();
-        playerObj = FindObjectOfType<Player>().gameObject;
-        navRef = GetComponent<NavMeshAgent>();
         //enemyRb = GetComponent<Rigidbody>();
-        uicontroller.GetComponent<MiniMap>().NewEnemy(this.gameObject);
+        refManager.miniMapRef.NewEnemy(this.gameObject);
     }
 
     public IEnumerator TrapController(float durataDanno)
@@ -84,11 +83,11 @@ public abstract class Enemy : MonoBehaviour
 
     void Start()
     {
-        if (waveRef.currentWaveNumber > 10)
+        if (refManager.waveRef.currentWaveNumber > 10)
         {
-            damage *= 1.5f * Mathf.Floor(waveRef.currentWaveNumber/10);
-            scoreValue *= 1.5f * Mathf.FloorToInt(waveRef.currentWaveNumber/10);
-            hPoints *= 1.5f * Mathf.FloorToInt(waveRef.currentWaveNumber/10);
+            damage *= 1.5f * Mathf.Floor(refManager.waveRef.currentWaveNumber/10);
+            scoreValue *= 1.5f * Mathf.FloorToInt(refManager.waveRef.currentWaveNumber/10);
+            hPoints *= 1.5f * Mathf.FloorToInt(refManager.waveRef.currentWaveNumber/10);
         }
         remainHPoints = hPoints;
     }
@@ -131,12 +130,12 @@ public abstract class Enemy : MonoBehaviour
         if (dieController == true)
         {
             ParticleActivator(this.transform.position);
-            uicontroller.GetComponent<MiniMap>().DeleteEnemy(this.gameObject);
-            waveRef.IsWaveFinished();
+            refManager.miniMapRef.DeleteEnemy(this.gameObject);
+            refManager.waveRef.IsWaveFinished();
             dieController = false;
-            uicontroller.IncreaseScore((int)scoreValue);
-        }      
-        Destroy(this.gameObject);
+            refManager.uicontroller.IncreaseScore((int)scoreValue);
+            refManager.spawnRef.StoreEnemy(this.gameObject);
+        }
     }
 
     public void SpawnMedikit()

@@ -19,6 +19,10 @@ public class EnemyToMap
 
 public class MiniMap : MonoBehaviour
 {
+    public GameObject iconPool;
+    public List<GameObject> iconPoolList;
+
+    public UIController uiRef;
     public GameObject enemyIconPrefab;
     public Transform minimapCenter;
     public List<EnemyToMap> enemyToMapList = new List<EnemyToMap>();
@@ -27,16 +31,42 @@ public class MiniMap : MonoBehaviour
 
 	void Start ()
     {
+        uiRef = FindObjectOfType<UIController>();
+        iconPool = GameObject.Find("IconPool");
+        iconPoolList = new List<GameObject>();
         playerTr = FindObjectOfType<Player>().gameObject;
+
+        foreach (var item in iconPool.GetComponentsInChildren<Image>(true))
+        {
+            iconPoolList.Add(item.gameObject);
+        }
 	}
+
+    GameObject PickIconFromPool()
+    {
+        foreach (var item in iconPoolList)
+        {
+            if (!item.activeInHierarchy)
+            {
+                item.SetActive(true);
+                return item;
+            }
+        }
+        return null;
+    }
 
     //method to create enemy minimap icon when new enemy is spawned
     public void NewEnemy(GameObject go)
     {
         EnemyToMap newGo = new EnemyToMap(go);
+
         enemyToMapList.Add(newGo);
-        newGo.imageRef = (GameObject)Instantiate(enemyIconPrefab, minimapCenter.position, Quaternion.identity);
-        newGo.imageRef.transform.parent = GetComponent<UIController>().transform;
+        newGo.imageRef = PickIconFromPool();
+
+        //newGo.imageRef = (GameObject)Instantiate(enemyIconPrefab, minimapCenter.position, Quaternion.identity);
+        //Debug.Log(newGo);
+        //Debug.Log(newGo.enemyRef);
+        newGo.imageRef.transform.SetParent(this.transform);
         newGo.instantiatedOnMiniMap = true;
         //choose color of the icon to spawn
         switch (newGo.enemyRef.GetComponent<Enemy>().enemyType)
@@ -69,7 +99,8 @@ public class MiniMap : MonoBehaviour
     {
         EnemyToMap toDestroy = enemyToMapList.Find(x => x.enemyRef == go);
         Debug.Log(toDestroy);
-        Destroy(toDestroy.imageRef);
+        toDestroy.imageRef.transform.parent = iconPool.transform;
+        toDestroy.imageRef.SetActive(false);
         enemyToMapList.Remove(toDestroy);       
     }
 

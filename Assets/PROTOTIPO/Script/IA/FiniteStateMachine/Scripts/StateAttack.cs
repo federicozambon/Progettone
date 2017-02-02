@@ -6,82 +6,82 @@ public class StateAttack : State
 {
     public override void EnterStateLogic()
     {
-        switch (enemyType)
+        switch (blackRef.enemyType)
         {
             case "furia":
                 //navRef.updateRotation = true;
                 break;
             case "fante":
-                navRef.updateRotation = false;
+                blackRef.navRef.updateRotation = false;
                 break;
             case "furiaesplosiva":
-                navRef.updateRotation = false;
+                blackRef.navRef.updateRotation = false;
                 break;
             case "predatore":
-                navRef.updateRotation = false;
+                blackRef.navRef.updateRotation = false;
                 break;
             case "titano":
              
                 break;
             case "cecchino":
-                navRef.updateRotation = false;
+                blackRef.navRef.updateRotation = false;
                 break;
         }
     }
 
     public override void ExitStateLogic()
     {
-        switch (enemyType)
+        switch (blackRef.enemyType)
         {
             case "furia":
                 break;
             case "fante":
-                navRef.updateRotation = true;
+                blackRef.navRef.updateRotation = true;
                 break;
             case "furiaesplosiva":
-                navRef.updateRotation = true;
+                blackRef.navRef.updateRotation = true;
                 break;
             case "predatore":
-                navRef.updateRotation = true;
+                blackRef.navRef.updateRotation = true;
                 break;
             case "titano":
 
                 break;
             case "cecchino":
-                navRef.updateRotation = true;
+                blackRef.navRef.updateRotation = true;
                 break;
         }
     }
 
     public override void Handle()
     {
-        switch (enemyType)
+        switch (blackRef.enemyType)
         {
             case "furia":
-                botMovement.destination = playerTr.position;
-                navRef.speed = 12;
-                navRef.updateRotation = true;
-                navRef.stoppingDistance = 0f;
-                navRef.angularSpeed = 1080;   
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.speed = 12;
+                blackRef.navRef.updateRotation = true;
+                blackRef.navRef.stoppingDistance = 0f;
+                blackRef.navRef.angularSpeed = 1080;   
                 break;
             case "fante":
-                botMovement.destination = this.transform.position;
-                enemyRef.Attack();
+                blackRef.botMovement.destination = this.transform.position;
+                blackRef.enemyRef.Attack();
                 break;
             case "furiaesplosiva":
-                navRef.stoppingDistance = 0.1f;
-                navRef.speed = botMovement.rangeAspeed;
-                botMovement.destination = playerTr.position;
-                enemyRef.Attack();
+                blackRef.navRef.stoppingDistance = 0.1f;
+                blackRef.navRef.speed = blackRef.botMovement.rangeAspeed;
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.enemyRef.Attack();
                 break;
             case "predatore":
-                enemyRef.Attack();
+                blackRef.enemyRef.Attack();
                 break;
             case "titano":
-                enemyRef.Attack();
+                blackRef.enemyRef.Attack();
                 break;
             case "cecchino":
-                enemyRef.Attack();
+                blackRef.enemyRef.Attack();
                 break;
         }
     }
