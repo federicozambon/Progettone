@@ -40,15 +40,6 @@ public class FireTrap: Trap
         {
             playerRef.TakeDamage(playerPointDamage);
 
-            /*if (playerRef.fireDialogue == true)
-                
-                {
-                    playerRef.fireDialogue = false;
-                    int[] dialogo = new int[3] { 3, 4, 9 };
-                    dialoghi.dialogoMultiplo(dialogo);
-
-
-                }*/
         }
 
 
