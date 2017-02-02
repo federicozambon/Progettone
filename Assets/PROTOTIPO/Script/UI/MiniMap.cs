@@ -22,19 +22,18 @@ public class MiniMap : MonoBehaviour
     public GameObject iconPool;
     public List<GameObject> iconPoolList;
 
-    public UIController uiRef;
+    public ReferenceManager refManager;
+
     public GameObject enemyIconPrefab;
     public Transform minimapCenter;
     public List<EnemyToMap> enemyToMapList = new List<EnemyToMap>();
-    public GameObject playerTr;
     Vector3 playerPos;
 
 	void Start ()
     {
-        uiRef = FindObjectOfType<UIController>();
+        refManager = FindObjectOfType<ReferenceManager>();
         iconPool = GameObject.Find("IconPool");
         iconPoolList = new List<GameObject>();
-        playerTr = FindObjectOfType<Player>().gameObject;
 
         foreach (var item in iconPool.GetComponentsInChildren<Image>(true))
         {
@@ -108,7 +107,7 @@ public class MiniMap : MonoBehaviour
     void Update ()
     {
         //player position with y normalized to zero
-        playerPos = new Vector3(playerTr.transform.position.x, 0, playerTr.transform.position.z);
+        playerPos = new Vector3(refManager.playerObj.transform.position.x, 0, refManager.playerObj.transform.position.z);
 
         foreach (var enemy in enemyToMapList)
         {

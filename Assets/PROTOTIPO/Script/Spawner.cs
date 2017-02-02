@@ -181,16 +181,25 @@ public class Spawner : MonoBehaviour
 
     public void Spawn(int waveNumber)
     {
+        int frameToSkip = 0;
         toSpawnCounter = arrayList[waveNumber].Length;
         spawnedCounter = 0;
         foreach (var enemy in arrayList[waveNumber])
         {
-            StartCoroutine(SpawnEnemy(enemy));
+            frameToSkip += 2;
+            StartCoroutine(SpawnEnemy(enemy, frameToSkip));
+         
         }
+        frameToSkip = 0;
     }
 
-    public IEnumerator SpawnEnemy(SpawnerDataBase spawnerDB)
+    public IEnumerator SpawnEnemy(SpawnerDataBase spawnerDB, int frameToSkip)
     {
+        while (frameToSkip>0)
+        {
+            frameToSkip--;
+            yield return new WaitForSeconds(Time.deltaTime*3);
+        } 
         yield return new WaitForSeconds(spawnerDB.timerEnemy);
         GameObject enemyToManage = PickEnemy(spawnerDB.typeEnemy);
         PlaceAndResetEnemy(enemyToManage, spawnerDB.spawnEnemy.transform.position);

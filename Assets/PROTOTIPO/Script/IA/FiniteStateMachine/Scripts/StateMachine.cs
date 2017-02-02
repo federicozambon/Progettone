@@ -35,7 +35,7 @@ public class StateMachine
     public void StartMachine()
     {
         this.currentState = initialState;
-        currentState.Initialize();
+        //currentState.Initialize();
     }
 
     public void StateHandle()

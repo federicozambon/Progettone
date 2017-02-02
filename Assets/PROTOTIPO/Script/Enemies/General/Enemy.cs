@@ -62,6 +62,7 @@ public abstract class Enemy : MonoBehaviour
     {
         refManager = FindObjectOfType<ReferenceManager>();
         navRef = GetComponent<NavMeshAgent>();
+        this.gameObject.SetActive(false);
     }
 
     void OnEnable()

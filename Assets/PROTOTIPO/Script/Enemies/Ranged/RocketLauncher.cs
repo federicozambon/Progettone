@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RocketLauncher : Weapon
 {
-
+    public ReferenceManager refManager;
     public Transform weapon;
     public GameObject projectile;
     AudioSource shootSound;
@@ -21,8 +21,6 @@ public class RocketLauncher : Weapon
     void Start()
     {
         wSelector = FindObjectOfType<WeaponSelector>();
-        uiElements = FindObjectOfType<UIController>();
-        playerElements = FindObjectOfType<Player>();
         shootSound = this.GetComponent<AudioSource>();
     }
 
@@ -43,7 +41,6 @@ public class RocketLauncher : Weapon
     public void Update()
     {
         float rocket = Input.GetAxisRaw("RightTrigger");
-        Debug.Log(rocket);
 
         if (rocket <= 0)
         {

@@ -6,10 +6,14 @@ namespace FSM
     public class Bot : MonoBehaviour
     {
         private StateMachine sm;
+        public BlackBoard blackRef;
+        public ReferenceManager refManager;
         public Player playerRef;
+
         public Enemy enemyRef;
         public float attackTimer= 1.5f;
         public bool canSeePlayer = false;
+
 
         void Update()
         {
@@ -21,31 +25,37 @@ namespace FSM
 
         void Start()
         {
-            playerRef = FindObjectOfType<Player>();
-            enemyRef = GetComponent<Enemy>();
+            blackRef = GetComponent<BlackBoard>();
+            refManager = FindObjectOfType<ReferenceManager>();
+            playerRef = refManager.playerRef;
+            enemyRef = blackRef.enemyRef;
             sm = new StateMachine();
 
-            sm.stateIdle = GetComponentInChildren<StateIdle>();
-            sm.stateFlee = GetComponentInChildren<StateFlee>();
-            sm.stateSearch = GetComponentInChildren<StateSearch>();
-            sm.stateFollowA = GetComponentInChildren<StateFollowA>();
-            sm.stateFollowB = GetComponentInChildren<StateFollowB>();
-            sm.stateFollowC = GetComponentInChildren<StateFollowC>();
-            sm.iceTrapState = GetComponentInChildren<StateIceTrapped>();
-            sm.attractionTrapState = GetComponentInChildren<StateAttractionTrapped>();
-            sm.electricTrapState = GetComponentInChildren<StateElectricTrapped>();
-            sm.attackState = GetComponentInChildren<StateAttack>();
+            sm.stateIdle = blackRef.stateIdle;
+            sm.stateFlee = blackRef.stateFlee;
+            sm.stateSearch = blackRef.stateSearch;
+            sm.stateFollowA = blackRef.stateFollowA;
+            sm.stateFollowB = blackRef.stateFollowB;
+            sm.stateFollowC = blackRef.stateFollowC;
+            sm.iceTrapState = blackRef.stateIceTrap;
+            sm.attractionTrapState = blackRef.stateAttractionTrap;
+            sm.electricTrapState = blackRef.stateElectricTrap;
+            sm.attackState = blackRef.stateAttack;
 
             sm.initialState = sm.stateIdle;
 
-            sm.CreateTransitions();
-           
-            sm.StartMachine();
+            sm.CreateTransitions();           
+            sm.StartMachine();      
+        }
+
+        void OnEnable()
+        {
             StartCoroutine(CheckInputs());
         }
 
         IEnumerator CheckInputs()
         {
+            yield return null;
             switch (enemyRef.enemyType)
             {
                 //furia statechoose

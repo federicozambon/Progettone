@@ -12,7 +12,6 @@ public class UIController : MonoBehaviour
     public Text thisWave;
     public Text waveEnd;
     public Text numberWave;
-    WaveController wElements;
     public Text actualScore;
     public Text comboMultiplier;
     public Text specialFeedback;
@@ -30,6 +29,7 @@ public class UIController : MonoBehaviour
     public Image promptButton;
     public Text weaponUpgrade;
     public Text armorUpgrade;
+    public ReferenceManager refManager;
     public Player playerRef;
 
     Canvas canvas;
@@ -61,8 +61,8 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
-        playerRef = FindObjectOfType<Player>();       
-        wElements = FindObjectOfType<WaveController>();                 
+        refManager = FindObjectOfType<ReferenceManager>();
+        playerRef = refManager.playerObj.GetComponent<Player>();     
     }
 
     public void DecrementLife(float damageTaken)
@@ -220,7 +220,7 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         waveEnd.text = "";
-        numberWave.text = (wElements.currentWaveNumber + 1).ToString();
+        numberWave.text = (refManager.waveRef.currentWaveNumber + 1).ToString();
         numberWave.color = Color.green;
     }
 
@@ -232,7 +232,7 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         waveEnd.text = "";
-        numberWave.text = (wElements.currentWaveNumber+1).ToString();
+        numberWave.text = (refManager.waveRef.currentWaveNumber+1).ToString();
         numberWave.color = Color.red;
     }
 

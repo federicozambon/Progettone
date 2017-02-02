@@ -6,18 +6,16 @@ public class RangedEnemy : Enemy
 {
     public GameObject particlePoolPrefab;
     public GameObject poolP;
+    public RangedEnemyFire rangedFireRef;
 
     void Start()
     {
+        rangedFireRef = GetComponent<RangedEnemyFire>();
         poolP = GameObject.Find("FanteParticlePool");
         GetComponent<RangedEnemyFire>().GetPool();
         hPoints = 25;
         comboValue = 10;
         remainHPoints = hPoints;
-
-        blackRef.navRef = GetComponent<NavMeshAgent>();
-        remainHPoints = hPoints;
-        refManager.playerObj = FindObjectOfType<Player>().gameObject;
 
         if (refManager.flyCamRef.endedCutScene)
         {
@@ -33,17 +31,15 @@ public class RangedEnemy : Enemy
 
     public override void Attack()
     {
-        if (!GetComponent<RangedEnemyFire>().isShooting)
+        if (!rangedFireRef.isShooting)
         {
-            StartCoroutine(GetComponent<RangedEnemyFire>().Shooting());
+            StartCoroutine(rangedFireRef.Shooting());
         }
     }
 
     void Update()
     {
-        if (blackRef.navRef && blackRef.navRef.isActiveAndEnabled)
-        {
-            transform.LookAt(new Vector3(refManager.playerObj.transform.position.x, this.transform.position.y, refManager.playerObj.transform.position.z));
-        }
+
+        transform.LookAt(new Vector3(refManager.playerObj.transform.position.x, this.transform.position.y, refManager.playerObj.transform.position.z));
     }
 }
