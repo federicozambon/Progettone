@@ -6,23 +6,14 @@ public class TitanoEnemy : Enemy
 {
     public GameObject particlePoolPrefab;
     public GameObject poolP;
+    TitanoEnemyFire fireRef;
 
     void Start()
     {
-        poolP = (GameObject)Instantiate(particlePoolPrefab, this.transform.position, Quaternion.identity);
-        GetComponent<TitanoEnemyFire>().GetPool();
+        fireRef = GetComponent<TitanoEnemyFire>();
         hPoints = 250;
         comboValue = 1000;
         remainHPoints = hPoints;
-
-        navRef = GetComponent<NavMeshAgent>();
-        remainHPoints = hPoints;
-        refManager.playerObj = FindObjectOfType<Player>().gameObject;
-
-        if (refManager.flyCamRef.endedCutScene)
-        {
-            isActive = true;
-        }
     }
 
     public override IEnumerator Die()

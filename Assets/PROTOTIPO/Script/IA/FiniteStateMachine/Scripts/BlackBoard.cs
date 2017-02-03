@@ -28,12 +28,12 @@ public class BlackBoard : MonoBehaviour
     void Awake ()
     {
         refManager = FindObjectOfType<ReferenceManager>();
-	    enemyRef = GetComponentInParent<Enemy>();
+	    enemyRef = GetComponent<Enemy>();
         enemyType = enemyRef.enemyType;
-        botMovement = GetComponentInParent<Movement>();
-        navRef = GetComponentInParent<NavMeshAgent>();
+        botMovement = GetComponent<Movement>();
+        navRef = GetComponent<NavMeshAgent>();
         playerTr = refManager.playerRef.transform;
-        botTr = transform.parent.transform;
+        botTr = enemyRef.transform;
         attractionTransform = enemyRef.attractionTrap;
 	}
 }

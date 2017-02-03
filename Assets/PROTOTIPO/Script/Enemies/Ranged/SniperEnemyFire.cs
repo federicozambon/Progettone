@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SniperEnemyFire : MonoBehaviour
 {
+    public ReferenceManager refManager;
     public Transform weapon;
     public GameObject bulletPrefab;
     public LineRenderer aimLine;
@@ -16,6 +17,11 @@ public class SniperEnemyFire : MonoBehaviour
     bool sparo = true;
 
     public Transform playerTr;
+
+    private void Awake()
+    {
+        refManager = FindObjectOfType<ReferenceManager>();
+    }
 
     void Start()
     {
@@ -36,7 +42,6 @@ public class SniperEnemyFire : MonoBehaviour
 
         while (Physics.Linecast(weapon.transform.position, playerTr.position, out losRayHit))
         {
-        Debug.Log(losRayHit.collider.gameObject.tag);
             if (losRayHit.collider.gameObject.tag == "Player")
             {
                 aimLine.SetPosition(0, weapon.position);
@@ -48,7 +53,7 @@ public class SniperEnemyFire : MonoBehaviour
                 if (timer > 3)
                 {
                     aimLine.enabled = false;
-                    FindObjectOfType<Player>().TakeDamage(damage);
+                    refManager.playerRef.TakeDamage(damage);
                     ParticleActivator(playerTr.transform.position);                 
                     isShooting = false;
                     break;
@@ -65,7 +70,7 @@ public class SniperEnemyFire : MonoBehaviour
           
     yield return new WaitForSeconds(4);
 
-    if (sparo == true && GetComponent<SniperEnemy>().hPoints > 0)
+    if (GetComponent<SniperEnemy>().hPoints > 0)
     {
         StartCoroutine(Shooting());
     }
@@ -82,13 +87,14 @@ public class SniperEnemyFire : MonoBehaviour
     {
         if (pool)
         {
-            if (!pool.GetComponentInChildren<EffectSettings>(true).gameObject.activeInHierarchy)
+            EffectSettings effectRef = pool.GetComponentInChildren<EffectSettings>(true);
+            if (!effectRef.gameObject.activeInHierarchy)
             {
                 transformTr = pool.GetComponentsInChildren<Transform>()[1];
                 transformTr.position = position;
-                pool.GetComponentInChildren<EffectSettings>(true).transform.position = weapon.transform.position;
-                pool.GetComponentInChildren<EffectSettings>(true).Target = transformTr.gameObject;
-                pool.GetComponentInChildren<EffectSettings>(true).gameObject.SetActive(true);
+                effectRef.transform.position = weapon.transform.position;
+                effectRef.Target = transformTr.gameObject;
+                effectRef.gameObject.SetActive(true);
             }
         }
     }

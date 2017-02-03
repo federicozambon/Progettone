@@ -35,10 +35,6 @@ public class FireTrap: Trap
         if (playerTrapped == true)
         {
             playerRef.TakeDamage(playerPointDamage);
-<<<<<<< HEAD
-=======
-
->>>>>>> f103432abe526a9a43fe57b7ca7975535dcaa710
         }
         yield return new WaitForSeconds(timeToRepeat);
         StartCoroutine(ActivateTrap()); 

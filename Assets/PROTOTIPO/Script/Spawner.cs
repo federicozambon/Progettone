@@ -46,7 +46,6 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         waveRef = FindObjectOfType<WaveController>();
-
         arrayList = new List<SpawnerDataBase[]>();
 
         furiaPool = new List<GameObject>();
@@ -170,13 +169,14 @@ public class Spawner : MonoBehaviour
         Enemy enemyToReset = enemyToPlace.GetComponent<Enemy>();
         enemyToReset.remainHPoints = enemyToReset.hPoints;
         enemyToPlace.transform.position = position;
+        enemyToReset.dead = false;
+        enemyToReset.dieController = true;
         enemyToPlace.SetActive(true);
     }
 
     public void StoreEnemy(GameObject enemyToStore)
     {
         enemyToStore.SetActive(false);
-        enemyToStore.transform.position = new Vector3(1000, 1000, 1000);
     }
 
     public void Spawn(int waveNumber)

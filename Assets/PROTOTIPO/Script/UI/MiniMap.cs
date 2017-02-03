@@ -97,8 +97,7 @@ public class MiniMap : MonoBehaviour
     public void DeleteEnemy(GameObject go)
     {
         EnemyToMap toDestroy = enemyToMapList.Find(x => x.enemyRef == go);
-        Debug.Log(toDestroy);
-        toDestroy.imageRef.transform.parent = iconPool.transform;
+        toDestroy.imageRef.transform.SetParent(iconPool.transform);
         toDestroy.imageRef.SetActive(false);
         enemyToMapList.Remove(toDestroy);       
     }

@@ -41,7 +41,6 @@ public class StateMachine
     public void StateHandle()
     {
         currentState.Handle();
-      //  Debug.Log(currentState);
     }
 
     public void HandleInput(Inputs i)
@@ -49,7 +48,7 @@ public class StateMachine
         foreach (var transition in transitionList)
         {
             if (transition.input == i && transition.fromState == this.currentState)
-            {         
+            {
                 currentState.ExitStateLogic();
                 currentState = transition.targetState;
                 currentState.EnterStateLogic();

@@ -90,24 +90,10 @@ public class UIController : MonoBehaviour
         if (specialCo == null)
         {
             specialCo = StartCoroutine(specialChecker());
-            killedTimerList.Add(specialActualTimer);
-            specialCounter++;
         }
-        else
-        {
-            killedTimerList.Add(specialActualTimer);
-            specialCounter++;
-            specialTimer = 1+specialActualTimer;
-            foreach (var killed in killedTimerList)
-            {
-                if (specialTimer - killed > 3)
-                {
-                    Debug.LogError(killed);
-                    killedTimerList.Remove(killed);
-                    specialCounter--;
-                }
-            }
-        }
+
+        specialActualTimer = 0;
+        specialCounter++;
 
         if (comboMulti<13)
         {
@@ -164,19 +150,19 @@ public class UIController : MonoBehaviour
         {
             tripleKillCounter++;
             StartCoroutine(ShowSpecialFeedback("Triple Kill"));
-            score += specialScore[0];
+            score += specialScore[0] * specialCounter;
         }
         else if (specialCounter == 4)
         {
             quadraKillCounter++;
             StartCoroutine(ShowSpecialFeedback("Quadra Kill"));
-            score += specialScore[1];
+            score += specialScore[1] * specialCounter;
         }
         else if (specialCounter >= 5)
         {
             multiKillCounter++;
             StartCoroutine(ShowSpecialFeedback("Multi Kill"));
-            score += specialScore[2];
+            score += specialScore[2] * specialCounter;
         }
         killedTimerList.Clear();
         specialCounter = 0;

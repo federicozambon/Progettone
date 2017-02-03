@@ -8,15 +8,17 @@ namespace FSM
         private StateMachine sm;
         public BlackBoard blackRef;
         public ReferenceManager refManager;
-        public Player playerRef;
 
-        public Enemy enemyRef;
         public float attackTimer= 1.5f;
         public bool canSeePlayer = false;
 
 
         void Update()
         {
+            if (blackRef.enemyRef.isActive)
+            {
+                Debug.Log(sm.currentState);
+            }
             if (sm.currentState == sm.attackState)
             {
                 sm.attackState.blackRef.timer += Time.deltaTime;
@@ -27,8 +29,6 @@ namespace FSM
         {
             blackRef = GetComponent<BlackBoard>();
             refManager = FindObjectOfType<ReferenceManager>();
-            playerRef = refManager.playerRef;
-            enemyRef = blackRef.enemyRef;
             sm = new StateMachine();
 
             sm.stateIdle = blackRef.stateIdle;
@@ -45,34 +45,41 @@ namespace FSM
             sm.initialState = sm.stateIdle;
 
             sm.CreateTransitions();           
-            sm.StartMachine();      
+            sm.StartMachine();
+            StartCoroutine(CheckInputs());
         }
 
-        void OnEnable()
+        bool firstTime = true;
+
+        private void OnEnable()
         {
-            StartCoroutine(CheckInputs());
+         
+            if (!firstTime)
+            {
+                StartCoroutine(CheckInputs());
+            }
+            firstTime = false;
         }
 
         IEnumerator CheckInputs()
         {
-            yield return null;
-            switch (enemyRef.enemyType)
+            switch (blackRef.enemyType)
             {
                 //furia statechoose
                 case "furia":
-                    if (enemyRef.hPoints > 0)
+                    if (blackRef.enemyRef.hPoints > 0)
                     {
-                        if (enemyRef.trapped)
+                        if (blackRef.enemyRef.trapped)
                         {
-                            if (enemyRef.isActiveAttractionTrap)
+                            if (blackRef.enemyRef.isActiveAttractionTrap)
                             {
                                 sm.HandleInput(Inputs.AttractionTrapped);
                             }
-                            if (enemyRef.isActiveIceTrap)
+                            if (blackRef.enemyRef.isActiveIceTrap)
                             {
                                 sm.HandleInput(Inputs.IceTrapped);
                             }
-                            if (enemyRef.isActiveElectricTrap)
+                            if (blackRef.enemyRef.isActiveElectricTrap)
                             {
                                 sm.HandleInput(Inputs.ElectricTrapped);
                             }
@@ -81,18 +88,18 @@ namespace FSM
                         {
                             if (sm.currentState == sm.attackState)
                             {
-                                enemyRef.GetComponent<MeleeEnemy>().StartAttack();
+                                blackRef.enemyRef.GetComponent<MeleeEnemy>().StartAttack();
                             }
-                            else if (Vector3.Distance(this.transform.position, playerRef.transform.position) < 3f && sm.currentState != sm.attackState)
+                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) < 3f && sm.currentState != sm.attackState)
                             {
                                 sm.HandleInput(Inputs.Attack);
                             }
-                            else if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 3f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 10)
+                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 3f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 10)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeB);
                                 //  Debug.LogError("PlayerMedium");
                             }
-                            else if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 10)
+                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) > 10)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                                 //  Debug.LogError("PlayerFar");
@@ -110,19 +117,19 @@ namespace FSM
                     break;
                 //trooper statechoose
                 case "fante":
-                    if (enemyRef.hPoints > 0)
+                    if (blackRef.enemyRef.hPoints > 0)
                     {
-                        if (enemyRef.trapped)
+                        if (blackRef.enemyRef.trapped)
                         {
-                            if (enemyRef.isActiveAttractionTrap)
+                            if (blackRef.enemyRef.isActiveAttractionTrap)
                             {
                                 sm.HandleInput(Inputs.AttractionTrapped);
                             }
-                            if (enemyRef.isActiveIceTrap)
+                            if (blackRef.enemyRef.isActiveIceTrap)
                             {
                                 sm.HandleInput(Inputs.IceTrapped);
                             }
-                            if (enemyRef.isActiveElectricTrap)
+                            if (blackRef.enemyRef.isActiveElectricTrap)
                             {
                                 sm.HandleInput(Inputs.ElectricTrapped);
                             }
@@ -131,7 +138,7 @@ namespace FSM
                         {
 
                             RaycastHit losRayOut;
-                            if (Physics.Linecast(enemyRef.GetComponent<RangedEnemyFire>().weapon.position, playerRef.transform.position, out losRayOut))
+                            if (Physics.Linecast(blackRef.enemyRef.GetComponent<RangedEnemyFire>().weapon.position, blackRef.playerTr.position, out losRayOut))
                             {
                                 if (losRayOut.collider.tag == "Player")
                                 {
@@ -143,19 +150,19 @@ namespace FSM
                                 }
                             }
            
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 15)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) > 15)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                             }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) < 4f)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) < 4f)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeA);
                             }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 4f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 15 && canSeePlayer)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 4f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 15 && canSeePlayer)
                             {
                                 sm.HandleInput(Inputs.Attack);
                             }
-                            else if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 4f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 15 && !canSeePlayer)
+                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 4f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 15 && !canSeePlayer)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                             }
@@ -172,19 +179,19 @@ namespace FSM
                     break;
                 //furiaesplosiva statechoose
                 case "furiaesplosiva":
-                    if (enemyRef.hPoints > 0)
+                    if (blackRef.enemyRef.hPoints > 0)
                     {
-                        if (enemyRef.trapped)
+                        if (blackRef.enemyRef.trapped)
                         {
-                            if (enemyRef.isActiveAttractionTrap)
+                            if (blackRef.enemyRef.isActiveAttractionTrap)
                             {
                                 sm.HandleInput(Inputs.AttractionTrapped);
                             }
-                            if (enemyRef.isActiveIceTrap)
+                            if (blackRef.enemyRef.isActiveIceTrap)
                             {
                                 sm.HandleInput(Inputs.IceTrapped);
                             }
-                            if (enemyRef.isActiveElectricTrap)
+                            if (blackRef.enemyRef.isActiveElectricTrap)
                             {
                                 sm.HandleInput(Inputs.ElectricTrapped);
                             }
@@ -193,18 +200,18 @@ namespace FSM
                         {
                             if (sm.currentState == sm.attackState)
                             {
-                                enemyRef.GetComponent<MeleeExplosiveEnemy>().StartAttack();
+                                blackRef.enemyRef.GetComponent<MeleeExplosiveEnemy>().StartAttack();
                             }
-                            else if (Vector3.Distance(this.transform.position, playerRef.transform.position) < 2.5f && sm.currentState != sm.attackState)
+                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) < 2.5f && sm.currentState != sm.attackState)
                             {
                                 sm.HandleInput(Inputs.Attack);
                             }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 2.5f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 10)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 2.5f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 10)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeB);
                                 //  Debug.LogError("PlayerMedium");
                             }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 10)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) > 10)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                                 //  Debug.LogError("PlayerFar");
@@ -222,19 +229,19 @@ namespace FSM
                     break;
                 //predatore statechoose
                 case "predatore":
-                    if (enemyRef.hPoints > 0)
+                    if (blackRef.enemyRef.hPoints > 0)
                     {
-                        if (enemyRef.trapped)
+                        if (blackRef.enemyRef.trapped)
                         {
-                            if (enemyRef.isActiveAttractionTrap)
+                            if (blackRef.enemyRef.isActiveAttractionTrap)
                             {
                                 sm.HandleInput(Inputs.AttractionTrapped);
                             }
-                            if (enemyRef.isActiveIceTrap)
+                            if (blackRef.enemyRef.isActiveIceTrap)
                             {
                                 sm.HandleInput(Inputs.IceTrapped);
                             }
-                            if (enemyRef.isActiveElectricTrap)
+                            if (blackRef.enemyRef.isActiveElectricTrap)
                             {
                                 sm.HandleInput(Inputs.ElectricTrapped);
                             }
@@ -245,16 +252,16 @@ namespace FSM
                             {
                                 //enemyRef.Attack();
                             }
-                            else if (Vector3.Distance(this.transform.position, playerRef.transform.position) < 3f && sm.currentState != sm.attackState)
+                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) < 3f && sm.currentState != sm.attackState)
                             {
                                 sm.HandleInput(Inputs.Attack);
                             }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 3f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 10)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 3f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 10)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeB);
                                 //  Debug.LogError("PlayerMedium");
                             }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 10)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) > 10)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                                 //  Debug.LogError("PlayerFar");
@@ -272,19 +279,19 @@ namespace FSM
                     break;
                 //titano statechoose
                 case "titano":
-                    if (enemyRef.hPoints > 0)
+                    if (blackRef.enemyRef.hPoints > 0)
                     {
-                        if (enemyRef.trapped)
+                        if (blackRef.enemyRef.trapped)
                         {
-                            if (enemyRef.isActiveAttractionTrap)
+                            if (blackRef.enemyRef.isActiveAttractionTrap)
                             {
                                 sm.HandleInput(Inputs.AttractionTrapped);
                             }
-                            if (enemyRef.isActiveIceTrap)
+                            if (blackRef.enemyRef.isActiveIceTrap)
                             {
                                 sm.HandleInput(Inputs.IceTrapped);
                             }
-                            if (enemyRef.isActiveElectricTrap)
+                            if (blackRef.enemyRef.isActiveElectricTrap)
                             {
                                 sm.HandleInput(Inputs.ElectricTrapped);
                             }
@@ -293,7 +300,7 @@ namespace FSM
                         {
 
                             RaycastHit losRayOut;
-                            if (Physics.Linecast(enemyRef.GetComponent<TitanoEnemyFire>().weapon.position, playerRef.transform.position, out losRayOut))
+                            if (Physics.Linecast(blackRef.enemyRef.GetComponent<TitanoEnemyFire>().weapon.position, blackRef.playerTr.position, out losRayOut))
                             {
                                 if (losRayOut.collider.tag == "Player")
                                 {
@@ -305,19 +312,19 @@ namespace FSM
                                 }
                             }
 
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 30)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) > 30)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                             }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) < 20f)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) < 20f)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeA);
                             }
-                            if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 15f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 30 && canSeePlayer)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 15f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 30 && canSeePlayer)
                             {
                                 sm.HandleInput(Inputs.Attack);
                             }
-                            else if (Vector3.Distance(this.transform.position, playerRef.transform.position) >= 15f && Vector3.Distance(this.transform.position, playerRef.transform.position) <= 30 && !canSeePlayer)
+                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 15f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 30 && !canSeePlayer)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                             }
@@ -334,19 +341,19 @@ namespace FSM
                     break;
                 //sniper statechoose
                 case "cecchino":
-                    if (enemyRef.hPoints > 0)
+                    if (blackRef.enemyRef.hPoints > 0)
                     {
-                        if (enemyRef.trapped)
+                        if (blackRef.enemyRef.trapped)
                         {
-                            if (enemyRef.isActiveAttractionTrap)
+                            if (blackRef.enemyRef.isActiveAttractionTrap)
                             {
                                 sm.HandleInput(Inputs.AttractionTrapped);
                             }
-                            if (enemyRef.isActiveIceTrap)
+                            if (blackRef.enemyRef.isActiveIceTrap)
                             {
                                 sm.HandleInput(Inputs.IceTrapped);
                             }
-                            if (enemyRef.isActiveElectricTrap)
+                            if (blackRef.enemyRef.isActiveElectricTrap)
                             {
                                 sm.HandleInput(Inputs.ElectricTrapped);
                             }
@@ -357,12 +364,12 @@ namespace FSM
                             {
                                 if (sm.currentState.blackRef.timer >= attackTimer)
                                 {
-                                    enemyRef.Attack();
+                                    blackRef.enemyRef.Attack();
                                 }
                             }
                             else
                             {
-                                if (Vector3.Distance(this.transform.position, playerRef.transform.position) > 10)
+                                if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) > 10)
                                 {
                                     sm.HandleInput(Inputs.Attack);
                                     //  Debug.LogError("PlayerFar");

@@ -15,8 +15,11 @@ public class RocketLauncher : Weapon
     bool sparo = true;
 
     WeaponSelector wSelector;
-    UIController uiElements;
-    Player playerElements;
+
+    private void Awake()
+    {
+        refManager = FindObjectOfType<ReferenceManager>();
+    }
 
     void Start()
     {
@@ -54,14 +57,14 @@ public class RocketLauncher : Weapon
             
         }
 
-        if (enabled == true && playerElements.noWeapons == false && shoot == true)
+        if (enabled == true && refManager.playerRef.noWeapons == false && shoot == true)
         {
             shoot = false;
 
-            if (playerElements.rocketAmmo > 0)
+            if (refManager.playerRef.rocketAmmo > 0)
             {
-                playerElements.rocketAmmo--;
-                uiElements.ammo.text = playerElements.rocketAmmo.ToString();
+                refManager.playerRef.rocketAmmo--;
+                refManager.uicontroller.ammo.text = refManager.playerRef.rocketAmmo.ToString();
                 Shooting();
             }             
         }
