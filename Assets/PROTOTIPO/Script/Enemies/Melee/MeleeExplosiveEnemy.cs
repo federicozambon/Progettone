@@ -16,6 +16,11 @@ public class MeleeExplosiveEnemy : Enemy
         comboValue = 10;
     }
 
+    private void Start()
+    {
+        this.gameObject.SetActive(false);
+    }
+
     public float timer;
     public float attackTimer = 0.4f;
     public bool isAttacking = false;
@@ -55,7 +60,6 @@ public class MeleeExplosiveEnemy : Enemy
         {
             isExploded = true;
             SuicideParticleActivator(this.transform.position);
-            Debug.LogError("esploso");
             if (Vector3.Distance(this.transform.position, refManager.playerObj.transform.position) < 4f)
             {
                 refManager.playerObj.GetComponent<Player>().TakeDamage(damage);

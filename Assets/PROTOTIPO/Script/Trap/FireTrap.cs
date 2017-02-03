@@ -5,14 +5,14 @@ public class FireTrap: Trap
 {
     public Player playerRef;
     DialogueSystem dialoghi;
+    public ReferenceManager refManager;
 
 	void Start ()
     {
+        refManager = FindObjectOfType<ReferenceManager>();
         particle = this.GetComponent<ParticleSystem>();
         coll = this.GetComponent<SphereCollider>();
-        playerRef = FindObjectOfType<Player>();
-        dialoghi = FindObjectOfType<DialogueSystem>();
-        
+        playerRef = refManager.playerObj.GetComponent<Player>();    
         coll.enabled = false;
     }
 	
@@ -26,26 +26,17 @@ public class FireTrap: Trap
                 if (nemico.remainHPoints > 0)
                     nemico.remainHPoints -= healthPointDamage;
                 else
-                {
-                    
+                {                   
                     nemico.StartCoroutine(nemico.Die());
-                    
-
                 }
-
             }
         }
 
         if (playerTrapped == true)
         {
             playerRef.TakeDamage(playerPointDamage);
-
         }
-
-
-
-            yield return new WaitForSeconds(timeToRepeat);
-
+        yield return new WaitForSeconds(timeToRepeat);
         StartCoroutine(ActivateTrap()); 
     }
 
@@ -64,8 +55,7 @@ public class FireTrap: Trap
 
         particle.Stop();
         coll.enabled = false;
-        resetTrap = true;
-        
+        resetTrap = true;      
     }
 
     public void OnTriggerExit(Collider coll)
@@ -83,20 +73,17 @@ public class FireTrap: Trap
 
     void Update()
     {
-        if (activeTrap == true)
+        if (activeTrap)
         {
             activeTrap = false;
             StartCoroutine(ParticleTrap());
             StartCoroutine(ActivateTrap());
         }
 
-        if (resetTrap == true)
+        if (resetTrap)
         {
             resetTrap = false;
             enemies.Clear();
         }
-
     }
-
-
 }

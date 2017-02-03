@@ -13,11 +13,9 @@ public class Player: MonoBehaviour
     public bool stepTutorial = false;
     public bool noWeapons = false;
 
-    FlyCamManager flyCamRef;
+    public ReferenceManager refManager;
     Rigidbody playerRigidbody;
     private NavMeshAgent _navAgent;
-    DialogueSystem dialoghi;
-    UIController uicontroller;
     Tutorial tutorialElements;
     Animator anim;
 
@@ -58,17 +56,10 @@ public class Player: MonoBehaviour
 
     void Awake()
     {
+        refManager = FindObjectOfType<ReferenceManager>();
         anim = GetComponentInChildren<Animator>();
-        flyCamRef = FindObjectOfType<FlyCamManager>();
         playerRigidbody = GetComponent<Rigidbody>();
         tutorialElements = FindObjectOfType<Tutorial>();
-    }
-
-    void Start()
-    {
-        uicontroller = FindObjectOfType<UIController>();
-        dialoghi = FindObjectOfType<DialogueSystem>();
-        
     }
 
     public void DestroyAllEnemies()
@@ -91,14 +82,14 @@ public class Player: MonoBehaviour
             coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
-                if (uicontroller.score >= baseCost[0] * costModifier[0])
+                if (refManager.uicontroller.score >= baseCost[0] * costModifier[0])
                 {
-                    uicontroller.score -= (int)(baseCost[0] * costModifier[0]);
+                    refManager.uicontroller.score -= (int)(baseCost[0] * costModifier[0]);
                     costModifier[0] += 0.5f;
                     coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[0] * costModifier[0] + "\n" + "Restore Health";
-                    uicontroller.UpdateScore();
+                    refManager.uicontroller.UpdateScore();
                     currentHealth = maxHealth;
-                    uicontroller.IncreaseLife();
+                    refManager.uicontroller.IncreaseLife();
                 }
                 else
                 {
@@ -114,14 +105,14 @@ public class Player: MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
           
-                if (uicontroller.score >= baseCost[1] * costModifier[1])
+                if (refManager.uicontroller.score >= baseCost[1] * costModifier[1])
                 {
-                    uicontroller.score -= (int)(baseCost[1] * costModifier[1]);
+                    refManager.uicontroller.score -= (int)(baseCost[1] * costModifier[1]);
                     costModifier[1] += 0.5f;
                     coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[1] * costModifier[1] + "\n" + "Restore Health";
-                    uicontroller.UpdateScore();
+                    refManager.uicontroller.UpdateScore();
                     rocketAmmo += 5;
-                    uicontroller.ammo.text = rocketAmmo.ToString();
+                    refManager.uicontroller.ammo.text = rocketAmmo.ToString();
                 }
                 else
                 {
@@ -136,15 +127,15 @@ public class Player: MonoBehaviour
             coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
-                if (uicontroller.score >= baseCost[2] * costModifier[2])
+                if (refManager.uicontroller.score >= baseCost[2] * costModifier[2])
                 {
                     damageModifier += 0.25f;
-                    uicontroller.UpdateWeaponUpgrade(25);
-                    uicontroller.score -= (int)(baseCost[2] * costModifier[2]);
+                    refManager.uicontroller.UpdateWeaponUpgrade(25);
+                    refManager.uicontroller.score -= (int)(baseCost[2] * costModifier[2]);
                     costModifier[2] += 0.5f;
                     coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[2] * costModifier[2] + "\n" + "Restore Health";
-                    uicontroller.UpdateScore();
-                    uicontroller.UpdateWeaponUpgrade(25);             
+                    refManager.uicontroller.UpdateScore();
+                    refManager.uicontroller.UpdateWeaponUpgrade(25);             
                 }
                 else
                 {
@@ -159,16 +150,16 @@ public class Player: MonoBehaviour
             coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
-                if (uicontroller.score >= baseCost[3] * costModifier[3])
+                if (refManager.uicontroller.score >= baseCost[3] * costModifier[3])
                 {
-              
-                    uicontroller.score -= (int)(baseCost[3] * costModifier[3]);
+
+                    refManager.uicontroller.score -= (int)(baseCost[3] * costModifier[3]);
                     costModifier[2] += 0.5f;
                     coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[3] * costModifier[3] + "\n" + "Restore Health";
-                    uicontroller.UpdateScore();
+                    refManager.uicontroller.UpdateScore();
                     maxHealth += 25;
                     armorUpgrade += 25;
-                    uicontroller.UpdateArmorUpgrade(25);
+                    refManager.uicontroller.UpdateArmorUpgrade(25);
                 }
                 else
                 {
@@ -184,28 +175,28 @@ public class Player: MonoBehaviour
     {
         if (coll.tag == "Health_PickUp")
         {
-            uicontroller.ShowPrompt();
+            refManager.uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
             coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[0] * costModifier[0] + "\n" + "Restore Health";
         }
 
         if (coll.tag == "Ammo_PickUp")
         {
-            uicontroller.ShowPrompt();
+            refManager.uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
             coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[1] * costModifier[1] + "\n" + "Reload Rockets";
         }
 
         if (coll.tag == "Weapon_PickUp")
         {
-            uicontroller.ShowPrompt();
+            refManager.uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
             coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[2] * costModifier[2] + "\n" + "Empower Weapons";
         }
 
         if (coll.tag == "Armor_PickUp")
         {
-            uicontroller.ShowPrompt();
+            refManager.uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
             coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[3] * costModifier[3] + "\n" + "Empower shields";
         }
@@ -215,31 +206,31 @@ public class Player: MonoBehaviour
     {
         if (coll.tag == "Health_PickUp")
         {
-            uicontroller.HidePrompt();
+            refManager.uicontroller.HidePrompt();
             coll.GetComponent<PickUp>().Hide(); 
         }
 
         if (coll.tag == "Ammo_PickUp")
         {
-            uicontroller.HidePrompt();
+            refManager.uicontroller.HidePrompt();
             coll.GetComponent<PickUp>().Hide();
         }
         if (coll.tag == "Weapon_PickUp")
         {
-            uicontroller.HidePrompt();
+            refManager.uicontroller.HidePrompt();
             coll.GetComponent<PickUp>().Hide();
         }
 
         if (coll.tag == "Armor_PickUp")
         {
-            uicontroller.HidePrompt();
+            refManager.uicontroller.HidePrompt();
             coll.GetComponent<PickUp>().Hide();
         }
     }
 
     void FixedUpdate()
     {
-        if (flyCamRef.endedCutScene && isAlive == true && tutorial == false)
+        if (refManager.flyCamRef.endedCutScene && isAlive == true && tutorial == false)
         {
 
             float h = Input.GetAxisRaw("Horizontal");
@@ -314,13 +305,13 @@ public class Player: MonoBehaviour
             if (godMode == false)
             {
                 godMode = true;
-                uicontroller.GodModeOn();
+                refManager.uicontroller.GodModeOn();
             }
 
             else if (godMode == true)
             {
                 godMode = false;
-                uicontroller.GodModeOff();
+                refManager.uicontroller.GodModeOff();
             }
 
         }
@@ -336,7 +327,7 @@ public class Player: MonoBehaviour
         }
 
 
-        if (flyCamRef.endedCutScene)
+        if (refManager.flyCamRef.endedCutScene)
         {
             occlusionRay = new Ray(this.transform.position, Camera.main.transform.position - this.transform.position);
 
@@ -477,7 +468,7 @@ public class Player: MonoBehaviour
         if (godMode == false)
         {
             currentHealth -= (int)damageTaken;
-            uicontroller.DecrementLife((float)damageTaken / 100);
+            refManager.uicontroller.DecrementLife((float)damageTaken / 100);
         }
         
 
@@ -491,11 +482,8 @@ public class Player: MonoBehaviour
 
     IEnumerator Die()
     {
-        uicontroller.GameOverOn();
-
-        yield return null;
-
-        
+        refManager.uicontroller.GameOverOn();
+        yield return null;     
     }
 
     
@@ -570,6 +558,5 @@ public class Player: MonoBehaviour
                 occludedGoList.Remove(occludedGoList[occludedGoList.Count - 1]);
             }
         }
-  
     }
 }

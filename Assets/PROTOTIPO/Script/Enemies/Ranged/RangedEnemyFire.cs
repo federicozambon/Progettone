@@ -20,9 +20,9 @@ public class RangedEnemyFire : MonoBehaviour
         playerGo = FindObjectOfType<Player>().gameObject;       
     }
 
-    public void GetPool()
+    public void Awake()
     {
-        pool = GetComponent<RangedEnemy>().poolP;
+        pool = GameObject.Find("FanteParticlePool");
     }
 
     public void Update()
@@ -58,13 +58,17 @@ public class RangedEnemyFire : MonoBehaviour
 
     public void ParticleActivator(Vector3 position)
     {
-        if (!pool.GetComponentInChildren<EffectSettings>(true).gameObject.activeInHierarchy)
+        for (int i = 0; i < 50; i++)
         {
-            transformTr = pool.GetComponentsInChildren<Transform>(true)[1];
-            transformTr.position = position;
-            pool.GetComponentInChildren<EffectSettings>(true).transform.position = weapon.transform.position;
-            pool.GetComponentInChildren<EffectSettings>(true).Target = transformTr.gameObject;
-            pool.GetComponentInChildren<EffectSettings>(true).gameObject.SetActive(true);
+            EffectSettings effectRef = pool.GetComponentsInChildren<EffectSettings>(true)[i];
+            if (!effectRef.gameObject.activeInHierarchy)
+            {
+                transformTr = effectRef.transform.parent.GetComponentsInChildren<Transform>(true)[1];
+                transformTr.position = position;
+                effectRef.transform.position = weapon.transform.position;
+                effectRef.Target = transformTr.gameObject;
+                effectRef.gameObject.SetActive(true);
+            }
         }
     }
 }

@@ -37,7 +37,7 @@ public class SniperEnemy : Enemy
     {
           //Occlusion();
 
-        if (navRef && navRef.isActiveAndEnabled)
+        if (blackRef.navRef && blackRef.navRef.isActiveAndEnabled)
         {
             transform.LookAt(new Vector3(refManager.playerObj.transform.position.x,this.transform.position.y, refManager.playerObj.transform.position.z));
         }

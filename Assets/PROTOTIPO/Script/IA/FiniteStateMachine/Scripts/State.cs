@@ -36,7 +36,7 @@ public abstract class State : MonoBehaviour
 
     }
 
-    public virtual void Initialize()
-    {
-    }
+    //public virtual void Initialize()
+    //{
+    //}
 }

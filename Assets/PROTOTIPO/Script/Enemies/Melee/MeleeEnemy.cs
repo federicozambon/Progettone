@@ -7,7 +7,6 @@ public class MeleeEnemy : Enemy
 {
     public Transform face;
     public GameObject bulletPrefab;
-    GameObject playerGo;
 
     public GameObject particlePoolPrefab;
     public GameObject poolP;
@@ -36,9 +35,8 @@ public class MeleeEnemy : Enemy
 
     public override void Attack()
     {
-        Debug.LogError("attaccato");
         AttackParticleActivator(face.transform.position);
-        refManager.playerObj.GetComponent<Player>().TakeDamage(damage);
+        refManager.playerRef.TakeDamage(damage);
         StartCoroutine(AttackCd());
     }
 
@@ -53,9 +51,9 @@ public class MeleeEnemy : Enemy
         float timer = 0;
         isShooting = true;
 
-        while (Physics.Linecast(face.transform.position, playerGo.transform.position, out losRayHit))
+        while (Physics.Linecast(face.transform.position, refManager.playerObj.transform.position, out losRayHit))
         {
-            if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(face.transform.position, playerGo.transform.position) < 3)
+            if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(face.transform.position, refManager.playerObj.transform.position) < 3)
             {
                 //transform.LookAt(new Vector3(playerGo.transform.position.x, this.transform.position.y, playerGo.transform.position.z));
                 timer += Time.deltaTime;
@@ -85,13 +83,14 @@ public class MeleeEnemy : Enemy
     {
         if (pool)
         {
-            if (!pool.GetComponentInChildren<EffectSettings>(true).gameObject.activeInHierarchy)
+            EffectSettings effectRef = pool.GetComponentInChildren<EffectSettings>(true);
+            if (!effectRef.gameObject.activeInHierarchy)
             {
                 transformTr = GetComponentsInChildren<Transform>()[1];
                 transformTr.position = position;
-                pool.GetComponentInChildren<EffectSettings>(true).transform.position = face.transform.position;
-                pool.GetComponentInChildren<EffectSettings>(true).Target = transformTr.gameObject;
-                pool.GetComponentInChildren<EffectSettings>(true).gameObject.SetActive(true);
+                effectRef.transform.position = face.transform.position;
+                effectRef.Target = transformTr.gameObject;
+                effectRef.gameObject.SetActive(true);
             }
         }
     }
