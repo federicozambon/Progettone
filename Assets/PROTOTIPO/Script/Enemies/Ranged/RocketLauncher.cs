@@ -18,7 +18,7 @@ public class RocketLauncher : Weapon
 
     private void Awake()
     {
-        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();;
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
     }
 
     void Start()

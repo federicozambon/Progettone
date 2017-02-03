@@ -202,8 +202,6 @@ public class Spawner : MonoBehaviour
                 yield return null;
             }
         }
-         
-
         yield return new WaitForSeconds(spawnerDB.timerEnemy);
         GameObject enemyToManage = PickEnemy(spawnerDB.typeEnemy);
         PlaceAndResetEnemy(enemyToManage, spawnerDB.spawnEnemy.transform.position);

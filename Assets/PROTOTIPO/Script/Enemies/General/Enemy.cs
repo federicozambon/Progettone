@@ -60,7 +60,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Awake()
     {
-        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();;
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
         blackRef = GetComponent<BlackBoard>();
         navRef = GetComponent<NavMeshAgent>();
         this.gameObject.SetActive(false);

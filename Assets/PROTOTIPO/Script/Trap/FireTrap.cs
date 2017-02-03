@@ -9,7 +9,7 @@ public class FireTrap: Trap
 
 	void Start ()
     {
-        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();;
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
         particle = this.GetComponent<ParticleSystem>();
         coll = this.GetComponent<SphereCollider>();
         playerRef = refManager.playerObj.GetComponent<Player>();    

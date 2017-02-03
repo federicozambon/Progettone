@@ -31,7 +31,7 @@ public class MiniMap : MonoBehaviour
 
 	void Start ()
     {
-        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();;
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
         iconPool = GameObject.Find("IconPool");
         iconPoolList = new List<GameObject>();
 

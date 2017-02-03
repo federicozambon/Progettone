@@ -10,12 +10,8 @@ public class SniperEnemy : Enemy
 
     void Start()
     {
-        poolP = (GameObject)Instantiate(particlePoolPrefab, this.transform.position, Quaternion.identity);
-        GetComponent<SniperEnemyFire>().GetPool();
         hPoints = 25;
         comboValue = 650;
-        remainHPoints = hPoints;
-
         remainHPoints = hPoints;
     }
 
@@ -29,7 +25,7 @@ public class SniperEnemy : Enemy
 
     public override IEnumerator Die()
     {
-        poolP.SetActive(false);
+        //poolP.SetActive(false);
         return base.Die();
     }
 

@@ -24,7 +24,7 @@ namespace FSM
         void Start()
         {
             blackRef = GetComponent<BlackBoard>();
-            refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();;
+            refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
             sm = new StateMachine();
 
             sm.stateIdle = blackRef.stateIdle;
