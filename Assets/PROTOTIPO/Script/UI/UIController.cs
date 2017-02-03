@@ -61,7 +61,7 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
-        refManager = FindObjectOfType<ReferenceManager>();
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();;
         playerRef = refManager.playerObj.GetComponent<Player>();     
     }
 
