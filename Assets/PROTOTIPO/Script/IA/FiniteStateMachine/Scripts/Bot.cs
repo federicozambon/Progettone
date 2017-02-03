@@ -14,11 +14,7 @@ namespace FSM
 
 
         void Update()
-        {
-            if (blackRef.enemyRef.isActive)
-            {
-                Debug.Log(sm.currentState);
-            }
+        { 
             if (sm.currentState == sm.attackState)
             {
                 sm.attackState.blackRef.timer += Time.deltaTime;
@@ -28,7 +24,7 @@ namespace FSM
         void Start()
         {
             blackRef = GetComponent<BlackBoard>();
-            refManager = FindObjectOfType<ReferenceManager>();
+            refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();;
             sm = new StateMachine();
 
             sm.stateIdle = blackRef.stateIdle;

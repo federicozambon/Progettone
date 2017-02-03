@@ -56,7 +56,7 @@ public class Player: MonoBehaviour
 
     void Awake()
     {
-        refManager = FindObjectOfType<ReferenceManager>();
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();;
         anim = GetComponentInChildren<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
         tutorialElements = FindObjectOfType<Tutorial>();

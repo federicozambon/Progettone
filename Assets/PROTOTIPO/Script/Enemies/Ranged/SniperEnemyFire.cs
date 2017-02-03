@@ -20,7 +20,7 @@ public class SniperEnemyFire : MonoBehaviour
 
     private void Awake()
     {
-        refManager = FindObjectOfType<ReferenceManager>();
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();;
     }
 
     void Start()

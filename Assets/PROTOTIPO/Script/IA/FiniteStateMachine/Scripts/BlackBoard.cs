@@ -27,7 +27,7 @@ public class BlackBoard : MonoBehaviour
 
     void Awake ()
     {
-        refManager = FindObjectOfType<ReferenceManager>();
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
 	    enemyRef = GetComponent<Enemy>();
         enemyType = enemyRef.enemyType;
         botMovement = GetComponent<Movement>();

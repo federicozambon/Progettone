@@ -186,7 +186,7 @@ public class Spawner : MonoBehaviour
         spawnedCounter = 0;
         foreach (var enemy in arrayList[waveNumber])
         {
-            frameToSkip += 2;
+            frameToSkip += 1;
             StartCoroutine(SpawnEnemy(enemy, frameToSkip));
          
         }
@@ -195,11 +195,15 @@ public class Spawner : MonoBehaviour
 
     public IEnumerator SpawnEnemy(SpawnerDataBase spawnerDB, int frameToSkip)
     {
-        while (frameToSkip>0)
+        for (int j = 0; j < 4; j++)
         {
-            frameToSkip--;
-            yield return new WaitForSeconds(Time.deltaTime*3);
-        } 
+            for (int i = frameToSkip + 1; i > 0; i--)
+            {
+                yield return null;
+            }
+        }
+         
+
         yield return new WaitForSeconds(spawnerDB.timerEnemy);
         GameObject enemyToManage = PickEnemy(spawnerDB.typeEnemy);
         PlaceAndResetEnemy(enemyToManage, spawnerDB.spawnEnemy.transform.position);

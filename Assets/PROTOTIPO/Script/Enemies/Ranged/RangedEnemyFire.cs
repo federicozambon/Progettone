@@ -6,6 +6,7 @@ public class RangedEnemyFire : MonoBehaviour
     public Transform weapon;
     public GameObject bulletPrefab;
     public bool isShooting;
+    ReferenceManager refManager;
 
     RaycastHit losRayHit;
 
@@ -17,7 +18,7 @@ public class RangedEnemyFire : MonoBehaviour
 
     void Start()
     {
-        playerGo = FindObjectOfType<Player>().gameObject;       
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
     }
 
     public void Awake()
@@ -27,7 +28,7 @@ public class RangedEnemyFire : MonoBehaviour
 
     public void Update()
     {
-        this.transform.LookAt(playerGo.transform);
+        this.transform.LookAt(refManager.playerObj.transform);
     }
 
     public IEnumerator Shooting()
@@ -38,10 +39,6 @@ public class RangedEnemyFire : MonoBehaviour
             if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(playerGo.transform.position, this.transform.position) < 15)
             {
                 ParticleActivator(playerGo.transform.FindChild("Head").position);
-            }
-            else if (!GetComponent<RangedEnemy>().isActive)
-            {
-                ParticleActivator(playerGo.transform.position);
             }
         }
         yield return new WaitForSeconds(1.5f);
