@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ElectroTrapBehevior : MonoBehaviour {
+public class ElectroTrapBehevior : Trap {
     public GameObject particellare1;
     public GameObject particellare2;
     public float timer;
@@ -9,34 +9,40 @@ public class ElectroTrapBehevior : MonoBehaviour {
     public bool start;
 
 
-	// Use this for initialization
-	void Start () {
 	
-	}
 	
-	// Update is called once per frame
-	void Update ()
+
+    public override IEnumerator ActivateTrap()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && stoptimer == false)
+
+        particellare1.SetActive(true);
+        coll.enabled = true;
+
+
+        yield return new WaitForSeconds(timeToDisable);
+
+        particellare1.SetActive(false);
+        particellare2.SetActive(true);
+        coll.enabled = false;
+        resetTrap = true;
+    }
+
+
+    void Update()
+    {
+        if (activeTrap)
         {
-            start = true;
+            activeTrap = false;
+            StartCoroutine(ActivateTrap());
+        }
+
+        if (resetTrap)
+        {
+            resetTrap = false;
+            myActivatorsController.GetComponent<ActivatorsController>().EnabledActivators();
             
-
         }
-        if ( start == true)
-        {
-            particellare1.SetActive(true);
-            timer += Time.deltaTime;
-        }
+    }
 
-        if(timer >= 5)
-        {
-            stoptimer = true;
-            particellare1.SetActive(false);
-            particellare2.SetActive(true);
 
-            
-        }
-	
-	}
 }
