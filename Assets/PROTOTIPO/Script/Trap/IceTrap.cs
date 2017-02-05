@@ -12,28 +12,20 @@ public class IceTrap : Trap
     {
 
         player = FindObjectOfType<Player>();
-        coll = this.GetComponent<SphereCollider>();
-        coll.enabled = false;
+        
     }
 	
 	public override IEnumerator ActivateTrap()
     {
         activeTrap = false;
 
-        foreach (var enemy in enemies)
+        for (int i = 0; i < colliders.Length; i++)
         {
-            if (enemy.GetComponent<Enemy>().trapped == false)
+            if (colliders[i].GetComponent<Player>() != null)
             {
-                enemy.GetComponent<Enemy>().trapped = true;
-                enemy.GetComponent<Enemy>().isActiveIceTrap = true;
-                enemy.GetComponent<Enemy>().TrapController(timeToDisable);
+                colliders[i].GetComponent<Player>().speed = 2;
+                playerTrapped = true;
             }
-
-        }
-
-        if (playerTrapped == true)
-        {
-            player.speed = 2;
         }
 
         yield return new WaitForSeconds(timeToRepeat);
@@ -46,7 +38,7 @@ public class IceTrap : Trap
     public override IEnumerator ParticleTrap()
     {
         iceEffect.GetComponent<LazyLoad>().enabled = true;
-        coll.enabled = true;
+        
 
         yield return new WaitForSeconds(timeToDisable);
 
@@ -65,7 +57,7 @@ public class IceTrap : Trap
 
             myActivatorsController.GetComponent<ActivatorsController>().enabledAllActivators = true;
 
-            coll.enabled = false;
+            
             resetTrap = true;
         }
         
@@ -85,9 +77,7 @@ public class IceTrap : Trap
         if (resetTrap == true)
         {
             resetTrap = false;
-            enemies.Clear();
-
-            
+ 
         }
 
     }

@@ -3,26 +3,28 @@ using System.Collections;
 
 public class FireTrap: Trap
 {
-    public Player playerRef;
+    
     DialogueSystem dialoghi;
+    public Player playerRef;
     public ReferenceManager refManager;
 
-	void Start ()
+
+    void Start ()
     {
-        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
+        
         particle = this.GetComponent<ParticleSystem>();
-        coll = this.GetComponent<SphereCollider>();
-        playerRef = refManager.playerObj.GetComponent<Player>();    
-        coll.enabled = false;
+        
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
+        playerRef = refManager.playerObj.GetComponent<Player>();
     }
 	
 	public override IEnumerator ActivateTrap()
     {
-        foreach (var enemy in enemies)
+        foreach (var coll in colliders)
         {
-            if (enemy != null)
+            if (coll.gameObject.tag == "Enemy")
             {
-                Enemy nemico = enemy.GetComponent<Enemy>();
+                Enemy nemico = coll.GetComponent<Enemy>();
                 if (nemico.remainHPoints > 0)
                     nemico.remainHPoints -= healthPointDamage;
                 else
@@ -30,20 +32,24 @@ public class FireTrap: Trap
                     nemico.StartCoroutine(nemico.Die());
                 }
             }
+
+            if (coll.gameObject.tag == "Player")
+            {
+                playerRef.TakeDamage(playerPointDamage);
+            }
+
         }
 
-        if (playerTrapped == true)
-        {
-            playerRef.TakeDamage(playerPointDamage);
-        }
+        
         yield return new WaitForSeconds(timeToRepeat);
+
         StartCoroutine(ActivateTrap()); 
     }
 
     public override IEnumerator ParticleTrap()
     {
         particle.Play();
-        coll.enabled = true;
+       
 
         yield return new WaitForSeconds(timeToDisable);
 
@@ -54,23 +60,9 @@ public class FireTrap: Trap
             myActivatorsController.GetComponent<ActivatorsController>().enabledAllActivators = true;
 
         particle.Stop();
-        coll.enabled = false;
         resetTrap = true;      
     }
-
-    public void OnTriggerExit(Collider coll)
-    {
-        if (coll.gameObject.tag == "Enemy")
-        {
-            enemies.Remove(coll.gameObject);
-        }
-
-        if (coll.gameObject.tag == "Player")
-        {
-            playerTrapped = false;
-        }
-    }
-
+       
     void Update()
     {
         if (activeTrap)
@@ -83,7 +75,8 @@ public class FireTrap: Trap
         if (resetTrap)
         {
             resetTrap = false;
-            enemies.Clear();
+            StopAllCoroutines();
+            
         }
     }
 }
