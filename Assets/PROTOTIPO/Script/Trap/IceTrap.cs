@@ -57,7 +57,7 @@ public class IceTrap : Trap
 
             myActivatorsController.GetComponent<ActivatorsController>().enabledAllActivators = true;
 
-            
+            StopAllCoroutines();
             resetTrap = true;
         }
         
