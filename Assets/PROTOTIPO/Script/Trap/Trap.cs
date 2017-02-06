@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public abstract class Trap: MonoBehaviour
 {
+    
     public bool activeTrap= false;
     public bool resetTrap = false;
     public bool playerTrapped = false;
@@ -18,11 +19,11 @@ public abstract class Trap: MonoBehaviour
     public Player player;
     public GameObject myActivatorsController;
     public bool isMiniTrap = false;
+    public Collider[] colliders;
+    public float radius = 4.7f;
 
-    void Start ()
-    {
-        
-    }
+
+    
 
     virtual public IEnumerator ActivateTrap()
     {
@@ -43,14 +44,11 @@ public abstract class Trap: MonoBehaviour
 
     virtual public void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject.tag == "Enemy")
-        {
-            enemies.Add(coll.gameObject);
-        }
-
-        if (coll.gameObject.tag == "Player")
-        {
-            playerTrapped = true;
-        }
+        
     } 
+
+    void LateUpdate()
+    {
+        colliders = Physics.OverlapSphere(transform.position, radius);
+    }
 }
