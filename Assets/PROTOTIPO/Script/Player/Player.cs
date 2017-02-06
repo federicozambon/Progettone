@@ -252,7 +252,6 @@ public class Player: MonoBehaviour
             {
                 newRange = dashRange;
                 Move(h, v);
-                Animating(h, v);
 
                 if (stepTutorial == true)
                 {
@@ -388,33 +387,30 @@ public class Player: MonoBehaviour
 
     void Move(float h, float v)
     {
+        Vector3 animationVector = new Vector3();
         if (isGrounded)
         {
             movement.Set(h, 0f, v);
+
             movement.x = h * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + v * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
             movement.z = -h * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + v * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
+
+            animationVector.x = h * Mathf.Cos(Mathf.Deg2Rad * (-transform.localEulerAngles.y)) + v * Mathf.Sin(Mathf.Deg2Rad * (-transform.localEulerAngles.y));
+            animationVector.z = -h * Mathf.Sin(Mathf.Deg2Rad * (-transform.localEulerAngles.y)) + v * Mathf.Cos(Mathf.Deg2Rad * (-transform.localEulerAngles.y));
+            animationVector.Normalize();
+
+            Animating(animationVector);
+
             movement = movement.normalized * speed * Time.fixedDeltaTime;
             playerRigidbody.MovePosition(transform.position + movement);
+
         }
     }
 
-    
-
-    public bool walking;
-
-    void Animating(float h, float v)
+    void Animating(Vector3 animMovement)
     {
-        walking = h != 0f || v != 0f;
-        if (walking)
-        {
-            //anim.SetBool("moving", true);
-            //anim.SetFloat("run", h);
-            //anim.SetFloat("side", v);
-        }
-        else
-        {
-            //anim.SetBool("moving", false);
-        }
+        anim.SetFloat("Forward", animMovement.z);
+        anim.SetFloat("Lateral", animMovement.x);
     }
 
     public float dashRange = 250;
