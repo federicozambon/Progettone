@@ -82,13 +82,20 @@ public class SniperEnemyFire : MonoBehaviour
     public void ParticleActivator(Vector3 position)
     {
         Transform[] effectPool = pool.GetComponentsInChildren<Transform>(true);
+        effectPool[0] = null;
 
         foreach (var effect in effectPool)
         {
+            if (effect == null || !effect.IsChildOf(pool.transform))
+            {
+                continue;
+            }
             if (!effect.gameObject.activeInHierarchy)
             {
-                EffectSettings newEffect = effect.GetComponent<EffectSettings>();
-                transformTr = newEffect.transform.parent.GetComponentsInChildren<Transform>()[1];
+
+                EffectSettings newEffect = effect.GetComponentInChildren<EffectSettings>();
+                Debug.Log(newEffect.gameObject);
+                transformTr = newEffect.transform.parent.FindChild("TransformTr");
                 transformTr.position = position;
                 newEffect.transform.position = weapon.transform.position;
                 newEffect.Target = transformTr.gameObject;
