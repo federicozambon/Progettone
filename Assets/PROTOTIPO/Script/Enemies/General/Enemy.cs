@@ -53,6 +53,10 @@ public abstract class Enemy : MonoBehaviour
     public FX fxRef;
     public BlackBoard blackRef;
 
+    AudioController aController;
+    public AudioClip myDie;
+    bool playSound = true;
+    
     public virtual void Attack()
     {
 
@@ -65,6 +69,8 @@ public abstract class Enemy : MonoBehaviour
         navRef = GetComponent<NavMeshAgent>();
         this.gameObject.SetActive(false);
         pool = GameObject.Find("ParticleEnemyExplosion");
+        aController = FindObjectOfType<AudioController>();
+        
     }
 
     bool firstTime = true;
@@ -106,6 +112,14 @@ public abstract class Enemy : MonoBehaviour
             else
             {
                 StartCoroutine("Die");
+                if (playSound == true && myDie != null)
+                {
+                    playSound = false;
+                    aController.playSound(myDie);
+                    Debug.Log("sono morto");
+                }
+                    
+
             }
         }
     }
@@ -137,7 +151,10 @@ public abstract class Enemy : MonoBehaviour
             dieController = false;
             refManager.uicontroller.IncreaseScore((int)scoreValue);
             refManager.spawnRef.StoreEnemy(this.gameObject);
+            
         }
+
+        yield return new WaitForSeconds(5);
     }
 
     public void SpawnMedikit()
