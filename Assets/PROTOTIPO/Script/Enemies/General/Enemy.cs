@@ -151,10 +151,13 @@ public abstract class Enemy : MonoBehaviour
             dieController = false;
             refManager.uicontroller.IncreaseScore((int)scoreValue);
             refManager.spawnRef.StoreEnemy(this.gameObject);
-            
+            playSound = true;
+
         }
 
         yield return new WaitForSeconds(5);
+
+        
     }
 
     public void SpawnMedikit()
