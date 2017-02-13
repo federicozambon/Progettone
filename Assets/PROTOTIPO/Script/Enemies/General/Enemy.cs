@@ -53,6 +53,10 @@ public abstract class Enemy : MonoBehaviour
     public FX fxRef;
     public BlackBoard blackRef;
 
+    AudioController aController;
+    public AudioClip myDie;
+    bool playSound = true;
+    
     public virtual void Attack()
     {
 
@@ -60,15 +64,20 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Awake()
     {
-        refManager = FindObjectOfType<ReferenceManager>();
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
+        blackRef = GetComponent<BlackBoard>();
         navRef = GetComponent<NavMeshAgent>();
+        this.gameObject.SetActive(false);
+        pool = GameObject.Find("ParticleEnemyExplosion");
+        aController = FindObjectOfType<AudioController>();
+        
     }
+
+    bool firstTime = true;
 
     void OnEnable()
     {
-        pool = GameObject.Find("ParticleEnemyExplosion");
-        //defaultMaterial = this.GetComponentInChildren<MeshRenderer>().material;
-        //enemyRb = GetComponent<Rigidbody>();
+
         refManager.miniMapRef.NewEnemy(this.gameObject);
     }
 
@@ -99,12 +108,18 @@ public abstract class Enemy : MonoBehaviour
             if (remainHPoints - damagePerShot >= 0)
             {
                 remainHPoints -= damagePerShot;
-                Debug.Log(damagePerShot);
-                knockbacked = true;
             }
             else
             {
                 StartCoroutine("Die");
+                if (playSound == true && myDie != null)
+                {
+                    playSound = false;
+                    aController.playSound(myDie);
+                    Debug.Log("sono morto");
+                }
+                    
+
             }
         }
     }
@@ -113,12 +128,13 @@ public abstract class Enemy : MonoBehaviour
 
     virtual public void ParticleActivator(Vector3 position)
     {
-        for (int i = 0; i < 18; i++)
+        for (int i = 0; i < 149; i++)
         {
-            if (!pool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.activeInHierarchy)
+            EffectSettings effectRef = pool.GetComponentsInChildren<EffectSettings>(true)[i];
+            if (!effectRef.gameObject.activeInHierarchy)
             {
-                pool.GetComponentsInChildren<EffectSettings>(true)[i].transform.position = this.transform.position;
-                pool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.SetActive(true);
+                effectRef.transform.position = this.transform.position;
+                effectRef.gameObject.SetActive(true);
                 break;
             }
         }
@@ -135,7 +151,10 @@ public abstract class Enemy : MonoBehaviour
             dieController = false;
             refManager.uicontroller.IncreaseScore((int)scoreValue);
             refManager.spawnRef.StoreEnemy(this.gameObject);
+            
         }
+
+        yield return new WaitForSeconds(5);
     }
 
     public void SpawnMedikit()

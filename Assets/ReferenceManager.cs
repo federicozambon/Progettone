@@ -8,6 +8,7 @@ public class ReferenceManager : MonoBehaviour
     public UIController uicontroller;
     public GameObject playerObj;
     public MiniMap miniMapRef;
+    public Player playerRef;
 
     public FlyCamManager flyCamRef;
 
@@ -17,7 +18,9 @@ public class ReferenceManager : MonoBehaviour
         flyCamRef = FindObjectOfType<FlyCamManager>();
         waveRef = FindObjectOfType<WaveController>();
         uicontroller = FindObjectOfType<UIController>();
-        playerObj = FindObjectOfType<Player>().gameObject;
+        playerRef = FindObjectOfType<Player>();
+        playerObj = playerRef.gameObject;
         miniMapRef = FindObjectOfType<MiniMap>();
+
     }
 }

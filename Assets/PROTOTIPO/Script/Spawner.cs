@@ -46,7 +46,6 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         waveRef = FindObjectOfType<WaveController>();
-
         arrayList = new List<SpawnerDataBase[]>();
 
         furiaPool = new List<GameObject>();
@@ -170,27 +169,39 @@ public class Spawner : MonoBehaviour
         Enemy enemyToReset = enemyToPlace.GetComponent<Enemy>();
         enemyToReset.remainHPoints = enemyToReset.hPoints;
         enemyToPlace.transform.position = position;
+        enemyToReset.dead = false;
+        enemyToReset.dieController = true;
         enemyToPlace.SetActive(true);
     }
 
     public void StoreEnemy(GameObject enemyToStore)
     {
         enemyToStore.SetActive(false);
-        enemyToStore.transform.position = new Vector3(1000, 1000, 1000);
     }
 
     public void Spawn(int waveNumber)
     {
+        int frameToSkip = 0;
         toSpawnCounter = arrayList[waveNumber].Length;
         spawnedCounter = 0;
         foreach (var enemy in arrayList[waveNumber])
         {
-            StartCoroutine(SpawnEnemy(enemy));
+            frameToSkip += 1;
+            StartCoroutine(SpawnEnemy(enemy, frameToSkip));
+         
         }
+        frameToSkip = 0;
     }
 
-    public IEnumerator SpawnEnemy(SpawnerDataBase spawnerDB)
+    public IEnumerator SpawnEnemy(SpawnerDataBase spawnerDB, int frameToSkip)
     {
+        for (int j = 0; j < 4; j++)
+        {
+            for (int i = frameToSkip + 1; i > 0; i--)
+            {
+                yield return null;
+            }
+        }
         yield return new WaitForSeconds(spawnerDB.timerEnemy);
         GameObject enemyToManage = PickEnemy(spawnerDB.typeEnemy);
         PlaceAndResetEnemy(enemyToManage, spawnerDB.spawnEnemy.transform.position);

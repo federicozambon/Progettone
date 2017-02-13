@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RocketLauncher : Weapon
 {
-
+    public ReferenceManager refManager;
     public Transform weapon;
     public GameObject projectile;
     AudioSource shootSound;
@@ -15,14 +15,15 @@ public class RocketLauncher : Weapon
     bool sparo = true;
 
     WeaponSelector wSelector;
-    UIController uiElements;
-    Player playerElements;
+
+    private void Awake()
+    {
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
+    }
 
     void Start()
     {
         wSelector = FindObjectOfType<WeaponSelector>();
-        uiElements = FindObjectOfType<UIController>();
-        playerElements = FindObjectOfType<Player>();
         shootSound = this.GetComponent<AudioSource>();
     }
 
@@ -43,7 +44,6 @@ public class RocketLauncher : Weapon
     public void Update()
     {
         float rocket = Input.GetAxisRaw("RightTrigger");
-        Debug.Log(rocket);
 
         if (rocket <= 0)
         {
@@ -57,14 +57,14 @@ public class RocketLauncher : Weapon
             
         }
 
-        if (enabled == true && playerElements.noWeapons == false && shoot == true)
+        if (enabled == true && refManager.playerRef.noWeapons == false && shoot == true)
         {
             shoot = false;
 
-            if (playerElements.rocketAmmo > 0)
+            if (refManager.playerRef.rocketAmmo > 0)
             {
-                playerElements.rocketAmmo--;
-                uiElements.ammo.text = playerElements.rocketAmmo.ToString();
+                refManager.playerRef.rocketAmmo--;
+                refManager.uicontroller.ammo.text = refManager.playerRef.rocketAmmo.ToString();
                 Shooting();
             }             
         }

@@ -6,6 +6,7 @@ public class RangedEnemyFire : MonoBehaviour
     public Transform weapon;
     public GameObject bulletPrefab;
     public bool isShooting;
+    ReferenceManager refManager;
 
     RaycastHit losRayHit;
 
@@ -17,17 +18,17 @@ public class RangedEnemyFire : MonoBehaviour
 
     void Start()
     {
-        playerGo = FindObjectOfType<Player>().gameObject;       
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
     }
 
-    public void GetPool()
+    public void Awake()
     {
-        pool = GetComponent<RangedEnemy>().poolP;
+        pool = GameObject.Find("FanteParticlePool");
     }
 
     public void Update()
     {
-        this.transform.LookAt(playerGo.transform);
+        this.transform.LookAt(refManager.playerObj.transform);
     }
 
     public IEnumerator Shooting()
@@ -38,10 +39,6 @@ public class RangedEnemyFire : MonoBehaviour
             if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(playerGo.transform.position, this.transform.position) < 15)
             {
                 ParticleActivator(playerGo.transform.FindChild("Head").position);
-            }
-            else if (!GetComponent<RangedEnemy>().isActive)
-            {
-                ParticleActivator(playerGo.transform.position);
             }
         }
         yield return new WaitForSeconds(1.5f);
@@ -58,13 +55,17 @@ public class RangedEnemyFire : MonoBehaviour
 
     public void ParticleActivator(Vector3 position)
     {
-        if (!pool.GetComponentInChildren<EffectSettings>(true).gameObject.activeInHierarchy)
+        for (int i = 0; i < 50; i++)
         {
-            transformTr = pool.GetComponentsInChildren<Transform>(true)[1];
-            transformTr.position = position;
-            pool.GetComponentInChildren<EffectSettings>(true).transform.position = weapon.transform.position;
-            pool.GetComponentInChildren<EffectSettings>(true).Target = transformTr.gameObject;
-            pool.GetComponentInChildren<EffectSettings>(true).gameObject.SetActive(true);
+            EffectSettings effectRef = pool.GetComponentsInChildren<EffectSettings>(true)[i];
+            if (!effectRef.gameObject.activeInHierarchy)
+            {
+                transformTr = effectRef.transform.parent.GetComponentsInChildren<Transform>(true)[1];
+                transformTr.position = position;
+                effectRef.transform.position = weapon.transform.position;
+                effectRef.Target = transformTr.gameObject;
+                effectRef.gameObject.SetActive(true);
+            }
         }
     }
 }

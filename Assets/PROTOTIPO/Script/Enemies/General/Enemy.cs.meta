@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: f4c652b2abc1af146902201f978e4591
-timeCreated: 1478100136
-licenseType: Pro
+timeCreated: 1486080480
+licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
@@ -16,7 +16,7 @@ MonoImporter:
   - occlusionMaterial: {instanceID: 0}
   - defaultMaterial: {instanceID: 0}
   - enemyRb: {instanceID: 0}
-  executionOrder: 0
+  executionOrder: 250
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 

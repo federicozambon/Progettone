@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SniperEnemyFire : MonoBehaviour
 {
+    public ReferenceManager refManager;
     public Transform weapon;
     public GameObject bulletPrefab;
     public LineRenderer aimLine;
@@ -17,14 +18,15 @@ public class SniperEnemyFire : MonoBehaviour
 
     public Transform playerTr;
 
+    private void Awake()
+    {
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
+        pool = GameObject.Find("SniperParticlePool");
+    }
+
     void Start()
     {
         playerTr = FindObjectOfType<Player>().transform.FindChild("Head");
-    }
-
-    public void GetPool()
-    {
-        pool = GetComponent<SniperEnemy>().poolP;
     }
 
     public IEnumerator Shooting()
@@ -36,7 +38,6 @@ public class SniperEnemyFire : MonoBehaviour
 
         while (Physics.Linecast(weapon.transform.position, playerTr.position, out losRayHit))
         {
-        Debug.Log(losRayHit.collider.gameObject.tag);
             if (losRayHit.collider.gameObject.tag == "Player")
             {
                 aimLine.SetPosition(0, weapon.position);
@@ -48,7 +49,7 @@ public class SniperEnemyFire : MonoBehaviour
                 if (timer > 3)
                 {
                     aimLine.enabled = false;
-                    FindObjectOfType<Player>().TakeDamage(damage);
+                    refManager.playerRef.TakeDamage(damage);
                     ParticleActivator(playerTr.transform.position);                 
                     isShooting = false;
                     break;
@@ -65,7 +66,7 @@ public class SniperEnemyFire : MonoBehaviour
           
     yield return new WaitForSeconds(4);
 
-    if (sparo == true && GetComponent<SniperEnemy>().hPoints > 0)
+    if (GetComponent<SniperEnemy>().hPoints > 0)
     {
         StartCoroutine(Shooting());
     }
@@ -80,15 +81,26 @@ public class SniperEnemyFire : MonoBehaviour
 
     public void ParticleActivator(Vector3 position)
     {
-        if (pool)
+        Transform[] effectPool = pool.GetComponentsInChildren<Transform>(true);
+        effectPool[0] = null;
+
+        foreach (var effect in effectPool)
         {
-            if (!pool.GetComponentInChildren<EffectSettings>(true).gameObject.activeInHierarchy)
+            if (effect == null || !effect.IsChildOf(pool.transform))
             {
-                transformTr = pool.GetComponentsInChildren<Transform>()[1];
+                continue;
+            }
+            if (!effect.gameObject.activeInHierarchy)
+            {
+
+                EffectSettings newEffect = effect.GetComponentInChildren<EffectSettings>();
+                Debug.Log(newEffect.gameObject);
+                transformTr = newEffect.transform.parent.FindChild("TransformTr");
                 transformTr.position = position;
-                pool.GetComponentInChildren<EffectSettings>(true).transform.position = weapon.transform.position;
-                pool.GetComponentInChildren<EffectSettings>(true).Target = transformTr.gameObject;
-                pool.GetComponentInChildren<EffectSettings>(true).gameObject.SetActive(true);
+                newEffect.transform.position = weapon.transform.position;
+                newEffect.Target = transformTr.gameObject;
+                newEffect.gameObject.SetActive(true);
+                break;
             }
         }
     }

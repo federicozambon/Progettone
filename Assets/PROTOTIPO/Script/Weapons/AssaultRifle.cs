@@ -70,7 +70,7 @@ public class AssaultRifle : Weapon
     {
         timer = 0f;
         collided = false;
-        gunLight.enabled = true;
+        //gunLight.enabled = true;
 
         transform.Rotate(0, 0, 0);
         while (!collided)

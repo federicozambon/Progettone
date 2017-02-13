@@ -6,6 +6,7 @@ public class TitanoEnemyFire : MonoBehaviour
     public Transform weapon;
     public GameObject bulletPrefab;
     public bool isShooting;
+    public BlackBoard blackRef;
 
     RaycastHit losRayHit;
 
@@ -13,26 +14,16 @@ public class TitanoEnemyFire : MonoBehaviour
 
     bool sparo = true;
 
-    GameObject playerGo;
-
     void Start()
     {
+        blackRef = GetComponent<BlackBoard>();
+        pool = GameObject.Find("TitanoParticlePool");
         transformTr = new Transform[10];
-        playerGo = FindObjectOfType<Player>().gameObject;
-        for (int i = 0; i < 10; i++)
-        {
-            transformTr[i] = pool.GetComponentsInChildren<Transform>(true)[i+1];
-        }
-    }
-
-    public void GetPool()
-    {
-        pool = GetComponent<TitanoEnemy>().poolP;
     }
 
     public void Update()
     {
-        this.transform.LookAt(playerGo.transform);
+        this.transform.LookAt(blackRef.playerTr);
     }
 
     public IEnumerator Shooting()
@@ -40,20 +31,17 @@ public class TitanoEnemyFire : MonoBehaviour
         isShooting = true;
         for (int i = 0; i < 10; i++)
         {
-            if (!pool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.activeInHierarchy)
+            EffectSettings effectRef = pool.GetComponentsInChildren<EffectSettings>(true)[i];
+            if (!effectRef.gameObject.activeInHierarchy)
             {
-                pool.GetComponentsInChildren<EffectSettings>(true)[i].transform.position = weapon.transform.position;
-                pool.GetComponentsInChildren<EffectSettings>(true)[i].transform.FindChild("Trail").position = weapon.transform.position;
+                effectRef.transform.position = weapon.transform.position;
+                effectRef.transform.FindChild("Trail").position = weapon.transform.position;
             }
-            if (Physics.Linecast(weapon.transform.position, playerGo.transform.position, out losRayHit))
+            if (Physics.Linecast(weapon.transform.position, blackRef.playerTr.position, out losRayHit))
             {
-                if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(playerGo.transform.position, this.transform.position) < 40)
+                if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(blackRef.playerTr.position, this.transform.position) < 40)
                 {
-                    ParticleActivator(playerGo.transform.FindChild("Head").position);
-                }
-                else if (!GetComponent<TitanoEnemy>().isActive)
-                {
-                    ParticleActivator(playerGo.transform.position);
+                    ParticleActivator(blackRef.playerTr.FindChild("Head").position);
                 }
             }
             yield return new WaitForSeconds(0.2f);
@@ -61,7 +49,7 @@ public class TitanoEnemyFire : MonoBehaviour
         yield return new WaitForSeconds(1);
         isShooting = false;
 
-        if (GetComponent<TitanoEnemy>().hPoints < 0)
+        if (blackRef.enemyRef.hPoints < 0)
         {
             StopAllCoroutines();
         }
@@ -72,19 +60,22 @@ public class TitanoEnemyFire : MonoBehaviour
 
     public void ParticleActivator(Vector3 position)
     {
-
-        for (int i = 0; i < 10; i++)
+        for (int j = 0; j < 10; j++)
         {
-            if (pool)
+            for (int i = 0; i < 10; i++)
             {
-                if (!pool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.activeInHierarchy)
-                {               
-                    transformTr[i].position = position;            
-                    pool.GetComponentsInChildren<EffectSettings>(true)[i].Target = transformTr[i].gameObject;
-                    pool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.SetActive(true);
-                    break;
+                {
+                    EffectSettings effectRef = pool.GetComponentsInChildren<EffectSettings>(true)[j];
+                    if (!effectRef.gameObject.activeInHierarchy)
+                    {
+                        transformTr[i] = effectRef.transform.parent.GetComponentsInChildren<Transform>()[1 + i];
+                        transformTr[i].position = position;
+                        effectRef.Target = transformTr[i].gameObject;
+                        effectRef.gameObject.SetActive(true);
+                        break;
+                    }
                 }
             }
-        }  
+        }
     }
 }

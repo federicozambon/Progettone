@@ -222,15 +222,6 @@ public class FlyCamManager : MonoBehaviour
         yield return new WaitForSeconds(2);
     }
 
-    public IEnumerator ActivateEnemies()
-    {
-        yield return new WaitForSeconds(3f);
-        foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-        {
-            enemy.GetComponent<Enemy>().isActive = true;
-        }
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Cancel"))
