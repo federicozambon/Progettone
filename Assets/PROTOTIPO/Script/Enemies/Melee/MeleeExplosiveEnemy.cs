@@ -14,6 +14,9 @@ public class MeleeExplosiveEnemy : Enemy
         suicidePool = GameObject.Find("ExplosiveFuriaParticlePool");
         hPoints = 50;
         comboValue = 10;
+        id = transform.GetSiblingIndex();
+        myParticle = suicidePool.transform.GetChild(id);
+        myEffect = myParticle.GetComponentsInChildren<EffectSettings>(true)[0];
     }
 
     private void Start()
@@ -41,17 +44,15 @@ public class MeleeExplosiveEnemy : Enemy
         }
     }
 
+    public Transform transformTr;
+    Transform myParticle;
+    int id;
+    EffectSettings myEffect;
+
     public void SuicideParticleActivator(Vector3 position)
     {
-        for (int i = 0; i < 10; i++)
-        {
-            if (!suicidePool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.activeInHierarchy)
-            {
-                suicidePool.GetComponentsInChildren<EffectSettings>(true)[i].transform.position = this.transform.position;
-                suicidePool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.SetActive(true);
-                break;
-            }
-        }
+        myEffect.transform.position = transform.position;
+        myEffect.gameObject.SetActive(true);
     }
 
     public override void Attack()
