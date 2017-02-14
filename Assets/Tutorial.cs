@@ -33,7 +33,6 @@ public class Tutorial : MonoBehaviour
     {
         if (currentScene == "Tutorial")
         {
-            Debug.LogError("sasdasd");
             NextStep();
         }
     }
