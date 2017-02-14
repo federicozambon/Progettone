@@ -21,9 +21,14 @@ public abstract class Trap: MonoBehaviour
     public bool isMiniTrap = false;
     public Collider[] colliders;
     public float radius = 4.7f;
+    public AudioController aController;
+    public AudioClip myDie;
+    public bool playSound = true;
 
-
-    
+    void Awake()
+    {
+        aController = FindObjectOfType<AudioController>();
+    }
 
     virtual public IEnumerator ActivateTrap()
     {

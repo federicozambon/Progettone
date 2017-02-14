@@ -100,6 +100,8 @@ public class FireTrap: Trap
         if (isMiniTrap)
         {
             particle.Play();
+            playSound = false;
+            aController.playSound(myDie);
             this.transform.parent.GetComponent<MeshRenderer>().enabled = false;
             isMiniTrap = false;
             StartCoroutine(MiniTrap());
