@@ -17,10 +17,6 @@ public class MeleeExplosiveEnemy : Enemy
         id = transform.GetSiblingIndex();
         myParticle = suicidePool.transform.GetChild(id);
         myEffect = myParticle.GetComponentsInChildren<EffectSettings>(true)[0];
-    }
-
-    private void Start()
-    {
         this.gameObject.SetActive(false);
     }
 
