@@ -10,7 +10,7 @@ public class IceTrap : Trap
 
     void Start ()
     {
-
+        
         player = FindObjectOfType<Player>();
         
     }
@@ -62,6 +62,8 @@ public class IceTrap : Trap
         }
         else
         {
+            
+            
             iceEffect.GetComponent<LazyLoad>().enabled = false;
             Destroy(this.transform.parent.gameObject);
         }
@@ -81,7 +83,16 @@ public class IceTrap : Trap
         }
 
         if (isMiniTrap == true)
+        {
             this.transform.parent.GetComponent<MeshRenderer>().enabled = false;
+            if (playSound == true)
+            {
+                playSound = false;
+                aController.playSound(myDie);
+            }
+            
+        }
+            
 
         if (resetTrap == true)
         {
