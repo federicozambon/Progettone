@@ -6,10 +6,6 @@ using System.Collections.Generic;
 public class MeleeEnemy : Enemy
 {
     public Transform face;
-    public GameObject bulletPrefab;
-
-    public GameObject particlePoolPrefab;
-    public GameObject poolP;
 
     RaycastHit losRayHit;
     public bool isShooting;
@@ -18,9 +14,12 @@ public class MeleeEnemy : Enemy
     {
         base.Awake();
         face = headRef;
-        //poolP = GameObject.Find("FuriaPool");
+        poolP = GameObject.Find("FuriaParticlePool");
         hPoints = 50;
         comboValue = 10;
+        id = transform.GetSiblingIndex();
+        myParticle = poolP.transform.GetChild(id);
+        myEffect = myParticle.GetComponent<EffectSettings>();
     }
 
     public float attackTimer = 1;
@@ -77,22 +76,16 @@ public class MeleeEnemy : Enemy
         }
     }
 
-    public Transform transformTr;
+    public GameObject poolP;
+    Transform myParticle;
+    int id;
+    EffectSettings myEffect;
 
     public void AttackParticleActivator(Vector3 position)
     {
-        if (pool)
-        {
-            EffectSettings effectRef = pool.GetComponentInChildren<EffectSettings>(true);
-            if (!effectRef.gameObject.activeInHierarchy)
-            {
-                transformTr = GetComponentsInChildren<Transform>()[1];
-                transformTr.position = position;
-                effectRef.transform.position = face.transform.position;
-                effectRef.Target = transformTr.gameObject;
-                effectRef.gameObject.SetActive(true);
-            }
-        }
+        myEffect.Target = headRef.gameObject;
+        myEffect.transform.position = headRef.position;
+        myEffect.gameObject.SetActive(true);
     }
 }
 

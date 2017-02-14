@@ -22,6 +22,10 @@ public class SniperEnemyFire : MonoBehaviour
     {
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
         pool = GameObject.Find("SniperParticlePool");
+        id = transform.GetSiblingIndex();
+        myParticle = pool.transform.GetChild(id);
+        myEffect = myParticle.GetComponentsInChildren<EffectSettings>(true)[0];
+        transformTr = myParticle.GetComponentsInChildren<Transform>(true)[1];
     }
 
     void Start()
@@ -78,30 +82,15 @@ public class SniperEnemyFire : MonoBehaviour
 
     public GameObject pool;
     public Transform transformTr;
+    Transform myParticle;
+    int id;
+    EffectSettings myEffect;
 
     public void ParticleActivator(Vector3 position)
     {
-        Transform[] effectPool = pool.GetComponentsInChildren<Transform>(true);
-        effectPool[0] = null;
-
-        foreach (var effect in effectPool)
-        {
-            if (effect == null || !effect.IsChildOf(pool.transform))
-            {
-                continue;
-            }
-            if (!effect.gameObject.activeInHierarchy)
-            {
-
-                EffectSettings newEffect = effect.GetComponentInChildren<EffectSettings>();
-                Debug.Log(newEffect.gameObject);
-                transformTr = newEffect.transform.parent.FindChild("TransformTr");
-                transformTr.position = position;
-                newEffect.transform.position = weapon.transform.position;
-                newEffect.Target = transformTr.gameObject;
-                newEffect.gameObject.SetActive(true);
-                break;
-            }
-        }
+        transformTr.position = position;
+        myEffect.transform.position = weapon.transform.position;
+        myEffect.Target = transformTr.gameObject;
+        myEffect.gameObject.SetActive(true);
     }
 }
