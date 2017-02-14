@@ -60,6 +60,12 @@ public class IceTrap : Trap
             StopAllCoroutines();
             resetTrap = true;
         }
+        else
+        {
+            iceEffect.GetComponent<LazyLoad>().enabled = false;
+            Destroy(this.transform.parent.gameObject);
+        }
+
         
     }
 
@@ -74,10 +80,12 @@ public class IceTrap : Trap
             StartCoroutine(ActivateTrap());
         }
 
+        if (isMiniTrap == true)
+            this.transform.parent.GetComponent<MeshRenderer>().enabled = false;
+
         if (resetTrap == true)
         {
             resetTrap = false;
- 
         }
 
     }

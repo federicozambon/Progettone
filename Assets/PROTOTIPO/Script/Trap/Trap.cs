@@ -30,6 +30,11 @@ public abstract class Trap: MonoBehaviour
         yield return null;
     }
 
+    virtual public IEnumerator MiniTrap()
+    {
+        yield return null;
+    }
+
     virtual public IEnumerator ParticleTrap()
     {
         yield return null;
