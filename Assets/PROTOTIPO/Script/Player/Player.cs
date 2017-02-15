@@ -78,8 +78,8 @@ public class Player: MonoBehaviour
     {
         if (coll.tag == "Health_PickUp")
         {
-            coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
-            coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
+            //coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
+            //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
                 if (refManager.uicontroller.score >= baseCost[0] * costModifier[0])
@@ -100,8 +100,8 @@ public class Player: MonoBehaviour
 
         if (coll.tag == "Ammo_PickUp")
         {
-            coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
-            coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
+            //coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
+            //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
           
@@ -123,8 +123,8 @@ public class Player: MonoBehaviour
 
         if (coll.tag == "Weapon_PickUp")
         {
-            coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
-            coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
+            //coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
+            //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
                 if (refManager.uicontroller.score >= baseCost[2] * costModifier[2])
@@ -146,8 +146,8 @@ public class Player: MonoBehaviour
 
         if (coll.tag == "Armor_PickUp")
         {
-            coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
-            coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
+            //coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
+            //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
                 if (refManager.uicontroller.score >= baseCost[3] * costModifier[3])
