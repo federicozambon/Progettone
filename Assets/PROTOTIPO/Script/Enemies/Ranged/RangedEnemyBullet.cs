@@ -8,7 +8,6 @@ public class RangedEnemyBullet: MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll)
     {
-        Debug.LogError(coll.gameObject);
         if (coll.gameObject.tag == "Player")
         {
             FindObjectOfType<Player>().TakeDamage(damage);

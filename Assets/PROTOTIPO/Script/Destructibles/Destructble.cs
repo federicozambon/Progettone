@@ -45,12 +45,21 @@ public class Destructble : MonoBehaviour
 
     public IEnumerator Die()
     {
-        GameObject newTrap = Instantiate(myTrap);
-        newTrap.transform.position = this.transform.position;
-        newTrap.GetComponent<Trap>().isMiniTrap = true;
-        newTrap.GetComponent<Trap>().activeTrap = true;
-        newTrap.GetComponent<Trap>().playerTrapped = false;
-        yield return new WaitForSeconds(0.5f);
-        Destroy(this.gameObject);
+
+        if (transform.GetChild(0).gameObject.tag == "Fire")
+        {
+            transform.GetChild(0).gameObject.GetComponent<FireTrap>().isMiniTrap = true;
+        }
+            
+        else if (transform.GetChild(0).gameObject.tag == "Ice")
+        {
+            transform.GetChild(0).gameObject.GetComponent<IceTrap>().activeTrap = true;
+            transform.GetChild(0).gameObject.GetComponent<IceTrap>().isMiniTrap = true;
+        }
+            
+
+
+                yield return new WaitForSeconds(3f);
+        //Destroy(this.gameObject);
     }	
 }

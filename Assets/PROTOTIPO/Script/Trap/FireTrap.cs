@@ -20,7 +20,8 @@ public class FireTrap: Trap
 	
 	public override IEnumerator ActivateTrap()
     {
-        foreach (var coll in colliders)
+        
+            foreach (var coll in colliders)
         {
             if (coll.gameObject.tag == "Enemy")
             {
@@ -43,7 +44,7 @@ public class FireTrap: Trap
         
         yield return new WaitForSeconds(timeToRepeat);
 
-        StartCoroutine(ActivateTrap()); 
+            StartCoroutine(ActivateTrap()); 
     }
 
     public override IEnumerator ParticleTrap()
@@ -53,16 +54,40 @@ public class FireTrap: Trap
 
         yield return new WaitForSeconds(timeToDisable);
 
-        if (isMiniTrap)
-            Destroy(this.gameObject);
-
-        else
-            myActivatorsController.GetComponent<ActivatorsController>().enabledAllActivators = true;
+        myActivatorsController.GetComponent<ActivatorsController>().enabledAllActivators = true;
 
         particle.Stop();
         resetTrap = true;      
     }
-       
+
+    public override IEnumerator MiniTrap()
+    {
+        foreach (var coll in colliders)
+        {
+            if (coll.gameObject.tag == "Enemy")
+            {
+                Enemy nemico = coll.GetComponent<Enemy>();
+                if (nemico.remainHPoints > 0)
+                    nemico.remainHPoints -= healthPointDamage;
+                else
+                {
+                    nemico.StartCoroutine(nemico.Die());
+                }
+            }
+
+            if (coll.gameObject.tag == "Player")
+            {
+                playerRef.TakeDamage(playerPointDamage);
+            }
+
+        }
+
+
+        yield return new WaitForSeconds(timeToDisable);
+
+        Destroy(this.transform.parent.gameObject);
+    }
+
     void Update()
     {
         if (activeTrap)
@@ -70,6 +95,17 @@ public class FireTrap: Trap
             activeTrap = false;
             StartCoroutine(ParticleTrap());
             StartCoroutine(ActivateTrap());
+        }
+
+        if (isMiniTrap)
+        {
+            particle.Play();
+            playSound = false;
+            aController.playSound(myDie);
+            this.transform.parent.GetComponent<MeshRenderer>().enabled = false;
+            isMiniTrap = false;
+            StartCoroutine(MiniTrap());
+
         }
 
         if (resetTrap)

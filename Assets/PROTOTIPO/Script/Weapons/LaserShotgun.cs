@@ -16,12 +16,10 @@ public class LaserShotgun : Weapon
 
     void Awake()
     {
-        gunLight = GetComponent<Light>();
         shootHit = new RaycastHit[6];
         rotRef = FindObjectOfType<Player>();
         playerGo = rotRef.gameObject;
         
-        gunLight = GetComponent<Light>();
         wSelector = FindObjectOfType<WeaponSelector>();
         assaultRifle = GetComponent<AssaultRifle>();
         laserShotgun = this;
@@ -71,7 +69,6 @@ public class LaserShotgun : Weapon
     {
         timer = 0f;
         collided = false;
-        gunLight.enabled = true;
 
         transform.Rotate(0, 0, 0);
         while (!collided)

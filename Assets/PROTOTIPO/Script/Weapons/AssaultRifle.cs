@@ -55,6 +55,8 @@ public class AssaultRifle : Weapon
             weaponArray[1].gameObject.SetActive(false);
             this.enabled = false;
         }
+
+        Debug.Log("PORCO DIO");
     }
 
     
