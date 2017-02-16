@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/PROTOTIPO/PlaceHolder/Mezanix.meta
 guid: 8f397383250add8418c9a36a5a58903a
 folderAsset: yes
 timeCreated: 1485791165
 licenseType: Pro
+=======
+guid: 7d95a1089f2396d4e81aa03e4f0c3c71
+folderAsset: yes
+timeCreated: 1487237371
+licenseType: Free
+>>>>>>> 2c415244742b8b636d19050692598487f21f8343:Assets/PROTOTIPO/PlaceHolder/Mezanix.meta
 DefaultImporter:
   userData: 
   assetBundleName: 
