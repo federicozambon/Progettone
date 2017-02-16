@@ -56,7 +56,7 @@ public class AssaultRifle : Weapon
             this.enabled = false;
         }
 
-        Debug.Log("PORCO DIO");
+        
     }
 
     
