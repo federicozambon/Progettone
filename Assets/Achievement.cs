@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Achievement : MonoBehaviour {
 
@@ -9,14 +10,55 @@ public class Achievement : MonoBehaviour {
     public int discarica = 0;
     public int montacarichiB = 0;
     public int tetto = 0;
-	
-	void Start () {
+
+    public string currentScene;
+
+    void Start () {
 
         DontDestroyOnLoad(this.gameObject);
-	}
+        
+    }
 	
 	
-	void SaveScore () {
-	
-	}
+	public void SaveScore (int score)
+    {
+        currentScene = SceneManager.GetActiveScene().name;
+
+        switch (currentScene)
+        {
+            case "Montacarichi1":
+                if (score > montacarichiA)
+                {
+                    total += score;
+                    montacarichiA = score;
+                }
+                
+                break;
+
+            case "Discarica":
+                if (score > discarica)
+                {
+                    total += score;
+                    discarica = score;
+                }
+                break;
+
+            case "Montacarichi2":
+                if (score > montacarichiB)
+                {
+                    total += score;
+                    montacarichiB = score;
+                }
+                break;
+
+            case "Tetto":
+                if (score > montacarichiB)
+                {
+                    total += score;
+                    montacarichiB = score;
+                }
+                break;
+
+        }
+    }
 }

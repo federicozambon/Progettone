@@ -53,6 +53,8 @@ public class Player: MonoBehaviour
     public RaycastHit[] antiOcclusionHit;
     public List<OccludedObject> occludedGoList = new List<OccludedObject>();
     GameObject[] allEnemies;
+    Achievement achievement;
+    UIController uiElements;
 
     void Awake()
     {
@@ -60,6 +62,8 @@ public class Player: MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
         tutorialElements = FindObjectOfType<Tutorial>();
+        achievement = FindObjectOfType<Achievement>();
+        uiElements = FindObjectOfType<UIController>();
     }
 
     public void DestroyAllEnemies()
@@ -317,7 +321,8 @@ public class Player: MonoBehaviour
 
         if (Input.GetButtonDown("Selection") && Input.GetButtonDown("GodMode"))
         {
-            SceneManager.LoadScene("Prova Menu modifica");
+            achievement.SaveScore(uiElements.score);
+            SceneManager.LoadScene(0);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

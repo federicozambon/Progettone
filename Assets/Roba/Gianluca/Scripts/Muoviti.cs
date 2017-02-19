@@ -1,16 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI; 
 
 public class Muoviti : MonoBehaviour {
-    public Transform CurrentPos, MainPos, MontacarichiPos, DiscaricaPos, TettoPos, FonderiaPos, PalazzoPos;
+    public Transform CurrentPos, MainPos, MontacarichiPos, DiscaricaPos, TettoPos, FonderiaPos, PalazzoPos, Achievement,
+        AchivMontacarichiA;
     public GameObject button;
+    public GameObject buttonAchievement;
+    public List<int> ScoreMontacarichiA;
+    public List<Button> ButtonsMontacarichiA;
+    Achievement achievement;
 
-	// Use this for initialization
-	void Start ()
+
+
+    // Use this for initialization
+    void Start ()
 
     {
-        //CurrentPos = MainPos;
+        achievement = FindObjectOfType<Achievement>();
 
     }
 	
@@ -33,6 +41,39 @@ public class Muoviti : MonoBehaviour {
 
     }
 
+    public void Achievment()
+
+    {
+        CurrentPos = Achievement;
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonAchievement);
+
+    }
+
+    public void AchievmentMontacarichiA()
+
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (achievement.montacarichiA >= ScoreMontacarichiA[i])
+            {
+                ColorBlock cb = ButtonsMontacarichiA[i].colors;
+                cb.normalColor = Color.white;
+                ButtonsMontacarichiA[i].colors = cb;
+                ColorBlock cb1 = ButtonsMontacarichiA[i].colors;
+                cb1.highlightedColor = new Color(0, 33, 255, 255);
+                ButtonsMontacarichiA[i].colors = cb1;
+            }
+        }
+        
+            
+        CurrentPos = AchivMontacarichiA;
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(ButtonsMontacarichiA[0].gameObject);
+
+    }
+
+    
     public void Montacarichi()
 
     {
