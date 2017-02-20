@@ -5,12 +5,23 @@ using UnityEngine.UI;
 
 public class Muoviti : MonoBehaviour {
     public Transform CurrentPos, MainPos, MontacarichiPos, DiscaricaPos, TettoPos, FonderiaPos, PalazzoPos, Achievement,
-        AchivMontacarichiA;
+        AchivMontacarichiA, AchivDiscarica, AchivMontacarichiB, AchivTetto;
     public GameObject button;
     public GameObject buttonAchievement;
     public List<int> ScoreMontacarichiA;
     public List<Button> ButtonsMontacarichiA;
+    public List<string> textMontacarichiA;
+    public List<int> ScoreDiscarica;
+    public List<Button> ButtonsDiscarica;
+    public List<string> textDiscarica;
+    public List<int> ScoreMontacarichiB;
+    public List<Button> ButtonsMontacarichiB;
+    public List<string> textMontacarichiB;
+    public List<int> ScoreTetto;
+    public List<Button> ButtonsTetto;
+    public List<string> textTetto;
     Achievement achievement;
+    public Text txtMontacarichiA, txtDiscarica, txtMontacarichiB, txtTetto;
 
 
 
@@ -27,8 +38,35 @@ public class Muoviti : MonoBehaviour {
     {
         transform.localPosition = Vector3.Lerp(transform.localPosition, CurrentPos.position, 0.05f);
         transform.localRotation = Quaternion.Slerp(transform.localRotation, CurrentPos.rotation, 0.05f);
-	
-	}
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+
+            if (CurrentPos == Achievement)
+            {
+                CurrentPos = MainPos;
+                GameObject myEventSystem = GameObject.Find("EventSystem");
+                myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(button);
+            }
+
+            else if (CurrentPos == AchivMontacarichiA || CurrentPos == AchivDiscarica || CurrentPos == AchivMontacarichiB || AchivTetto)
+            {
+                txtMontacarichiA.text = "";
+                txtDiscarica.text = "";
+                txtMontacarichiB.text = "";
+                txtTetto.text = "";
+                CurrentPos = Achievement;
+                GameObject myEventSystem = GameObject.Find("EventSystem");
+                myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonAchievement);
+            }
+
+            
+             
+
+        }
+
+
+    }
 
 
 
@@ -64,7 +102,7 @@ public class Muoviti : MonoBehaviour {
                 cb1.highlightedColor = new Color(0, 33, 255, 255);
                 ButtonsMontacarichiA[i].colors = cb1;
             }
-        }
+     }
         
             
         CurrentPos = AchivMontacarichiA;
@@ -72,8 +110,196 @@ public class Muoviti : MonoBehaviour {
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(ButtonsMontacarichiA[0].gameObject);
 
     }
+    public void SbloccoMontacarichiA_0()
 
-    
+    {
+            ColorBlock cb = ButtonsMontacarichiA[0].colors;
+            if (cb.normalColor == Color.white)
+            {
+                txtMontacarichiA.text = textMontacarichiA[0];
+            }
+   
+    }
+    public void SbloccoMontacarichiA_1()
+
+    {
+        ColorBlock cb = ButtonsMontacarichiA[1].colors;
+        if (cb.normalColor == Color.white)
+        {
+            txtMontacarichiA.text = textMontacarichiA[1];
+        }
+
+    }
+    public void SbloccoMontacarichiA_2()
+
+    {
+        ColorBlock cb = ButtonsMontacarichiA[2].colors;
+        if (cb.normalColor == Color.white)
+        {
+            txtMontacarichiA.text = textMontacarichiA[2];
+        }
+
+    }
+
+    public void AchievementDiscarica()
+
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (achievement.discarica >= ScoreDiscarica[i])
+            {
+                ColorBlock cb = ButtonsDiscarica[i].colors;
+                cb.normalColor = Color.white;
+                ButtonsDiscarica[i].colors = cb;
+                ColorBlock cb1 = ButtonsDiscarica[i].colors;
+                cb1.highlightedColor = new Color(0, 33, 255, 255);
+                ButtonsDiscarica[i].colors = cb1;
+            }
+        }
+
+
+        CurrentPos = AchivDiscarica;
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(ButtonsDiscarica[0].gameObject);
+
+    }
+    public void SbloccoDiscarica_0()
+
+    {
+        ColorBlock cb = ButtonsDiscarica[0].colors;
+        if (cb.normalColor == Color.white)
+        {
+            txtDiscarica.text = textDiscarica[0];
+        }
+
+    }
+    public void SbloccoDiscarica_1()
+
+    {
+        ColorBlock cb = ButtonsDiscarica[1].colors;
+        if (cb.normalColor == Color.white)
+        {
+            txtDiscarica.text = textDiscarica[1];
+        }
+
+    }
+    public void SbloccoDiscarica_2()
+
+    {
+        ColorBlock cb = ButtonsDiscarica[2].colors;
+        if (cb.normalColor == Color.white)
+        {
+            txtDiscarica.text = textDiscarica[2];
+        }
+
+    }
+
+    public void AchievmentMontacarichiB()
+
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (achievement.montacarichiB >= ScoreMontacarichiB[i])
+            {
+                ColorBlock cb = ButtonsMontacarichiB[i].colors;
+                cb.normalColor = Color.white;
+                ButtonsMontacarichiB[i].colors = cb;
+                ColorBlock cb1 = ButtonsMontacarichiB[i].colors;
+                cb1.highlightedColor = new Color(0, 33, 255, 255);
+                ButtonsMontacarichiB[i].colors = cb1;
+            }
+        }
+
+
+        CurrentPos = AchivMontacarichiB;
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(ButtonsMontacarichiB[0].gameObject);
+
+    }
+    public void SbloccoMontacarichiB_0()
+
+    {
+        ColorBlock cb = ButtonsMontacarichiB[0].colors;
+        if (cb.normalColor == Color.white)
+        {
+            txtMontacarichiB.text = textMontacarichiB[0];
+        }
+
+    }
+    public void SbloccoMontacarichiB_1()
+
+    {
+        ColorBlock cb = ButtonsMontacarichiB[1].colors;
+        if (cb.normalColor == Color.white)
+        {
+            txtMontacarichiB.text = textMontacarichiB[1];
+        }
+
+    }
+    public void SbloccoMontacarichiB_2()
+
+    {
+        ColorBlock cb = ButtonsMontacarichiB[2].colors;
+        if (cb.normalColor == Color.white)
+        {
+            txtMontacarichiB.text = textMontacarichiB[2];
+        }
+
+    }
+
+    public void AchievementTetto()
+
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (achievement.tetto >= ScoreTetto[i])
+            {
+                ColorBlock cb = ButtonsTetto[i].colors;
+                cb.normalColor = Color.white;
+                ButtonsTetto[i].colors = cb;
+                ColorBlock cb1 = ButtonsTetto[i].colors;
+                cb1.highlightedColor = new Color(0, 33, 255, 255);
+                ButtonsTetto[i].colors = cb1;
+            }
+        }
+
+
+        CurrentPos = AchivTetto;
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(ButtonsTetto[0].gameObject);
+
+    }
+    public void SbloccoTetto_0()
+
+    {
+        ColorBlock cb = ButtonsTetto[0].colors;
+        if (cb.normalColor == Color.white)
+        {
+            txtTetto.text = textTetto[0];
+        }
+
+    }
+    public void SbloccoTetto_1()
+
+    {
+        ColorBlock cb = ButtonsTetto[1].colors;
+        if (cb.normalColor == Color.white)
+        {
+            txtTetto.text = textTetto[1];
+        }
+
+    }
+    public void SbloccoTetto_2()
+
+    {
+        ColorBlock cb = ButtonsTetto[2].colors;
+        if (cb.normalColor == Color.white)
+        {
+            txtTetto.text = textTetto[2];
+        }
+
+    }
+
     public void Montacarichi()
 
     {
@@ -81,7 +307,7 @@ public class Muoviti : MonoBehaviour {
 
     }
 
-    public void Discarica()
+    public void Discaricaa()
 
     {
         CurrentPos = DiscaricaPos;
