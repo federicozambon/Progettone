@@ -319,8 +319,7 @@ public class Player: MonoBehaviour
 
         }
 
-        if (Input.GetButtonDown("Selection") && Input.GetButtonDown("GodMode"))
-        {
+        if (Input.GetButtonDown("Previous Weapon"))        {
             achievement.SaveScore(uiElements.score);
             SceneManager.LoadScene(0);
         }

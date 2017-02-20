@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine.UI; 
 
 public class Muoviti : MonoBehaviour {
-    public Transform CurrentPos, MainPos, MontacarichiPos, DiscaricaPos, TettoPos, FonderiaPos, PalazzoPos, Achievement,
+    public GameObject achivementGame;
+    public Transform CurrentPos, StartPos, MainPos, MontacarichiPos, DiscaricaPos, TettoPos, FonderiaPos, PalazzoPos, Achievement, Crediti,
         AchivMontacarichiA, AchivDiscarica, AchivMontacarichiB, AchivTetto;
+    public GameObject buttonStart;
     public GameObject button;
     public GameObject buttonAchievement;
     public List<int> ScoreMontacarichiA;
@@ -26,10 +28,21 @@ public class Muoviti : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
 
     {
         achievement = FindObjectOfType<Achievement>();
+        if (achievement == null)
+        {
+            Instantiate(achivementGame);
+            achievement = FindObjectOfType<Achievement>();
+        }
+            
+
+    }
+
+    void Start()
+    {
 
     }
 	
@@ -42,7 +55,17 @@ public class Muoviti : MonoBehaviour {
         if (Input.GetButtonDown("Fire2"))
         {
 
-            if (CurrentPos == Achievement)
+            if (CurrentPos == StartPos)
+                Debug.Log("Resto nel menu");
+
+            else if (CurrentPos == MainPos)
+            {
+                CurrentPos = StartPos;
+                GameObject myEventSystem = GameObject.Find("EventSystem");
+                myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonStart);
+            }
+
+            else if (CurrentPos == Achievement || CurrentPos == Crediti)
             {
                 CurrentPos = MainPos;
                 GameObject myEventSystem = GameObject.Find("EventSystem");
@@ -86,6 +109,13 @@ public class Muoviti : MonoBehaviour {
         GameObject myEventSystem = GameObject.Find("EventSystem");
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonAchievement);
 
+    }
+
+    public void Credits()
+
+    {
+        CurrentPos = Crediti;
+     
     }
 
     public void AchievmentMontacarichiA()
