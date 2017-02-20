@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Muoviti : MonoBehaviour {
     public GameObject achivementGame;
-    public Transform CurrentPos, StartPos, MainPos, MontacarichiPos, DiscaricaPos, TettoPos, FonderiaPos, PalazzoPos, Achievement, Crediti,
+    public Transform CurrentPos, StartPos, MainPos, MontacarichiPos, DiscaricaPos, TettoPos, FonderiaPos, PalazzoPos, Achievement, Crediti, Opzioni,
         AchivMontacarichiA, AchivDiscarica, AchivMontacarichiB, AchivTetto;
     public GameObject buttonStart;
     public GameObject button;
@@ -24,6 +24,7 @@ public class Muoviti : MonoBehaviour {
     public List<string> textTetto;
     Achievement achievement;
     public Text txtMontacarichiA, txtDiscarica, txtMontacarichiB, txtTetto;
+    public Text recordMontacarichiA, recordDiscarica, recordMontacarichiB, recordTetto;
 
 
 
@@ -65,7 +66,7 @@ public class Muoviti : MonoBehaviour {
                 myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonStart);
             }
 
-            else if (CurrentPos == Achievement || CurrentPos == Crediti)
+            else if (CurrentPos == Achievement || CurrentPos == Crediti || CurrentPos == Opzioni)
             {
                 CurrentPos = MainPos;
                 GameObject myEventSystem = GameObject.Find("EventSystem");
@@ -108,6 +109,10 @@ public class Muoviti : MonoBehaviour {
         CurrentPos = Achievement;
         GameObject myEventSystem = GameObject.Find("EventSystem");
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonAchievement);
+        recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
+        recordDiscarica.text = "Record : " + achievement.discarica.ToString();
+        recordMontacarichiB.text = "Record : " + achievement.montacarichiB.ToString();
+        recordTetto.text = "Record : " + achievement.tetto.ToString();
 
     }
 
@@ -116,6 +121,13 @@ public class Muoviti : MonoBehaviour {
     {
         CurrentPos = Crediti;
      
+    }
+
+    public void Options()
+
+    {
+        CurrentPos = Opzioni;
+
     }
 
     public void AchievmentMontacarichiA()
