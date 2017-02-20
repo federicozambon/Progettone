@@ -55,7 +55,7 @@ public class Achievement : MonoBehaviour {
                 if (score > montacarichiB)
                 {
                     total += score;
-                    montacarichiB = score;
+                    tetto = score;
                 }
                 break;
 
