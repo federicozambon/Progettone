@@ -24,6 +24,7 @@ public class Muoviti : MonoBehaviour {
     public List<string> textTetto;
     Achievement achievement;
     public Text txtMontacarichiA, txtDiscarica, txtMontacarichiB, txtTetto;
+    public Text recordMontacarichiA, recordDiscarica, recordMontacarichiB, recordTetto;
 
 
 
@@ -108,6 +109,10 @@ public class Muoviti : MonoBehaviour {
         CurrentPos = Achievement;
         GameObject myEventSystem = GameObject.Find("EventSystem");
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonAchievement);
+        recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
+        recordDiscarica.text = "Record : " + achievement.discarica.ToString();
+        recordMontacarichiB.text = "Record : " + achievement.montacarichiB.ToString();
+        recordTetto.text = "Record : " + achievement.tetto.ToString();
 
     }
 
