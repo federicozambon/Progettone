@@ -12,11 +12,13 @@ public class AssaultRifle : Weapon
     AudioSource shootSound;
     Player player;
 
+
     public Transform[] transformTr;
     bool isPoolFull = false;
 
     void Awake()
-    {      
+    {
+
         rotRef = FindObjectOfType<Player>();
         playerGo = rotRef.gameObject;
         gunLight = GetComponent<Light>();
@@ -37,6 +39,8 @@ public class AssaultRifle : Weapon
 
     public void Update()
     {
+
+
         timer += Time.deltaTime;
 
         if (rotRef.rotating && timer >= timeBetweenBullets && Time.timeScale != 0 && player.noWeapons == false)

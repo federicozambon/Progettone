@@ -36,6 +36,7 @@ public class RangedEnemyFire : MonoBehaviour
 
     public IEnumerator Shooting()
     {
+  
         isShooting = true;
         if (Physics.Linecast(weapon.transform.position, refManager.playerObj.transform.position, out losRayHit))
         {
