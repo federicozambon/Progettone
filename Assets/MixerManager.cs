@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MixerManager : MonoBehaviour {
     public AudioMixer BackgroundMusic;
-
+    public string exposedVar;
     public Slider sliderRef;
    
 	// Use this for initialization
@@ -22,11 +22,6 @@ public class MixerManager : MonoBehaviour {
 	// Update is called once per frame
 	public void BackGroundMusicLvl ()
     {
-        BackgroundMusic.SetFloat("MyExposedParam", sliderRef.value);
-    }
-
-    public void BackGroundMusicLvl2(float MusicLvl2)
-    {
-        BackgroundMusic.SetFloat("MyExposedParam 2", MusicLvl2);
+        BackgroundMusic.SetFloat(exposedVar, sliderRef.value);
     }
 }
