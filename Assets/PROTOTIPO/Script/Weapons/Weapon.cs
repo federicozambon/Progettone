@@ -19,7 +19,7 @@ public abstract class Weapon: MonoBehaviour
     public bool collided;
     public int deltaDegrees;
     public float timer;
-    public MeshRenderer[] weaponArray = new MeshRenderer[3];
+    public MeshRenderer[] weaponArray = new MeshRenderer[2];
 
     public int equippedWeapon;
 }
