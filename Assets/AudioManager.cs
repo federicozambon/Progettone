@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    [Range(0, 1)]
-    public float audiovolume;
+    
+    static Slider sliderRef;
 
-   
-    public void Update ()
+    void Awake()
     {
-        AudioListener.volume = audiovolume;
+        sliderRef = GetComponent<Slider>();
+        AudioListener.volume = sliderRef.value;
     }
-    public void QuitToMenu ()
+
+
+    public void SetVolume ()
     {
-        
+        AudioListener.volume = sliderRef.value;
     }
 }
