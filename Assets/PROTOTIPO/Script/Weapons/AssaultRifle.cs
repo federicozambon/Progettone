@@ -55,8 +55,7 @@ public class AssaultRifle : Weapon
             wSelector.ChangeWeapon(2);
             laserShotgun.enabled = true;
             weaponArray[0].gameObject.SetActive(false);
-            weaponArray[2].gameObject.SetActive(true);
-            weaponArray[1].gameObject.SetActive(false);
+            weaponArray[1].gameObject.SetActive(true);
             this.enabled = false;
         }
 

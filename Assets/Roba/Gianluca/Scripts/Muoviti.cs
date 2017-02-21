@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class Muoviti : MonoBehaviour {
     public GameObject achivementGame;
-    public Transform CurrentPos, StartPos, MainPos, MontacarichiPos, DiscaricaPos, TettoPos, FonderiaPos, PalazzoPos, Achievement, Crediti, Opzioni,
+    public Transform CurrentPos, StartPos, MainPos, Achievement, Crediti, Opzioni, Controlli, Volume,
         AchivMontacarichiA, AchivDiscarica, AchivMontacarichiB, AchivTetto;
     public GameObject buttonStart;
     public GameObject button;
     public GameObject buttonAchievement;
+    public GameObject buttonOptions;
     public List<int> ScoreMontacarichiA;
     public List<Button> ButtonsMontacarichiA;
     public List<string> textMontacarichiA;
@@ -73,6 +74,13 @@ public class Muoviti : MonoBehaviour {
                 myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(button);
             }
 
+            else if (CurrentPos == Volume || CurrentPos == Controlli)
+            {
+                CurrentPos = Opzioni;
+                GameObject myEventSystem = GameObject.Find("EventSystem");
+                myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonOptions);
+            }
+                
             else if (CurrentPos == AchivMontacarichiA || CurrentPos == AchivDiscarica || CurrentPos == AchivMontacarichiB || AchivTetto)
             {
                 txtMontacarichiA.text = "";
@@ -119,14 +127,27 @@ public class Muoviti : MonoBehaviour {
     public void Credits()
 
     {
+        
         CurrentPos = Crediti;
      
+    }
+
+    public void VolumeOptions()
+    {
+        CurrentPos = Volume;
+    }
+
+    public void ControlliOptions()
+    {
+        CurrentPos = Controlli;
     }
 
     public void Options()
 
     {
         CurrentPos = Opzioni;
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonOptions);
 
     }
 
@@ -342,43 +363,7 @@ public class Muoviti : MonoBehaviour {
 
     }
 
-    public void Montacarichi()
-
-    {
-        CurrentPos = MontacarichiPos;
-
-    }
-
-    public void Discaricaa()
-
-    {
-        CurrentPos = DiscaricaPos;
-
-    }
-
-    public void Tetto()
-
-    {
-        CurrentPos = TettoPos;
-   
-
-    }
-
-    public void Fonderia()
-
-    {
-        CurrentPos = FonderiaPos;
-
-    }
-
-
-   public void Palazzo()
-
-    {
-        CurrentPos = PalazzoPos;
-
-
-    }
+    
 
     
 }

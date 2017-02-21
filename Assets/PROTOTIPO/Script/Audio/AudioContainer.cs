@@ -19,6 +19,13 @@ public class AudioContainer : MonoBehaviour {
     public AudioClip Laser_Sparo;
     public AudioClip Shotgun_Sparo;
     public AudioClip RocketLauncher_Sparo;
+    public AudioClip Dash;
+
+    public AudioClip Armor_PickUp;
+    public AudioClip Weapon_PickUp;
+    public AudioClip Ammo_PickUp;
+    public AudioClip Health_PickUp;
+    
 
 
     void Start ()

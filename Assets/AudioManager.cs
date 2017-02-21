@@ -12,13 +12,13 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         sliderRef = GetComponent<Slider>();
-        AudioListener.volume = sliderRef.value;
+        //AudioListener.volume = sliderRef.value;
     }
 
 
     public void SetVolume ()
     {
-        AudioListener.volume = sliderRef.value;
+        //AudioListener.volume = sliderRef.value;
     }
 }
 */

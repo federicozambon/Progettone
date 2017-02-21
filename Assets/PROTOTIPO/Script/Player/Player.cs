@@ -55,6 +55,8 @@ public class Player: MonoBehaviour
     GameObject[] allEnemies;
     Achievement achievement;
     UIController uiElements;
+    AudioSource aSource;
+    public AudioController aController;
 
     void Awake()
     {
@@ -64,6 +66,8 @@ public class Player: MonoBehaviour
         tutorialElements = FindObjectOfType<Tutorial>();
         achievement = FindObjectOfType<Achievement>();
         uiElements = FindObjectOfType<UIController>();
+        aSource = GetComponent<AudioSource>();
+        aController = FindObjectOfType<AudioController>();
     }
 
     public void DestroyAllEnemies()
@@ -88,6 +92,7 @@ public class Player: MonoBehaviour
             {
                 if (refManager.uicontroller.score >= baseCost[0] * costModifier[0])
                 {
+                    aController.playSound(AudioContainer.Self.Health_PickUp);
                     refManager.uicontroller.score -= (int)(baseCost[0] * costModifier[0]);
                     costModifier[0] += 0.5f;
                     coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[0] * costModifier[0] + "\n" + "Restore Health";
@@ -111,6 +116,7 @@ public class Player: MonoBehaviour
           
                 if (refManager.uicontroller.score >= baseCost[1] * costModifier[1])
                 {
+                    aController.playSound(AudioContainer.Self.Ammo_PickUp);
                     refManager.uicontroller.score -= (int)(baseCost[1] * costModifier[1]);
                     costModifier[1] += 0.5f;
                     coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[1] * costModifier[1] + "\n" + "Restore Health";
@@ -133,6 +139,7 @@ public class Player: MonoBehaviour
             {
                 if (refManager.uicontroller.score >= baseCost[2] * costModifier[2])
                 {
+                    aController.playSound(AudioContainer.Self.Weapon_PickUp);
                     damageModifier += 0.25f;
                     refManager.uicontroller.UpdateWeaponUpgrade(25);
                     refManager.uicontroller.score -= (int)(baseCost[2] * costModifier[2]);
@@ -156,7 +163,7 @@ public class Player: MonoBehaviour
             {
                 if (refManager.uicontroller.score >= baseCost[3] * costModifier[3])
                 {
-
+                    aController.playSound(AudioContainer.Self.Armor_PickUp);
                     refManager.uicontroller.score -= (int)(baseCost[3] * costModifier[3]);
                     costModifier[2] += 0.5f;
                     coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[3] * costModifier[3] + "\n" + "Restore Health";
@@ -423,6 +430,9 @@ public class Player: MonoBehaviour
 
     IEnumerator Dash()
     {
+        aSource.clip = AudioContainer.Self.Dash;
+        aSource.Play();
+
         isDashing = true;
         dashRay.origin = transform.position;
         dashRay.direction = movement.normalized;
@@ -453,6 +463,7 @@ public class Player: MonoBehaviour
         trailRef.enabled = false;
         yield return new WaitForSeconds(0.3f);
         playerRigidbody.drag = 1;
+        yield return new WaitForSeconds(0.3f);
         dashAttivo = true;
         newRange = dashRange;
     }
