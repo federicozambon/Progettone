@@ -97,6 +97,9 @@ public class Muoviti : MonoBehaviour {
 
         }
 
+        if (Input.GetButtonDown("GodMode") && CurrentPos == StartPos)
+            Menu();
+
 
     }
 
