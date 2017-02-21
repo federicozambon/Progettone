@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/*
 public class AudioManager : MonoBehaviour
 {
     
@@ -20,3 +21,4 @@ public class AudioManager : MonoBehaviour
         AudioListener.volume = sliderRef.value;
     }
 }
+*/
