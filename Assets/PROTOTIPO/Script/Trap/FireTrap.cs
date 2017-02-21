@@ -50,7 +50,8 @@ public class FireTrap: Trap
     public override IEnumerator ParticleTrap()
     {
         particle.Play();
-       
+        playSound = false;
+            aController.playSound(myDie);
 
         yield return new WaitForSeconds(timeToDisable);
 
@@ -107,6 +108,7 @@ public class FireTrap: Trap
             StartCoroutine(MiniTrap());
 
         }
+       
 
         if (resetTrap)
         {

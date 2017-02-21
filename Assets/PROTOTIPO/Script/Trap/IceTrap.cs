@@ -38,7 +38,9 @@ public class IceTrap : Trap
     public override IEnumerator ParticleTrap()
     {
         iceEffect.GetComponent<LazyLoad>().enabled = true;
-        
+
+        playSound = false;
+        aController.playSound(myDie);
 
         yield return new WaitForSeconds(timeToDisable);
 
@@ -92,7 +94,6 @@ public class IceTrap : Trap
             }
             
         }
-            
 
         if (resetTrap == true)
         {
