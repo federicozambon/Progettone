@@ -49,6 +49,7 @@ public class Muoviti : MonoBehaviour {
 
     void Start()
     {
+        SaveRecords();
         recordTotale.text = achievement.total.ToString();
         recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
         recordDiscarica.text = "Record : " + achievement.discarica.ToString();
@@ -113,7 +114,12 @@ public class Muoviti : MonoBehaviour {
 
     public void Quit()
     {
-       if (achievement.montacarichiA > PlayerPrefs.GetInt("scoreMontacarichiA"))
+       Application.Quit();
+    }
+
+    public void SaveRecords()
+    {
+        if (achievement.montacarichiA > PlayerPrefs.GetInt("scoreMontacarichiA"))
             PlayerPrefs.SetInt("scoreMontacarichiA", achievement.montacarichiA);
 
         if (achievement.discarica > PlayerPrefs.GetInt("scoreDiscarica"))
@@ -129,8 +135,6 @@ public class Muoviti : MonoBehaviour {
             PlayerPrefs.SetInt("scoreTotale", achievement.total);
 
         PlayerPrefs.Save();
-
-        Application.Quit();
     }
 
     public void Menu()
