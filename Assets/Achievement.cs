@@ -16,7 +16,13 @@ public class Achievement : MonoBehaviour {
     void Start () {
 
         DontDestroyOnLoad(this.gameObject);
+
         
+        montacarichiA = PlayerPrefs.GetInt("scoreMontacarichiA", montacarichiA);
+        discarica = PlayerPrefs.GetInt("scoreDiscarica", discarica);
+        montacarichiB = PlayerPrefs.GetInt("scoreMontacarichiB", montacarichiB);
+        tetto = PlayerPrefs.GetInt("scoreTetto", tetto);
+
     }
 	
 	

@@ -27,6 +27,7 @@ public class Muoviti : MonoBehaviour {
     Achievement achievement;
     public Text txtMontacarichiA, txtDiscarica, txtMontacarichiB, txtTetto;
     public Text recordMontacarichiA, recordDiscarica, recordMontacarichiB, recordTetto;
+    public static int scoreMontacarichiA, scoreDiscarica, scoreMontacarichiB, scoreTetto;
 
 
 
@@ -39,6 +40,7 @@ public class Muoviti : MonoBehaviour {
         {
             Instantiate(achivementGame);
             achievement = FindObjectOfType<Achievement>();
+
         }
             
 
@@ -46,7 +48,7 @@ public class Muoviti : MonoBehaviour {
 
     void Start()
     {
-
+        
     }
 	
 	// Update is called once per frame
@@ -104,7 +106,21 @@ public class Muoviti : MonoBehaviour {
 
     }
 
+    public void Quit()
+    {
+        //scoreMontacarichiA = achievement.montacarichiA;
+        //scoreDiscarica = achievement.discarica;
+        //scoreMontacarichiB = achievement.montacarichiB;
+        //scoreTetto = achievement.tetto;
 
+        PlayerPrefs.SetInt("scoreMontacarichiA", achievement.montacarichiA);
+        PlayerPrefs.SetInt("scoreDiscarica", achievement.discarica);
+        PlayerPrefs.SetInt("scoreMontacarichiB", achievement.montacarichiB);
+        PlayerPrefs.SetInt("scoreTetto", achievement.tetto);
+        PlayerPrefs.Save();
+
+        //Application.Quit();
+    }
 
     public void Menu()
 
