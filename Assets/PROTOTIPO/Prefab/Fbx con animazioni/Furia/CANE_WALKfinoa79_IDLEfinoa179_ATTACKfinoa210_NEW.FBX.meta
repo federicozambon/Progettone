@@ -1,0 +1,433 @@
+fileFormatVersion: 2
+guid: 3642b0d86682c0f4385e87a8e208f25f
+timeCreated: 1487774864
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: B_bacino
+    100002: B_coda_01
+    100004: B_coda_02
+    100006: B_coda_03
+    100008: B_coda_04
+    100010: B_coda_05
+    100012: B_coda_06
+    100014: B_coda_07
+    100016: B_coda_08
+    100018: B_coda_09
+    100020: B_coda_10
+    100022: B_collo_00
+    100024: B_collo_01
+    100026: B_collo_02
+    100028: B_DX_avabraccio
+    100030: B_DX_braccio
+    100032: B_DX_coscia_dietro
+    100034: B_DX_gamba_dietro
+    100036: B_DX_gomito
+    100038: B_DX_zampa
+    100040: B_DX_zampa_dietro
+    100042: B_head
+    100044: B_nose
+    100046: B_SX_avabraccio
+    100048: B_SX_braccio
+    100050: B_SX_coscia_dietro
+    100052: B_SX_gamba_dietro
+    100054: B_SX_gomito
+    100056: B_SX_zampa
+    100058: B_SX_zampa_dietro
+    100060: B_torso_01
+    100062: B_torso_02
+    100064: CANE_BOOM
+    100066: //RootNode
+    400000: B_bacino
+    400002: B_coda_01
+    400004: B_coda_02
+    400006: B_coda_03
+    400008: B_coda_04
+    400010: B_coda_05
+    400012: B_coda_06
+    400014: B_coda_07
+    400016: B_coda_08
+    400018: B_coda_09
+    400020: B_coda_10
+    400022: B_collo_00
+    400024: B_collo_01
+    400026: B_collo_02
+    400028: B_DX_avabraccio
+    400030: B_DX_braccio
+    400032: B_DX_coscia_dietro
+    400034: B_DX_gamba_dietro
+    400036: B_DX_gomito
+    400038: B_DX_zampa
+    400040: B_DX_zampa_dietro
+    400042: B_head
+    400044: B_nose
+    400046: B_SX_avabraccio
+    400048: B_SX_braccio
+    400050: B_SX_coscia_dietro
+    400052: B_SX_gamba_dietro
+    400054: B_SX_gomito
+    400056: B_SX_zampa
+    400058: B_SX_zampa_dietro
+    400060: B_torso_01
+    400062: B_torso_02
+    400064: CANE_BOOM
+    400066: //RootNode
+    4300000: CANE_BOOM
+    7400000: Walk
+    7400002: Idle
+    7400004: Attack
+    9500000: //RootNode
+    13700000: CANE_BOOM
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: B_bacino
+        weight: 1
+      - path: B_bacino/B_coda_01
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06/B_coda_07
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06/B_coda_07/B_coda_08
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06/B_coda_07/B_coda_08/B_coda_09
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06/B_coda_07/B_coda_08/B_coda_09/B_coda_10
+        weight: 1
+      - path: B_bacino/B_DX_coscia_dietro
+        weight: 1
+      - path: B_bacino/B_DX_coscia_dietro/B_DX_gamba_dietro
+        weight: 1
+      - path: B_bacino/B_DX_coscia_dietro/B_DX_gamba_dietro/B_DX_zampa_dietro
+        weight: 1
+      - path: B_bacino/B_SX_coscia_dietro
+        weight: 1
+      - path: B_bacino/B_SX_coscia_dietro/B_SX_gamba_dietro
+        weight: 1
+      - path: B_bacino/B_SX_coscia_dietro/B_SX_gamba_dietro/B_SX_zampa_dietro
+        weight: 1
+      - path: B_bacino/B_torso_01
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_collo_02
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_collo_02/B_collo_01
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_collo_02/B_collo_01/B_head
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_collo_02/B_collo_01/B_head/B_nose
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_DX_braccio
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_DX_braccio/B_DX_gomito
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_DX_braccio/B_DX_gomito/B_DX_avabraccio
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_DX_braccio/B_DX_gomito/B_DX_avabraccio/B_DX_zampa
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_SX_braccio
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_SX_braccio/B_SX_gomito
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_SX_braccio/B_SX_gomito/B_SX_avabraccio
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_SX_braccio/B_SX_gomito/B_SX_avabraccio/B_SX_zampa
+        weight: 1
+      - path: CANE_BOOM
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 80
+      lastFrame: 179
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: B_bacino
+        weight: 1
+      - path: B_bacino/B_coda_01
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06/B_coda_07
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06/B_coda_07/B_coda_08
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06/B_coda_07/B_coda_08/B_coda_09
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06/B_coda_07/B_coda_08/B_coda_09/B_coda_10
+        weight: 1
+      - path: B_bacino/B_DX_coscia_dietro
+        weight: 1
+      - path: B_bacino/B_DX_coscia_dietro/B_DX_gamba_dietro
+        weight: 1
+      - path: B_bacino/B_DX_coscia_dietro/B_DX_gamba_dietro/B_DX_zampa_dietro
+        weight: 1
+      - path: B_bacino/B_SX_coscia_dietro
+        weight: 1
+      - path: B_bacino/B_SX_coscia_dietro/B_SX_gamba_dietro
+        weight: 1
+      - path: B_bacino/B_SX_coscia_dietro/B_SX_gamba_dietro/B_SX_zampa_dietro
+        weight: 1
+      - path: B_bacino/B_torso_01
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_collo_02
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_collo_02/B_collo_01
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_collo_02/B_collo_01/B_head
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_collo_02/B_collo_01/B_head/B_nose
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_DX_braccio
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_DX_braccio/B_DX_gomito
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_DX_braccio/B_DX_gomito/B_DX_avabraccio
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_DX_braccio/B_DX_gomito/B_DX_avabraccio/B_DX_zampa
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_SX_braccio
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_SX_braccio/B_SX_gomito
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_SX_braccio/B_SX_gomito/B_SX_avabraccio
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_SX_braccio/B_SX_gomito/B_SX_avabraccio/B_SX_zampa
+        weight: 1
+      - path: CANE_BOOM
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 180
+      lastFrame: 210
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: B_bacino
+        weight: 1
+      - path: B_bacino/B_coda_01
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06/B_coda_07
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06/B_coda_07/B_coda_08
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06/B_coda_07/B_coda_08/B_coda_09
+        weight: 1
+      - path: B_bacino/B_coda_01/B_coda_02/B_coda_03/B_coda_04/B_coda_05/B_coda_06/B_coda_07/B_coda_08/B_coda_09/B_coda_10
+        weight: 1
+      - path: B_bacino/B_DX_coscia_dietro
+        weight: 1
+      - path: B_bacino/B_DX_coscia_dietro/B_DX_gamba_dietro
+        weight: 1
+      - path: B_bacino/B_DX_coscia_dietro/B_DX_gamba_dietro/B_DX_zampa_dietro
+        weight: 1
+      - path: B_bacino/B_SX_coscia_dietro
+        weight: 1
+      - path: B_bacino/B_SX_coscia_dietro/B_SX_gamba_dietro
+        weight: 1
+      - path: B_bacino/B_SX_coscia_dietro/B_SX_gamba_dietro/B_SX_zampa_dietro
+        weight: 1
+      - path: B_bacino/B_torso_01
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_collo_02
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_collo_02/B_collo_01
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_collo_02/B_collo_01/B_head
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_collo_02/B_collo_01/B_head/B_nose
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_DX_braccio
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_DX_braccio/B_DX_gomito
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_DX_braccio/B_DX_gomito/B_DX_avabraccio
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_DX_braccio/B_DX_gomito/B_DX_avabraccio/B_DX_zampa
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_SX_braccio
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_SX_braccio/B_SX_gomito
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_SX_braccio/B_SX_gomito/B_SX_avabraccio
+        weight: 1
+      - path: B_bacino/B_torso_01/B_torso_02/B_collo_00/B_SX_braccio/B_SX_gomito/B_SX_avabraccio/B_SX_zampa
+        weight: 1
+      - path: CANE_BOOM
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -11,6 +11,7 @@ public class Muoviti : MonoBehaviour {
     public GameObject button;
     public GameObject buttonAchievement;
     public GameObject buttonOptions;
+    public GameObject buttonVolume;
     public List<int> ScoreMontacarichiA;
     public List<Button> ButtonsMontacarichiA;
     public List<string> textMontacarichiA;
@@ -138,6 +139,8 @@ public class Muoviti : MonoBehaviour {
     public void VolumeOptions()
     {
         CurrentPos = Volume;
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonVolume);
     }
 
     public void ControlliOptions()
