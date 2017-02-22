@@ -95,7 +95,7 @@ public class Player: MonoBehaviour
                     aController.playSound(AudioContainer.Self.Health_PickUp);
                     refManager.uicontroller.score -= (int)(baseCost[0] * costModifier[0]);
                     costModifier[0] += 0.5f;
-                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[0] * costModifier[0] + "\n" + "Restore Health";
+                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$" + baseCost[0] * costModifier[0];
                     refManager.uicontroller.UpdateScore();
                     currentHealth = maxHealth;
                     refManager.uicontroller.IncreaseLife();
@@ -119,7 +119,7 @@ public class Player: MonoBehaviour
                     aController.playSound(AudioContainer.Self.Ammo_PickUp);
                     refManager.uicontroller.score -= (int)(baseCost[1] * costModifier[1]);
                     costModifier[1] += 0.5f;
-                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[1] * costModifier[1] + "\n" + "Restore Health";
+                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$" + baseCost[1] * costModifier[1];
                     refManager.uicontroller.UpdateScore();
                     rocketAmmo += 5;
                     refManager.uicontroller.ammo.text = rocketAmmo.ToString();
@@ -144,7 +144,7 @@ public class Player: MonoBehaviour
                     refManager.uicontroller.UpdateWeaponUpgrade(25);
                     refManager.uicontroller.score -= (int)(baseCost[2] * costModifier[2]);
                     costModifier[2] += 0.5f;
-                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[2] * costModifier[2] + "\n" + "Restore Health";
+                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$" + baseCost[2] * costModifier[2];
                     refManager.uicontroller.UpdateScore();
                     refManager.uicontroller.UpdateWeaponUpgrade(25);             
                 }
@@ -166,7 +166,7 @@ public class Player: MonoBehaviour
                     aController.playSound(AudioContainer.Self.Armor_PickUp);
                     refManager.uicontroller.score -= (int)(baseCost[3] * costModifier[3]);
                     costModifier[2] += 0.5f;
-                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[3] * costModifier[3] + "\n" + "Restore Health";
+                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$" + baseCost[3] * costModifier[3];
                     refManager.uicontroller.UpdateScore();
                     maxHealth += 25;
                     armorUpgrade += 25;
@@ -188,28 +188,28 @@ public class Player: MonoBehaviour
         {
             refManager.uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[0] * costModifier[0] + "\n" + "Restore Health";
+            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$" + baseCost[0] * costModifier[0];
         }
 
         if (coll.tag == "Ammo_PickUp")
         {
             refManager.uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[1] * costModifier[1] + "\n" + "Reload Rockets";
+            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$" + baseCost[1] * costModifier[1];
         }
 
         if (coll.tag == "Weapon_PickUp")
         {
             refManager.uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[2] * costModifier[2] + "\n" + "Empower Weapons";
+            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$" + baseCost[2] * costModifier[2];
         }
 
         if (coll.tag == "Armor_PickUp")
         {
             refManager.uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$ " + baseCost[3] * costModifier[3] + "\n" + "Empower shields";
+            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$" + baseCost[3] * costModifier[3];
         }
     }
 

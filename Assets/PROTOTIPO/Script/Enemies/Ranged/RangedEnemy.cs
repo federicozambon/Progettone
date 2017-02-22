@@ -48,7 +48,7 @@ public class RangedEnemy : Enemy
             animRef.SetFloat("Blend", Mathf.Clamp01(navRef.velocity.magnitude));
             animRef.SetBool("Attack", false);
         }
-        Debug.LogWarning(Mathf.Clamp01(navRef.velocity.magnitude));
+        //Debug.LogWarning(Mathf.Clamp01(navRef.velocity.magnitude));
 
         transform.LookAt(new Vector3(refManager.playerObj.transform.position.x, this.transform.position.y, refManager.playerObj.transform.position.z));
     }
