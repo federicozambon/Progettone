@@ -16,23 +16,23 @@ public class MenuSelection : MonoBehaviour {
 
     public void Montacarichi1()
     {
-        SceneManager.LoadScene("Montacarichi1");
+        SceneManager.LoadScene("Intro_Montacarichi1");
     }
 
     public void Discarica()
     {
-        SceneManager.LoadScene("Discarica");
+        SceneManager.LoadScene("Intro_Discarica");
    
     }
 
     public void Montacarichi2()
     {
-        SceneManager.LoadScene("Montacarichi2");
+        SceneManager.LoadScene("Intro_Montacarichi2");
     }
 
     public void Tetto()
     {
-        SceneManager.LoadScene("Tetto");
+        SceneManager.LoadScene("Intro_Tetto");
 
     }
 }
