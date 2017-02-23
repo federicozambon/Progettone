@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Muoviti : MonoBehaviour {
     public GameObject achivementGame;
     public Transform CurrentPos, StartPos, MainPos, Achievement, Crediti, Opzioni, Controlli, Volume,
-        AchivMontacarichiA, AchivDiscarica, AchivMontacarichiB, AchivTetto;
+    AchivMontacarichiA, AchivDiscarica, AchivMontacarichiB, AchivTetto;
     public GameObject buttonStart;
     public GameObject button;
     public GameObject buttonAchievement;
@@ -26,7 +26,8 @@ public class Muoviti : MonoBehaviour {
     public List<string> textTetto;
     Achievement achievement;
     public Text txtMontacarichiA, txtDiscarica, txtMontacarichiB, txtTetto;
-    public Text recordMontacarichiA, recordDiscarica, recordMontacarichiB, recordTetto;
+    public Text recordTotale, recordMontacarichiA, recordDiscarica, recordMontacarichiB, recordTetto;
+    public static int scoreMontacarichiA, scoreDiscarica, scoreMontacarichiB, scoreTetto;
 
 
 
@@ -39,14 +40,21 @@ public class Muoviti : MonoBehaviour {
         {
             Instantiate(achivementGame);
             achievement = FindObjectOfType<Achievement>();
+
         }
-            
+
+        
 
     }
 
     void Start()
     {
-
+        SaveRecords();
+        recordTotale.text = achievement.total.ToString();
+        recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
+        recordDiscarica.text = "Record : " + achievement.discarica.ToString();
+        recordMontacarichiB.text = "Record : " + achievement.montacarichiB.ToString();
+        recordTetto.text = "Record : " + achievement.tetto.ToString();
     }
 	
 	// Update is called once per frame
@@ -104,7 +112,30 @@ public class Muoviti : MonoBehaviour {
 
     }
 
+    public void Quit()
+    {
+       Application.Quit();
+    }
 
+    public void SaveRecords()
+    {
+        if (achievement.montacarichiA > PlayerPrefs.GetInt("scoreMontacarichiA"))
+            PlayerPrefs.SetInt("scoreMontacarichiA", achievement.montacarichiA);
+
+        if (achievement.discarica > PlayerPrefs.GetInt("scoreDiscarica"))
+            PlayerPrefs.SetInt("scoreDiscarica", achievement.discarica);
+
+        if (achievement.montacarichiB > PlayerPrefs.GetInt("scoreMontacarichiB"))
+            PlayerPrefs.SetInt("scoreMontacarichiB", achievement.montacarichiB);
+
+        if (achievement.tetto > PlayerPrefs.GetInt("scoreTetto"))
+            PlayerPrefs.SetInt("scoreTetto", achievement.tetto);
+
+        if (achievement.total > PlayerPrefs.GetInt("scoreTotale"))
+            PlayerPrefs.SetInt("scoreTotale", achievement.total);
+
+        PlayerPrefs.Save();
+    }
 
     public void Menu()
 
@@ -121,10 +152,7 @@ public class Muoviti : MonoBehaviour {
         CurrentPos = Achievement;
         GameObject myEventSystem = GameObject.Find("EventSystem");
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonAchievement);
-        recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
-        recordDiscarica.text = "Record : " + achievement.discarica.ToString();
-        recordMontacarichiB.text = "Record : " + achievement.montacarichiB.ToString();
-        recordTetto.text = "Record : " + achievement.tetto.ToString();
+        
 
     }
 
@@ -367,6 +395,26 @@ public class Muoviti : MonoBehaviour {
             txtTetto.text = textTetto[2];
         }
 
+    }
+
+    public void DeleteRecord()
+    {
+        achievement.total = 0;
+        achievement.montacarichiA = 0;
+        achievement.discarica = 0;
+        achievement.montacarichiB = 0;
+        achievement.tetto = 0;
+
+        PlayerPrefs.SetInt("scoreMontacarichiA", achievement.montacarichiA);
+        PlayerPrefs.SetInt("scoreDiscarica", achievement.discarica);
+        PlayerPrefs.SetInt("scoreMontacarichiB", achievement.montacarichiB);
+        PlayerPrefs.SetInt("scoreTetto", achievement.tetto);
+        PlayerPrefs.SetInt("scoreTotale", achievement.total);
+
+        recordTotale.text = achievement.total.ToString();
+        
+
+        PlayerPrefs.Save();
     }
 
     
