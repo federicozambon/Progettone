@@ -7,7 +7,7 @@ public class RangedEnemyFire : MonoBehaviour
     public GameObject bulletPrefab;
     public bool isShooting;
     ReferenceManager refManager;
-
+    RangedEnemy enemyRef;
     RaycastHit losRayHit;
 
     public float speed = 10;
@@ -16,12 +16,13 @@ public class RangedEnemyFire : MonoBehaviour
 
     void Start()
     {
-
+   
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
     }
 
     public void Awake()
     {
+        enemyRef = GetComponent<RangedEnemy>();
         pool = GameObject.Find("FanteParticlePool");
         id = transform.GetSiblingIndex();
         myParticle = pool.transform.GetChild(id);
@@ -36,10 +37,10 @@ public class RangedEnemyFire : MonoBehaviour
 
     public IEnumerator Shooting()
     {
-  
         isShooting = true;
         if (Physics.Linecast(weapon.transform.position, refManager.playerObj.transform.position, out losRayHit))
         {
+            enemyRef.animRef.SetBool("Attack", true);
             if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(refManager.playerObj.transform.position, this.transform.position) < 15)
             {
                 ParticleActivator(refManager.playerObj.transform.FindChild("Head").position);

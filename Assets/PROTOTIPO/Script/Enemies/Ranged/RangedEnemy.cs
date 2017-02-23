@@ -6,11 +6,9 @@ public class RangedEnemy : Enemy
 {
     public GameObject particlePoolPrefab;
     public RangedEnemyFire rangedFireRef;
-    Animator animRef;
 
     void Start()
     {
-        animRef = GetComponent<Animator>();
         rangedFireRef = GetComponent<RangedEnemyFire>();
         hPoints = 25;
         comboValue = 10;
@@ -37,15 +35,17 @@ public class RangedEnemy : Enemy
 
     void Update()
     {
-
-        if (!rangedFireRef.isShooting)
+        if (Vector3.Dot(transform.forward, navRef.velocity)>0)
         {
-            animRef.SetFloat("Blend", 0);
-            animRef.SetBool("Attack", true);
+            animRef.SetFloat("Blend", blackRef.navRef.velocity.magnitude);
         }
         else
         {
-            animRef.SetFloat("Blend", Mathf.Clamp01(navRef.velocity.magnitude));
+            animRef.SetFloat("Blend", -blackRef.navRef.velocity.magnitude);
+        }
+
+        if (!rangedFireRef.isShooting)
+        {
             animRef.SetBool("Attack", false);
         }
         //Debug.LogWarning(Mathf.Clamp01(navRef.velocity.magnitude));

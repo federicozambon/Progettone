@@ -56,7 +56,8 @@ public abstract class Enemy : MonoBehaviour
     AudioController aController;
     public AudioClip myDie;
     bool playSound = true;
-    
+    public Animator animRef;
+
     public virtual void Attack()
     {
 
@@ -64,13 +65,13 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Awake()
     {
+        animRef = GetComponentInChildren<Animator>();
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
         blackRef = GetComponent<BlackBoard>();
         navRef = GetComponent<NavMeshAgent>();
         this.gameObject.SetActive(false);
         pool = GameObject.Find("ParticleEnemyExplosion");
-        aController = FindObjectOfType<AudioController>();
-        
+        aController = FindObjectOfType<AudioController>();   
     }
 
     bool firstTime = true;

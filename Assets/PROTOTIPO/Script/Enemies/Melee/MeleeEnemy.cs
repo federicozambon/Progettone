@@ -10,8 +10,17 @@ public class MeleeEnemy : Enemy
     RaycastHit losRayHit;
     public bool isShooting;
 
-    public override void Awake()
+    void Update()
     {
+        if (!isShooting)
+        {
+            animRef.SetBool("Attack", false);
+        }
+        animRef.SetFloat("Speed", blackRef.navRef.velocity.magnitude);
+    }
+
+    public override void Awake()
+    {      
         base.Awake();
         face = headRef;
         poolP = GameObject.Find("FuriaParticlePool");
@@ -41,6 +50,7 @@ public class MeleeEnemy : Enemy
 
     public IEnumerator AttackCd()
     {
+
         yield return new WaitForSeconds(2);
         isShooting = false;
     }
@@ -54,6 +64,7 @@ public class MeleeEnemy : Enemy
         {
             if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(face.transform.position, refManager.playerObj.transform.position) < 3)
             {
+                animRef.SetBool("Attack", true);
                 //transform.LookAt(new Vector3(playerGo.transform.position.x, this.transform.position.y, playerGo.transform.position.z));
                 timer += Time.deltaTime;
                 yield return null;

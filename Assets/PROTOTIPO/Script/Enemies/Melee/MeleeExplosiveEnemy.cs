@@ -67,9 +67,16 @@ public class MeleeExplosiveEnemy : Enemy
 
     public void Update()
     {
+        animRef.SetFloat("Speed", navRef.velocity.magnitude);
+
         if (isAttacking)
         {
+            animRef.SetBool("Attack", true);
             timer += Time.deltaTime;
+        }
+        else
+        {
+            animRef.SetBool("Attack", false);
         }
         if (timer >= attackTimer)
         {
