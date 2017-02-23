@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class Muoviti : MonoBehaviour {
     public GameObject achivementGame;
-    public Transform CurrentPos, StartPos, MainPos, Achievement, Crediti, Opzioni, Controlli, Volume,
+    public Transform CurrentPos, StartPos, MainPos, Achievement, Crediti, Opzioni, Controlli, Volume, Records,
     AchivMontacarichiA, AchivDiscarica, AchivMontacarichiB, AchivTetto;
     public GameObject buttonStart;
     public GameObject button;
     public GameObject buttonAchievement;
     public GameObject buttonOptions;
     public GameObject buttonVolume;
+    public GameObject buttonRecords;
     public List<int> ScoreMontacarichiA;
     public List<Button> ButtonsMontacarichiA;
     public List<string> textMontacarichiA;
@@ -83,7 +84,7 @@ public class Muoviti : MonoBehaviour {
                 myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(button);
             }
 
-            else if (CurrentPos == Volume || CurrentPos == Controlli)
+            else if (CurrentPos == Volume || CurrentPos == Controlli || CurrentPos == Records)
             {
                 CurrentPos = Opzioni;
                 GameObject myEventSystem = GameObject.Find("EventSystem");
@@ -152,7 +153,16 @@ public class Muoviti : MonoBehaviour {
         CurrentPos = Achievement;
         GameObject myEventSystem = GameObject.Find("EventSystem");
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonAchievement);
-        
+    
+    }
+
+    public void MenuRecords()
+
+    {
+        CurrentPos = Records;
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonRecords);
+
 
     }
 
@@ -412,9 +422,15 @@ public class Muoviti : MonoBehaviour {
         PlayerPrefs.SetInt("scoreTotale", achievement.total);
 
         recordTotale.text = achievement.total.ToString();
-        
+        recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
+        recordDiscarica.text = "Record : " + achievement.discarica.ToString();
+        recordMontacarichiB.text = "Record : " + achievement.montacarichiB.ToString();
+        recordTetto.text = "Record : " + achievement.tetto.ToString();
+
 
         PlayerPrefs.Save();
+
+        Options();
     }
 
     
