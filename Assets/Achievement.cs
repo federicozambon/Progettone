@@ -50,8 +50,8 @@ public class Achievement : MonoBehaviour {
             case "Montacarichi1":
                 if (score > PlayerPrefs.GetInt("scoreMontacarichiA", montacarichiA))
                 {
-                    total += score;
                     montacarichiA = score;
+                    TotalCount();
                 }
                 
                 break;
@@ -59,27 +59,32 @@ public class Achievement : MonoBehaviour {
             case "Discarica":
                 if (score > PlayerPrefs.GetInt("scoreDiscarica", discarica))
                 {
-                    total += score;
                     discarica = score;
+                    TotalCount();
                 }
                 break;
 
             case "Montacarichi2":
                 if (score > PlayerPrefs.GetInt("scoreMontacarichiB", montacarichiB))
                 {
-                    total += score;
                     montacarichiB = score;
+                    TotalCount();
                 }
                 break;
 
             case "Tetto":
                 if (score > PlayerPrefs.GetInt("scoreTetto", tetto))
                 {
-                    total += score;
                     tetto = score;
+                    TotalCount();
                 }
                 break;
 
         }
+    }
+
+    void TotalCount()
+    {
+        total = montacarichiA + discarica + montacarichiB + tetto;
     }
 }

@@ -9,6 +9,7 @@ public class RocketLauncher : Weapon
     AudioSource shootSound;
     private bool enabled = false;
     private bool shoot = true;
+    public bool startGame = false;
   
     public float speed = 10;
     
@@ -57,7 +58,7 @@ public class RocketLauncher : Weapon
             
         }
 
-        if (enabled == true && refManager.playerRef.noWeapons == false && shoot == true)
+        if (enabled == true && refManager.playerRef.noWeapons == false && shoot == true && startGame == true)
         {
             shoot = false;
 

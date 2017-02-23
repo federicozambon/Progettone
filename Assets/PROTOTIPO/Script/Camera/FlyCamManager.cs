@@ -16,6 +16,7 @@ public class FlyCamManager : MonoBehaviour
     public GameObject[] cupole = new GameObject[4];
 
     WaveController wcRef;
+    RocketLauncher rLauncher;
     public bool cutScene;
     public bool endedCutScene = false;
     public bool tutorial = false;
@@ -26,6 +27,7 @@ public class FlyCamManager : MonoBehaviour
         playerGo = FindObjectOfType<Player>().gameObject;
         elementsUI = FindObjectOfType<UIController>();
         wcRef = FindObjectOfType<WaveController>();
+        rLauncher = FindObjectOfType<RocketLauncher>();
     }
 
     public void SwitchCamera(Camera oldCam, Camera newCam)
@@ -206,6 +208,7 @@ public class FlyCamManager : MonoBehaviour
 
         endedCutScene = true;
         cutScene = false;
+        rLauncher.startGame = true;
         elementsUI.CanvasOn();
 
         //Ho spostato la Coroutine prima del wait altrimenti non spawnavano i nemici
@@ -236,6 +239,7 @@ public class FlyCamManager : MonoBehaviour
 
             endedCutScene = true;
             cutScene = false;
+            rLauncher.startGame = true;
             elementsUI.CanvasOn();
             if (tutorial == false)
             {
@@ -273,6 +277,7 @@ public class FlyCamManager : MonoBehaviour
 
         endedCutScene = true;
         cutScene = false;
+        rLauncher.startGame = true;
         elementsUI.CanvasOn();
         if (tutorial == false)
             StartCoroutine(wcRef.StartWave());
