@@ -32,6 +32,8 @@ public class TitanoEnemy : Enemy
 
     void Update()
     {
+        animRef.SetFloat("Speed", navRef.velocity.magnitude);
+
         if (navRef && navRef.isActiveAndEnabled)
         {
             transform.LookAt(new Vector3(refManager.playerObj.transform.position.x, this.transform.position.y, refManager.playerObj.transform.position.z));

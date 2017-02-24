@@ -31,7 +31,9 @@ public class SniperEnemy : Enemy
 
     void Update()
     {
-          //Occlusion();
+        //Occlusion();
+        animRef.SetFloat("Speed", navRef.velocity.magnitude);
+        
 
         if (blackRef.navRef && blackRef.navRef.isActiveAndEnabled)
         {

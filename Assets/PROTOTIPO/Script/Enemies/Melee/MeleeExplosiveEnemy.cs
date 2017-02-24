@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class MeleeExplosiveEnemy : Enemy
 {
     GameObject suicidePool;
-    public Coroutine destroying;
 
     public override void Awake()
     {
@@ -14,14 +13,22 @@ public class MeleeExplosiveEnemy : Enemy
         suicidePool = GameObject.Find("ExplosiveFuriaParticlePool");
         hPoints = 50;
         comboValue = 10;
+
         id = transform.GetSiblingIndex();
         myParticle = suicidePool.transform.GetChild(id);
         myEffect = myParticle.GetComponentsInChildren<EffectSettings>(true)[0];
         this.gameObject.SetActive(false);
     }
 
+    void OnEnable()
+    {
+        isAttacking = false;
+        isExploded = false;
+        timer = 0;
+    }
+
     public float timer;
-    public float attackTimer = 0.4f;
+    public float attackTimer = 1f;
     public bool isAttacking = false;
     bool isExploded;
 

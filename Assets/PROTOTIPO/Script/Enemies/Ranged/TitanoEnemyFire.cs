@@ -14,6 +14,13 @@ public class TitanoEnemyFire : MonoBehaviour
 
     bool sparo = true;
 
+    TitanoEnemy enemyRef;
+
+    void Awake()
+    {
+        enemyRef = GetComponent<TitanoEnemy>();
+    }
+
     void Start()
     {
         blackRef = GetComponent<BlackBoard>();
@@ -41,11 +48,13 @@ public class TitanoEnemyFire : MonoBehaviour
             {
                 if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(blackRef.playerTr.position, this.transform.position) < 40)
                 {
+                    enemyRef.animRef.SetBool("Attack",true);
                     ParticleActivator(blackRef.playerTr.FindChild("Head").position);
                 }
             }
             yield return new WaitForSeconds(0.2f);
         }
+        enemyRef.animRef.SetBool("Attack", false);
         yield return new WaitForSeconds(1);
         isShooting = false;
 

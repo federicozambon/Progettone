@@ -8,6 +8,7 @@ public class SniperEnemyFire : MonoBehaviour
     public GameObject bulletPrefab;
     public LineRenderer aimLine;
     public int damage = 25;
+    SniperEnemy enemyRef;
 
     RaycastHit losRayHit;
 
@@ -20,6 +21,7 @@ public class SniperEnemyFire : MonoBehaviour
 
     private void Awake()
     {
+        enemyRef = GetComponent<SniperEnemy>();
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
         pool = GameObject.Find("SniperParticlePool");
         id = transform.GetSiblingIndex();
@@ -44,6 +46,7 @@ public class SniperEnemyFire : MonoBehaviour
         {
             if (losRayHit.collider.gameObject.tag == "Player")
             {
+                enemyRef.animRef.SetBool("Attack", true);
                 aimLine.SetPosition(0, weapon.position);
                 aimLine.SetPosition(1, playerTr.transform.position);
                 aimLine.enabled = true;
@@ -56,11 +59,13 @@ public class SniperEnemyFire : MonoBehaviour
                     refManager.playerRef.TakeDamage(damage);
                     ParticleActivator(playerTr.transform.position);                 
                     isShooting = false;
+                    enemyRef.animRef.SetBool("Attack", false);
                     break;
                 }
             }
             else
             {
+                enemyRef.animRef.SetBool("Attack", false);
                 aimLine.enabled = false;
                 timer = 0;
                 isShooting = false;
