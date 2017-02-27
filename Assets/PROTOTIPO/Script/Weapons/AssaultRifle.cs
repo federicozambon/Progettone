@@ -18,19 +18,19 @@ public class AssaultRifle : Weapon
 
     void Awake()
     {
-
         rotRef = FindObjectOfType<Player>();
         playerGo = rotRef.gameObject;
-        gunLight = GetComponent<Light>();
+
         wSelector = FindObjectOfType<WeaponSelector>();
         shootSound = this.GetComponent<AudioSource>();
         assaultRifle = this;
+
         laserShotgun = GetComponent<LaserShotgun>();       
 
         effectsDisplayTime = 0.2f;
         damagePerShot = 20;
         timeBetweenBullets = 0.15f;
-        range = 20f;
+        range = 15f;
         collided = false;
         deltaDegrees = 90;
 
@@ -39,8 +39,6 @@ public class AssaultRifle : Weapon
 
     public void Update()
     {
-
-
         timer += Time.deltaTime;
 
         if (rotRef.rotating && timer >= timeBetweenBullets && Time.timeScale != 0 && player.noWeapons == false)
@@ -48,8 +46,7 @@ public class AssaultRifle : Weapon
             Shoot();
             StartCoroutine(GunShotSound());
         }
-
-        
+   
         if (Input.GetButtonDown("Grenade"))
         {
             wSelector.ChangeWeapon(2);
@@ -57,12 +54,8 @@ public class AssaultRifle : Weapon
             weaponArray[0].gameObject.SetActive(false);
             weaponArray[1].gameObject.SetActive(true);
             this.enabled = false;
-        }
-
-        
-    }
-
-    
+        }        
+    } 
 
     IEnumerator GunShotSound()
     {
@@ -75,58 +68,30 @@ public class AssaultRifle : Weapon
     {
         timer = 0f;
         collided = false;
-        //gunLight.enabled = true;
 
         transform.Rotate(0, 0, 0);
         while (!collided)
         {
-
             shootRay.origin = transform.position;
             for (int i = 0; i < deltaDegrees; i++)
             {
                 transform.localEulerAngles = new Vector3(-45, 0, 0);
                 transform.Rotate(i + 1, 0, 0);
                 shootRay.direction = transform.forward;
+
                 if (Physics.Raycast(shootRay, out shootHit, range))
                 {
-
                     Enemy enemyScript = shootHit.collider.GetComponent<Enemy>();
-                    Destructble destructbleScript = shootHit.collider.GetComponent<Destructble>();
-                    if (enemyScript == null)
-                    {
-                    }
 
-                    else if (enemyScript != null)
-                    {
-            
-                        enemyScript.TakeDamage(damagePerShot);
-                        if (enemyScript.remainHPoints <= 0)
-                        {
-                            //spawnedParticle.startSize = 1;
-                            //spawnedParticle.transform.position = enemyScript.headRef.position;
-                            //spawnedParticle.Play();
-                        }
-                        //enemyScript.gameObject.GetComponent<Rigidbody>().AddForce(-enemyScript.gameObject.transform.forward * 20 * Time.deltaTime, ForceMode.Impulse);
-                        collided = true;
+                    if (enemyScript != null)
+                    {          
                         ParticleActivator(enemyScript.headRef.transform.position);
-                    }
-
-                    if (destructbleScript == null)
-                    {
-                    }
-
-                    else if (destructbleScript != null)
-                    {
-                
-                        destructbleScript.TakeDamage(damagePerShot);
                         collided = true;
-                        ParticleActivator(destructbleScript.transform.position);
-                    }
-
-
-                    transform.localRotation = Quaternion.identity;
-                    transform.localEulerAngles = new Vector3(0, 0, 0);
+                    }          
                 }
+                transform.localRotation = Quaternion.identity;
+                transform.localEulerAngles = new Vector3(0, 0, 0);
+
                 if (!collided && i == deltaDegrees - 1)
                 {
                     transform.localEulerAngles = new Vector3(0, 0, 0);
@@ -134,8 +99,14 @@ public class AssaultRifle : Weapon
                     shootRayBlocked.direction = transform.forward;
 
                     collided = true;
-                    Physics.Raycast(shootRayBlocked, out shootHitBlocked, 100);
-                    ParticleActivator(shootHitBlocked.point);
+                    if (Physics.Raycast(shootRayBlocked, out shootHitBlocked, range))
+                    {
+                        ParticleActivator(shootHitBlocked.point);
+                    }
+                    else
+                    {
+                        ParticleActivator(transform.position + (transform.forward * range));
+                    }                
                 }
             }
         }

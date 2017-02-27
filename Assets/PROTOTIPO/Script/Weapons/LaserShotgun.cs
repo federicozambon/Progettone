@@ -27,7 +27,7 @@ public class LaserShotgun : Weapon
         effectsDisplayTime = 0.2f;
         damagePerShot = 40;
         timeBetweenBullets = 0.4f;
-        range = 30f;
+        range = 10f;
         collided = false;
         deltaDegrees = 90;
 
@@ -71,67 +71,35 @@ public class LaserShotgun : Weapon
 
         transform.Rotate(0, 0, 0);
         while (!collided)
-        {
-            aimRay.origin = transform.position;
+        {        
             for (int i = 0; i < deltaDegrees; i++)
             {
+                aimRay.origin = transform.position;
                 transform.localEulerAngles = new Vector3(-45, 0, 0);
                 transform.Rotate(i + 1, 0, 0);
                 aimRay.direction = transform.forward;
 
                 if (Physics.Raycast(aimRay, out aimHit, range))
                 {
-                    Debug.DrawRay(aimRay.origin, aimRay.direction);
-                    Enemy enemyScript = aimHit.collider.GetComponent<Enemy>();
-                    Destructble destructbleScript = aimHit.collider.GetComponent<Destructble>();
-                    if (enemyScript == null)
-                    {
-                    }
-                    else if (enemyScript != null)
-                    {
-                        for (int f = 0; f < 6; f++)
-                        {
-                            float offsetX = Random.value, offsetY = Random.value, offsetZ = Random.value;
-          
-                            if (Physics.Linecast(transform.position, aimHit.point + new Vector3(offsetX, offsetY, offsetZ), out shootHit[f]))
-                            {
-                                ParticleActivator(aimHit.point + new Vector3(offsetX, offsetY, offsetZ));
-                                Enemy enemyHitScript = shootHit[f].collider.GetComponent<Enemy>();
+                    Enemy hitted = aimHit.collider.GetComponent<Enemy>();
 
-                                if (enemyHitScript != null)
-                                {
-                                    enemyHitScript.TakeDamage(damagePerShot);
-                                }
-                            }
-                        }
-                    }
-                    if (destructbleScript == null)
-                    {
-                    }
-
-                    else if (destructbleScript != null)
+                    if (hitted != null)
                     {
                         for (int f = 0; f < 6; f++)
                         {
                             float offsetX = Random.value, offsetY = Random.value, offsetZ = Random.value;
 
-                            if (Physics.Linecast(transform.position, aimHit.point + new Vector3(offsetX * 3, offsetY * 3, offsetZ * 3), out shootHit[f]))
+                            if (Physics.Linecast(transform.position, aimHit.point + new Vector3(-3 + f, 0, -3 + f), out shootHit[f]))
                             {
-                                Destructble destructiblehitScript = shootHit[f].collider.GetComponent<Destructble>();
-
-                                if (destructiblehitScript != null)
-                                {
-                                    ParticleActivator(destructbleScript.transform.position + new Vector3(offsetX * 3, offsetY * 3, offsetZ * 3));
-                                    destructbleScript.TakeDamage(damagePerShot);
-                                   
-                                    collided = true;
-                                }
+                                ParticleActivator(aimHit.point + new Vector3(-3 + f, 0, -3 + f));            
                             }
                         }
-                    }
-                    transform.localRotation = Quaternion.identity;
-                    transform.localEulerAngles = new Vector3(0, 0, 0);
+                        collided = true;
+                    }              
                 }
+                transform.localRotation = Quaternion.identity;
+                transform.localEulerAngles = new Vector3(0, 0, 0);
+
                 if (!collided && i == deltaDegrees - 1)
                 {
                     for (int f = 0; f < 6; f++)
@@ -140,9 +108,14 @@ public class LaserShotgun : Weapon
                         shootRayBlocked.origin = this.transform.position;
                         shootRayBlocked.direction = transform.forward;
 
-                        Physics.Raycast(shootRayBlocked, out shootHitBlocked, 100);
-
-                        ParticleActivator(shootHitBlocked.point + new Vector3(offsetX * 3, offsetY * 3, offsetZ * 3));
+                        if (Physics.Raycast(shootRayBlocked, out shootHitBlocked, range))
+                        {
+                            ParticleActivator(shootHitBlocked.point + new Vector3(-3 + f, 0, -3 + f));
+                        }
+                        else
+                        {
+                            ParticleActivator(transform.position + (transform.forward *range) + new Vector3(-3 + f, 0, -3 + f));
+                        }               
                         collided = true;
                     }
                 }
