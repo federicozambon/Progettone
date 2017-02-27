@@ -10,10 +10,7 @@ public class RocketLife : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll)
     {
-
         transform.GetChild(0).gameObject.SetActive(true);
-        if (isExploded == false)
-            StartCoroutine(Explosion());
     }
     
     public float speed = 1;
@@ -23,33 +20,42 @@ public class RocketLife : MonoBehaviour {
         if (!isExploded)
         {
             this.transform.position += transform.forward * speed;
-        } 
+            Collider[] colliders = Physics.OverlapCapsule(this.transform.position, this.transform.position + new Vector3(0, 0, 1), 1);
+            foreach (var item in colliders)
+            {
+                if (item.tag != "Player" && isExploded == false)
+                {
+                    StartCoroutine(Explosion());
+                }
+            }
+        }
     }
 
-    void OnTriggerStay(Collider coll)
+    void DoDamage()
     {
-        if (coll.gameObject.tag == "Enemy")
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, 4);
+        foreach (var item in colliders)
         {
-            if (!enemies.Contains(coll.gameObject.GetComponent<Enemy>()))
+            if (item.tag == "Enemy")
             {
-                enemies.Add(coll.gameObject.GetComponent<Enemy>());
+                enemies.Add(item.GetComponent<Enemy>());
             }
         }
     }
 	
     IEnumerator Explosion()
     {
-        GetComponent<BoxCollider>().enabled = false;
-        GetComponent<SphereCollider>().enabled = true;
+        DoDamage();
+        transform.GetChild(0).gameObject.SetActive(true);
 
         isExploded = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         foreach (var enemy in enemies)
         {
             enemy.TakeDamage(damagePerShot);
         }
         
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         Destroy(this.gameObject);
     }
 }

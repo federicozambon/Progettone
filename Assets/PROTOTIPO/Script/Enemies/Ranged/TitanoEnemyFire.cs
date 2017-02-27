@@ -7,6 +7,7 @@ public class TitanoEnemyFire : MonoBehaviour
     public GameObject bulletPrefab;
     public bool isShooting;
     public BlackBoard blackRef;
+    ReferenceManager refManager;
 
     RaycastHit losRayHit;
 
@@ -15,17 +16,30 @@ public class TitanoEnemyFire : MonoBehaviour
     bool sparo = true;
 
     TitanoEnemy enemyRef;
+    public Transform playerTr;
 
     void Awake()
     {
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
+        blackRef = GetComponent<BlackBoard>();
+
+        transformTr = new Transform[10];
+        myEffect = new EffectSettings[10];
         enemyRef = GetComponent<TitanoEnemy>();
+        pool = GameObject.Find("TitanoParticlePool");
+        id = transform.GetSiblingIndex();
+        myParticle = pool.transform.GetChild(id);
+
+        for (int i = 0; i < 10; i++)
+        {
+            transformTr[i] = myParticle.transform.GetChild(i);
+            myEffect[i] = myParticle.transform.GetChild(i + 10).GetComponent<EffectSettings>();
+        }
     }
 
     void Start()
     {
-        blackRef = GetComponent<BlackBoard>();
-        pool = GameObject.Find("TitanoParticlePool");
-        transformTr = new Transform[10];
+        playerTr = FindObjectOfType<Player>().transform.FindChild("Head");
     }
 
     public void Update()
@@ -36,55 +50,46 @@ public class TitanoEnemyFire : MonoBehaviour
     public IEnumerator Shooting()
     {
         isShooting = true;
-        for (int i = 0; i < 10; i++)
+        if (Physics.Linecast(weapon.transform.position, refManager.playerObj.transform.position, out losRayHit))
         {
-            EffectSettings effectRef = pool.GetComponentsInChildren<EffectSettings>(true)[i];
-            if (!effectRef.gameObject.activeInHierarchy)
+            enemyRef.animRef.SetBool("PreAttack", true);
+            yield return new WaitForSeconds(0.35f);
+            enemyRef.animRef.SetBool("PreAttack", false);
+            enemyRef.animRef.SetBool("Attack", true);
+            for (int i = 0; i < 10; i++)
             {
-                effectRef.transform.position = weapon.transform.position;
-                effectRef.transform.FindChild("Trail").position = weapon.transform.position;
-            }
-            if (Physics.Linecast(weapon.transform.position, blackRef.playerTr.position, out losRayHit))
-            {
-                if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(blackRef.playerTr.position, this.transform.position) < 40)
+              
+                if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(refManager.playerObj.transform.position, this.transform.position) < 15)
                 {
-                    enemyRef.animRef.SetBool("Attack",true);
-                    ParticleActivator(blackRef.playerTr.FindChild("Head").position);
+                    ParticleActivator(refManager.playerObj.transform.FindChild("Head").position,i);
                 }
+                yield return new WaitForSeconds(0.4f);
+            }
+            isShooting = false;
+            enemyRef.animRef.SetBool("Attack", false);
+
+            if (enemyRef.hPoints < 0)
+            {
+                StopAllCoroutines();
             }
             yield return new WaitForSeconds(0.2f);
         }
-        enemyRef.animRef.SetBool("Attack", false);
-        yield return new WaitForSeconds(1);
-        isShooting = false;
 
-        if (blackRef.enemyRef.hPoints < 0)
-        {
-            StopAllCoroutines();
-        }
+        yield return new WaitForSeconds(1);
     }
 
     public GameObject pool;
     public Transform[] transformTr;
+    Transform myParticle;
+    int id;
+    EffectSettings[] myEffect;
 
-    public void ParticleActivator(Vector3 position)
+
+    public void ParticleActivator(Vector3 position, int n)
     {
-        for (int j = 0; j < 10; j++)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                {
-                    EffectSettings effectRef = pool.GetComponentsInChildren<EffectSettings>(true)[j];
-                    if (!effectRef.gameObject.activeInHierarchy)
-                    {
-                        transformTr[i] = effectRef.transform.parent.GetComponentsInChildren<Transform>()[1 + i];
-                        transformTr[i].position = position;
-                        effectRef.Target = transformTr[i].gameObject;
-                        effectRef.gameObject.SetActive(true);
-                        break;
-                    }
-                }
-            }
-        }
+        transformTr[n].position = position;
+        myEffect[n].transform.position = weapon.transform.position;
+        myEffect[n].Target = transformTr[n].gameObject;
+        myEffect[n].gameObject.SetActive(true);
     }
 }

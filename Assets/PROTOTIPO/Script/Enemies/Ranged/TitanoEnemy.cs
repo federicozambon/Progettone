@@ -18,7 +18,6 @@ public class TitanoEnemy : Enemy
 
     public override IEnumerator Die()
     {
-        poolP.SetActive(false);
         return base.Die();
     }
 
