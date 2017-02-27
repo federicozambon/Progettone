@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
-    public GameObject CanvasPause;
+    public GameObject CanvasPanel1;
+    public GameObject CanvasPanel2;
 
 	// Use this for initialization
 	void Start () {
@@ -13,20 +14,26 @@ public class PauseManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             Time.timeScale = 0;
-            CanvasPause.SetActive(true);
+            CanvasPanel1.SetActive(true);
         }    
+
     }
     public void QuitToMenu()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }
+    public void AudioOptions()
+    {
+        CanvasPanel1.SetActive(false);
+        CanvasPanel2.SetActive(true);
+    }
     public void Resume()
     {
         Time.timeScale = 1;
-        CanvasPause.SetActive(false);
+        CanvasPanel1.SetActive(false);
     }
 }
