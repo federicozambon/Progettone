@@ -131,7 +131,7 @@ public class LaserShotgun : Weapon
 
     public void ParticleActivator(Vector3 position)
     {
-        for (int i = 0; i < 13; i++)
+        for (int i = 0; i < 18; i++)
         {
             if (!pool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.activeInHierarchy)
             {
