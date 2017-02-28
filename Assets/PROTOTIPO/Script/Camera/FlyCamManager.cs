@@ -183,7 +183,7 @@ public class FlyCamManager : MonoBehaviour
                 yield return null;
             }
         }
-        else if (SceneManager.GetActiveScene().name == "Tutorial")
+        /*else if (SceneManager.GetActiveScene().name == "Tutorial")
         {
             StartCoroutine(LerpPosition(camArray[0], 600f, true, 1));
             while (cutScene)
@@ -197,7 +197,7 @@ public class FlyCamManager : MonoBehaviour
             {
                 yield return null;
             }
-        }
+        }*/
         SwitchCamera(camArray[1], mainCamera);
         SwitchCamera(camArray[0], mainCamera);
         playerGo.gameObject.SetActive(true);

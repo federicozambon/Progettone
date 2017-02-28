@@ -13,7 +13,7 @@ public class Tutorial : MonoBehaviour
 
     public string currentScene;
 
-    void Start ()
+    void Awake ()
     {
         currentScene = SceneManager.GetActiveScene().name;
         if (currentScene == "Tutorial")
@@ -22,6 +22,7 @@ public class Tutorial : MonoBehaviour
             flyElements = FindObjectOfType<FlyCamManager>();
             player = FindObjectOfType<Player>();
             player.tutorial = true;
+            player.dashTutorial = true;
             player.stepTutorial = true;
             player.dashAttivo = false;
             player.noWeapons = true;
@@ -62,6 +63,9 @@ public class Tutorial : MonoBehaviour
                 break;
 
         }
+
+       
+
     }
 
     public void HideStep()
@@ -110,8 +114,9 @@ public class Tutorial : MonoBehaviour
                 HideStep();
                 player.noWeapons = false;
                 nemico1.gameObject.SetActive(true);
+                Debug.Log("spawno il nemico");
             }
-            if (Input.GetButtonDown("Next Weapon") && step == 4)
+            if (Input.GetButtonDown("Jump") && step == 4)
             {
                 HideStep();
                 nemico2.gameObject.SetActive(true);

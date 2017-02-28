@@ -9,6 +9,7 @@ public class Player: MonoBehaviour
     public bool godMode = false;
     public bool isAlive = true;
     public bool tutorialMode = false;
+    public bool dashTutorial = false;
     public bool tutorial = false;
     public bool stepTutorial = false;
     public bool noWeapons = false;
@@ -264,6 +265,7 @@ public class Player: MonoBehaviour
                 newRange = dashRange;
                 Move(h, v);
 
+                //Step 1 Tutorial Movimento
                 if (stepTutorial == true)
                 {
                     stepTutorial = false;
@@ -299,6 +301,17 @@ public class Player: MonoBehaviour
         public Material[] matArray;
         public GameObject occludedObj;
         public MeshRenderer meshRef;
+    }
+
+    void DashTutorialMode()
+    {
+        //Step 2 Tutorial Dash
+        if (dashTutorial == true)
+        {
+            dashTutorial = false;
+            Debug.Log("sono qui");
+            tutorialElements.NextStep();
+        }
     }
 
     void Update()
@@ -369,12 +382,9 @@ public class Player: MonoBehaviour
 
             if (Input.GetButton("Dash") && dashAttivo == true)
             {
+                
+                DashTutorialMode();
                 StartCoroutine(Dash());
-
-                if (tutorialMode == true)
-                    tutorialElements.NextStep();
-
-                    
 
             }
         }

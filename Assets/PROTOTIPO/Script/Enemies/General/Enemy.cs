@@ -31,6 +31,7 @@ public abstract class Enemy : MonoBehaviour
     public int comboValue;
     public bool isCharging;
     public bool knockbacked;
+    public bool tutorialMode = false;
 
     /*
     public MeshRenderer toOutline;
@@ -142,7 +143,7 @@ public abstract class Enemy : MonoBehaviour
 
     virtual public IEnumerator Die()
     {
-        if (dieController == true)
+        if (dieController == true && tutorialMode == false)
         {
             ParticleActivator(this.transform.position);
             refManager.miniMapRef.DeleteEnemy(this.gameObject);
@@ -152,7 +153,12 @@ public abstract class Enemy : MonoBehaviour
             refManager.spawnRef.StoreEnemy(this.gameObject);
             playSound = true;
         }
-        yield return new WaitForSeconds(0.2f);      
+        else
+            Destroy(this.gameObject);
+        yield return new WaitForSeconds(0.2f);
+
+       
+              
     }
 
     public void SpawnMedikit()
