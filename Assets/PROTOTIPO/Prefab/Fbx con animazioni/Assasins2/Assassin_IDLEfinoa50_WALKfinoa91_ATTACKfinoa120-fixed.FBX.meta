@@ -58,7 +58,9 @@ ModelImporter:
     400048: B-Torso
     400050: B_head
     4300000: Assassino
-    7400000: Take 001
+    7400000: Idle
+    7400002: Walk
+    7400004: Attack
     9500000: //RootNode
     13700000: Assassino
   materials:
@@ -81,7 +83,247 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Assassino
+        weight: 1
+      - path: B-Bacino
+        weight: 1
+      - path: B-Bacino/B-Torso
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1/B-collo_2
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1/B-collo_2/B-collo_3
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1/B-collo_2/B-collo_3/B-collo_4
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1/B-collo_2/B-collo_3/B-collo_4/B_head
+        weight: 1
+      - path: B-Bacino/B-Torso/B-DX_spalla
+        weight: 1
+      - path: B-Bacino/B-Torso/B-DX_spalla/B-DX_bicipite
+        weight: 1
+      - path: B-Bacino/B-Torso/B-DX_spalla/B-DX_bicipite/B-DX_gomito
+        weight: 1
+      - path: B-Bacino/B-Torso/B-DX_spalla/B-DX_bicipite/B-DX_gomito/B-DX_lama
+        weight: 1
+      - path: B-Bacino/B-Torso/B-SX_spalla
+        weight: 1
+      - path: B-Bacino/B-Torso/B-SX_spalla/B-SX_bicipite
+        weight: 1
+      - path: B-Bacino/B-Torso/B-SX_spalla/B-SX_bicipite/B-SX_gomito
+        weight: 1
+      - path: B-Bacino/B-Torso/B-SX_spalla/B-SX_bicipite/B-SX_gomito/B-SX_lama
+        weight: 1
+      - path: B-coda_01
+        weight: 1
+      - path: B-coda_01/B-coda_02
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05/B-coda_06
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05/B-coda_06/B-coda_07
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05/B-coda_06/B-coda_07/B-coda_08
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05/B-coda_06/B-coda_07/B-coda_08/B-coda_09
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 51
+      lastFrame: 91
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Assassino
+        weight: 1
+      - path: B-Bacino
+        weight: 1
+      - path: B-Bacino/B-Torso
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1/B-collo_2
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1/B-collo_2/B-collo_3
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1/B-collo_2/B-collo_3/B-collo_4
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1/B-collo_2/B-collo_3/B-collo_4/B_head
+        weight: 1
+      - path: B-Bacino/B-Torso/B-DX_spalla
+        weight: 1
+      - path: B-Bacino/B-Torso/B-DX_spalla/B-DX_bicipite
+        weight: 1
+      - path: B-Bacino/B-Torso/B-DX_spalla/B-DX_bicipite/B-DX_gomito
+        weight: 1
+      - path: B-Bacino/B-Torso/B-DX_spalla/B-DX_bicipite/B-DX_gomito/B-DX_lama
+        weight: 1
+      - path: B-Bacino/B-Torso/B-SX_spalla
+        weight: 1
+      - path: B-Bacino/B-Torso/B-SX_spalla/B-SX_bicipite
+        weight: 1
+      - path: B-Bacino/B-Torso/B-SX_spalla/B-SX_bicipite/B-SX_gomito
+        weight: 1
+      - path: B-Bacino/B-Torso/B-SX_spalla/B-SX_bicipite/B-SX_gomito/B-SX_lama
+        weight: 1
+      - path: B-coda_01
+        weight: 1
+      - path: B-coda_01/B-coda_02
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05/B-coda_06
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05/B-coda_06/B-coda_07
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05/B-coda_06/B-coda_07/B-coda_08
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05/B-coda_06/B-coda_07/B-coda_08/B-coda_09
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 92
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Assassino
+        weight: 1
+      - path: B-Bacino
+        weight: 1
+      - path: B-Bacino/B-Torso
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1/B-collo_2
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1/B-collo_2/B-collo_3
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1/B-collo_2/B-collo_3/B-collo_4
+        weight: 1
+      - path: B-Bacino/B-Torso/B-collo_1/B-collo_2/B-collo_3/B-collo_4/B_head
+        weight: 1
+      - path: B-Bacino/B-Torso/B-DX_spalla
+        weight: 1
+      - path: B-Bacino/B-Torso/B-DX_spalla/B-DX_bicipite
+        weight: 1
+      - path: B-Bacino/B-Torso/B-DX_spalla/B-DX_bicipite/B-DX_gomito
+        weight: 1
+      - path: B-Bacino/B-Torso/B-DX_spalla/B-DX_bicipite/B-DX_gomito/B-DX_lama
+        weight: 1
+      - path: B-Bacino/B-Torso/B-SX_spalla
+        weight: 1
+      - path: B-Bacino/B-Torso/B-SX_spalla/B-SX_bicipite
+        weight: 1
+      - path: B-Bacino/B-Torso/B-SX_spalla/B-SX_bicipite/B-SX_gomito
+        weight: 1
+      - path: B-Bacino/B-Torso/B-SX_spalla/B-SX_bicipite/B-SX_gomito/B-SX_lama
+        weight: 1
+      - path: B-coda_01
+        weight: 1
+      - path: B-coda_01/B-coda_02
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05/B-coda_06
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05/B-coda_06/B-coda_07
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05/B-coda_06/B-coda_07/B-coda_08
+        weight: 1
+      - path: B-coda_01/B-coda_02/B-coda_03/B-coda_04/B-coda_05/B-coda_06/B-coda_07/B-coda_08/B-coda_09
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
