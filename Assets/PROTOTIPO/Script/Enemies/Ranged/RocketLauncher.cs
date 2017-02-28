@@ -8,8 +8,9 @@ public class RocketLauncher : Weapon
     public GameObject projectile;
     AudioSource shootSound;
     private bool enabled = false;
-    private bool shoot = true;
+    private bool shoot = false;
     public bool startGame = false;
+    LineRenderer lineRef;
   
     public float speed = 10;
     
@@ -20,6 +21,7 @@ public class RocketLauncher : Weapon
     private void Awake()
     {
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
+        lineRef = GetComponent<LineRenderer>();
     }
 
     void Start()
@@ -42,35 +44,50 @@ public class RocketLauncher : Weapon
         yield return new WaitForSeconds(0.2f);
     }
 
+    bool aiming = false;
+
     public void Update()
     {
+        RaycastHit hit;
         float rocket = Input.GetAxisRaw("RightTrigger");
 
-        if (rocket <= 0)
+        if (refManager.playerRef.rocketAmmo > 0)
         {
-            enabled = false;
-            shoot = true;
-        }
-            
-        else
-        {
-            enabled = true;
-            
-        }
-
-        if (enabled == true && refManager.playerRef.noWeapons == false && shoot == true && startGame == true)
-        {
-            shoot = false;
-
-            if (refManager.playerRef.rocketAmmo > 0)
+            if (aiming)
             {
+                lineRef.enabled = true;
+                if (Physics.Raycast(this.transform.position, transform.forward, out hit, 20))
+                {
+                    lineRef.SetPosition(0, this.transform.position);
+                    lineRef.SetPosition(1, hit.point);
+                }
+                else
+                {
+                    lineRef.SetPosition(0, this.transform.position);
+                    lineRef.SetPosition(1, this.transform.position+this.transform.forward*20);
+                }
+            }
+
+            if (rocket > 0.2f)
+            {
+                aiming = true;
+            }
+
+            if (aiming && rocket < 0.1f)
+            {
+                lineRef.enabled = false;
+                aiming = false;
+                shoot = true;
+            }
+
+            if (refManager.playerRef.noWeapons == false && shoot == true && startGame == true)
+            {
+                shoot = false;
                 refManager.playerRef.rocketAmmo--;
                 refManager.uicontroller.ammo.text = refManager.playerRef.rocketAmmo.ToString();
                 Shooting();
-            }             
-        }
-
-        
+            }
+        }        
     }
 }    
 
