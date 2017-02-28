@@ -22,6 +22,7 @@ public class RangedEnemy : Enemy
 
     public override IEnumerator Die()
     {
+        rangedFireRef.isShooting = false;
         return base.Die();
     }
 

@@ -117,7 +117,7 @@ public abstract class Enemy : MonoBehaviour
                 {
                     playSound = false;
                     aController.playSound(myDie);
-                    Debug.Log("sono morto");
+                    //Debug.Log("sono morto");
                 }
                     
 
