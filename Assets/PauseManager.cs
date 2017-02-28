@@ -20,7 +20,6 @@ public class PauseManager : MonoBehaviour {
 
     bool paused;
 
-	// Use this for initialization
 	void Awake ()
     {
         resume = GameObject.Find("Resume");
@@ -40,21 +39,12 @@ public class PauseManager : MonoBehaviour {
 
     void Update()
     {
-        if (moved)
-        {
-            timer += 0.1f;
-            if (timer >= 0.3f)
-            {
-                moved = false;
-            }
-        }
-
         if (Input.GetButtonDown("GodMode"))
         {
             if (!paused)
             {
                 CanvasPanel1.SetActive(true);
-                eventRef.SetSelectedGameObject(eventRef.firstSelectedGameObject);
+                eventRef.SetSelectedGameObject(resume);
                 Time.timeScale = 0;
                 paused = true;
             }
@@ -66,6 +56,11 @@ public class PauseManager : MonoBehaviour {
                 paused = false;
             }
         }
+        if (Input.GetAxisRaw("Vertical") > -0.1 && Input.GetAxisRaw("Vertical") < 0.1)
+        {
+            moved = false;
+        }
+
         if (CanvasPanel2.activeInHierarchy)
         {
             if (Input.GetButtonDown("Cancel"))
@@ -74,20 +69,59 @@ public class PauseManager : MonoBehaviour {
                 CanvasPanel2.SetActive(false);
                 eventRef.SetSelectedGameObject(resume);
             }
-            if (Input.GetAxisRaw("Horizontal") > 0.1f)
+            if (!moved)
+            {
+                if (Input.GetAxisRaw("Vertical") > 0.3f)
+                {
+                    moved = true;
+                    if (eventRef.currentSelectedGameObject == generalVolume)
+                    {
+                        eventRef.SetSelectedGameObject(sfxVolume);
+                    }
+                    if (eventRef.currentSelectedGameObject == sfxVolume)
+                    {
+                        eventRef.SetSelectedGameObject(musicVolume);
+                    }
+                    if (eventRef.currentSelectedGameObject == musicVolume)
+                    {
+                        eventRef.SetSelectedGameObject(generalVolume);
+                    }
+                }
+                if (Input.GetAxisRaw("Vertical") < -0.3f)
+                {
+                    moved = true;
+                    if (eventRef.currentSelectedGameObject == generalVolume)
+                    {
+                        eventRef.SetSelectedGameObject(musicVolume);
+                    }
+                    if (eventRef.currentSelectedGameObject == musicVolume)
+                    {
+                        eventRef.SetSelectedGameObject(sfxVolume);
+                    }
+                    if (eventRef.currentSelectedGameObject == sfxVolume)
+                    {
+                        eventRef.SetSelectedGameObject(generalVolume);
+                    }
+                }
+            }
+            if (Input.GetAxisRaw("Horizontal") > 0.3f)
             {
                 eventRef.currentSelectedGameObject.transform.parent.transform.parent.GetComponent<Slider>().value += 0.2f;
             }
-            if (Input.GetAxisRaw("Horizontal") < -0.1f)
+            if (Input.GetAxisRaw("Horizontal") < -0.3f)
             {
                 eventRef.currentSelectedGameObject.transform.parent.transform.parent.GetComponent<Slider>().value -= 0.2f;
             }
         }
 
+   
+
         if (!moved)
         {
-            if (Input.GetAxisRaw("Vertical") < -0.2f)
+          
+            if (Input.GetAxisRaw("Vertical") < -0.3f)
             {
+              
                 moved = true;
                 if (CanvasPanel1.activeInHierarchy)
                 {
@@ -121,7 +155,7 @@ public class PauseManager : MonoBehaviour {
                 }
             }
 
-            if (Input.GetAxisRaw("Vertical") > 0.2f)
+            if (Input.GetAxisRaw("Vertical") > 0.3f)
             {
                 moved = true;
                 if (CanvasPanel1.activeInHierarchy)
