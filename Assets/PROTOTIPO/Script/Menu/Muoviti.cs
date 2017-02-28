@@ -50,6 +50,11 @@ public class Muoviti : MonoBehaviour {
 
     void Start()
     {
+        /*if(achievement.firstLoad == false)
+        {
+            CurrentPos = MainPos;
+        }*/
+
         SaveRecords();
         recordTotale.text = achievement.total.ToString();
         recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
@@ -64,7 +69,7 @@ public class Muoviti : MonoBehaviour {
         transform.localPosition = Vector3.Lerp(transform.localPosition, CurrentPos.position, 0.05f);
         transform.localRotation = Quaternion.Slerp(transform.localRotation, CurrentPos.rotation, 0.05f);
 
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("B"))
         {
 
             if (CurrentPos == StartPos)

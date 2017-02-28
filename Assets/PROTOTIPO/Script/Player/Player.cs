@@ -339,9 +339,10 @@ public class Player: MonoBehaviour
 
         }
 
-        if (Input.GetButtonDown("Previous Weapon"))        {
-            //achievement.SaveScore(uiElements.score);
-            //SceneManager.LoadScene(0);
+        //ritorno al Menu con il Tasto Start (Fire2)
+        if (Input.GetButtonDown("X"))        {
+            achievement.SaveScore(uiElements.score);
+            SceneManager.LoadScene(0);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
