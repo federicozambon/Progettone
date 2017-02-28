@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
+/*
 [RequireComponent(typeof(Image))]
 public class ScrollDetailTexture : MonoBehaviour
 {
@@ -62,3 +62,4 @@ public class ScrollDetailTexture : MonoBehaviour
 		}
 	}
 }
+*/

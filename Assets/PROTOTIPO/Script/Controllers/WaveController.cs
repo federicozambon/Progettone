@@ -34,20 +34,13 @@ public class WaveController : MonoBehaviour
     public void IsWaveFinished()
     {
         killedCounter++;
-        if (spawnRef.allSpawned)
+        if (killedCounter == spawnRef.toSpawnCounter)
         {
-            if (killedCounter == spawnRef.spawnedCounter)
-            {
-                isWaveFinished = true;
-                currentWaveNumber++;
-                killedCounter = 0;
-                StartCoroutine(uiElements.WaveFinished());
-                StartCoroutine(StartWave());                
-            }
-            else
-            {
-                isWaveFinished = false;
-            }
-        }    
+            isWaveFinished = true;
+            currentWaveNumber++;
+            killedCounter = 0;
+            StartCoroutine(uiElements.WaveFinished());
+            StartCoroutine(StartWave());
+        } 
     }
 }

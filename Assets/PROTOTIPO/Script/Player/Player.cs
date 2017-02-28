@@ -310,7 +310,7 @@ public class Player: MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        if (Input.GetButtonDown("GodMode"))
+        if (Input.GetButtonDown("Previous Weapon"))
         {
             if (godMode == false)
             {
@@ -327,8 +327,8 @@ public class Player: MonoBehaviour
         }
 
         if (Input.GetButtonDown("Previous Weapon"))        {
-            achievement.SaveScore(uiElements.score);
-            SceneManager.LoadScene(0);
+            //achievement.SaveScore(uiElements.score);
+            //SceneManager.LoadScene(0);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

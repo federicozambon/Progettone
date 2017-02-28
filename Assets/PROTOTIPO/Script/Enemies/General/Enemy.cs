@@ -78,7 +78,6 @@ public abstract class Enemy : MonoBehaviour
 
     void OnEnable()
     {
-
         refManager.miniMapRef.NewEnemy(this.gameObject);
     }
 
@@ -143,7 +142,6 @@ public abstract class Enemy : MonoBehaviour
 
     virtual public IEnumerator Die()
     {
-        yield return null;
         if (dieController == true)
         {
             ParticleActivator(this.transform.position);
@@ -153,12 +151,8 @@ public abstract class Enemy : MonoBehaviour
             refManager.uicontroller.IncreaseScore((int)scoreValue);
             refManager.spawnRef.StoreEnemy(this.gameObject);
             playSound = true;
-
         }
-
-        yield return new WaitForSeconds(5);
-
-        
+        yield return new WaitForSeconds(0.2f);      
     }
 
     public void SpawnMedikit()

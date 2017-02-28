@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
     public int specialCounter = 0;
     public float specialTimer = 3;
     public float specialActualTimer = 0;
-    public int[] comboTarget = {1000,2500,5000,7500,10000,15000,20000,30000,40000,50000,75000,100000};
+    public int[] comboTarget = {1000,2500,5000,7500,10000,15000,20000,30000,40000,50000,75000,100000,200000,300000};
     public int[] specialScore = { 500, 1000, 2000};
     public Coroutine specialCo;
     public Image promptButton;
@@ -95,12 +95,16 @@ public class UIController : MonoBehaviour
         specialActualTimer = 0;
         specialCounter++;
 
-        if (comboMulti<13)
+        if (comboMulti<12)
         {
             if (scoreStreak >= comboTarget[comboMulti])
             {
                 IncreaseMulti();
             }
+            UpdateScore();
+        }
+        else
+        {
             UpdateScore();
         }
     }

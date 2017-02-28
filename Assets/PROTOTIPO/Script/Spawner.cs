@@ -39,7 +39,6 @@ public class Spawner : MonoBehaviour
 
     public bool isBossDefeated = false;
     public bool isArenaEmpty;
-    public bool allSpawned;
 
     public int enemyCount;
 
@@ -92,8 +91,7 @@ public class Spawner : MonoBehaviour
         arrayList.Add(tenthWave);
     }
 
-    public int spawnedCounter = 0;
-    int toSpawnCounter = 0;
+    public int toSpawnCounter = 0;
 
     public GameObject PickEnemy(GameObject enemyToPick)
     {
@@ -183,7 +181,6 @@ public class Spawner : MonoBehaviour
     {
         int frameToSkip = 0;
         toSpawnCounter = arrayList[waveNumber].Length;
-        spawnedCounter = 0;
         foreach (var enemy in arrayList[waveNumber])
         {
             frameToSkip += 1;
@@ -205,11 +202,5 @@ public class Spawner : MonoBehaviour
         yield return new WaitForSeconds(spawnerDB.timerEnemy);
         GameObject enemyToManage = PickEnemy(spawnerDB.typeEnemy);
         PlaceAndResetEnemy(enemyToManage, spawnerDB.spawnEnemy.transform.position);
-        //Instantiate(spawnerDB.typeEnemy, spawnerDB.spawnEnemy.transform.position, Quaternion.identity);
-        spawnedCounter++;
-        if (toSpawnCounter == spawnedCounter)
-        {
-            allSpawned = true;
-        }
     }
 }
