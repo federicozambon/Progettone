@@ -121,7 +121,7 @@ public class Tutorial : MonoBehaviour
                 HideStep();
                 nemico2.gameObject.SetActive(true);
             }
-            if (Input.GetButtonDown("Previous Weapon") && step == 5)
+            if (Input.GetButtonDown("Fire1") && step == 5)
             {
                 HideStep();
                 nemico3.gameObject.SetActive(true);

@@ -10,14 +10,15 @@ public class Achievement : MonoBehaviour {
     public int discarica = 0;
     public int montacarichiB = 0;
     public int tetto = 0;
-    bool firstLoad = true;
+    public bool firstLoad = true;
+    Muoviti muovitiElements;
 
     public string currentScene;
 
     void Awake () {
 
         DontDestroyOnLoad(this.gameObject);
-
+        muovitiElements = FindObjectOfType<Muoviti>();
 
         if (firstLoad == true)
         {
@@ -37,12 +38,15 @@ public class Achievement : MonoBehaviour {
 
             PlayerPrefs.Save();
         }
-
+       
+            
     }
 	
 	
 	public void SaveScore (int score)
     {
+
+
         currentScene = SceneManager.GetActiveScene().name;
 
         switch (currentScene)
