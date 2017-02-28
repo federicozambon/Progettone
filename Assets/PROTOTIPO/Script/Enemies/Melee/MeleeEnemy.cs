@@ -24,8 +24,6 @@ public class MeleeEnemy : Enemy
         base.Awake();
         face = headRef;
         poolP = GameObject.Find("FuriaParticlePool");
-        hPoints = 50;
-        comboValue = 10;
         id = transform.GetSiblingIndex();
         myParticle = poolP.transform.GetChild(id);
         myEffect = myParticle.GetComponent<EffectSettings>();

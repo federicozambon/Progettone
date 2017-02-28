@@ -106,11 +106,10 @@ public abstract class Enemy : MonoBehaviour
     {
         if (!dead)
         {
-            if (remainHPoints - damagePerShot >= 0)
-            {
-                remainHPoints -= damagePerShot;
-            }
-            else
+            remainHPoints -= damagePerShot;
+            Debug.Log(remainHPoints);
+
+            if (remainHPoints <= 0)
             {
                 StartCoroutine("Die");
                 if (playSound == true && myDie != null)
@@ -119,8 +118,6 @@ public abstract class Enemy : MonoBehaviour
                     aController.playSound(myDie);
                     //Debug.Log("sono morto");
                 }
-                    
-
             }
         }
     }
