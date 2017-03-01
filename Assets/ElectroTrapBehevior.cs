@@ -55,6 +55,8 @@ public class ElectroTrapBehevior : Trap {
         activeTrap = false;
         particellare1.SetActive(true);
 
+        playSound = false;
+        aController.playSound(myDie);
 
         yield return new WaitForSeconds(timeToDisable);
 

@@ -13,7 +13,7 @@ public class Tutorial : MonoBehaviour
 
     public string currentScene;
 
-    void Start ()
+    void Awake ()
     {
         currentScene = SceneManager.GetActiveScene().name;
         if (currentScene == "Tutorial")
@@ -22,6 +22,7 @@ public class Tutorial : MonoBehaviour
             flyElements = FindObjectOfType<FlyCamManager>();
             player = FindObjectOfType<Player>();
             player.tutorial = true;
+            player.dashTutorial = true;
             player.stepTutorial = true;
             player.dashAttivo = false;
             player.noWeapons = true;
@@ -51,17 +52,20 @@ public class Tutorial : MonoBehaviour
             case 3:
                 transform.GetChild(2).gameObject.SetActive(true);             
                 break;
-            case 4:
+            case 31:
                 transform.GetChild(3).gameObject.SetActive(true);
                 break;
-            case 5:
+            case 41:
                 transform.GetChild(4).gameObject.SetActive(true);
                 break;
-            case 6:
+            case 51:
                 transform.GetChild(5).gameObject.SetActive(true);
                 break;
 
         }
+
+       
+
     }
 
     public void HideStep()
@@ -77,13 +81,13 @@ public class Tutorial : MonoBehaviour
             case 3:
                 transform.GetChild(2).gameObject.SetActive(false);
                 break;
-            case 4:
+            case 31:
                 transform.GetChild(3).gameObject.SetActive(false);
                 break;
-            case 5:
+            case 41:
                 transform.GetChild(4).gameObject.SetActive(false);
                 break;
-            case 6:
+            case 51:
                 transform.GetChild(5).gameObject.SetActive(false);
                 break;
 
@@ -92,48 +96,57 @@ public class Tutorial : MonoBehaviour
 
     void Update ()
     {
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+        float rocket = Input.GetAxisRaw("RightTrigger");
+
         if (currentScene == "Tutorial")
         {
-            if (Input.GetButtonDown("Fire1") && step == 1)
+            
+            if (step == 1 && (h > 0 || v > 0))
             {
                 HideStep();
                 player.tutorial = false;
-            }
-
-            if (Input.GetButtonDown("Fire1") && step == 2)
-            {
-                HideStep();
                 player.dashAttivo = true;
             }
-            if (Input.GetButtonDown("Fire1") && step == 3)
+
+            if (Input.GetButtonDown("Dash") && step == 2)
+            {
+                HideStep();
+            }
+            if (step == 3 && (player.rx > 0 || player.ry > 0)) 
             {
                 HideStep();
                 player.noWeapons = false;
                 nemico1.gameObject.SetActive(true);
+                Debug.Log("spawno il nemico");
+                step = 30;
             }
-            if (Input.GetButtonDown("Next Weapon") && step == 4)
+            if (Input.GetButtonDown("Jump") && step == 31)
             {
                 HideStep();
                 nemico2.gameObject.SetActive(true);
+                step = 40;
             }
-            if (Input.GetButtonDown("Previous Weapon") && step == 5)
+            if (rocket > 0 && step == 41)
             {
                 HideStep();
                 nemico3.gameObject.SetActive(true);
+                step = 50;
             }
-            if (step == 3 && nemico1.gameObject == null)
+            if (step == 30 && nemico1.gameObject == null)
             {
                 NextStep();
             }
-            if (step == 4 && nemico2.gameObject == null)
+            if (step == 40 && nemico2.gameObject == null)
             {
                 NextStep();
             }
-            if (step == 5 && nemico3.gameObject == null)
+            if (step == 50 && nemico3.gameObject == null)
             {
                 NextStep();
             }
-            if (Input.GetButtonDown("Fire1") && step == 6)
+            if (Input.GetButtonDown("Fire1") && step == 51)
             {
                 HideStep();
                 int indexSC = SceneManager.GetActiveScene().buildIndex;

@@ -5,28 +5,35 @@ public class fix : MonoBehaviour
 {
     AssaultRifle weaponRef;
     bool firstTime = true;
+    public bool hit = false;
 
     private void OnEnable()
-    {
+    {     
         if (firstTime)
         {
             weaponRef = FindObjectOfType<AssaultRifle>();
             this.gameObject.SetActive(false);
             firstTime = false;
         }
+        hit = false;
     }
 
     void Update()
     {
-        foreach (var item in Physics.OverlapSphere(this.transform.position, 0.3f))
+        if (!hit)
         {
-            if (item.tag == "Enemy")
+            foreach (var item in Physics.OverlapSphere(this.transform.position, 0.1f))
             {
-                item.GetComponent<Enemy>().TakeDamage(weaponRef.damagePerShot);
-            }
-            if (item.tag == "Destructible")
-            {
-                item.GetComponent<Destructble>().TakeDamage(weaponRef.damagePerShot);
+                if (item.tag == "Enemy")
+                {
+                    hit = true;
+                    item.GetComponent<Enemy>().TakeDamage(weaponRef.damagePerShot);
+                }
+                if (item.tag == "Destructible")
+                {
+                    hit = true;
+                    item.GetComponent<Destructble>().TakeDamage(weaponRef.damagePerShot);
+                }
             }
         }
     }

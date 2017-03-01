@@ -25,8 +25,8 @@ public class LaserShotgun : Weapon
         laserShotgun = this;
 
         effectsDisplayTime = 0.2f;
-        damagePerShot = 40;
-        timeBetweenBullets = 0.4f;
+        damagePerShot = 15;
+        timeBetweenBullets = 0.6f;
         range = 10f;
         collided = false;
         deltaDegrees = 90;
@@ -131,11 +131,12 @@ public class LaserShotgun : Weapon
 
     public void ParticleActivator(Vector3 position)
     {
-        for (int i = 0; i < 13; i++)
+        for (int i = 0; i < 18; i++)
         {
             if (!pool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.activeInHierarchy)
             {
                 transformTr[i].position = position;
+                //pool.GetComponentsInChildren<PlayerShotgunBullet>(true)[i].hit = false;
                 pool.GetComponentsInChildren<EffectSettings>(true)[i].transform.position = this.transform.position;
                 pool.GetComponentsInChildren<EffectSettings>(true)[i].Target = transformTr[i].gameObject;
                 pool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.SetActive(true);

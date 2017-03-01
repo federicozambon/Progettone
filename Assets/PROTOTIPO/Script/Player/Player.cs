@@ -9,6 +9,7 @@ public class Player: MonoBehaviour
     public bool godMode = false;
     public bool isAlive = true;
     public bool tutorialMode = false;
+    public bool dashTutorial = false;
     public bool tutorial = false;
     public bool stepTutorial = false;
     public bool noWeapons = false;
@@ -57,6 +58,11 @@ public class Player: MonoBehaviour
     UIController uiElements;
     AudioSource aSource;
     public AudioController aController;
+
+    public float rx;
+    public float ry;
+
+
 
     void Awake()
     {
@@ -246,8 +252,8 @@ public class Player: MonoBehaviour
 
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
-            float rx = Input.GetAxisRaw("Horizontal_Stick");
-            float ry = Input.GetAxisRaw("Vertical_Stick");
+            rx = Input.GetAxisRaw("Horizontal_Stick");
+            ry = Input.GetAxisRaw("Vertical_Stick");
 
 
             if (isDashing)
@@ -264,6 +270,7 @@ public class Player: MonoBehaviour
                 newRange = dashRange;
                 Move(h, v);
 
+                //Step 1 Tutorial Movimento
                 if (stepTutorial == true)
                 {
                     stepTutorial = false;
@@ -301,6 +308,17 @@ public class Player: MonoBehaviour
         public MeshRenderer meshRef;
     }
 
+    void DashTutorialMode()
+    {
+        //Step 2 Tutorial Dash
+        if (dashTutorial == true)
+        {
+            dashTutorial = false;
+            Debug.Log("sono qui");
+            tutorialElements.NextStep();
+        }
+    }
+
     void Update()
     {
         
@@ -326,9 +344,10 @@ public class Player: MonoBehaviour
 
         }
 
-        if (Input.GetButtonDown("Previous Weapon"))        {
-            //achievement.SaveScore(uiElements.score);
-            //SceneManager.LoadScene(0);
+        //ritorno al Menu con il Tasto Start (Fire2)
+        if (Input.GetButtonDown("X"))        {
+            achievement.SaveScore(uiElements.score);
+            SceneManager.LoadScene(0);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -369,12 +388,9 @@ public class Player: MonoBehaviour
 
             if (Input.GetButton("Dash") && dashAttivo == true)
             {
+                
+                DashTutorialMode();
                 StartCoroutine(Dash());
-
-                if (tutorialMode == true)
-                    tutorialElements.NextStep();
-
-                    
 
             }
         }

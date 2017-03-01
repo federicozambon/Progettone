@@ -8,6 +8,7 @@ public class SniperEnemyFire : MonoBehaviour
     public GameObject bulletPrefab;
     public LineRenderer aimLine;
     public int damage = 25;
+    public Gradient gradient;
     SniperEnemy enemyRef;
 
     RaycastHit losRayHit;
@@ -52,6 +53,7 @@ public class SniperEnemyFire : MonoBehaviour
                 aimLine.enabled = true;
                 timer += Time.deltaTime;
                 aimLine.SetWidth(timer / 20, timer / 20);
+                aimLine.SetColors(gradient.Evaluate(timer / 3), gradient.Evaluate(timer / 3));
                 yield return null;
                 if (timer > 3)
                 {
