@@ -18,6 +18,8 @@ public class AssaultRifle : Weapon
 
     void Awake()
     {
+
+      
         rotRef = FindObjectOfType<Player>();
         playerGo = rotRef.gameObject;
 
@@ -28,7 +30,7 @@ public class AssaultRifle : Weapon
         laserShotgun = GetComponent<LaserShotgun>();       
 
         effectsDisplayTime = 0.2f;
-        damagePerShot = 20;
+        damagePerShot = 12;
         timeBetweenBullets = 0.15f;
         range = 15f;
         collided = false;
@@ -121,9 +123,11 @@ public class AssaultRifle : Weapon
             if (!pool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.activeInHierarchy)
             {
                 transformTr[i].position = position;
+             
                 pool.GetComponentsInChildren<EffectSettings>(true)[i].transform.position = this.transform.position;
                 pool.GetComponentsInChildren<EffectSettings>(true)[i].Target = transformTr[i].gameObject;
                 pool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.SetActive(true);
+                //pool.GetComponentsInChildren<fix>(true)[i].hit = false;
                 break;
             }
         }

@@ -11,8 +11,6 @@ public class TitanoEnemy : Enemy
     void Start()
     {
         fireRef = GetComponent<TitanoEnemyFire>();
-        hPoints = 250;
-        comboValue = 1000;
         remainHPoints = hPoints;
     }
 

@@ -11,9 +11,6 @@ public class MeleeExplosiveEnemy : Enemy
     {
         base.Awake();
         suicidePool = GameObject.Find("ExplosiveFuriaParticlePool");
-        hPoints = 50;
-        comboValue = 10;
-
         id = transform.GetSiblingIndex();
         myParticle = suicidePool.transform.GetChild(id);
         myEffect = myParticle.GetComponentsInChildren<EffectSettings>(true)[0];
