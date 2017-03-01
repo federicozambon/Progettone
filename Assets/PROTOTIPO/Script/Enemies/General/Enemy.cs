@@ -127,10 +127,11 @@ public abstract class Enemy : MonoBehaviour
             blackRef.textMesh.transform.localPosition = Vector3.Lerp(new Vector3(0,2.5f,0),new Vector3(0,4,0), timer*2);
             yield return null;
         }
+        yield return new WaitForSeconds(0.5f);
         blackRef.textMesh.transform.localPosition = new Vector3(0, 3, 0);
-        timer = 0;
+        timer = 0; 
         blackRef.textMesh.characterSize = 0.46f;
-        //blackRef.textMesh.text = "";
+        blackRef.textMesh.text = "";
         combat = null;
     }
     Coroutine combat;
