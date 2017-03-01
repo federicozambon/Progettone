@@ -53,6 +53,9 @@ public class ElectricTrap : Trap
 
     public override IEnumerator ParticleTrap()
     {
+        playSound = false;
+        aController.playSound(myDie);
+
         foreach (var ray in rayObj)
         {
             ray.GetComponent<RayElectricTrap>().coll.enabled = true;
