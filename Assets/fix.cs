@@ -22,7 +22,7 @@ public class fix : MonoBehaviour
     {
         if (!hit)
         {
-            foreach (var item in Physics.OverlapSphere(this.transform.position, 0.1f))
+            foreach (var item in Physics.OverlapSphere(this.transform.position, 0.2f))
             {
                 if (item.tag == "Enemy")
                 {
