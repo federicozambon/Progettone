@@ -114,7 +114,7 @@ public abstract class Enemy : MonoBehaviour
     {
         float timer = 0;
         blackRef.textMesh.text = damage.ToString();
-        blackRef.textMesh.color = gradient.Evaluate(Random.value);
+        blackRef.textMesh.color = gradient.Evaluate(1-remainHPoints/hPoints);
         while (timer <0.5f)
         {
             timer += Time.deltaTime;
