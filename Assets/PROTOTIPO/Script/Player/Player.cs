@@ -59,6 +59,11 @@ public class Player: MonoBehaviour
     AudioSource aSource;
     public AudioController aController;
 
+    public float rx;
+    public float ry;
+
+
+
     void Awake()
     {
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
@@ -247,8 +252,8 @@ public class Player: MonoBehaviour
 
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
-            float rx = Input.GetAxisRaw("Horizontal_Stick");
-            float ry = Input.GetAxisRaw("Vertical_Stick");
+            rx = Input.GetAxisRaw("Horizontal_Stick");
+            ry = Input.GetAxisRaw("Vertical_Stick");
 
 
             if (isDashing)
