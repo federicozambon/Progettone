@@ -108,13 +108,19 @@ public abstract class Enemy : MonoBehaviour
     {
         blackRef.textMesh.transform.localPosition = new Vector3(0, 3, 0);
         blackRef.textMesh.text = "";
+        blackRef.textMesh.characterSize = 0.46f;
     }
 
-    virtual public IEnumerator CombatText(int damage)
+    virtual public IEnumerator CombatText(int damage, bool isCrit)
     {
+        blackRef.textMesh.characterSize = 0.46f;
         float timer = 0;
         blackRef.textMesh.text = damage.ToString();
         blackRef.textMesh.color = gradient.Evaluate(1-remainHPoints/hPoints);
+        if (isCrit)
+        {
+            blackRef.textMesh.characterSize = 0.8f;
+        }
         while (timer <0.5f)
         {
             timer += Time.deltaTime;
@@ -123,6 +129,7 @@ public abstract class Enemy : MonoBehaviour
         }
         blackRef.textMesh.transform.localPosition = new Vector3(0, 3, 0);
         timer = 0;
+        blackRef.textMesh.characterSize = 0.46f;
         //blackRef.textMesh.text = "";
         combat = null;
     }
@@ -130,17 +137,27 @@ public abstract class Enemy : MonoBehaviour
 
     virtual public void TakeDamage(int damagePerShot)
     {
+        bool isCrit = false;
+        int percent = damagePerShot * 15 / 100;
+        damagePerShot += Random.Range(-percent, percent);
+
+        if (Random.value > 0.9f)
+        {
+            isCrit = true;  
+            damagePerShot *= 2;
+        }
+
         if (!dead)
         {
             remainHPoints -= damagePerShot;
             if (combat == null)
             {
-                combat = StartCoroutine(CombatText((int)remainHPoints));
+                 combat = StartCoroutine(CombatText(damagePerShot, isCrit));       
             }
             else
             {
                 StopCoroutine(combat);
-                combat = StartCoroutine(CombatText((int)remainHPoints));
+                combat = StartCoroutine(CombatText(damagePerShot,isCrit));
             }
   
        
