@@ -51,7 +51,8 @@ public class AcidTrap: Trap
     public override IEnumerator ParticleTrap()
     {
         eSettings.IsVisible = true;
-       
+        playSound = false;
+        aController.playSound(myDie);
 
         yield return new WaitForSeconds(timeToDisable);
 

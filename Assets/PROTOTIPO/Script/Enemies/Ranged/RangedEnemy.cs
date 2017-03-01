@@ -10,14 +10,7 @@ public class RangedEnemy : Enemy
     void Start()
     {
         rangedFireRef = GetComponent<RangedEnemyFire>();
-        hPoints = 25;
-        comboValue = 10;
         remainHPoints = hPoints;
-
-        if (refManager.flyCamRef.endedCutScene)
-        {
-            isActive = true;
-        }
     }
 
     public override IEnumerator Die()

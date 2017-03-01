@@ -7,6 +7,7 @@ public abstract class Enemy : MonoBehaviour
 {
     public ReferenceManager refManager;
     public NavMeshAgent navRef;
+    public Gradient gradient;
 
     public string enemyType;
     public Transform headRef;
@@ -102,15 +103,66 @@ public abstract class Enemy : MonoBehaviour
         remainHPoints = hPoints;
     }
 
+
+    virtual public void ResetCombatText()
+    {
+        blackRef.textMesh.transform.localPosition = new Vector3(0, 3, 0);
+        blackRef.textMesh.text = "";
+        blackRef.textMesh.characterSize = 0.46f;
+    }
+
+    virtual public IEnumerator CombatText(int damage, bool isCrit)
+    {
+        blackRef.textMesh.characterSize = 0.46f;
+        float timer = 0;
+        blackRef.textMesh.text = damage.ToString();
+        blackRef.textMesh.color = gradient.Evaluate(1-remainHPoints/hPoints);
+        if (isCrit)
+        {
+            blackRef.textMesh.characterSize = 0.8f;
+        }
+        while (timer <0.5f)
+        {
+            timer += Time.deltaTime;
+            blackRef.textMesh.transform.localPosition = Vector3.Lerp(new Vector3(0,2.5f,0),new Vector3(0,4,0), timer*2);
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.5f);
+        blackRef.textMesh.transform.localPosition = new Vector3(0, 3, 0);
+        timer = 0; 
+        blackRef.textMesh.characterSize = 0.46f;
+        blackRef.textMesh.text = "";
+        combat = null;
+    }
+    Coroutine combat;
+
     virtual public void TakeDamage(int damagePerShot)
     {
+        bool isCrit = false;
+        int percent = damagePerShot * 15 / 100;
+        damagePerShot += Random.Range(-percent, percent);
+
+        if (Random.value > 0.9f)
+        {
+            isCrit = true;  
+            damagePerShot *= 2;
+        }
+
         if (!dead)
         {
-            if (remainHPoints - damagePerShot >= 0)
+            remainHPoints -= damagePerShot;
+            if (combat == null)
             {
-                remainHPoints -= damagePerShot;
+                 combat = StartCoroutine(CombatText(damagePerShot, isCrit));       
             }
             else
+            {
+                StopCoroutine(combat);
+                combat = StartCoroutine(CombatText(damagePerShot,isCrit));
+            }
+  
+       
+            if (remainHPoints <= 0)
             {
                 StartCoroutine("Die");
                 if (playSound == true && myDie != null)
@@ -119,8 +171,6 @@ public abstract class Enemy : MonoBehaviour
                     aController.playSound(myDie);
                     //Debug.Log("sono morto");
                 }
-                    
-
             }
         }
     }
@@ -143,6 +193,7 @@ public abstract class Enemy : MonoBehaviour
 
     virtual public IEnumerator Die()
     {
+        ResetCombatText();
         if (dieController == true && tutorialMode == false)
         {
             ParticleActivator(this.transform.position);

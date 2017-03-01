@@ -10,8 +10,6 @@ public class SniperEnemy : Enemy
 
     void Start()
     {
-        hPoints = 25;
-        comboValue = 650;
         remainHPoints = hPoints;
     }
 
