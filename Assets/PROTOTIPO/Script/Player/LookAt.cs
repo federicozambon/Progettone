@@ -5,9 +5,9 @@ public class LookAt : MonoBehaviour
 {
     Transform camera1;
 
-    private void Awake()
+    private void Start()
     {
-        camera1 = GameObject.Find("MainCamera").transform;
+        camera1 = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>().camTr;
     }
 
     void Update ()

@@ -9,6 +9,7 @@ public class ReferenceManager : MonoBehaviour
     public GameObject playerObj;
     public MiniMap miniMapRef;
     public Player playerRef;
+    public Transform camTr;
 
     public FlyCamManager flyCamRef;
 
@@ -21,6 +22,6 @@ public class ReferenceManager : MonoBehaviour
         playerRef = FindObjectOfType<Player>();
         playerObj = playerRef.gameObject;
         miniMapRef = FindObjectOfType<MiniMap>();
-
+        camTr = GameObject.Find("MainCamera").transform;
     }
 }
