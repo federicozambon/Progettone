@@ -32,6 +32,24 @@ public class UIController : MonoBehaviour
     public ReferenceManager refManager;
     public Player playerRef;
     public GameOverManager refGameover;
+    public GameObject DialogoMontacarichi1;
+    public GameObject DialogoMontacarichi2;
+    public GameObject DialogoMontacarichi3;
+    public GameObject DialogoDiscarica1;
+    public GameObject DialogoDiscarica2;
+    public GameObject DialogoDiscarica3;
+    public GameObject DialogoMontacarichi21;
+    public GameObject DialogoMontacarichi22;
+    public GameObject DialogoMontacarichi23;
+    public GameObject DialogoTetto1;
+    public GameObject DialogoTetto2;
+    public GameObject DialogoTetto3;
+    public GameObject Lv2sbloccato;
+    public GameObject Lv3sbloccato;
+    public GameObject Lv4sbloccato;
+
+
+
 
     Canvas canvas;
 
@@ -261,5 +279,9 @@ public class UIController : MonoBehaviour
             }
         }  
     }
-}
+   
+
+    }
+    
+
 
