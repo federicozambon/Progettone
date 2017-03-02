@@ -11,15 +11,14 @@ public class AssaultRifle : Weapon
     int shootableMask;
     AudioSource shootSound;
     Player player;
+    public int startingDamage;
 
 
     public Transform[] transformTr;
     bool isPoolFull = false;
 
     void Awake()
-    {
-
-      
+    {   
         rotRef = FindObjectOfType<Player>();
         playerGo = rotRef.gameObject;
 
@@ -31,6 +30,7 @@ public class AssaultRifle : Weapon
 
         effectsDisplayTime = 0.2f;
         damagePerShot = 12;
+        startingDamage = damagePerShot;
         timeBetweenBullets = 0.15f;
         range = 15f;
         collided = false;

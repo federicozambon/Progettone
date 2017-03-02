@@ -94,7 +94,10 @@ public class UIController : MonoBehaviour
 
     public void IncreaseLife()
     {
-        life.size = playerRef.currentHealth / playerRef.maxHealth;
+        float tempCurrent, tempMax;
+        tempCurrent = (float)playerRef.currentHealth;
+        tempMax = (float)playerRef.maxHealth;
+        life.size = tempCurrent / tempMax;
     }
 
     public void UpdateScore()
