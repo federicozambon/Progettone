@@ -7,6 +7,7 @@ public abstract class Enemy : MonoBehaviour
 {
     public ReferenceManager refManager;
     public NavMeshAgent navRef;
+    public Gradient gradient;
 
     public string enemyType;
     public Transform headRef;
@@ -102,13 +103,47 @@ public abstract class Enemy : MonoBehaviour
         remainHPoints = hPoints;
     }
 
+
+    virtual public void ResetCombatText()
+    {
+        blackRef.textMesh.transform.localPosition = new Vector3(0, 3, 0);
+        blackRef.textMesh.text = "";
+    }
+
+    virtual public IEnumerator CombatText(int damage)
+    {
+        float timer = 0;
+        blackRef.textMesh.text = damage.ToString();
+        blackRef.textMesh.color = gradient.Evaluate(Random.value);
+        while (timer <0.5f)
+        {
+            timer += Time.deltaTime;
+            blackRef.textMesh.transform.localPosition = Vector3.Lerp(new Vector3(0,2.5f,0),new Vector3(0,4,0), timer*2);
+            yield return null;
+        }
+        blackRef.textMesh.transform.localPosition = new Vector3(0, 3, 0);
+        timer = 0;
+        //blackRef.textMesh.text = "";
+        combat = null;
+    }
+    Coroutine combat;
+
     virtual public void TakeDamage(int damagePerShot)
     {
         if (!dead)
         {
             remainHPoints -= damagePerShot;
-            Debug.Log(remainHPoints);
-
+            if (combat == null)
+            {
+                combat = StartCoroutine(CombatText((int)remainHPoints));
+            }
+            else
+            {
+                StopCoroutine(combat);
+                combat = StartCoroutine(CombatText((int)remainHPoints));
+            }
+  
+       
             if (remainHPoints <= 0)
             {
                 StartCoroutine("Die");
@@ -140,6 +175,7 @@ public abstract class Enemy : MonoBehaviour
 
     virtual public IEnumerator Die()
     {
+        ResetCombatText();
         if (dieController == true && tutorialMode == false)
         {
             ParticleActivator(this.transform.position);

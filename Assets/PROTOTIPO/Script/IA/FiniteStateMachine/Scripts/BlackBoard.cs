@@ -13,6 +13,7 @@ public class BlackBoard : MonoBehaviour
     public Transform attractionTransform;
     public float timer;
     public ReferenceManager refManager;
+    public TextMesh textMesh;
 
     public StateIdle stateIdle;
     public StateFlee stateFlee;
