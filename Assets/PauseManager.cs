@@ -18,6 +18,8 @@ public class PauseManager : MonoBehaviour {
     public EventSystem eventRef;
     public StandaloneInputModule standRef;
 
+    public AudioSource backAudioRef;
+
     bool paused;
 
 	void Awake ()
@@ -65,6 +67,7 @@ public class PauseManager : MonoBehaviour {
         {
             if (Input.GetButtonDown("Cancel"))
             {
+                backAudioRef.Play();
                 CanvasPanel1.SetActive(true);
                 CanvasPanel2.SetActive(false);
                 eventRef.SetSelectedGameObject(resume);
