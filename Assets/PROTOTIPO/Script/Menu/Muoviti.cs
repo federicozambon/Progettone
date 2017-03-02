@@ -33,10 +33,12 @@ public class Muoviti : MonoBehaviour {
 
 
 
+
     // Use this for initialization
     void Awake ()
 
     {
+       
         achievement = FindObjectOfType<Achievement>();
         if (achievement == null)
         {
@@ -230,6 +232,7 @@ public class Muoviti : MonoBehaviour {
     public void SbloccoMontacarichiA_0()
 
     {
+           
             ColorBlock cb = ButtonsMontacarichiA[0].colors;
             if (cb.normalColor == Color.white)
             {
