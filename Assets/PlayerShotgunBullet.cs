@@ -18,7 +18,7 @@ public class PlayerShotgunBullet : MonoBehaviour
         hit = false;
     }
 
-    void Update ()
+    void FixedUpdate ()
     {
         if (!hit)
         {
