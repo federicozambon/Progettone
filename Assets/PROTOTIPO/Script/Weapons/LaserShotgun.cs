@@ -13,6 +13,7 @@ public class LaserShotgun : Weapon
     public Transform[] transformTr;
     Player player;
     AudioSource shootSound;
+    public int startingDamage;
 
     void Awake()
     {
@@ -26,6 +27,7 @@ public class LaserShotgun : Weapon
 
         effectsDisplayTime = 0.2f;
         damagePerShot = 15;
+        startingDamage = damagePerShot;
         timeBetweenBullets = 0.6f;
         range = 10f;
         collided = false;

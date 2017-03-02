@@ -62,10 +62,13 @@ public class Player: MonoBehaviour
     public float rx;
     public float ry;
 
-
+    AssaultRifle assaultRef;
+    LaserShotgun shotgunRef;
 
     void Awake()
     {
+        assaultRef = FindObjectOfType<AssaultRifle>();
+        shotgunRef = FindObjectOfType<LaserShotgun>();
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
         anim = GetComponentInChildren<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
@@ -149,8 +152,11 @@ public class Player: MonoBehaviour
             {
                 if (refManager.uicontroller.score >= baseCost[2] * costModifier[2])
                 {
+
                     aController.playSound(AudioContainer.Self.Weapon_PickUp);
                     damageModifier += 0.25f;
+                    assaultRef.damagePerShot += (int)(assaultRef.startingDamage * 0.25f);
+                    shotgunRef.damagePerShot += (int)(shotgunRef.startingDamage * 0.25f);
                     refManager.uicontroller.UpdateWeaponUpgrade(25);
                     refManager.uicontroller.score -= (int)(baseCost[2] * costModifier[2]);
                     costModifier[2] += 0.5f;
@@ -175,10 +181,11 @@ public class Player: MonoBehaviour
                 {
                     aController.playSound(AudioContainer.Self.Armor_PickUp);
                     refManager.uicontroller.score -= (int)(baseCost[3] * costModifier[3]);
-                    costModifier[2] += 0.5f;
+                    costModifier[3] += 0.5f;
                     coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$" + baseCost[3] * costModifier[3];
                     refManager.uicontroller.UpdateScore();
                     maxHealth += 25;
+                    currentHealth += 25;
                     armorUpgrade += 25;
                     refManager.uicontroller.UpdateArmorUpgrade(25);
                     refManager.uicontroller.IncreaseLife();
@@ -228,23 +235,27 @@ public class Player: MonoBehaviour
     {
         if (coll.tag == "Health_PickUp")
         {
+            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
             refManager.uicontroller.HidePrompt();
             coll.GetComponent<PickUp>().Hide(); 
         }
 
         if (coll.tag == "Ammo_PickUp")
         {
+            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
             refManager.uicontroller.HidePrompt();
             coll.GetComponent<PickUp>().Hide();
         }
         if (coll.tag == "Weapon_PickUp")
         {
+            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
             refManager.uicontroller.HidePrompt();
             coll.GetComponent<PickUp>().Hide();
         }
 
         if (coll.tag == "Armor_PickUp")
         {
+            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
             refManager.uicontroller.HidePrompt();
             coll.GetComponent<PickUp>().Hide();
         }
