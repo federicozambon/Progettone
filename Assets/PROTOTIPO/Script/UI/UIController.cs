@@ -31,6 +31,7 @@ public class UIController : MonoBehaviour
     public Text armorUpgrade;
     public ReferenceManager refManager;
     public Player playerRef;
+    public GameOverManager refGameover;
 
     Canvas canvas;
 
@@ -62,7 +63,8 @@ public class UIController : MonoBehaviour
     void Start()
     {
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
-        playerRef = refManager.playerObj.GetComponent<Player>();     
+        playerRef = refManager.playerObj.GetComponent<Player>();
+        refGameover = FindObjectOfType<GameOverManager>();
     }
 
     public void DecrementLife(float damageTaken)
@@ -187,7 +189,7 @@ public class UIController : MonoBehaviour
 
     public void GameOverOn()
     {
-        gameOver.enabled = true;
+        refGameover.GameOverStart();
     }
 
     public void GodModeOn()
