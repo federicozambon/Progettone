@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PauseManager : MonoBehaviour {
+public class PauseManager : MonoBehaviour
+{
     public GameObject CanvasPanel1;
     public GameObject CanvasPanel2;
     public GameObject resume;
@@ -12,8 +13,6 @@ public class PauseManager : MonoBehaviour {
     public GameObject quit;
 
     public GameObject generalVolume;
-    public GameObject musicVolume;
-    public GameObject sfxVolume;
 
     public EventSystem eventRef;
     public StandaloneInputModule standRef;
@@ -22,14 +21,12 @@ public class PauseManager : MonoBehaviour {
 
     bool paused;
 
-	void Awake ()
+    void Awake()
     {
         resume = GameObject.Find("Resume");
         options = GameObject.Find("Options");
         quit = GameObject.Find("QuitToMenu");
-        generalVolume = GameObject.Find("HandleP");
-        musicVolume = GameObject.Find("HandleM");
-        sfxVolume = GameObject.Find("HandleS");
+        generalVolume = GameObject.Find("Volume Principale");
         eventRef = FindObjectOfType<EventSystem>();
         standRef = FindObjectOfType<StandaloneInputModule>();
         CanvasPanel1.SetActive(false);
@@ -41,12 +38,15 @@ public class PauseManager : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetButtonDown("GodMode"))
+        if (Input.GetButtonDown("GodMode") || (paused && Input.GetButtonDown("Cancel")))
         {
             if (!paused)
             {
                 CanvasPanel1.SetActive(true);
+
+                eventRef.SetSelectedGameObject(options);
                 eventRef.SetSelectedGameObject(resume);
+
                 Time.timeScale = 0;
                 paused = true;
             }
@@ -58,76 +58,43 @@ public class PauseManager : MonoBehaviour {
                 paused = false;
             }
         }
-        if (Input.GetAxisRaw("Vertical") > -0.1 && Input.GetAxisRaw("Vertical") < 0.1)
-        {
-            moved = false;
-        }
+
 
         if (CanvasPanel2.activeInHierarchy)
         {
             if (Input.GetButtonDown("Cancel"))
             {
-                backAudioRef.Play();
+                if (backAudioRef)
+                {
+                    backAudioRef.Play();
+                }
+
                 CanvasPanel1.SetActive(true);
                 CanvasPanel2.SetActive(false);
                 eventRef.SetSelectedGameObject(resume);
             }
-            if (!moved)
-            {
-                if (Input.GetAxisRaw("Vertical") > 0.3f)
-                {
-                    moved = true;
-                    if (eventRef.currentSelectedGameObject == generalVolume)
-                    {
-                        eventRef.SetSelectedGameObject(sfxVolume);
-                    }
-                    if (eventRef.currentSelectedGameObject == sfxVolume)
-                    {
-                        eventRef.SetSelectedGameObject(musicVolume);
-                    }
-                    if (eventRef.currentSelectedGameObject == musicVolume)
-                    {
-                        eventRef.SetSelectedGameObject(generalVolume);
-                    }
-                }
-                if (Input.GetAxisRaw("Vertical") < -0.3f)
-                {
-                    moved = true;
-                    if (eventRef.currentSelectedGameObject == generalVolume)
-                    {
-                        eventRef.SetSelectedGameObject(musicVolume);
-                    }
-                    if (eventRef.currentSelectedGameObject == musicVolume)
-                    {
-                        eventRef.SetSelectedGameObject(sfxVolume);
-                    }
-                    if (eventRef.currentSelectedGameObject == sfxVolume)
-                    {
-                        eventRef.SetSelectedGameObject(generalVolume);
-                    }
-                }
-            }
+            /*
             if (Input.GetAxisRaw("Horizontal") > 0.3f)
             {
-                eventRef.currentSelectedGameObject.transform.parent.transform.parent.GetComponent<Slider>().value += 0.2f;
+                eventRef.currentSelectedGameObject.GetComponent<Slider>().value += 0.2f;
             }
             if (Input.GetAxisRaw("Horizontal") < -0.3f)
             {
-                eventRef.currentSelectedGameObject.transform.parent.transform.parent.GetComponent<Slider>().value -= 0.2f;
-            }
+                eventRef.currentSelectedGameObject.GetComponent<Slider>().value -= 0.2f;
+            }   
+            */
         }
 
-   
-
-        if (!moved)
+        if (CanvasPanel1.activeInHierarchy)
         {
-          
-            if (Input.GetAxisRaw("Vertical") < -0.3f)
+            if (!moved)
             {
-              
-                moved = true;
-                if (CanvasPanel1.activeInHierarchy)
+
+                if (Input.GetAxisRaw("Vertical") < -0.3f)
                 {
+
+                    moved = true;
+
                     if (eventRef.currentSelectedGameObject == resume)
                     {
                         eventRef.SetSelectedGameObject(options);
@@ -139,21 +106,6 @@ public class PauseManager : MonoBehaviour {
                     else if (eventRef.currentSelectedGameObject == quit)
                     {
                         eventRef.SetSelectedGameObject(resume);
-                    }
-                }
-                else
-                {
-                    if (eventRef.currentSelectedGameObject == generalVolume)
-                    {
-                        eventRef.SetSelectedGameObject(musicVolume);
-                    }
-                    else if (eventRef.currentSelectedGameObject == musicVolume)
-                    {
-                        eventRef.SetSelectedGameObject(sfxVolume);
-                    }
-                    else if (eventRef.currentSelectedGameObject == sfxVolume)
-                    {
-                        eventRef.SetSelectedGameObject(generalVolume);
                     }
                 }
             }
@@ -161,37 +113,23 @@ public class PauseManager : MonoBehaviour {
             if (Input.GetAxisRaw("Vertical") > 0.3f)
             {
                 moved = true;
-                if (CanvasPanel1.activeInHierarchy)
+                if (eventRef.currentSelectedGameObject == resume)
                 {
-                    if (eventRef.currentSelectedGameObject == resume)
-                    {
-                        eventRef.SetSelectedGameObject(quit);
-                    }
-                    else if (eventRef.currentSelectedGameObject == quit)
-                    {
-                        eventRef.SetSelectedGameObject(options);
-                    }
-                    else if (eventRef.currentSelectedGameObject == options)
-                    {
-                        eventRef.SetSelectedGameObject(resume);
-                    }
+                    eventRef.SetSelectedGameObject(quit);
                 }
-                else
+                else if (eventRef.currentSelectedGameObject == quit)
                 {
-                    if (eventRef.currentSelectedGameObject == generalVolume)
-                    {
-                        eventRef.SetSelectedGameObject(sfxVolume);
-                    }
-                    else if (eventRef.currentSelectedGameObject == sfxVolume)
-                    {
-                        eventRef.SetSelectedGameObject(musicVolume);
-                    }
-                    else if (eventRef.currentSelectedGameObject == musicVolume)
-                    {
-                        eventRef.SetSelectedGameObject(generalVolume);
-                    }
+                    eventRef.SetSelectedGameObject(options);
+                }
+                else if (eventRef.currentSelectedGameObject == options)
+                {
+                    eventRef.SetSelectedGameObject(resume);
                 }
             }
+        }
+        if (Input.GetAxisRaw("Vertical") > -0.1 && Input.GetAxisRaw("Vertical") < 0.1)
+        {
+            moved = false;
         }
     }
     public void QuitToMenu()
@@ -200,10 +138,10 @@ public class PauseManager : MonoBehaviour {
         Time.timeScale = 1;
     }
     public void AudioOptions()
-    {     
-        CanvasPanel1.SetActive(false);
+    {
         CanvasPanel2.SetActive(true);
         eventRef.SetSelectedGameObject(generalVolume);
+        CanvasPanel1.SetActive(false);  
     }
     public void Resume()
     {

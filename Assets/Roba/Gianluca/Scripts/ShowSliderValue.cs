@@ -5,10 +5,17 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Text))]
 public class ShowSliderValue : MonoBehaviour
 {
+    Text lbl;
 	public void UpdateLabel (float value)
 	{
-		Text lbl = GetComponent<Text>();
+	
 		if (lbl != null)
-			lbl.text = Mathf.RoundToInt (value + 80) + "%";
+			lbl.text = Mathf.RoundToInt (value +60)*2 + "%";
 	}
+
+    private void Awake()
+    {
+        lbl = GetComponent<Text>();
+        lbl.text = 100 + "%";
+    }
 }

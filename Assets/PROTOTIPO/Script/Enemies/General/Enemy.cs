@@ -72,7 +72,7 @@ public abstract class Enemy : MonoBehaviour
         blackRef = GetComponent<BlackBoard>();
         navRef = GetComponent<NavMeshAgent>();
         this.gameObject.SetActive(false);
-        pool = GameObject.Find("ParticleEnemyExplosion");
+        
         aController = FindObjectOfType<AudioController>();   
     }
 
@@ -175,16 +175,28 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public GameObject pool;
-
     virtual public void ParticleActivator(Vector3 position)
     {
         for (int i = 0; i < 149; i++)
         {
-            EffectSettings effectRef = pool.GetComponentsInChildren<EffectSettings>(true)[i];
+            EffectSettings effectRef = refManager.pool.GetComponentsInChildren<EffectSettings>(true)[i];
             if (!effectRef.gameObject.activeInHierarchy)
             {
                 effectRef.transform.position = this.transform.position;
+                effectRef.gameObject.SetActive(true);
+                break;
+            }
+        }
+    }
+
+    virtual public void SpawnParticleActivator(Vector3 position)
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            EffectSettings effectRef = refManager.spawnPool.GetComponentsInChildren<EffectSettings>(true)[i];
+            if (!effectRef.gameObject.activeInHierarchy)
+            {
+                effectRef.transform.position = position;
                 effectRef.gameObject.SetActive(true);
                 break;
             }
