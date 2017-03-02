@@ -72,7 +72,7 @@ public abstract class Enemy : MonoBehaviour
         blackRef = GetComponent<BlackBoard>();
         navRef = GetComponent<NavMeshAgent>();
         this.gameObject.SetActive(false);
-        pool = GameObject.Find("ParticleEnemyExplosion");
+        
         aController = FindObjectOfType<AudioController>();   
     }
 
@@ -108,39 +108,57 @@ public abstract class Enemy : MonoBehaviour
     {
         blackRef.textMesh.transform.localPosition = new Vector3(0, 3, 0);
         blackRef.textMesh.text = "";
+        blackRef.textMesh.characterSize = 0.46f;
     }
 
-    virtual public IEnumerator CombatText(int damage)
+    virtual public IEnumerator CombatText(int damage, bool isCrit)
     {
+        blackRef.textMesh.characterSize = 0.46f;
         float timer = 0;
         blackRef.textMesh.text = damage.ToString();
-        blackRef.textMesh.color = gradient.Evaluate(Random.value);
+        blackRef.textMesh.color = gradient.Evaluate(1-remainHPoints/hPoints);
+        if (isCrit)
+        {
+            blackRef.textMesh.characterSize = 0.8f;
+        }
         while (timer <0.5f)
         {
             timer += Time.deltaTime;
             blackRef.textMesh.transform.localPosition = Vector3.Lerp(new Vector3(0,2.5f,0),new Vector3(0,4,0), timer*2);
             yield return null;
         }
+        yield return new WaitForSeconds(0.5f);
         blackRef.textMesh.transform.localPosition = new Vector3(0, 3, 0);
-        timer = 0;
-        //blackRef.textMesh.text = "";
+        timer = 0; 
+        blackRef.textMesh.characterSize = 0.46f;
+        blackRef.textMesh.text = "";
         combat = null;
     }
     Coroutine combat;
 
     virtual public void TakeDamage(int damagePerShot)
     {
+        bool isCrit = false;
+        int percent = damagePerShot * 15 / 100;
+        damagePerShot += Random.Range(-percent, percent);
+
+        if (Random.value > 0.9f)
+        {
+            isCrit = true;  
+            damagePerShot *= 2;
+        }
+
         if (!dead)
         {
             remainHPoints -= damagePerShot;
             if (combat == null)
             {
-                combat = StartCoroutine(CombatText((int)remainHPoints));
+                 combat = StartCoroutine(CombatText(damagePerShot, isCrit));       
             }
             else
             {
                 StopCoroutine(combat);
-                combat = StartCoroutine(CombatText((int)remainHPoints));
+                combat = StartCoroutine(CombatText(damagePerShot,isCrit));
             }
   
        
@@ -157,16 +175,28 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public GameObject pool;
-
     virtual public void ParticleActivator(Vector3 position)
     {
         for (int i = 0; i < 149; i++)
         {
-            EffectSettings effectRef = pool.GetComponentsInChildren<EffectSettings>(true)[i];
+            EffectSettings effectRef = refManager.pool.GetComponentsInChildren<EffectSettings>(true)[i];
             if (!effectRef.gameObject.activeInHierarchy)
             {
                 effectRef.transform.position = this.transform.position;
+                effectRef.gameObject.SetActive(true);
+                break;
+            }
+        }
+    }
+
+    virtual public void SpawnParticleActivator(Vector3 position)
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            EffectSettings effectRef = refManager.spawnPool.GetComponentsInChildren<EffectSettings>(true)[i];
+            if (!effectRef.gameObject.activeInHierarchy)
+            {
+                effectRef.transform.position = position;
                 effectRef.gameObject.SetActive(true);
                 break;
             }

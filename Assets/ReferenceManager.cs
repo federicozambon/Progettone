@@ -9,6 +9,9 @@ public class ReferenceManager : MonoBehaviour
     public GameObject playerObj;
     public MiniMap miniMapRef;
     public Player playerRef;
+    public Transform camTr;
+    public GameObject pool;
+    public GameObject spawnPool;
 
     public FlyCamManager flyCamRef;
 
@@ -21,6 +24,8 @@ public class ReferenceManager : MonoBehaviour
         playerRef = FindObjectOfType<Player>();
         playerObj = playerRef.gameObject;
         miniMapRef = FindObjectOfType<MiniMap>();
-
+        camTr = GameObject.Find("MainCamera").transform;
+        pool = GameObject.Find("ParticleEnemyExplosion");
+        spawnPool = GameObject.Find("ParticleEnemySpawn");
     }
 }

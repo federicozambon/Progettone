@@ -96,7 +96,7 @@ public class Player: MonoBehaviour
             //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
-                if (refManager.uicontroller.score >= baseCost[0] * costModifier[0])
+                if (refManager.uicontroller.score >= baseCost[0] * costModifier[0] && currentHealth != maxHealth)
                 {
                     aController.playSound(AudioContainer.Self.Health_PickUp);
                     refManager.uicontroller.score -= (int)(baseCost[0] * costModifier[0]);
@@ -120,7 +120,7 @@ public class Player: MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
           
-                if (refManager.uicontroller.score >= baseCost[1] * costModifier[1])
+                if (refManager.uicontroller.score >= baseCost[1] * costModifier[1] && rocketAmmo != 10)
                 {
                     aController.playSound(AudioContainer.Self.Ammo_PickUp);
                     refManager.uicontroller.score -= (int)(baseCost[1] * costModifier[1]);
@@ -128,6 +128,10 @@ public class Player: MonoBehaviour
                     coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = "$" + baseCost[1] * costModifier[1];
                     refManager.uicontroller.UpdateScore();
                     rocketAmmo += 5;
+                    if (rocketAmmo > 10)
+                    {
+                        rocketAmmo = 10;
+                    }
                     refManager.uicontroller.ammo.text = rocketAmmo.ToString();
                 }
                 else
@@ -177,6 +181,7 @@ public class Player: MonoBehaviour
                     maxHealth += 25;
                     armorUpgrade += 25;
                     refManager.uicontroller.UpdateArmorUpgrade(25);
+                    refManager.uicontroller.IncreaseLife();
                 }
                 else
                 {

@@ -29,6 +29,7 @@ public class Muoviti : MonoBehaviour {
     public Text txtMontacarichiA, txtDiscarica, txtMontacarichiB, txtTetto;
     public Text recordTotale, recordMontacarichiA, recordDiscarica, recordMontacarichiB, recordTetto;
     public static int scoreMontacarichiA, scoreDiscarica, scoreMontacarichiB, scoreTetto;
+    public AudioSource backAudioRef;
 
 
 
@@ -80,6 +81,7 @@ public class Muoviti : MonoBehaviour {
                 CurrentPos = StartPos;
                 GameObject myEventSystem = GameObject.Find("EventSystem");
                 myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonStart);
+                backAudioRef.Play();
             }
 
             else if (CurrentPos == Achievement || CurrentPos == Crediti || CurrentPos == Opzioni)
@@ -87,6 +89,7 @@ public class Muoviti : MonoBehaviour {
                 CurrentPos = MainPos;
                 GameObject myEventSystem = GameObject.Find("EventSystem");
                 myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(button);
+                backAudioRef.Play();
             }
 
             else if (CurrentPos == Volume || CurrentPos == Controlli || CurrentPos == Records)
@@ -94,6 +97,7 @@ public class Muoviti : MonoBehaviour {
                 CurrentPos = Opzioni;
                 GameObject myEventSystem = GameObject.Find("EventSystem");
                 myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonOptions);
+                backAudioRef.Play();
             }
                 
             else if (CurrentPos == AchivMontacarichiA || CurrentPos == AchivDiscarica || CurrentPos == AchivMontacarichiB || AchivTetto)
@@ -105,6 +109,7 @@ public class Muoviti : MonoBehaviour {
                 CurrentPos = Achievement;
                 GameObject myEventSystem = GameObject.Find("EventSystem");
                 myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonAchievement);
+                backAudioRef.Play();
             }
 
             
@@ -112,7 +117,7 @@ public class Muoviti : MonoBehaviour {
 
         }
 
-        if (Input.GetButtonDown("GodMode") && CurrentPos == StartPos)
+        if (Input.anyKey && CurrentPos == StartPos)
             Menu();
 
 
