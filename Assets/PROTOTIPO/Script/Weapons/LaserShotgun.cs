@@ -66,6 +66,8 @@ public class LaserShotgun : Weapon
         yield return new WaitForSeconds(0.2f);
     }
 
+    int counter = 0;
+
     public void Shoot()
     {
         timer = 0f;
@@ -90,13 +92,22 @@ public class LaserShotgun : Weapon
                         for (int f = 0; f < 6; f++)
                         {
                             float offsetX = Random.value, offsetY = Random.value, offsetZ = Random.value;
-
-                            if (Physics.Linecast(transform.position, aimHit.point + new Vector3(-3 + f, 0, -3 + f), out shootHit[f]))
+                            
+                            if (Physics.Linecast(transform.position, aimHit.point + new Vector3(Mathf.Cos(-15+(6*f)), 0, Mathf.Sin(-15 + (6 * f))), out shootHit[f]))
                             {
-                                ParticleActivator(aimHit.point + new Vector3(-3 + f, 0, -3 + f));            
+                                ParticleActivator(aimHit.point + new Vector3(-3 + f, 0, -3 + f), counter);
+                                if (counter < 17)
+                                {
+                                    counter++;
+                                }
+                                else
+                                {
+                                    counter = 0;
+                                }
                             }
                         }
                         collided = true;
+                        break;
                     }              
                 }
                 transform.localRotation = Quaternion.identity;
@@ -112,13 +123,30 @@ public class LaserShotgun : Weapon
 
                         if (Physics.Raycast(shootRayBlocked, out shootHitBlocked, range))
                         {
-                            ParticleActivator(shootHitBlocked.point + new Vector3(-3 + f, 0, -3 + f));
+                            ParticleActivator(shootHitBlocked.point + new Vector3(Mathf.Cos(-15 + (6 * f)), 0, Mathf.Sin(-15 + (6 * f))), counter);
+                            if (counter < 17)
+                            {
+                                counter++;
+                            }
+                            else
+                            {
+                                counter = 0;
+                            }
                         }
                         else
                         {
-                            ParticleActivator(transform.position + (transform.forward *range) + new Vector3(-3 + f, 0, -3 + f));
+                            ParticleActivator(transform.position + (transform.forward *range) + new Vector3(Mathf.Cos(-15 + (6 * f)), 0, Mathf.Sin(-15 + (6 * f))), counter);
+                            if (counter < 17)
+                            {
+                                counter++;
+                            }
+                            else
+                            {
+                                counter = 0;
+                            }
                         }               
                         collided = true;
+                        break;
                     }
                 }
                 transform.localRotation = Quaternion.identity;
@@ -131,20 +159,12 @@ public class LaserShotgun : Weapon
 
     
 
-    public void ParticleActivator(Vector3 position)
+    public void ParticleActivator(Vector3 position, int looper)
     {
-        for (int i = 0; i < 18; i++)
-        {
-            if (!pool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.activeInHierarchy)
-            {
-                transformTr[i].position = position;
-                //pool.GetComponentsInChildren<PlayerShotgunBullet>(true)[i].hit = false;
-                pool.GetComponentsInChildren<EffectSettings>(true)[i].transform.position = this.transform.position;
-                pool.GetComponentsInChildren<EffectSettings>(true)[i].Target = transformTr[i].gameObject;
-                pool.GetComponentsInChildren<EffectSettings>(true)[i].gameObject.SetActive(true);
-                break;
-            }
-        }
+        transformTr[looper].position = position;
+        pool.GetComponentsInChildren<EffectSettings>(true)[looper].transform.position = this.transform.position;
+        pool.GetComponentsInChildren<EffectSettings>(true)[looper].Target = transformTr[looper].gameObject;
+        pool.GetComponentsInChildren<EffectSettings>(true)[looper].gameObject.SetActive(true);
     }
 }
 
