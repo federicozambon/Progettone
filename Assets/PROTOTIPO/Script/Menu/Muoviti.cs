@@ -27,7 +27,7 @@ public class Muoviti : MonoBehaviour {
     public List<string> textTetto;
     Achievement achievement;
     public Text txtMontacarichiA, txtDiscarica, txtMontacarichiB, txtTetto;
-    public Text recordTotale, recordMontacarichiA, recordDiscarica, recordMontacarichiB, recordTetto;
+    public Text recordTotale;
     public static int scoreMontacarichiA, scoreDiscarica, scoreMontacarichiB, scoreTetto;
     public AudioSource backAudioRef;
 
@@ -59,11 +59,11 @@ public class Muoviti : MonoBehaviour {
         }*/
 
         SaveRecords();
-        recordTotale.text = achievement.total.ToString();
-        recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
-        recordDiscarica.text = "Record : " + achievement.discarica.ToString();
-        recordMontacarichiB.text = "Record : " + achievement.montacarichiB.ToString();
-        recordTetto.text = "Record : " + achievement.tetto.ToString();
+        //recordTotale.text = achievement.total.ToString();
+        //recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
+        //recordDiscarica.text = "Record : " + achievement.discarica.ToString();
+        //recordMontacarichiB.text = "Record : " + achievement.montacarichiB.ToString();
+        //recordTetto.text = "Record : " + achievement.tetto.ToString();
     }
 	
 	// Update is called once per frame
@@ -434,11 +434,11 @@ public class Muoviti : MonoBehaviour {
         PlayerPrefs.SetInt("scoreTetto", achievement.tetto);
         PlayerPrefs.SetInt("scoreTotale", achievement.total);
 
-        recordTotale.text = achievement.total.ToString();
-        recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
-        recordDiscarica.text = "Record : " + achievement.discarica.ToString();
-        recordMontacarichiB.text = "Record : " + achievement.montacarichiB.ToString();
-        recordTetto.text = "Record : " + achievement.tetto.ToString();
+        //recordTotale.text = achievement.total.ToString();
+        //recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
+        //recordDiscarica.text = "Record : " + achievement.discarica.ToString();
+        //recordMontacarichiB.text = "Record : " + achievement.montacarichiB.ToString();
+        //recordTetto.text = "Record : " + achievement.tetto.ToString();
 
 
         PlayerPrefs.Save();
@@ -446,9 +446,34 @@ public class Muoviti : MonoBehaviour {
         Options();
     }
 
-    
+    public void SetScoreMontacarichiA()
+    {
+        recordTotale.text = achievement.montacarichiA.ToString();
+    }
 
-    
+    public void SetScoreDiscarica()
+    {
+        recordTotale.text = achievement.discarica.ToString();
+    }
+
+    public void SetScoreMontacarichiB()
+    {
+        recordTotale.text = achievement.montacarichiB.ToString();
+    }
+
+    public void SetScoreTetto()
+    {
+        recordTotale.text = achievement.tetto.ToString();
+    }
+
+    public void ResetScore()
+    {
+        recordTotale.text = "";
+    }
+
+
+
+
 }
 
 
