@@ -77,7 +77,7 @@ public class UIController : MonoBehaviour
 
     void Awake()
     {
-        lifeAlarm.GetComponent<AudioSource>();
+        lifeAlarm =GetComponent<AudioSource>();
         canvas = GetComponent<Canvas>();
         CanvasOff();
         currentScene = SceneManager.GetActiveScene().name;
