@@ -243,20 +243,20 @@ namespace FSM
                         }
                         else
                         {
-                            if (sm.currentState.blackRef.timer >= attackTimer && sm.currentState == sm.attackState)
+                            if (sm.currentState == sm.attackState)
                             {
-                                //enemyRef.Attack();
+                                blackRef.enemyRef.GetComponent<PredatorEnemy>().StartAttack();
                             }
                             else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) < 3f && sm.currentState != sm.attackState)
                             {
                                 sm.HandleInput(Inputs.Attack);
                             }
-                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 3f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 10)
+                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 3f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 10)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeB);
                                 //  Debug.LogError("PlayerMedium");
                             }
-                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) > 10)
+                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) > 10)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                                 //  Debug.LogError("PlayerFar");
