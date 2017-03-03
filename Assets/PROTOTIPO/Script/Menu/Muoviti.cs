@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Muoviti : MonoBehaviour {
     public GameObject achivementGame;
@@ -24,6 +25,7 @@ public class Muoviti : MonoBehaviour {
     public List<string> textMontacarichiB;
     public List<int> ScoreTetto;
     public List<Button> ButtonsTetto;
+    public List<Button> MainMenuButtons;
     public List<string> textTetto;
     Achievement achievement;
     public Text txtMontacarichiA, txtDiscarica, txtMontacarichiB, txtTetto;
@@ -59,11 +61,37 @@ public class Muoviti : MonoBehaviour {
         }*/
 
         SaveRecords();
-        //recordTotale.text = achievement.total.ToString();
-        //recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
-        //recordDiscarica.text = "Record : " + achievement.discarica.ToString();
-        //recordMontacarichiB.text = "Record : " + achievement.montacarichiB.ToString();
-        //recordTetto.text = "Record : " + achievement.tetto.ToString();
+
+        //achievement.tutorialComplete == true
+
+        if (achievement.montacarichiA >= ScoreMontacarichiA[3])
+        {
+            ColorBlock cb = MainMenuButtons[0].colors;
+            cb.normalColor = Color.white;
+            MainMenuButtons[0].colors = cb;
+        }
+
+        if (achievement.discarica >= ScoreDiscarica[3])
+        {
+            ColorBlock cb = MainMenuButtons[1].colors;
+            cb.normalColor = Color.white;
+            MainMenuButtons[1].colors = cb;
+        }
+
+        if (achievement.montacarichiB >= ScoreMontacarichiB[3])
+        {
+            ColorBlock cb = MainMenuButtons[2].colors;
+            cb.normalColor = Color.white;
+            MainMenuButtons[2].colors = cb;
+        }
+
+        if (achievement.tetto >= ScoreTetto[3])
+        {
+            ColorBlock cb = MainMenuButtons[3].colors;
+            cb.normalColor = Color.white;
+            MainMenuButtons[3].colors = cb;
+        }
+
     }
 	
 	// Update is called once per frame
@@ -471,7 +499,56 @@ public class Muoviti : MonoBehaviour {
         recordTotale.text = "";
     }
 
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("Intro");
+    }
 
+    public void Montacarichi1()
+    {
+        ColorBlock cb = MainMenuButtons[0].colors;
+        if (cb.normalColor == Color.white)
+        {
+            SceneManager.LoadScene("Intro_Montacarichi1");
+        }
+
+        
+    }
+
+    public void Discarica()
+    {
+        ColorBlock cb = MainMenuButtons[1].colors;
+        if (cb.normalColor == Color.white)
+        {
+            SceneManager.LoadScene("Intro_Discarica");
+        }
+
+        
+
+    }
+
+    public void Montacarichi2()
+    {
+        ColorBlock cb = MainMenuButtons[2].colors;
+        if (cb.normalColor == Color.white)
+        {
+            SceneManager.LoadScene("Intro_Montacarichi2");
+        }
+
+        
+    }
+
+    public void Tetto()
+    {
+        ColorBlock cb = MainMenuButtons[3].colors;
+        if (cb.normalColor == Color.white)
+        {
+            SceneManager.LoadScene("Intro_Tetto");
+        }
+
+        
+
+    }
 
 
 }

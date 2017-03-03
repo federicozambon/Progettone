@@ -15,6 +15,7 @@ public class Achievement : MonoBehaviour {
     public bool firstLoad = true;
     Muoviti muovitiElements;
     public string currentScene;
+    public bool tutorialComplete = false;
 
 
     void Awake () {

@@ -12,6 +12,7 @@ public class Tutorial : MonoBehaviour
     public GameObject nemico3;
 
     public string currentScene;
+    Achievement achievement;
 
     void Awake ()
     {
@@ -27,7 +28,8 @@ public class Tutorial : MonoBehaviour
             player.dashAttivo = false;
             player.noWeapons = true;
             player.tutorialMode = true;
-        }     
+        }
+        achievement = FindObjectOfType<Achievement>();
 	}
 
     public void StartTutorial()
@@ -150,6 +152,7 @@ public class Tutorial : MonoBehaviour
             {
                 HideStep();
                 int indexSC = SceneManager.GetActiveScene().buildIndex;
+                achievement.tutorialComplete = true;
                 SceneManager.LoadScene(indexSC + 1);
             }
         }

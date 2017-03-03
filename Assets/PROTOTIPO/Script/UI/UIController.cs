@@ -113,25 +113,25 @@ public class UIController : MonoBehaviour
         actualScore.text = score + " SP";
 
         #region SbloccoMontacarichi1
-        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[0] && checkLivello == true)
+        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[3] && checkLivello == true)
         {
             checkLivello = false;
             StartCoroutine(SbloccoLivelli());
         }
 
-        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[1] && indexScore == 0)
+        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[0] && indexScore == 0)
         {
             indexScore = 1;
             StartCoroutine(SbloccoDialoghi(indexScore));
         }
 
-        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[2] && indexScore == 1)
+        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[1] && indexScore == 1)
         {
             indexScore = 2;
             StartCoroutine(SbloccoDialoghi(indexScore));
         }
 
-        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[3] && indexScore == 2)
+        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[2] && indexScore == 2)
         {
             indexScore = 3;
             StartCoroutine(SbloccoDialoghi(indexScore));
@@ -140,26 +140,26 @@ public class UIController : MonoBehaviour
         #endregion
 
         #region SbloccoDiscarica
-        if (currentScene == "Discarica" && score >= scoreDiscarica[0] && checkLivello == true)
+        if (currentScene == "Discarica" && score >= scoreDiscarica[3] && checkLivello == true)
         {
             checkLivello = false;
             StartCoroutine(SbloccoLivelli());
         }
 
-        if (currentScene == "Discarica" && score >= scoreDiscarica[1] && indexScore == 0)
+        if (currentScene == "Discarica" && score >= scoreDiscarica[0] && indexScore == 0)
         {
             indexScore = 1;
             StartCoroutine(SbloccoDialoghi(indexScore));
             Debug.Log("ciao");
         }
 
-        if (currentScene == "Discarica" && score >= scoreDiscarica[2] && indexScore == 1)
+        if (currentScene == "Discarica" && score >= scoreDiscarica[1] && indexScore == 1)
         {
             indexScore = 2;
             StartCoroutine(SbloccoDialoghi(indexScore));
         }
 
-        if (currentScene == "Discarica" && score >= scoreDiscarica[3] && indexScore == 2)
+        if (currentScene == "Discarica" && score >= scoreDiscarica[2] && indexScore == 2)
         {
             indexScore = 3;
             StartCoroutine(SbloccoDialoghi(indexScore));
@@ -168,25 +168,25 @@ public class UIController : MonoBehaviour
         #endregion
 
         #region SbloccoMontacarichi2
-        if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[0] && checkLivello == true)
+        if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[3] && checkLivello == true)
         {
             checkLivello = false;
             StartCoroutine(SbloccoLivelli());
         }
 
-        if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[1] && indexScore == 0)
+        if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[0] && indexScore == 0)
         {
             indexScore = 1;
             StartCoroutine(SbloccoDialoghi(indexScore));
         }
 
-        if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[2] && indexScore == 1)
+        if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[1] && indexScore == 1)
         {
             indexScore = 2;
             StartCoroutine(SbloccoDialoghi(indexScore));
         }
 
-        if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[3] && indexScore == 2)
+        if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[2] && indexScore == 2)
         {
             indexScore = 3;
             StartCoroutine(SbloccoDialoghi(indexScore));
@@ -195,25 +195,25 @@ public class UIController : MonoBehaviour
         #endregion
 
         #region SbloccoTetto
-        if (currentScene == "Tetto" && score >= scoreTetto[0] && checkLivello == true)
+        if (currentScene == "Tetto" && score >= scoreTetto[3] && checkLivello == true)
         {
             checkLivello = false;
             StartCoroutine(SbloccoLivelli());
         }
 
-        if (currentScene == "Tetto" && score >= scoreTetto[1] && indexScore == 0)
+        if (currentScene == "Tetto" && score >= scoreTetto[0] && indexScore == 0)
         {
             indexScore = 1;
             StartCoroutine(SbloccoDialoghi(indexScore));
         }
 
-        if (currentScene == "Tetto" && score >= scoreTetto[2] && indexScore == 1)
+        if (currentScene == "Tetto" && score >= scoreTetto[1] && indexScore == 1)
         {
             indexScore = 2;
             StartCoroutine(SbloccoDialoghi(indexScore));
         }
 
-        if (currentScene == "Tetto" && score >= scoreTetto[3] && indexScore == 2)
+        if (currentScene == "Tetto" && score >= scoreTetto[2] && indexScore == 2)
         {
             indexScore = 3;
             StartCoroutine(SbloccoDialoghi(indexScore));
