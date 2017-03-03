@@ -63,6 +63,9 @@ public class Tutorial : MonoBehaviour
             case 51:
                 transform.GetChild(5).gameObject.SetActive(true);
                 break;
+            case 52:
+                transform.GetChild(6).gameObject.SetActive(true);
+                break;
 
         }
 
@@ -91,6 +94,9 @@ public class Tutorial : MonoBehaviour
                 break;
             case 51:
                 transform.GetChild(5).gameObject.SetActive(false);
+                break;
+            case 52:
+                transform.GetChild(6).gameObject.SetActive(false);
                 break;
 
         }
@@ -146,9 +152,16 @@ public class Tutorial : MonoBehaviour
             }
             if (step == 50 && nemico3.gameObject == null)
             {
+                HideStep();
                 NextStep();
             }
-            if (Input.GetButtonDown("Fire1") && step == 51)
+
+            if (step == 51 && Input.GetButtonDown("Fire1"))
+            {
+                NextStep();
+            }
+
+            if (Input.GetButtonDown("Fire1") && step == 52)
             {
                 HideStep();
                 int indexSC = SceneManager.GetActiveScene().buildIndex;
