@@ -14,6 +14,8 @@ public class Tutorial : MonoBehaviour
     public string currentScene;
     Achievement achievement;
 
+    bool tutorialMode = true;
+
     void Awake ()
     {
         currentScene = SceneManager.GetActiveScene().name;
@@ -34,9 +36,10 @@ public class Tutorial : MonoBehaviour
 
     public void StartTutorial()
     {
-        if (currentScene == "Tutorial")
+        if (currentScene == "Tutorial" && tutorialMode == true)
         {
             NextStep();
+            tutorialMode = false;
         }
     }
 	
