@@ -104,6 +104,12 @@ public class EffectSettings : MonoBehaviour
   private int currentInactiveGo;
   private bool deactivatedIsWait;
 
+    [ExecuteInEditMode]
+    void OnValidate()
+    {
+        gameObject.layer = 14;
+    }
+
   void Start()
   {
     if (InstanceBehaviour == DeactivationEnum.DestroyAfterTime) Destroy(gameObject, DestroyTimeDelay);
