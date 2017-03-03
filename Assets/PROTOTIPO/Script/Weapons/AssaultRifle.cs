@@ -18,7 +18,8 @@ public class AssaultRifle : Weapon
     bool isPoolFull = false;
 
     void Awake()
-    {   
+    {
+        transform.localRotation = Quaternion.identity;
         rotRef = FindObjectOfType<Player>();
         playerGo = rotRef.gameObject;
 
@@ -51,7 +52,8 @@ public class AssaultRifle : Weapon
    
         if (Input.GetButtonDown("Grenade"))
         {
-            wSelector.ChangeWeapon(2);
+            
+            StartCoroutine(wSelector.ChangeWeapon(2));
             laserShotgun.enabled = true;
             weaponArray[0].gameObject.SetActive(false);
             weaponArray[1].gameObject.SetActive(true);
@@ -66,7 +68,7 @@ public class AssaultRifle : Weapon
         yield return new WaitForSeconds(0.2f);
     }
 
-    int counter = 9;
+    int counter = 0;
 
     public void Shoot()
     {
@@ -88,16 +90,8 @@ public class AssaultRifle : Weapon
                     Enemy enemyScript = shootHit.collider.GetComponent<Enemy>();
 
                     if (enemyScript != null)
-                    {          
-                        ParticleActivator(enemyScript.headRef.transform.position, counter);
-                        if (counter < 9)
-                        {
-                            counter++;
-                        }
-                        else
-                        {
-                            counter = 0;
-                        }
+                    {
+                        ParticleActivator(enemyScript.headRef.transform.position);                  
                         collided = true;
                         break;
                     }          
@@ -114,27 +108,11 @@ public class AssaultRifle : Weapon
                     collided = true;
                     if (Physics.Raycast(shootRayBlocked, out shootHitBlocked, range))
                     {
-                        ParticleActivator(shootHitBlocked.point, counter);
-                        if (counter < 9)
-                        {
-                            counter++;
-                        }
-                        else
-                        {
-                            counter = 0;
-                        }
+                        ParticleActivator(shootHitBlocked.point);
                     }
                     else
                     {
-                        ParticleActivator(transform.position + (transform.forward * range),counter);
-                        if (counter < 9)
-                        {
-                            counter++;
-                        }
-                        else
-                        {
-                            counter = 0;
-                        }
+                        ParticleActivator(transform.position + (transform.forward * range));
                     }                
                 }
             }
@@ -143,12 +121,21 @@ public class AssaultRifle : Weapon
 
     public GameObject pool;
 
-    public void ParticleActivator(Vector3 position, int looper)
+    public void ParticleActivator(Vector3 position)
     {
-        transformTr[looper].position = position;          
-        pool.GetComponentsInChildren<EffectSettings>(true)[looper].transform.position = this.transform.position;
-        pool.GetComponentsInChildren<EffectSettings>(true)[looper].Target = transformTr[looper].gameObject;
-        pool.GetComponentsInChildren<EffectSettings>(true)[looper].gameObject.SetActive(true);
+        transformTr[counter].position = position;          
+        pool.GetComponentsInChildren<EffectSettings>(true)[counter].transform.position = this.transform.position;
+        pool.GetComponentsInChildren<EffectSettings>(true)[counter].Target = transformTr[counter].gameObject;
+        pool.GetComponentsInChildren<EffectSettings>(true)[counter].gameObject.SetActive(true);
+
+        if (counter < 9)
+        {
+            counter++;
+        }
+        else
+        {
+            counter = 0;
+        }
     }
 }
 
