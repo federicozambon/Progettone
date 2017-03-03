@@ -155,16 +155,17 @@ public class Tutorial : MonoBehaviour
             }
             if (step == 50 && nemico3.gameObject == null)
             {
-                HideStep();
+                
                 NextStep();
             }
 
             if (step == 51 && Input.GetButtonDown("Fire1"))
             {
+                HideStep();
                 NextStep();
             }
 
-            if (Input.GetButtonDown("Fire1") && step == 52)
+            else if (Input.GetButtonDown("Fire1") && step == 52)
             {
                 HideStep();
                 int indexSC = SceneManager.GetActiveScene().buildIndex;

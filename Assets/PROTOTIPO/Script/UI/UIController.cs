@@ -247,7 +247,7 @@ public class UIController : MonoBehaviour
         SbloccoDialogo.SetActive(true);
 
         SbloccoDialogo.transform.GetChild(0).GetComponent<Text>().text = "Dialogo " + step + " Sbloccato";
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
 
         SbloccoDialogo.SetActive(false);
     }
@@ -256,7 +256,7 @@ public class UIController : MonoBehaviour
     {
         SbloccoLivello.SetActive(true);
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
 
         SbloccoLivello.SetActive(false);
     }
