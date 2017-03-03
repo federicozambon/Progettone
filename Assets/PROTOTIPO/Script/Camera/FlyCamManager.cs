@@ -24,7 +24,7 @@ public class FlyCamManager : MonoBehaviour
 
     void Awake()
     {
-        cutSceneCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        cutSceneCanvas = GameObject.Find("CanvasCutscene").GetComponent<Canvas>();
         Application.targetFrameRate = 144;
         playerGo = FindObjectOfType<Player>().gameObject;
         elementsUI = FindObjectOfType<UIController>();

@@ -13,6 +13,7 @@ public class Player: MonoBehaviour
     public bool tutorial = false;
     public bool stepTutorial = false;
     public bool noWeapons = false;
+    public ParticleSystem trailPs;
 
     public ReferenceManager refManager;
     Rigidbody playerRigidbody;
@@ -469,10 +470,8 @@ public class Player: MonoBehaviour
         dashRay.origin = transform.position;
         dashRay.direction = movement.normalized;
 
-        TrailRenderer trailRef = GetComponentInChildren<TrailRenderer>();
         dashAttivo = false;
 
-        trailRef.enabled = true;
 
         float newRange;
 
@@ -485,14 +484,13 @@ public class Player: MonoBehaviour
             newRange = dashRange;
         }
 
-        trailRef.time = 0.1f;
-        yield return new WaitForSeconds(0.1f);
-
-        yield return new WaitForSeconds(0.2f);
+        ParticleSystem.EmissionModule emitter = trailPs.emission; ;
+        
+        emitter.rate = 100;
+        yield return new WaitForSeconds(0.3f);
+        emitter.rate = 10;
         isDashing = false;
         playerRigidbody.drag = 5;
-        trailRef.Clear();
-        trailRef.enabled = false;
         yield return new WaitForSeconds(0.3f);
         playerRigidbody.drag = 1;
         yield return new WaitForSeconds(0.3f);
