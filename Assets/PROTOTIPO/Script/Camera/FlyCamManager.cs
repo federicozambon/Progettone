@@ -232,6 +232,7 @@ public class FlyCamManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Cancel"))
         {
+            cutSceneCanvas.gameObject.SetActive(false);
             SwitchCamera(camArray[1], mainCamera);
             SwitchCamera(camArray[0], mainCamera);
             playerGo.gameObject.SetActive(true);
@@ -270,6 +271,7 @@ public class FlyCamManager : MonoBehaviour
 
     public void Skip()
     {
+        cutSceneCanvas.gameObject.SetActive(false);
         SwitchCamera(camArray[1], mainCamera);
         SwitchCamera(camArray[0], mainCamera);
         playerGo.gameObject.SetActive(true);
