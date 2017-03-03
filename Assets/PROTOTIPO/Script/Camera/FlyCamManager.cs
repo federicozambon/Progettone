@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class FlyCamManager : MonoBehaviour
 {
+    Canvas cutSceneCanvas;
     UIController elementsUI;
     public GameObject playerGo;
     public Camera[] camArray = new Camera[5];
@@ -23,10 +24,8 @@ public class FlyCamManager : MonoBehaviour
 
     void Awake()
     {
-<<<<<<< HEAD
         cutSceneCanvas = GameObject.Find("CanvasCutscene").GetComponent<Canvas>();
-=======
->>>>>>> 67490208d8f1636bb01080cacc99937b451e63b3
+
         Application.targetFrameRate = 144;
         playerGo = FindObjectOfType<Player>().gameObject;
         elementsUI = FindObjectOfType<UIController>();
