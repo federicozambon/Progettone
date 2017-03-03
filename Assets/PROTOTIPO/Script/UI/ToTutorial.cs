@@ -9,7 +9,6 @@ public class ToTutorial : MonoBehaviour {
 	
     void Update()
     {
-
         if (Input.GetButtonDown("Fire1"))
         {
             A.SetActive(false);

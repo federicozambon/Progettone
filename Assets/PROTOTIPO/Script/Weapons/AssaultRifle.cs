@@ -12,6 +12,7 @@ public class AssaultRifle : Weapon
     AudioSource shootSound;
     Player player;
     public int startingDamage;
+    RocketLauncher rocketRef;
 
 
     public Transform[] transformTr;
@@ -19,6 +20,7 @@ public class AssaultRifle : Weapon
 
     void Awake()
     {
+        rocketRef = GetComponent<RocketLauncher>();
         transform.localRotation = Quaternion.identity;
         rotRef = FindObjectOfType<Player>();
         playerGo = rotRef.gameObject;
@@ -44,7 +46,7 @@ public class AssaultRifle : Weapon
     {
         timer += Time.deltaTime;
 
-        if (rotRef.rotating && timer >= timeBetweenBullets && Time.timeScale != 0 && player.noWeapons == false)
+        if (rotRef.rotating && timer >= timeBetweenBullets && Time.timeScale != 0 && player.noWeapons == false && !rocketRef.aiming)
         {
             Shoot();
             StartCoroutine(GunShotSound());

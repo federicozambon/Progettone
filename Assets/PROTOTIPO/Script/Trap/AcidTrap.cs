@@ -8,11 +8,10 @@ public class AcidTrap: Trap
     public Player playerRef;
     public ReferenceManager refManager;
     public EffectSettings eSettings;
-
+    Coroutine myCo;
 
     void Start ()
-    {
-        
+    {     
         particle = this.GetComponent<ParticleSystem>();
         
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
@@ -20,32 +19,24 @@ public class AcidTrap: Trap
     }
 	
 	public override IEnumerator ActivateTrap()
-    {
-        
+    {       
             foreach (var coll in colliders)
         {
             if (coll.gameObject.tag == "Enemy")
             {
                 Enemy nemico = coll.GetComponent<Enemy>();
-                if (nemico.remainHPoints > 0)
-                    nemico.remainHPoints -= healthPointDamage;
-                else
-                {                   
-                    nemico.StartCoroutine(nemico.Die());
-                }
+                nemico.TakeDamage(healthPointDamage);
             }
 
             if (coll.gameObject.tag == "Player")
             {
                 playerRef.TakeDamage(playerPointDamage);
             }
-
         }
-
         
         yield return new WaitForSeconds(timeToRepeat);
 
-            StartCoroutine(ActivateTrap()); 
+            myCo = StartCoroutine(ActivateTrap()); 
     }
 
     public override IEnumerator ParticleTrap()
@@ -55,11 +46,13 @@ public class AcidTrap: Trap
         aController.playSound(myDie);
 
         yield return new WaitForSeconds(timeToDisable);
-
-        myActivatorsController.GetComponent<ActivatorsController>().enabledAllActivators = true;
-
-        
+        StopCoroutine(myCo);
         eSettings.IsVisible = false;
+
+        yield return new WaitForSeconds(3);
+        myActivatorsController.GetComponent<ActivatorsController>().enabledAllActivators = true;
+       
+ 
     }
 
     public override IEnumerator MiniTrap()
@@ -69,24 +62,15 @@ public class AcidTrap: Trap
             if (coll.gameObject.tag == "Enemy")
             {
                 Enemy nemico = coll.GetComponent<Enemy>();
-                if (nemico.remainHPoints > 0)
-                    nemico.remainHPoints -= healthPointDamage;
-                else
-                {
-                    nemico.StartCoroutine(nemico.Die());
-                }
+                nemico.TakeDamage(healthPointDamage);
             }
 
             if (coll.gameObject.tag == "Player")
             {
                 playerRef.TakeDamage(playerPointDamage);
             }
-
         }
-
-
         yield return new WaitForSeconds(timeToDisable);
-
         Destroy(this.transform.parent.gameObject);
     }
 
@@ -96,7 +80,7 @@ public class AcidTrap: Trap
         {
             activeTrap = false;
             StartCoroutine(ParticleTrap());
-            StartCoroutine(ActivateTrap());
+            myCo = StartCoroutine(ActivateTrap());
         }
 
         if (isMiniTrap)
