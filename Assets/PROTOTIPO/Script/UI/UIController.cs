@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -42,6 +43,17 @@ public class UIController : MonoBehaviour
     public GameObject SbloccoLivello;
     Canvas canvas;
 
+    public string currentScene;
+
+    public List<int> scoreMontacarichiA;
+    public List<int> scoreDiscarica;
+    public List<int> scoreMontacarichiB;
+    public List<int> scoreTetto;
+    int indexScore = 0;
+    bool checkLivello = true;
+    
+    
+
 
     public void UpdateArmorUpgrade(int percent)
     {
@@ -66,6 +78,7 @@ public class UIController : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         CanvasOff();
+        currentScene = SceneManager.GetActiveScene().name;
     }
 
     void Start()
@@ -98,6 +111,134 @@ public class UIController : MonoBehaviour
     public void UpdateScore()
     {
         actualScore.text = score + " SP";
+
+        #region SbloccoMontacarichi1
+        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[0] && checkLivello == true)
+        {
+            checkLivello = false;
+            StartCoroutine(SbloccoLivelli());
+        }
+
+        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[1] && indexScore == 0)
+        {
+            indexScore = 1;
+            StartCoroutine(SbloccoDialoghi(indexScore));
+        }
+
+        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[2] && indexScore == 1)
+        {
+            indexScore = 2;
+            StartCoroutine(SbloccoDialoghi(indexScore));
+        }
+
+        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[3] && indexScore == 2)
+        {
+            indexScore = 3;
+            StartCoroutine(SbloccoDialoghi(indexScore));
+        }
+
+        #endregion
+
+        #region SbloccoDiscarica
+        if (currentScene == "Discarica" && score >= scoreDiscarica[0] && checkLivello == true)
+        {
+            checkLivello = false;
+            StartCoroutine(SbloccoLivelli());
+        }
+
+        if (currentScene == "Discarica" && score >= scoreDiscarica[1] && indexScore == 0)
+        {
+            indexScore = 1;
+            StartCoroutine(SbloccoDialoghi(indexScore));
+            Debug.Log("ciao");
+        }
+
+        if (currentScene == "Discarica" && score >= scoreDiscarica[2] && indexScore == 1)
+        {
+            indexScore = 2;
+            StartCoroutine(SbloccoDialoghi(indexScore));
+        }
+
+        if (currentScene == "Discarica" && score >= scoreDiscarica[3] && indexScore == 2)
+        {
+            indexScore = 3;
+            StartCoroutine(SbloccoDialoghi(indexScore));
+        }
+
+        #endregion
+
+        #region SbloccoMontacarichi2
+        if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[0] && checkLivello == true)
+        {
+            checkLivello = false;
+            StartCoroutine(SbloccoLivelli());
+        }
+
+        if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[1] && indexScore == 0)
+        {
+            indexScore = 1;
+            StartCoroutine(SbloccoDialoghi(indexScore));
+        }
+
+        if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[2] && indexScore == 1)
+        {
+            indexScore = 2;
+            StartCoroutine(SbloccoDialoghi(indexScore));
+        }
+
+        if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[3] && indexScore == 2)
+        {
+            indexScore = 3;
+            StartCoroutine(SbloccoDialoghi(indexScore));
+        }
+
+        #endregion
+
+        #region SbloccoTetto
+        if (currentScene == "Tetto" && score >= scoreTetto[0] && checkLivello == true)
+        {
+            checkLivello = false;
+            StartCoroutine(SbloccoLivelli());
+        }
+
+        if (currentScene == "Tetto" && score >= scoreTetto[1] && indexScore == 0)
+        {
+            indexScore = 1;
+            StartCoroutine(SbloccoDialoghi(indexScore));
+        }
+
+        if (currentScene == "Tetto" && score >= scoreTetto[2] && indexScore == 1)
+        {
+            indexScore = 2;
+            StartCoroutine(SbloccoDialoghi(indexScore));
+        }
+
+        if (currentScene == "Tetto" && score >= scoreTetto[3] && indexScore == 2)
+        {
+            indexScore = 3;
+            StartCoroutine(SbloccoDialoghi(indexScore));
+        }
+
+        #endregion
+    }
+
+    IEnumerator SbloccoDialoghi(int step)
+    {
+        SbloccoDialogo.SetActive(true);
+
+        SbloccoDialogo.transform.GetChild(0).GetComponent<Text>().text = "Dialogo " + step + " Sbloccato";
+        yield return new WaitForSeconds(3);
+
+        SbloccoDialogo.SetActive(false);
+    }
+
+    IEnumerator SbloccoLivelli()
+    {
+        SbloccoLivello.SetActive(true);
+
+        yield return new WaitForSeconds(3);
+
+        SbloccoLivello.SetActive(false);
     }
 
     public void IncreaseScore(int scoreToAdd)
