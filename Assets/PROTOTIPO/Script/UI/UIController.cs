@@ -42,6 +42,7 @@ public class UIController : MonoBehaviour
     public GameObject SbloccoDialogo;
     public GameObject SbloccoLivello;
     Canvas canvas;
+    AudioSource lifeAlarm;
 
     public string currentScene;
 
@@ -76,6 +77,7 @@ public class UIController : MonoBehaviour
 
     void Awake()
     {
+        lifeAlarm.GetComponent<AudioSource>();
         canvas = GetComponent<Canvas>();
         CanvasOff();
         currentScene = SceneManager.GetActiveScene().name;
@@ -90,6 +92,15 @@ public class UIController : MonoBehaviour
 
     public void DecrementLife(float damageTaken)
     {
+        if (!lifeAlarm.isPlaying && playerRef.currentHealth / playerRef.maxHealth < 0.2f)
+        {
+            lifeAlarm.Play();
+        }
+        if (lifeAlarm.isPlaying && playerRef.currentHealth / playerRef.maxHealth > 0.2f)
+        {
+            lifeAlarm.Stop();
+        }
+
         lifeTxt.text = playerRef.currentHealth + " / " + playerRef.maxHealth;
         float tempCurrent, tempMax;
         tempCurrent = (float)playerRef.currentHealth;
@@ -101,6 +112,15 @@ public class UIController : MonoBehaviour
 
     public void IncreaseLife()
     {
+        if (!lifeAlarm.isPlaying && playerRef.currentHealth/playerRef.maxHealth <0.2f)
+        {
+            lifeAlarm.Play();
+        }
+        if (lifeAlarm.isPlaying && playerRef.currentHealth / playerRef.maxHealth > 0.2f)
+        {
+            lifeAlarm.Stop();
+        }
+
         lifeTxt.text = playerRef.currentHealth + " / " + playerRef.maxHealth;
         float tempCurrent, tempMax;
         tempCurrent = (float)playerRef.currentHealth;
