@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class FlyCamManager : MonoBehaviour
 {
+    Canvas cutSceneCanvas;
     UIController elementsUI;
     public GameObject playerGo;
     public Camera[] camArray = new Camera[5];
@@ -23,6 +24,7 @@ public class FlyCamManager : MonoBehaviour
 
     void Awake()
     {
+        cutSceneCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         Application.targetFrameRate = 144;
         playerGo = FindObjectOfType<Player>().gameObject;
         elementsUI = FindObjectOfType<UIController>();
@@ -201,6 +203,7 @@ public class FlyCamManager : MonoBehaviour
         SwitchCamera(camArray[1], mainCamera);
         SwitchCamera(camArray[0], mainCamera);
         playerGo.gameObject.SetActive(true);
+        cutSceneCanvas.gameObject.SetActive(false);
         StopAllCoroutines();
         
         moving = false;
@@ -229,6 +232,7 @@ public class FlyCamManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Cancel"))
         {
+            cutSceneCanvas.gameObject.SetActive(false);
             SwitchCamera(camArray[1], mainCamera);
             SwitchCamera(camArray[0], mainCamera);
             playerGo.gameObject.SetActive(true);
@@ -267,6 +271,7 @@ public class FlyCamManager : MonoBehaviour
 
     public void Skip()
     {
+        cutSceneCanvas.gameObject.SetActive(false);
         SwitchCamera(camArray[1], mainCamera);
         SwitchCamera(camArray[0], mainCamera);
         playerGo.gameObject.SetActive(true);
