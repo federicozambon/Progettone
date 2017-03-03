@@ -26,7 +26,7 @@ public class StateFollowB : State
             case "predatore":
                 blackRef.navRef.speed = blackRef.botMovement.rangeBspeed;
                 blackRef.botMovement.destination = blackRef.playerTr.position;
-                blackRef.navRef.stoppingDistance = 0;
+                blackRef.navRef.stoppingDistance = 0.1f;
                 break;
             case "titano":
                 blackRef.navRef.speed = blackRef.botMovement.rangeBspeed;

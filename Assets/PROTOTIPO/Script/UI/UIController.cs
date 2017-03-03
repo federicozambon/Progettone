@@ -161,6 +161,8 @@ public class UIController : MonoBehaviour
 
     public IEnumerator specialChecker()
     {
+        specialCounter = 0;
+
         while (specialActualTimer < specialTimer)
         {          
             specialActualTimer += Time.deltaTime;
@@ -192,7 +194,7 @@ public class UIController : MonoBehaviour
             score += specialScore[2] * specialCounter;
         }
         killedTimerList.Clear();
-        specialCounter = 0;
+
         specialActualTimer = 0;
         specialTimer = 3;
         specialCo = null;
@@ -279,9 +281,7 @@ public class UIController : MonoBehaviour
             }
         }  
     }
-   
-
-    }
+}
     
 
 

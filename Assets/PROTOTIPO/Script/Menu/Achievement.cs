@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class Achievement : MonoBehaviour {
@@ -12,8 +13,14 @@ public class Achievement : MonoBehaviour {
     public int tetto = 0;
     public bool firstLoad = true;
     Muoviti muovitiElements;
-
     public string currentScene;
+
+    public List<int> scoreMontacarichiA;
+    public List<int> scoreDiscarica;
+    public List<int> scoreMontacarichiB;
+    public List<int> scoreTetto;
+    int indexScore = 0;
+    int score;
 
     void Awake () {
 
@@ -41,9 +48,23 @@ public class Achievement : MonoBehaviour {
        
             
     }
-	
-	
-	public void SaveScore (int score)
+
+    public void UpdateScore()
+    {
+        
+
+        if (currentScene == "Discarica" && score >= scoreMontacarichiA[0] && indexScore == 0)
+        {
+            StartCoroutine(SbloccoDialoghi());
+        }
+    }
+
+    IEnumerator SbloccoDialoghi()
+    {
+        yield return new WaitForSeconds(3);
+    }
+
+    public void SaveScore (int score)
     {
 
 
