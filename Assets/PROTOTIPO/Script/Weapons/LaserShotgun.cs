@@ -66,16 +66,20 @@ public class LaserShotgun : Weapon
         yield return new WaitForSeconds(0.2f);
     }
 
-    int counter = 0;
+    int counter = 18;
+    public float maxDispersion = 12f;
+ 
+
 
     public void Shoot()
     {
         timer = 0f;
         collided = false;
 
+        float maxDispersionCoef = maxDispersion * 2 / 5;
         transform.Rotate(0, 0, 0);
         while (!collided)
-        {        
+        {
             for (int i = 0; i < deltaDegrees; i++)
             {
                 aimRay.origin = transform.position;
@@ -83,33 +87,36 @@ public class LaserShotgun : Weapon
                 transform.Rotate(i + 1, 0, 0);
                 aimRay.direction = transform.forward;
 
-                if (Physics.Raycast(aimRay, out aimHit, range))
-                {
-                    Enemy hitted = aimHit.collider.GetComponent<Enemy>();
 
-                    if (hitted != null)
+                for (int f = 0; f < 6; f++)
+                {
+                    float offsetX = Random.value, offsetY = Random.value, offsetZ = Random.value;
+
+                    if (Physics.Linecast(transform.position, transform.position + new Vector3(range * Mathf.Cos(Mathf.Deg2Rad*( - maxDispersion -player.transform.eulerAngles.y + 270 + maxDispersionCoef * f)), 0, range * Mathf.Sin(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 270 + maxDispersionCoef * f))), out shootHit[f]))
                     {
-                        for (int f = 0; f < 6; f++)
+                        Enemy hitted = shootHit[f].collider.GetComponent<Enemy>();
+                        if (hitted != null)
                         {
-                            float offsetX = Random.value, offsetY = Random.value, offsetZ = Random.value;
-                            
-                            if (Physics.Linecast(transform.position, aimHit.point + new Vector3(Mathf.Cos(-15+(6*f)), 0, Mathf.Sin(-15 + (6 * f))), out shootHit[f]))
+                            collided = true;
+                            ParticleActivator(transform.position + new Vector3(range * Mathf.Cos(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f)), 0, range * Mathf.Sin(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f))), counter);
+                            if (counter < 29)
                             {
-                                ParticleActivator(aimHit.point + new Vector3(-3 + f, 0, -3 + f), counter);
-                                if (counter < 17)
-                                {
-                                    counter++;
-                                }
-                                else
-                                {
-                                    counter = 0;
-                                }
+                                counter++;
                             }
+                            else
+                            {
+                                counter = 0;
+                            }
+                                     
                         }
-                        collided = true;
-                        break;
-                    }              
+                    }
                 }
+                if (collided)
+                {
+                    break;
+                }
+             
+        
                 transform.localRotation = Quaternion.identity;
                 transform.localEulerAngles = new Vector3(0, 0, 0);
 
@@ -123,8 +130,8 @@ public class LaserShotgun : Weapon
 
                         if (Physics.Raycast(shootRayBlocked, out shootHitBlocked, range))
                         {
-                            ParticleActivator(shootHitBlocked.point + new Vector3(Mathf.Cos(-15 + (6 * f)), 0, Mathf.Sin(-15 + (6 * f))), counter);
-                            if (counter < 17)
+                            ParticleActivator(transform.position + new Vector3(range * Mathf.Cos(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f)), 0, range * Mathf.Sin(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f))), counter);
+                            if (counter < 29)
                             {
                                 counter++;
                             }
@@ -135,8 +142,8 @@ public class LaserShotgun : Weapon
                         }
                         else
                         {
-                            ParticleActivator(transform.position + (transform.forward *range) + new Vector3(Mathf.Cos(-15 + (6 * f)), 0, Mathf.Sin(-15 + (6 * f))), counter);
-                            if (counter < 17)
+                                ParticleActivator(transform.position + new Vector3(range * Mathf.Cos(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y +90 + maxDispersionCoef * f)), 0, range * Mathf.Sin(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f))), counter);
+                            if (counter < 29)
                             {
                                 counter++;
                             }
@@ -146,7 +153,7 @@ public class LaserShotgun : Weapon
                             }
                         }               
                         collided = true;
-                        break;
+                       
                     }
                 }
                 transform.localRotation = Quaternion.identity;

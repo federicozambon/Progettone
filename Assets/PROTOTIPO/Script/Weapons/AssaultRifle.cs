@@ -66,7 +66,7 @@ public class AssaultRifle : Weapon
         yield return new WaitForSeconds(0.2f);
     }
 
-    int counter = 0;
+    int counter = 9;
 
     public void Shoot()
     {
