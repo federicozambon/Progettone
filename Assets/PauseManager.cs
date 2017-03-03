@@ -18,11 +18,13 @@ public class PauseManager : MonoBehaviour
     public StandaloneInputModule standRef;
 
     public AudioSource backAudioRef;
+    FlyCamManager flyRef;
 
     bool paused;
 
     void Awake()
     {
+        flyRef = FindObjectOfType<FlyCamManager>();
         resume = GameObject.Find("Resume");
         options = GameObject.Find("Options");
         quit = GameObject.Find("QuitToMenu");
@@ -38,7 +40,7 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("GodMode") || (paused && Input.GetButtonDown("Cancel")))
+        if ((Input.GetButtonDown("GodMode") || (paused && Input.GetButtonDown("Cancel")))&& !flyRef.cutScene)
         {
             if (!paused)
             {

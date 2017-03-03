@@ -162,6 +162,7 @@ public class UIController : MonoBehaviour
     public IEnumerator specialChecker()
     {
         specialCounter = 0;
+
         while (specialActualTimer < specialTimer)
         {          
             specialActualTimer += Time.deltaTime;
@@ -280,9 +281,7 @@ public class UIController : MonoBehaviour
             }
         }  
     }
-   
-
-    }
+}
     
 
 

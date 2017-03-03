@@ -18,7 +18,7 @@ public class StateAttack : State
                 blackRef.navRef.updateRotation = false;
                 break;
             case "predatore":
-                blackRef.navRef.updateRotation = false;
+                //blackRef.navRef.updateRotation = false;
                 break;
             case "titano":
              
@@ -42,7 +42,7 @@ public class StateAttack : State
                 blackRef.navRef.updateRotation = true;
                 break;
             case "predatore":
-                blackRef.navRef.updateRotation = true;
+                //blackRef.navRef.updateRotation = true;
                 break;
             case "titano":
 
@@ -75,7 +75,11 @@ public class StateAttack : State
                 blackRef.enemyRef.Attack();
                 break;
             case "predatore":
-                blackRef.enemyRef.Attack();
+                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.speed = 12;
+                blackRef.navRef.updateRotation = true;
+                blackRef.navRef.stoppingDistance = 0f;
+                blackRef.navRef.angularSpeed = 1080;
                 break;
             case "titano":
                 blackRef.enemyRef.Attack();
