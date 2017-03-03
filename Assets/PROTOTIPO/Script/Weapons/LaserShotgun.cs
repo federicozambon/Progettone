@@ -17,7 +17,8 @@ public class LaserShotgun : Weapon
 
     void Awake()
     {
-        shootHit = new RaycastHit[6];
+        startingDispersion = maxDispersion;
+  
         rotRef = FindObjectOfType<Player>();
         playerGo = rotRef.gameObject;
         
@@ -68,15 +69,23 @@ public class LaserShotgun : Weapon
 
     int counter = 18;
     public float maxDispersion = 12f;
- 
+    float startingDispersion;
 
+    public int numberOfBullets = 6;
+    public bool randomSpread = false;
 
     public void Shoot()
     {
+        shootHit = new RaycastHit[numberOfBullets];
         timer = 0f;
         collided = false;
 
-        float maxDispersionCoef = maxDispersion * 2 / 5;
+        if (randomSpread)
+        {
+            maxDispersion = Random.Range(startingDispersion - 3, startingDispersion + 3);
+        }
+
+        float maxDispersionCoef = maxDispersion * 2 / (numberOfBullets-1);
         transform.Rotate(0, 0, 0);
         while (!collided)
         {
@@ -88,7 +97,7 @@ public class LaserShotgun : Weapon
                 aimRay.direction = transform.forward;
 
 
-                for (int f = 0; f < 6; f++)
+                for (int f = 0; f < numberOfBullets; f++)
                 {
                     float offsetX = Random.value, offsetY = Random.value, offsetZ = Random.value;
 
@@ -122,7 +131,7 @@ public class LaserShotgun : Weapon
 
                 if (!collided && i == deltaDegrees - 1)
                 {
-                    for (int f = 0; f < 6; f++)
+                    for (int f = 0; f < numberOfBullets; f++)
                     {
                         float offsetX = Random.value, offsetY = Random.value, offsetZ = Random.value;
                         shootRayBlocked.origin = this.transform.position;
