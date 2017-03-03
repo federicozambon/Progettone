@@ -24,14 +24,15 @@ public class Activators : MonoBehaviour {
             isEnabled = false;
             active = false;
 
-            ActiveTrap();
+            StartCoroutine(ActiveTrap());
 
             aController.DisabledActivators();
         }           
     }
 
-    public void ActiveTrap()
+    public IEnumerator ActiveTrap()
     {
+        yield return new WaitForSeconds(2);
         myTrap.GetComponent<Trap>().activeTrap = true;
     }
 

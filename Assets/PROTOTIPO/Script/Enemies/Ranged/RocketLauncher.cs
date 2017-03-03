@@ -44,7 +44,7 @@ public class RocketLauncher : Weapon
         yield return new WaitForSeconds(0.2f);
     }
 
-    bool aiming = false;
+    public bool aiming = false;
 
     public void Update()
     {

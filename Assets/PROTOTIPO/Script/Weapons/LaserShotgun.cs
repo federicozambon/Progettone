@@ -14,11 +14,13 @@ public class LaserShotgun : Weapon
     Player player;
     AudioSource shootSound;
     public int startingDamage;
+    RocketLauncher rocketRef;
 
     void Awake()
     {
         startingDispersion = maxDispersion;
-  
+        rocketRef = GetComponent<RocketLauncher>();
+
         rotRef = FindObjectOfType<Player>();
         playerGo = rotRef.gameObject;
         
@@ -53,7 +55,7 @@ public class LaserShotgun : Weapon
     
          timer += Time.deltaTime;
 
-        if (rotRef.rotating && timer >= timeBetweenBullets && Time.timeScale != 0 && player.noWeapons == false)
+        if (rotRef.rotating && timer >= timeBetweenBullets && Time.timeScale != 0 && player.noWeapons == false && !rocketRef.aiming)
         {
             Shoot();
             StartCoroutine(GunShotSound());
