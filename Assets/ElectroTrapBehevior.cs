@@ -9,6 +9,7 @@ public class ElectroTrapBehevior : Trap {
     public bool start;
     public Player playerRef;
     public ReferenceManager refManager;
+    Coroutine myCo;
 
     void Start()
     {
@@ -22,32 +23,22 @@ public class ElectroTrapBehevior : Trap {
 
     public override IEnumerator ActivateTrap()
     {
-
         foreach (var coll in colliders)
         {
             if (coll.gameObject.tag == "Enemy")
             {
                 Enemy nemico = coll.GetComponent<Enemy>();
-                if (nemico.remainHPoints > 0)
-                    nemico.remainHPoints -= healthPointDamage;
-                else
-                {
-                    nemico.StartCoroutine(nemico.Die());
-                }
+                nemico.TakeDamage(healthPointDamage);
             }
 
             if (coll.gameObject.tag == "Player")
             {
                 playerRef.TakeDamage(playerPointDamage);
             }
-
         }
-
-
         yield return new WaitForSeconds(timeToRepeat);
 
-        StartCoroutine(ActivateTrap());
-
+        myCo = StartCoroutine(ActivateTrap());
     }
 
     public override IEnumerator ParticleTrap()
@@ -59,19 +50,16 @@ public class ElectroTrapBehevior : Trap {
         aController.playSound(myDie);
 
         yield return new WaitForSeconds(timeToDisable);
-
-        if (isMiniTrap)
-            Destroy(this.gameObject);
-
+        StopCoroutine(myCo);
         particellare1.SetActive(false);
         particellare2.SetActive(true);
         resetTrap = true;
 
         yield return new WaitForSeconds(3);
         particellare2.SetActive(false);
+        yield return new WaitForSeconds(3);
         myActivatorsController.GetComponent<ActivatorsController>().enabledAllActivators = true;
         StopAllCoroutines();
-
     }
 
     void Update()
@@ -80,17 +68,12 @@ public class ElectroTrapBehevior : Trap {
         {
             activeTrap = false;
             StartCoroutine(ParticleTrap());
-            StartCoroutine(ActivateTrap());
+            myCo = StartCoroutine(ActivateTrap());
         }
 
         if (resetTrap)
         {
             resetTrap = false;
-            
-            
-
         }
     }
-
-
 }

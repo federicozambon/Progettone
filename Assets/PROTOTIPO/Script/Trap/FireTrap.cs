@@ -2,59 +2,51 @@
 using System.Collections;
 
 public class FireTrap: Trap
-{
-    
+{   
     DialogueSystem dialoghi;
     public Player playerRef;
     public ReferenceManager refManager;
-
+    Coroutine myCo;
 
     void Start ()
-    {
-        
+    {      
         particle = this.GetComponent<ParticleSystem>();
         
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
         playerRef = refManager.playerObj.GetComponent<Player>();
     }
-	
-	public override IEnumerator ActivateTrap()
+
+    public override IEnumerator ActivateTrap()
     {
-        
-            foreach (var coll in colliders)
+        foreach (var coll in colliders)
         {
             if (coll.gameObject.tag == "Enemy")
             {
                 Enemy nemico = coll.GetComponent<Enemy>();
-                if (nemico.remainHPoints > 0)
-                    nemico.remainHPoints -= healthPointDamage;
-                else
-                {                   
-                    nemico.StartCoroutine(nemico.Die());
-                }
+                nemico.TakeDamage(healthPointDamage);
             }
 
             if (coll.gameObject.tag == "Player")
             {
                 playerRef.TakeDamage(playerPointDamage);
             }
-
         }
 
-        
         yield return new WaitForSeconds(timeToRepeat);
 
-            StartCoroutine(ActivateTrap()); 
+        myCo = StartCoroutine(ActivateTrap());
     }
 
     public override IEnumerator ParticleTrap()
     {
         particle.Play();
         playSound = false;
-            aController.playSound(myDie);
+        aController.playSound(myDie);
 
         yield return new WaitForSeconds(timeToDisable);
+        StopCoroutine(myCo);
 
+        yield return new WaitForSeconds(3);
         myActivatorsController.GetComponent<ActivatorsController>().enabledAllActivators = true;
 
         particle.Stop();
@@ -68,24 +60,15 @@ public class FireTrap: Trap
             if (coll.gameObject.tag == "Enemy")
             {
                 Enemy nemico = coll.GetComponent<Enemy>();
-                if (nemico.remainHPoints > 0)
-                    nemico.remainHPoints -= healthPointDamage;
-                else
-                {
-                    nemico.StartCoroutine(nemico.Die());
-                }
+                nemico.TakeDamage(healthPointDamage);
             }
 
             if (coll.gameObject.tag == "Player")
             {
                 playerRef.TakeDamage(playerPointDamage);
             }
-
         }
-
-
         yield return new WaitForSeconds(timeToDisable);
-
         Destroy(this.transform.parent.gameObject);
     }
 
@@ -95,7 +78,7 @@ public class FireTrap: Trap
         {
             activeTrap = false;
             StartCoroutine(ParticleTrap());
-            StartCoroutine(ActivateTrap());
+            myCo = StartCoroutine(ActivateTrap());
         }
 
         if (isMiniTrap)
@@ -106,15 +89,12 @@ public class FireTrap: Trap
             this.transform.parent.GetComponent<MeshRenderer>().enabled = false;
             isMiniTrap = false;
             StartCoroutine(MiniTrap());
-
-        }
-       
+        }   
 
         if (resetTrap)
         {
             resetTrap = false;
-            StopAllCoroutines();
-            
+            StopAllCoroutines();         
         }
     }
 }

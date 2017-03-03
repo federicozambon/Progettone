@@ -36,7 +36,7 @@ public class AcidTrap: Trap
         
         yield return new WaitForSeconds(timeToRepeat);
 
-            myCo = StartCoroutine(ActivateTrap()); 
+        myCo = StartCoroutine(ActivateTrap()); 
     }
 
     public override IEnumerator ParticleTrap()
@@ -51,8 +51,6 @@ public class AcidTrap: Trap
 
         yield return new WaitForSeconds(3);
         myActivatorsController.GetComponent<ActivatorsController>().enabledAllActivators = true;
-       
- 
     }
 
     public override IEnumerator MiniTrap()
@@ -91,14 +89,12 @@ public class AcidTrap: Trap
             this.transform.parent.GetComponent<MeshRenderer>().enabled = false;
             isMiniTrap = false;
             StartCoroutine(MiniTrap());
-
         }
 
         if (resetTrap)
         {
             resetTrap = false;
-            StopAllCoroutines();
-            
+            StopAllCoroutines();          
         }
     }
 }
