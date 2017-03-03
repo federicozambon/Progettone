@@ -5,9 +5,15 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    public Scrollbar life;
+    public Image assault;
+    public Image shotgun;
+    public Gradient gradient;
+    public Image specialCircle;
+    public Text specialCounterTxt;
+    public Image life;
     public Image gameOver;
     public Image godMode;
+    public Text lifeTxt;
     public Text ammo;
     public Text thisWave;
     public Text waveEnd;
@@ -36,13 +42,14 @@ public class UIController : MonoBehaviour
     public GameObject SbloccoLivello;
     Canvas canvas;
 
+
     public void UpdateArmorUpgrade(int percent)
     {
-        armorUpgrade.text = "A+" + "\n" + percent + "%";
+        armorUpgrade.text = percent + "%";
     }
     public void UpdateWeaponUpgrade(int percent)
     {
-        weaponUpgrade.text = "W+" + "\n" + percent + "%";
+        weaponUpgrade.text = percent + "%";
     }
 
     public void ShowPrompt()
@@ -70,17 +77,22 @@ public class UIController : MonoBehaviour
 
     public void DecrementLife(float damageTaken)
     {
-        life.size -= damageTaken;
+        lifeTxt.text = playerRef.currentHealth + " / " + playerRef.maxHealth;
+        float tempCurrent, tempMax;
+        tempCurrent = (float)playerRef.currentHealth;
+        tempMax = (float)playerRef.maxHealth;
+        life.fillAmount = tempCurrent / tempMax;
         scoreStreak = 0;
         ResetMulti();
     }
 
     public void IncreaseLife()
     {
+        lifeTxt.text = playerRef.currentHealth + " / " + playerRef.maxHealth;
         float tempCurrent, tempMax;
         tempCurrent = (float)playerRef.currentHealth;
         tempMax = (float)playerRef.maxHealth;
-        life.size = tempCurrent / tempMax;
+        life.fillAmount = tempCurrent / tempMax;
     }
 
     public void UpdateScore()
@@ -136,6 +148,8 @@ public class UIController : MonoBehaviour
         UpdateMultiplier();
     }
 
+
+
     public IEnumerator ShowSpecialFeedback(string specialToShow)
     {
         specialFeedback.text = specialToShow;
@@ -150,6 +164,9 @@ public class UIController : MonoBehaviour
         while (specialActualTimer < specialTimer)
         {          
             specialActualTimer += Time.deltaTime;
+            specialCounterTxt.text = specialCounter.ToString();
+            specialCircle.fillAmount = 1 - specialActualTimer / specialTimer;
+            specialCircle.color = gradient.Evaluate(specialCircle.fillAmount);
             yield return null;
         }
         if (specialCounter <3)

@@ -44,7 +44,7 @@ public class LaserShotgun : Weapon
     {
         if (Input.GetButtonDown("Grenade"))
         {
-            wSelector.ChangeWeapon(1);
+            StartCoroutine(wSelector.ChangeWeapon(1));
             GetComponent<AssaultRifle>().enabled = true;
             weaponArray[0].gameObject.SetActive(true);
             weaponArray[1].gameObject.SetActive(false);
