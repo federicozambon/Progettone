@@ -96,10 +96,6 @@ public class UIController : MonoBehaviour
         {
             lifeAlarm.Play();
         }
-        if (lifeAlarm.isPlaying && playerRef.currentHealth / playerRef.maxHealth > 0.2f)
-        {
-            lifeAlarm.Stop();
-        }
 
         lifeTxt.text = playerRef.currentHealth + " / " + playerRef.maxHealth;
         float tempCurrent, tempMax;
@@ -112,10 +108,6 @@ public class UIController : MonoBehaviour
 
     public void IncreaseLife()
     {
-        if (!lifeAlarm.isPlaying && playerRef.currentHealth/playerRef.maxHealth <0.2f)
-        {
-            lifeAlarm.Play();
-        }
         if (lifeAlarm.isPlaying && playerRef.currentHealth / playerRef.maxHealth > 0.2f)
         {
             lifeAlarm.Stop();
