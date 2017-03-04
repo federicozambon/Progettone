@@ -66,33 +66,64 @@ public class Muoviti : MonoBehaviour {
 
         if (achievement.montacarichiA >= ScoreMontacarichiA[3])
         {
+            MainMenuButtons[0].transform.GetChild(0).GetComponent<Text>().text = "Montacarichi";
             ColorBlock cb = MainMenuButtons[0].colors;
             cb.normalColor = Color.white;
             MainMenuButtons[0].colors = cb;
         }
+        else
+        {
+            MainMenuButtons[0].transform.GetChild(0).GetComponent<Text>().text = ScoreMontacarichiA[3] + " SP";
+        }
 
         if (achievement.discarica >= ScoreDiscarica[3])
         {
+            MainMenuButtons[1].transform.GetChild(0).GetComponent<Text>().text = "Discarica";
             ColorBlock cb = MainMenuButtons[1].colors;
             cb.normalColor = Color.white;
             MainMenuButtons[1].colors = cb;
         }
 
+        else
+        {
+            MainMenuButtons[1].transform.GetChild(0).GetComponent<Text>().text = ScoreDiscarica[3] + " SP";
+        }
+
         if (achievement.montacarichiB >= ScoreMontacarichiB[3])
         {
+            MainMenuButtons[2].transform.GetChild(0).GetComponent<Text>().text = "Ascensore";
             ColorBlock cb = MainMenuButtons[2].colors;
             cb.normalColor = Color.white;
             MainMenuButtons[2].colors = cb;
         }
 
+        else
+        {
+            MainMenuButtons[2].transform.GetChild(0).GetComponent<Text>().text = ScoreMontacarichiB[3] + " SP";
+        }
+
         if (achievement.tetto >= ScoreTetto[3])
         {
+            MainMenuButtons[3].transform.GetChild(0).GetComponent<Text>().text = "Tetto";
             ColorBlock cb = MainMenuButtons[3].colors;
             cb.normalColor = Color.white;
             MainMenuButtons[3].colors = cb;
         }
 
-    }
+        else
+        {
+            MainMenuButtons[3].transform.GetChild(0).GetComponent<Text>().text = ScoreDiscarica[3] + " SP";
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            ButtonsMontacarichiA[i].transform.GetChild(0).GetComponent<Text>().text = ScoreMontacarichiA[i] + " SP" ;
+            ButtonsDiscarica[i].transform.GetChild(0).GetComponent<Text>().text = ScoreDiscarica[i] + " SP";
+            ButtonsMontacarichiB[i].transform.GetChild(0).GetComponent<Text>().text = ScoreMontacarichiB[i] + " SP";
+            ButtonsTetto[i].transform.GetChild(0).GetComponent<Text>().text = ScoreTetto[i] + " SP";
+        }
+
+            }
 	
 	// Update is called once per frame
 	void Update ()
@@ -242,6 +273,13 @@ public class Muoviti : MonoBehaviour {
         {
             if (achievement.montacarichiA >= ScoreMontacarichiA[i])
             {
+                if (i == 0)
+                    ButtonsMontacarichiA[0].transform.GetChild(0).GetComponent<Text>().text = "Inizio";
+                else if (i == 1)
+                    ButtonsMontacarichiA[1].transform.GetChild(0).GetComponent<Text>().text = "Intermezzo";
+                else if (i == 2)
+                    ButtonsMontacarichiA[2].transform.GetChild(0).GetComponent<Text>().text = "Fine";
+
                 ColorBlock cb = ButtonsMontacarichiA[i].colors;
                 cb.normalColor = Color.white;
                 ButtonsMontacarichiA[i].colors = cb;
@@ -294,6 +332,13 @@ public class Muoviti : MonoBehaviour {
     {
         for (int i = 0; i < 3; i++)
         {
+            if (i == 0)
+                ButtonsDiscarica[0].transform.GetChild(0).GetComponent<Text>().text = "Inizio";
+            else if (i == 1)
+                ButtonsDiscarica[1].transform.GetChild(0).GetComponent<Text>().text = "Intermezzo";
+            else if (i == 2)
+                ButtonsDiscarica[2].transform.GetChild(0).GetComponent<Text>().text = "Fine";
+
             if (achievement.discarica >= ScoreDiscarica[i])
             {
                 ColorBlock cb = ButtonsDiscarica[i].colors;
@@ -349,6 +394,13 @@ public class Muoviti : MonoBehaviour {
         {
             if (achievement.montacarichiB >= ScoreMontacarichiB[i])
             {
+                if (i == 0)
+                    ButtonsMontacarichiB[0].transform.GetChild(0).GetComponent<Text>().text = "Inizio";
+                else if (i == 1)
+                    ButtonsMontacarichiB[1].transform.GetChild(0).GetComponent<Text>().text = "Intermezzo";
+                else if (i == 2)
+                    ButtonsMontacarichiB[2].transform.GetChild(0).GetComponent<Text>().text = "Fine";
+
                 ColorBlock cb = ButtonsMontacarichiB[i].colors;
                 cb.normalColor = Color.white;
                 ButtonsMontacarichiB[i].colors = cb;
@@ -402,6 +454,13 @@ public class Muoviti : MonoBehaviour {
         {
             if (achievement.tetto >= ScoreTetto[i])
             {
+                if (i == 0)
+                    ButtonsTetto[0].transform.GetChild(0).GetComponent<Text>().text = "Inizio";
+                else if (i == 1)
+                    ButtonsTetto[1].transform.GetChild(0).GetComponent<Text>().text = "Intermezzo";
+                else if (i == 2)
+                    ButtonsTetto[2].transform.GetChild(0).GetComponent<Text>().text = "Fine";
+
                 ColorBlock cb = ButtonsTetto[i].colors;
                 cb.normalColor = Color.white;
                 ButtonsTetto[i].colors = cb;
