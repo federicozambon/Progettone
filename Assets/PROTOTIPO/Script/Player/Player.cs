@@ -84,6 +84,9 @@ public class Player : MonoBehaviour
     AssaultRifle assaultRef;
     LaserShotgun shotgunRef;
 
+    string currentScene;
+    
+
     void Awake()
     {
         textMesh = transform.FindChild("Text").GetComponent<TextMesh>();
@@ -110,6 +113,8 @@ public class Player : MonoBehaviour
         armorBoxTr = armorBox.transform.FindChild("Pivot");
         lifeBoxTr = lifeBox.transform.FindChild("Pivot");
         ammoBoxTr = ammoBox.transform.FindChild("Pivot");
+
+        currentScene = SceneManager.GetActiveScene().name;
     }
 
     public void DestroyAllEnemies()
@@ -142,6 +147,12 @@ public class Player : MonoBehaviour
                     refManager.uicontroller.UpdateScore();
                     currentHealth = maxHealth;
                     refManager.uicontroller.IncreaseLife();
+
+                    if (currentScene == "Tutorial" && tutorialElements.step == 51)
+                    {
+                        tutorialElements.HideStep();
+                        tutorialElements.NextStep();
+                    }
                 }
                 else
                 {
@@ -168,6 +179,12 @@ public class Player : MonoBehaviour
                         rocketAmmo = 10;
                     }
                     refManager.uicontroller.ammo.text = rocketAmmo.ToString();
+
+                    if (currentScene == "Tutorial" && tutorialElements.step == 52)
+                    {
+                        tutorialElements.HideStep();
+                        tutorialElements.NextStep();
+                    }
                 }
                 else
                 {
@@ -194,11 +211,19 @@ public class Player : MonoBehaviour
                     refManager.uicontroller.UpdateScore();
                     damageUp += 25;
                     refManager.uicontroller.UpdateWeaponUpgrade(damageUp);
+
+                    if (currentScene == "Tutorial" && tutorialElements.step == 54)
+                    {
+                        tutorialElements.HideStep();
+                        tutorialElements.NextStep();
+                    }
                 }
                 else
                 {
                     nearBox.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
                 }
+
+
             }
         }
 
@@ -219,6 +244,13 @@ public class Player : MonoBehaviour
                     armorUp += 25;
                     refManager.uicontroller.UpdateArmorUpgrade(armorUp);
                     refManager.uicontroller.IncreaseLife();
+
+                    if (currentScene == "Tutorial" && tutorialElements.step == 53)
+                    {
+                        tutorialElements.HideStep();
+                        tutorialElements.NextStep();
+                    }
+
                 }
                 else
                 {
