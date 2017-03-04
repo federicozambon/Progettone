@@ -13,6 +13,7 @@ public class AssaultRifle : Weapon
     Player player;
     public int startingDamage;
     RocketLauncher rocketRef;
+    EffectSettings[] effectPool;
 
 
     public Transform[] transformTr;
@@ -20,6 +21,13 @@ public class AssaultRifle : Weapon
 
     void Awake()
     {
+        effectPool = new EffectSettings[9];
+        for (int i = 0; i < 9; i++)
+        {
+            effectPool[i] = pool.GetComponentsInChildren<EffectSettings>(true)[i];
+            ParticleActivator(this.transform.position);
+        }
+
         rocketRef = GetComponent<RocketLauncher>();
         transform.localRotation = Quaternion.identity;
         rotRef = FindObjectOfType<Player>();
@@ -70,7 +78,7 @@ public class AssaultRifle : Weapon
         yield return new WaitForSeconds(0.2f);
     }
 
-    int counter = 0;
+    int counter = 10;
 
     public void Shoot()
     {
@@ -125,12 +133,7 @@ public class AssaultRifle : Weapon
 
     public void ParticleActivator(Vector3 position)
     {
-        transformTr[counter].position = position;          
-        pool.GetComponentsInChildren<EffectSettings>(true)[counter].transform.position = this.transform.position;
-        pool.GetComponentsInChildren<EffectSettings>(true)[counter].Target = transformTr[counter].gameObject;
-        pool.GetComponentsInChildren<EffectSettings>(true)[counter].gameObject.SetActive(true);
-
-        if (counter < 9)
+        if (counter < 8)
         {
             counter++;
         }
@@ -138,6 +141,10 @@ public class AssaultRifle : Weapon
         {
             counter = 0;
         }
+        transformTr[counter].position = position;          
+        effectPool[counter].transform.position = this.transform.position;
+        effectPool[counter].Target = transformTr[counter].gameObject;
+        effectPool[counter].gameObject.SetActive(true);
     }
 }
 
