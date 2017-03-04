@@ -136,6 +136,7 @@ public class PauseManager : MonoBehaviour
     }
     public void QuitToMenu()
     {
+        FindObjectOfType<Achievement>().SaveScore(FindObjectOfType<UIController>().score);
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1;
     }

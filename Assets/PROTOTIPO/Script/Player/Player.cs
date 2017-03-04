@@ -4,8 +4,13 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 
-public class Player: MonoBehaviour
+public class Player : MonoBehaviour
 {
+    GameObject ammoBox;
+    GameObject lifeBox;
+    GameObject armorBox;
+    GameObject weaponBox;   
+
     public bool godMode = false;
     public bool isAlive = true;
     public bool tutorialMode = false;
@@ -78,6 +83,11 @@ public class Player: MonoBehaviour
         uiElements = FindObjectOfType<UIController>();
         aSource = GetComponent<AudioSource>();
         aController = FindObjectOfType<AudioController>();
+
+        weaponBox = GameObject.FindGameObjectWithTag("Weapon_PickUp");
+        armorBox = GameObject.FindGameObjectWithTag("Armor_PickUp");
+        lifeBox = GameObject.FindGameObjectWithTag("Health_PickUp");
+        ammoBox = GameObject.FindGameObjectWithTag("Ammo_PickUp");
     }
 
     public void DestroyAllEnemies()
@@ -95,9 +105,9 @@ public class Player: MonoBehaviour
     int damageUp = 0;
     int armorUp = 0;
 
-    void OnTriggerStay(Collider coll)
+    void UseBox(GameObject nearBox)
     {
-        if (coll.tag == "Health_PickUp")
+        if (nearBox.tag == "Health_PickUp")
         {
             //coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
             //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
@@ -108,31 +118,31 @@ public class Player: MonoBehaviour
                     aController.playSound(AudioContainer.Self.Health_PickUp);
                     refManager.uicontroller.score -= (int)(baseCost[0] * costModifier[0]);
                     costModifier[0] += 0.5f;
-                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[0] * costModifier[0] + " SP";
+                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[0] * costModifier[0] + " SP";
                     refManager.uicontroller.UpdateScore();
                     currentHealth = maxHealth;
                     refManager.uicontroller.IncreaseLife();
                 }
                 else
                 {
-                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
+                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
                 }
             }
         }
 
-        if (coll.tag == "Ammo_PickUp")
+        if (nearBox.tag == "Ammo_PickUp")
         {
             //coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
             //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
-          
+
                 if (refManager.uicontroller.score >= baseCost[1] * costModifier[1] && rocketAmmo != 10)
                 {
                     aController.playSound(AudioContainer.Self.Ammo_PickUp);
                     refManager.uicontroller.score -= (int)(baseCost[1] * costModifier[1]);
                     costModifier[1] += 0.5f;
-                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[1] * costModifier[1] + " SP";
+                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[1] * costModifier[1] + " SP";
                     refManager.uicontroller.UpdateScore();
                     rocketAmmo += 5;
                     if (rocketAmmo > 10)
@@ -143,12 +153,12 @@ public class Player: MonoBehaviour
                 }
                 else
                 {
-                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
+                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
                 }
             }
         }
 
-        if (coll.tag == "Weapon_PickUp")
+        if (nearBox.tag == "Weapon_PickUp")
         {
             //coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
             //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
@@ -164,20 +174,21 @@ public class Player: MonoBehaviour
                     refManager.uicontroller.UpdateWeaponUpgrade(25);
                     refManager.uicontroller.score -= (int)(baseCost[2] * costModifier[2]);
                     costModifier[2] += 0.5f;
-                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[2] * costModifier[2] + " SP";
+                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[2] * costModifier[2] + " SP";
                     refManager.uicontroller.UpdateScore();
                     damageUp += 25;
-                    refManager.uicontroller.UpdateWeaponUpgrade(damageUp);             
+                    refManager.uicontroller.UpdateWeaponUpgrade(damageUp);
                 }
                 else
                 {
-                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
+                    nearBox.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
                 }
-            }  
+            }
         }
 
-        if (coll.tag == "Armor_PickUp")
+        if (nearBox.tag == "Armor_PickUp")
         {
+
             //coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
             //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
@@ -187,7 +198,7 @@ public class Player: MonoBehaviour
                     aController.playSound(AudioContainer.Self.Armor_PickUp);
                     refManager.uicontroller.score -= (int)(baseCost[3] * costModifier[3]);
                     costModifier[3] += 0.5f;
-                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[3] * costModifier[3] + " SP";
+                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[3] * costModifier[3] + " SP";
                     refManager.uicontroller.UpdateScore();
                     maxHealth += 25;
                     currentHealth += 25;
@@ -198,7 +209,7 @@ public class Player: MonoBehaviour
                 }
                 else
                 {
-                    coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
+                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
                 }
             }
         }
@@ -213,13 +224,15 @@ public class Player: MonoBehaviour
             refManager.uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
             coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[0] * costModifier[0] + " SP";
+            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
         }
 
         if (coll.tag == "Ammo_PickUp")
         {
             refManager.uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text =  baseCost[1] * costModifier[1] + " SP";
+            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[1] * costModifier[1] + " SP";
+            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
         }
 
         if (coll.tag == "Weapon_PickUp")
@@ -227,6 +240,7 @@ public class Player: MonoBehaviour
             refManager.uicontroller.ShowPrompt();
             coll.GetComponent<PickUp>().Show();
             coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[2] * costModifier[2] + " SP";
+            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
         }
 
         if (coll.tag == "Armor_PickUp")
@@ -243,7 +257,7 @@ public class Player: MonoBehaviour
         {
             coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
             refManager.uicontroller.HidePrompt();
-            coll.GetComponent<PickUp>().Hide(); 
+            coll.GetComponent<PickUp>().Hide();
         }
 
         if (coll.tag == "Ammo_PickUp")
@@ -301,24 +315,24 @@ public class Player: MonoBehaviour
             }
 
 
-            
-                if (((rx <= 0.15f && rx >= -0.15f) && (ry <= 0.15f && ry >= -0.15f)) || isDashing)
-                {
-                    rotating = false;
-                    transform.rotation = lastRotation;
-                }
-                else
-                {
-                    rotating = true;
-                    shootDirection = transform.parent.transform.right * Input.GetAxis("Horizontal_Stick") + transform.parent.transform.right * Input.GetAxis("Vertical_Stick");
-                    shootDirection.x = rx * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + ry * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
-                    shootDirection.z = -rx * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + ry * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
-                    transform.rotation = Quaternion.LookRotation(shootDirection, Vector3.up);
-                }
-                lastRotation = transform.rotation;
-            
-            
-        }      
+
+            if (((rx <= 0.15f && rx >= -0.15f) && (ry <= 0.15f && ry >= -0.15f)) || isDashing)
+            {
+                rotating = false;
+                transform.rotation = lastRotation;
+            }
+            else
+            {
+                rotating = true;
+                shootDirection = transform.parent.transform.right * Input.GetAxis("Horizontal_Stick") + transform.parent.transform.right * Input.GetAxis("Vertical_Stick");
+                shootDirection.x = rx * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + ry * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
+                shootDirection.z = -rx * Mathf.Sin(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0)) + ry * Mathf.Cos(Mathf.Deg2Rad * (transform.parent.transform.eulerAngles.y + 0));
+                transform.rotation = Quaternion.LookRotation(shootDirection, Vector3.up);
+            }
+            lastRotation = transform.rotation;
+
+
+        }
     }
 
     public Quaternion lastRotation;
@@ -341,9 +355,36 @@ public class Player: MonoBehaviour
         }
     }
 
+    public GameObject boxToPass;
+
     void Update()
     {
-        
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log(Vector3.Distance(this.transform.position, weaponBox.transform.position));
+            if (Vector3.Distance(this.transform.position, weaponBox.transform.position) < 40)
+            {
+                boxToPass = weaponBox;
+            }
+            if (Vector3.Distance(this.transform.position, ammoBox.transform.position) < 40)
+            {
+                boxToPass = ammoBox;
+            }
+            if (Vector3.Distance(this.transform.position, lifeBox.transform.position) < 40)
+            {
+                boxToPass = lifeBox;
+            }
+            if (Vector3.Distance(this.transform.position, armorBox.transform.position) < 40)
+            {
+                boxToPass = armorBox;
+            }    
+            if (boxToPass != null)
+            {
+                Debug.Log(boxToPass);
+                UseBox(boxToPass);
+            }
+            boxToPass = null;
+        }
 
         if (Input.GetButtonDown("Selection"))
         {
@@ -366,17 +407,10 @@ public class Player: MonoBehaviour
 
         }
 
-        //ritorno al Menu con il Tasto Start (Fire2)
-        if (Input.GetButtonDown("X"))        {
-            achievement.SaveScore(uiElements.score);
-            SceneManager.LoadScene(0);
-        }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             DestroyAllEnemies();
         }
-
 
         if (refManager.flyCamRef.endedCutScene)
         {
@@ -391,7 +425,7 @@ public class Player: MonoBehaviour
                     {
                         int counter = 0;
                         foreach (var diobubu in occludedGoList)
-                        {                         
+                        {
                             if (diobubu.occludedObj == mesh.collider.gameObject)
                             {
                                 counter++;
@@ -409,7 +443,7 @@ public class Player: MonoBehaviour
             }
 
             if (Input.GetButton("Dash") && dashAttivo == true)
-            {               
+            {
                 DashTutorialMode();
                 StartCoroutine(Dash());
             }
@@ -488,7 +522,7 @@ public class Player: MonoBehaviour
         }
 
         ParticleSystem.EmissionModule emitter = trailPs.emission; ;
-        
+
         emitter.rate = 100;
         yield return new WaitForSeconds(0.3f);
         emitter.rate = 10;
@@ -514,23 +548,23 @@ public class Player: MonoBehaviour
             currentHealth -= (int)damageTaken;
             refManager.uicontroller.DecrementLife((float)damageTaken / 100);
         }
-        
+
 
         if (currentHealth <= 0 && isAlive == true && godMode == false)
         {
             isAlive = false;
             StartCoroutine(Die());
         }
-        
+
     }
 
     IEnumerator Die()
     {
         refManager.uicontroller.GameOverOn();
-        yield return null;     
+        yield return null;
     }
 
-    
+
 
     public IEnumerator StillOccluding(GameObject go)
     {
@@ -563,11 +597,11 @@ public class Player: MonoBehaviour
         {
             if (sign > 0)
             {
-               // Debug.LogError("occluso");
+                // Debug.LogError("occluso");
                 occludedGoList.Add(new OccludedObject());
                 occludedGoList[occludedGoList.Count - 1].occludedObj = go;
                 occludedGoList[occludedGoList.Count - 1].meshRef = go.GetComponent<MeshRenderer>();
-                occludedGoList[occludedGoList.Count-1].matArray = occludedGoList[occludedGoList.Count - 1].meshRef.materials;
+                occludedGoList[occludedGoList.Count - 1].matArray = occludedGoList[occludedGoList.Count - 1].meshRef.materials;
 
                 for (int i = 0; i < occludedGoList[occludedGoList.Count - 1].meshRef.materials.Length; i++)
                 {
