@@ -6,6 +6,7 @@ public class Blinker : MonoBehaviour
 {
     Text textRef;
     Image imageRef;
+    public float timeToSmooth;
 
 	void Awake ()
     {
@@ -18,7 +19,7 @@ public class Blinker : MonoBehaviour
 
 	void Update ()
     {
-        float ping = Mathf.PingPong(Time.time, 0.8f);
+        float ping = Mathf.PingPong(Time.time, timeToSmooth);
 
         if (textRef)
         {
