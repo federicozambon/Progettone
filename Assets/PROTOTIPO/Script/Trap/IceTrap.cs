@@ -29,7 +29,7 @@ public class IceTrap : Trap
             if (colliders[i].GetComponent<Enemy>())
             {
                 enemyList.Add(colliders[i].GetComponent<Enemy>());
-                colliders[i].GetComponent<Enemy>().isActiveIceTrap = true;
+                colliders[i].GetComponent<Enemy>().navRef.Stop();
             }
         }
 
@@ -55,7 +55,7 @@ public class IceTrap : Trap
 
         foreach (var item in enemyList)
         {
-            item.isActiveIceTrap = false;
+            item.GetComponent<Enemy>().navRef.Resume();
         }
         enemyList.Clear();
 
