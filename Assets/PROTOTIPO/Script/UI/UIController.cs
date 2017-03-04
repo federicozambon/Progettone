@@ -162,7 +162,6 @@ public class UIController : MonoBehaviour
         {
             indexScore = 1;
             StartCoroutine(SbloccoDialoghi(indexScore));
-            Debug.Log("ciao");
         }
 
         if (currentScene == "Discarica" && score >= scoreDiscarica[1] && indexScore == 1)

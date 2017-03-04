@@ -93,72 +93,101 @@ public class Spawner : MonoBehaviour
 
     public int toSpawnCounter = 0;
 
-    public GameObject PickEnemy(GameObject enemyToPick)
+    int furiaCounter = 0;
+    int explosivefuriaCounter = 0;
+    int fanteCounter = 0;
+    int predatorCounter = 0;
+    int sniperCounter = 0;
+    int titanoCounter = 0;
+
+    GameObject enemyToSpawn = null;
+
+    public GameObject PickEnemy(GameObject enemyToPick, out GameObject enemyToSpawn)
     {
         string enemyType = enemyToPick.GetComponent<Enemy>().enemyType;
-
+        enemyToSpawn = null;
         switch (enemyType)
         {
-            case "furia":
-                foreach (var enemy in furiaPool)
+            case "furia":            
+                if (furiaCounter < 48)
                 {
-                    if (!enemy.activeInHierarchy)
-                    {
-                        return enemy;
-                    }
+                    furiaCounter++;
                 }
-                break;
+                else
+                {
+                    furiaCounter = 0;
+                }
+                GameObject furiaToSpawn = furiaPool[furiaCounter];
+                enemyToSpawn = furiaToSpawn;
+                return furiaToSpawn;
 
             case "furiaesplosiva":
-                foreach (var enemy in explosiveFuriaPool)
+                if (explosivefuriaCounter < 48)
                 {
-                    if (!enemy.activeInHierarchy)
-                    {
-                        return enemy;
-                    }
+                    explosivefuriaCounter++;
                 }
-                break;
+                else
+                {
+                    explosivefuriaCounter = 0;
+                }
+                GameObject furiaEsplosivatoSpawn = explosiveFuriaPool[explosivefuriaCounter];
+                enemyToSpawn = furiaEsplosivatoSpawn;
+                return furiaEsplosivatoSpawn;
 
             case "fante":
-                foreach (var enemy in fantePool)
+                if (fanteCounter < 48)
                 {
-                    if (!enemy.activeInHierarchy)
-                    {
-                        return enemy;
-                    }
+                    fanteCounter++;
                 }
-                break;
+                else
+                {
+                    fanteCounter = 0;
+                }
+                GameObject fanteToSpawn = fantePool[fanteCounter];
+                enemyToSpawn = fanteToSpawn;
+                return fanteToSpawn;
 
             case "predatore":
-                foreach (var enemy in predatorPool)
+                if (predatorCounter < 18)
                 {
-                    if (!enemy.activeInHierarchy)
-                    {
-                        return enemy;
-                    }
+                    predatorCounter++;
                 }
-                break;
+                else
+                {
+                    predatorCounter = 0;
+                }
+                GameObject predatorToSpawn = predatorPool[predatorCounter];
+                enemyToSpawn = predatorToSpawn;
+                return predatorToSpawn;
 
             case "cecchino":
-                foreach (var enemy in sniperPool)
+                if (sniperCounter < 18)
                 {
-                    if (!enemy.activeInHierarchy)
-                    {
-                        return enemy;
-                    }
+                    sniperCounter++;
                 }
-                break;
+                else
+                {
+                    sniperCounter = 0;
+                }
+                GameObject sniperToSpawn = sniperPool[sniperCounter];
+                enemyToSpawn = sniperToSpawn;
+                return sniperToSpawn;
 
             case "titano":
-                foreach (var enemy in titanoPool)
+                if (titanoCounter < 8)
                 {
-                    if (!enemy.activeInHierarchy)
-                    {
-                        return enemy;
-                    }
+                    titanoCounter++;
                 }
-                break;
+                else
+                {
+                    titanoCounter = 0;
+                }
+                GameObject titanToSpawn = titanoPool[titanoCounter];
+                enemyToSpawn = titanToSpawn;
+                return titanToSpawn;
         }
+        Debug.Log("SPAWN BUG");
+        Debug.Log(enemyToSpawn);
         return null;
     }
 
@@ -202,7 +231,8 @@ public class Spawner : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(spawnerDB.timerEnemy);
-        GameObject enemyToManage = PickEnemy(spawnerDB.typeEnemy);
+        GameObject enemyToManage = PickEnemy(spawnerDB.typeEnemy, out enemyToSpawn);
+        Debug.Log(enemyToSpawn);
         StartCoroutine(PlaceAndResetEnemy(enemyToManage, spawnerDB.spawnEnemy.transform.position));
     }
 }

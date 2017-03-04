@@ -221,7 +221,7 @@ public abstract class Enemy : MonoBehaviour
             playSound = true;
         }
         else
-            Destroy(this.gameObject);
+           // Destroy(this.gameObject);
         yield return new WaitForSeconds(0.2f);
 
        
