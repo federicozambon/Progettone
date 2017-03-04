@@ -33,7 +33,8 @@ public class Muoviti : MonoBehaviour {
     public static int scoreMontacarichiA, scoreDiscarica, scoreMontacarichiB, scoreTetto;
     public AudioSource backAudioRef;
 
-
+    public AudioSource audioBlock;
+    public AudioSource audioSelect;
 
 
     // Use this for initialization
@@ -306,6 +307,17 @@ public class Muoviti : MonoBehaviour {
             }
    
     }
+
+    public void SbloccoAudioMontacarichiA_0()
+
+    {
+        ColorBlock cb = ButtonsMontacarichiA[0].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
+    }
+
     public void SbloccoMontacarichiA_1()
 
     {
@@ -316,6 +328,17 @@ public class Muoviti : MonoBehaviour {
         }
 
     }
+
+    public void SbloccoAudioMontacarichiA_1()
+
+    {
+        ColorBlock cb = ButtonsMontacarichiA[1].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
+    }
+
     public void SbloccoMontacarichiA_2()
 
     {
@@ -325,6 +348,16 @@ public class Muoviti : MonoBehaviour {
             txtMontacarichiA.text = textMontacarichiA[2];
         }
 
+    }
+
+    public void SbloccoAudioMontacarichiA_2()
+
+    {
+        ColorBlock cb = ButtonsMontacarichiA[2].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
     }
 
     public void AchievementDiscarica()
@@ -366,6 +399,17 @@ public class Muoviti : MonoBehaviour {
         }
 
     }
+
+    public void SbloccoAudioDiscarica_0()
+
+    {
+        ColorBlock cb = ButtonsDiscarica[0].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
+    }
+
     public void SbloccoDiscarica_1()
 
     {
@@ -376,6 +420,17 @@ public class Muoviti : MonoBehaviour {
         }
 
     }
+
+    public void SbloccoAudioDiscarica_1()
+
+    {
+        ColorBlock cb = ButtonsDiscarica[1].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
+    }
+
     public void SbloccoDiscarica_2()
 
     {
@@ -385,6 +440,16 @@ public class Muoviti : MonoBehaviour {
             txtDiscarica.text = textDiscarica[2];
         }
 
+    }
+
+    public void SbloccoAudioDiscarica_2()
+
+    {
+        ColorBlock cb = ButtonsDiscarica[2].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
     }
 
     public void AchievmentMontacarichiB()
@@ -426,6 +491,17 @@ public class Muoviti : MonoBehaviour {
         }
 
     }
+
+    public void SbloccoAudioMontacarichiB_0()
+
+    {
+        ColorBlock cb = ButtonsMontacarichiB[0].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
+    }
+
     public void SbloccoMontacarichiB_1()
 
     {
@@ -436,6 +512,17 @@ public class Muoviti : MonoBehaviour {
         }
 
     }
+
+    public void SbloccoAudioMontacarichiB_1()
+
+    {
+        ColorBlock cb = ButtonsMontacarichiB[1].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
+    }
+
     public void SbloccoMontacarichiB_2()
 
     {
@@ -445,6 +532,16 @@ public class Muoviti : MonoBehaviour {
             txtMontacarichiB.text = textMontacarichiB[2];
         }
 
+    }
+
+    public void SbloccoAudioMontacarichiB_2()
+
+    {
+        ColorBlock cb = ButtonsMontacarichiB[2].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
     }
 
     public void AchievementTetto()
@@ -486,6 +583,17 @@ public class Muoviti : MonoBehaviour {
         }
 
     }
+
+    public void SbloccoAudioTetto_0()
+
+    {
+        ColorBlock cb = ButtonsTetto[0].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
+    }
+
     public void SbloccoTetto_1()
 
     {
@@ -496,6 +604,17 @@ public class Muoviti : MonoBehaviour {
         }
 
     }
+
+    public void SbloccoAudioTetto_1()
+
+    {
+        ColorBlock cb = ButtonsTetto[1].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
+    }
+
     public void SbloccoTetto_2()
 
     {
@@ -505,6 +624,16 @@ public class Muoviti : MonoBehaviour {
             txtTetto.text = textTetto[2];
         }
 
+    }
+
+    public void SbloccoAudioTetto_2()
+
+    {
+        ColorBlock cb = ButtonsTetto[2].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
     }
 
     public void DeleteRecord()
@@ -536,21 +665,41 @@ public class Muoviti : MonoBehaviour {
     public void SetScoreMontacarichiA()
     {
         recordTotale.text = achievement.montacarichiA.ToString();
+        ColorBlock cb = MainMenuButtons[0].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
     }
 
     public void SetScoreDiscarica()
     {
         recordTotale.text = achievement.discarica.ToString();
+        ColorBlock cb = MainMenuButtons[1].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
     }
 
     public void SetScoreMontacarichiB()
     {
         recordTotale.text = achievement.montacarichiB.ToString();
+        ColorBlock cb = MainMenuButtons[2].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
     }
 
     public void SetScoreTetto()
     {
         recordTotale.text = achievement.tetto.ToString();
+        ColorBlock cb = MainMenuButtons[3].colors;
+        if (cb.normalColor != Color.white)
+            audioBlock.Play();
+        else
+            audioSelect.Play();
     }
 
     public void ResetScore()

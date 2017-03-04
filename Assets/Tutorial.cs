@@ -10,6 +10,10 @@ public class Tutorial : MonoBehaviour
     public GameObject nemico1;
     public GameObject nemico2;
     public GameObject nemico3;
+    public GameObject Vita;
+    public GameObject Ammo;
+    public GameObject Armor;
+    public GameObject Dmg;
     UIController uiElements;
 
     public string currentScene;
@@ -36,7 +40,16 @@ public class Tutorial : MonoBehaviour
         }
         achievement = FindObjectOfType<Achievement>();
         uiElements = FindObjectOfType<UIController>();
+        
 	}
+
+    void Start()
+    {
+        Vita.SetActive(false);
+        Ammo.SetActive(false);
+        Armor.SetActive(false);
+        Dmg.SetActive(false);
+    }
 
     public void StartTutorial()
     {
@@ -69,15 +82,19 @@ public class Tutorial : MonoBehaviour
                 break;
             case 51:
                 transform.GetChild(5).gameObject.SetActive(true);
+                Vita.SetActive(true);
                 break;
             case 52:
                 transform.GetChild(6).gameObject.SetActive(true);
+                Ammo.SetActive(true);
                 break;
             case 53:
                 transform.GetChild(7).gameObject.SetActive(true);
+                Armor.SetActive(true);
                 break;
             case 54:
                 transform.GetChild(8).gameObject.SetActive(true);
+                Dmg.SetActive(true);
                 break;
             case 55:
                 transform.GetChild(9).gameObject.SetActive(true);
@@ -110,15 +127,19 @@ public class Tutorial : MonoBehaviour
                 break;
             case 51:
                 transform.GetChild(5).gameObject.SetActive(false);
+                Vita.SetActive(false);
                 break;
             case 52:
                 transform.GetChild(6).gameObject.SetActive(false);
+                Ammo.SetActive(false);
                 break;
             case 53:
                 transform.GetChild(7).gameObject.SetActive(false);
+                Armor.SetActive(false);
                 break;
             case 54:
                 transform.GetChild(8).gameObject.SetActive(false);
+                Dmg.SetActive(false);
                 break;
             case 55:
                 transform.GetChild(9).gameObject.SetActive(false);
