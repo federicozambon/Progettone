@@ -34,7 +34,6 @@ public class IceTrap : Trap
         }
 
         yield return new WaitForSeconds(timeToRepeat);
-
         myCo = StartCoroutine(ActivateTrap()); 
     }
 

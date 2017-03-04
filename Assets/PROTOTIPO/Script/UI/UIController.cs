@@ -58,11 +58,11 @@ public class UIController : MonoBehaviour
 
     public void UpdateArmorUpgrade(int percent)
     {
-        armorUpgrade.text = percent + "%";
+        weaponUpgrade.text = percent + "%";
     }
     public void UpdateWeaponUpgrade(int percent)
     {
-        weaponUpgrade.text = percent + "%";
+        armorUpgrade.text = percent + "%";
     }
 
     public void ShowPrompt()
