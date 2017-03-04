@@ -21,18 +21,25 @@ public class PauseManager : MonoBehaviour
     FlyCamManager flyRef;
 
     bool paused;
+    bool audioMode = false;
 
     void Awake()
     {
         flyRef = FindObjectOfType<FlyCamManager>();
-        resume = GameObject.Find("Resume");
-        options = GameObject.Find("Options");
-        quit = GameObject.Find("QuitToMenu");
-        generalVolume = GameObject.Find("Volume Principale");
+        //resume = GameObject.Find("Resume");
+        //options = GameObject.Find("Options");
+        //quit = GameObject.Find("QuitToMenu");
+        //generalVolume = GameObject.Find("Volume Principale");
         eventRef = FindObjectOfType<EventSystem>();
         standRef = FindObjectOfType<StandaloneInputModule>();
         CanvasPanel1.SetActive(false);
         CanvasPanel2.SetActive(false);
+    }
+
+    void Start()
+    {
+        
+       
     }
 
     bool moved = false;
@@ -40,22 +47,28 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetButtonDown("GodMode") || (paused && Input.GetButtonDown("Cancel")))&& !flyRef.cutScene)
+        if ((Input.GetButtonDown("GodMode") || (audioMode == false && paused && Input.GetButtonDown("Cancel")))&& !flyRef.cutScene)
         {
+
+            Debug.Log("qui qui qui");
+
             if (!paused)
             {
-                CanvasPanel1.SetActive(true);
 
-                eventRef.SetSelectedGameObject(options);
-                eventRef.SetSelectedGameObject(resume);
+
+                PauseActiveMenu();
+                
 
                 Time.timeScale = 0;
                 paused = true;
+                
             }
             else
             {
                 CanvasPanel1.SetActive(false);
                 CanvasPanel2.SetActive(false);
+                eventRef.SetSelectedGameObject(null);
+
                 Time.timeScale = 1;
                 paused = false;
             }
@@ -66,14 +79,19 @@ public class PauseManager : MonoBehaviour
         {
             if (Input.GetButtonDown("Cancel"))
             {
+                
+
+                CanvasPanel2.SetActive(false);
+                CanvasPanel1.SetActive(true);
+                eventRef.SetSelectedGameObject(resume);
+
                 if (backAudioRef)
                 {
                     backAudioRef.Play();
                 }
 
-                CanvasPanel1.SetActive(true);
-                CanvasPanel2.SetActive(false);
-                eventRef.SetSelectedGameObject(resume);
+                audioMode = false;
+                
             }
             /*
             if (Input.GetAxisRaw("Horizontal") > 0.3f)
@@ -87,7 +105,7 @@ public class PauseManager : MonoBehaviour
             */
         }
 
-        if (CanvasPanel1.activeInHierarchy)
+       /* if (CanvasPanel1.activeInHierarchy)
         {
             if (!moved)
             {
@@ -132,7 +150,7 @@ public class PauseManager : MonoBehaviour
         if (Input.GetAxisRaw("Vertical") > -0.1 && Input.GetAxisRaw("Vertical") < 0.1)
         {
             moved = false;
-        }
+        }*/
     }
     public void QuitToMenu()
     {
@@ -140,8 +158,17 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1;
     }
+
+    public void PauseActiveMenu()
+    {
+        CanvasPanel1.SetActive(true);
+        eventRef.SetSelectedGameObject(resume);
+        CanvasPanel2.SetActive(false);
+    }
+
     public void AudioOptions()
     {
+        audioMode = true;
         CanvasPanel2.SetActive(true);
         eventRef.SetSelectedGameObject(generalVolume);
         CanvasPanel1.SetActive(false);  
