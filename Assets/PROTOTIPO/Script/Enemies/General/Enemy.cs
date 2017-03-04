@@ -81,6 +81,10 @@ public abstract class Enemy : MonoBehaviour
     void OnEnable()
     {
         refManager.miniMapRef.NewEnemy(this.gameObject);
+        if (!this.navRef.isOnNavMesh)
+        {
+            Debug.LogError(this.name);
+        }
     }
 
     public IEnumerator TrapController(float durataDanno)
