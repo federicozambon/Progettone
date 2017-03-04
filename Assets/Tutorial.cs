@@ -10,6 +10,7 @@ public class Tutorial : MonoBehaviour
     public GameObject nemico1;
     public GameObject nemico2;
     public GameObject nemico3;
+    UIController uiElements;
 
     public string currentScene;
     Achievement achievement;
@@ -34,6 +35,7 @@ public class Tutorial : MonoBehaviour
             player.tutorialMode = true;
         }
         achievement = FindObjectOfType<Achievement>();
+        uiElements = FindObjectOfType<UIController>();
 	}
 
     public void StartTutorial()
@@ -71,6 +73,15 @@ public class Tutorial : MonoBehaviour
             case 52:
                 transform.GetChild(6).gameObject.SetActive(true);
                 break;
+            case 53:
+                transform.GetChild(7).gameObject.SetActive(true);
+                break;
+            case 54:
+                transform.GetChild(8).gameObject.SetActive(true);
+                break;
+            case 55:
+                transform.GetChild(9).gameObject.SetActive(true);
+                break;
 
         }
 
@@ -102,6 +113,15 @@ public class Tutorial : MonoBehaviour
                 break;
             case 52:
                 transform.GetChild(6).gameObject.SetActive(false);
+                break;
+            case 53:
+                transform.GetChild(7).gameObject.SetActive(false);
+                break;
+            case 54:
+                transform.GetChild(8).gameObject.SetActive(false);
+                break;
+            case 55:
+                transform.GetChild(9).gameObject.SetActive(false);
                 break;
 
         }
@@ -160,15 +180,18 @@ public class Tutorial : MonoBehaviour
             {
                 
                 NextStep();
+                uiElements.score = 100000;
+                uiElements.actualScore.text = "100000 SP";
+                player.TakeDamage(20);
             }
 
-            if (step == 51 && Input.GetButtonDown("Fire1"))
+           /* if (step == 51 && Input.GetButtonDown("Fire1"))
             {
                 HideStep();
                 NextStep();
-            }
+            }*/
 
-            else if (Input.GetButtonDown("Fire1") && step == 52)
+            else if (Input.GetButtonDown("Fire1") && step == 55)
             {
                 HideStep();
                 
