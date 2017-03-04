@@ -92,7 +92,7 @@ public class UIController : MonoBehaviour
 
     public void DecrementLife(float damageTaken)
     {
-        if (!lifeAlarm.isPlaying && playerRef.currentHealth / playerRef.maxHealth < 0.2f)
+        if (!lifeAlarm.isPlaying && (float)playerRef.currentHealth / (float)playerRef.maxHealth < 0.2f)
         {
             lifeAlarm.Play();
         }
@@ -108,7 +108,7 @@ public class UIController : MonoBehaviour
 
     public void IncreaseLife()
     {
-        if (lifeAlarm.isPlaying && playerRef.currentHealth / playerRef.maxHealth > 0.2f)
+        if (lifeAlarm.isPlaying && (float)playerRef.currentHealth / (float)playerRef.maxHealth > 0.2f)
         {
             lifeAlarm.Stop();
         }
