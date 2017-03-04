@@ -40,6 +40,10 @@ public class RocketLife : MonoBehaviour {
             {
                 enemies.Add(item.GetComponent<Enemy>());
             }
+            if (item.tag == "Destructible")
+            {
+                item.GetComponent<Destructble>().TakeDamage(damagePerShot);
+            }
         }
     }
 	
