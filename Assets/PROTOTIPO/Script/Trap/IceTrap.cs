@@ -14,7 +14,16 @@ public class IceTrap : Trap
     {       
         player = FindObjectOfType<Player>();      
     }
-	
+
+    Coroutine Co;
+
+    IEnumerator DefrostPlayer()
+    {
+        yield return new WaitForSeconds(5);
+        player.speed = 6;
+        Co = null;
+    }
+
 	public override IEnumerator ActivateTrap()
     {
         activeTrap = false;
@@ -23,7 +32,18 @@ public class IceTrap : Trap
         {
             if (colliders[i].GetComponent<Player>() != null)
             {
-                colliders[i].GetComponent<Player>().speed = 2;
+                colliders[i].GetComponent<Player>().speed = 3;
+
+                if (Co == null)
+                {
+                    Co = StartCoroutine(DefrostPlayer());
+                }
+                else
+                {
+                    StopCoroutine(Co);
+                    Co = StartCoroutine(DefrostPlayer());
+                }
+        
                 playerTrapped = true;
             }
             if (colliders[i].GetComponent<Enemy>())
@@ -46,11 +66,7 @@ public class IceTrap : Trap
 
         yield return new WaitForSeconds(timeToDisable);
 
-        if (playerTrapped == true)
-        {
-            playerTrapped = false;
-            player.speed = 6;
-        }
+        StopCoroutine(myCo);
 
         foreach (var item in enemyList)
         {
@@ -68,7 +84,6 @@ public class IceTrap : Trap
             yield return new WaitForSeconds(3);
             myActivatorsController.GetComponent<ActivatorsController>().enabledAllActivators = true;
 
-            StopCoroutine(myCo);
             resetTrap = true;
         }
         else
