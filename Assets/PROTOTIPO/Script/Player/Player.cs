@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     public bool stepTutorial = false;
     public bool noWeapons = false;
     public ParticleSystem trailPs;
+    ParticleSystemRenderer psRenderer;
 
     public ReferenceManager refManager;
     Rigidbody playerRigidbody;
@@ -74,6 +75,8 @@ public class Player : MonoBehaviour
     UIController uiElements;
     AudioSource aSource;
     public AudioController aController;
+    public Material dashMaterial;
+    public Gradient gradient;
 
     public float rx;
     public float ry;
@@ -94,6 +97,9 @@ public class Player : MonoBehaviour
         uiElements = FindObjectOfType<UIController>();
         aSource = GetComponent<AudioSource>();
         aController = FindObjectOfType<AudioController>();
+
+        psRenderer = trailPs.GetComponent<ParticleSystemRenderer>();
+        dashMaterial = psRenderer.sharedMaterial;
 
         weaponBox = GameObject.FindGameObjectWithTag("Weapon_PickUp");
         armorBox = GameObject.FindGameObjectWithTag("Armor_PickUp");
@@ -360,6 +366,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        dashMaterial.SetColor("_TintColor",gradient.Evaluate(1-(float)currentHealth / (float)maxHealth));
         boxToPass = weaponBox;
         if (Vector3.Distance(this.transform.position, weaponBoxTr.position) < 5)
         {          
@@ -453,6 +460,7 @@ public class Player : MonoBehaviour
             boxToPass = null;
         }
 
+      
 
         if (Input.GetButtonDown("Selection"))
         {
@@ -577,7 +585,6 @@ public class Player : MonoBehaviour
 
         dashAttivo = false;
 
-
         float newRange;
 
         if (Physics.Raycast(dashRay, out dashRayHit, dashRange))
@@ -589,7 +596,7 @@ public class Player : MonoBehaviour
             newRange = dashRange;
         }
 
-        ParticleSystem.EmissionModule emitter = trailPs.emission; ;
+        ParticleSystem.EmissionModule emitter = trailPs.emission;
 
         emitter.rate = 100;
         yield return new WaitForSeconds(0.3f);
