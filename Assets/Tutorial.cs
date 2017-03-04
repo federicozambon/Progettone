@@ -13,11 +13,13 @@ public class Tutorial : MonoBehaviour
 
     public string currentScene;
     Achievement achievement;
+    int indexSC;
 
     bool tutorialMode = true;
 
     void Awake ()
     {
+        indexSC = SceneManager.GetActiveScene().buildIndex;
         currentScene = SceneManager.GetActiveScene().name;
         if (currentScene == "Tutorial")
         {
@@ -147,6 +149,7 @@ public class Tutorial : MonoBehaviour
             }
             if (step == 30 && nemico1.gameObject == null)
             {
+                Debug.Log("nemico uno seccato");
                 NextStep();
             }
             if (step == 40 && nemico2.gameObject == null)
@@ -168,8 +171,8 @@ public class Tutorial : MonoBehaviour
             else if (Input.GetButtonDown("Fire1") && step == 52)
             {
                 HideStep();
-                int indexSC = SceneManager.GetActiveScene().buildIndex;
-                achievement.tutorialComplete = true;
+                
+                //achievement.tutorialComplete = true;
                 SceneManager.LoadScene(indexSC + 1);
             }
         }
