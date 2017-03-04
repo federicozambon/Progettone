@@ -46,10 +46,11 @@ public class FireTrap: Trap
         yield return new WaitForSeconds(timeToDisable);
         StopCoroutine(myCo);
 
+        particle.Stop();
         yield return new WaitForSeconds(3);
         myActivatorsController.GetComponent<ActivatorsController>().enabledAllActivators = true;
 
-        particle.Stop();
+      
         resetTrap = true;      
     }
 
