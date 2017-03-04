@@ -92,6 +92,9 @@ public class Player: MonoBehaviour
         Debug.LogWarning("ci sono");
     }
 
+    int damageUp = 0;
+    int armorUp = 0;
+
     void OnTriggerStay(Collider coll)
     {
         if (coll.tag == "Health_PickUp")
@@ -163,7 +166,8 @@ public class Player: MonoBehaviour
                     costModifier[2] += 0.5f;
                     coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[2] * costModifier[2] + " SP";
                     refManager.uicontroller.UpdateScore();
-                    refManager.uicontroller.UpdateWeaponUpgrade(25);             
+                    damageUp += 25;
+                    refManager.uicontroller.UpdateWeaponUpgrade(damageUp);             
                 }
                 else
                 {
@@ -188,7 +192,8 @@ public class Player: MonoBehaviour
                     maxHealth += 25;
                     currentHealth += 25;
                     armorUpgrade += 25;
-                    refManager.uicontroller.UpdateArmorUpgrade(25);
+                    armorUp += 25;
+                    refManager.uicontroller.UpdateArmorUpgrade(armorUp);
                     refManager.uicontroller.IncreaseLife();
                 }
                 else
@@ -404,11 +409,9 @@ public class Player: MonoBehaviour
             }
 
             if (Input.GetButton("Dash") && dashAttivo == true)
-            {
-                
+            {               
                 DashTutorialMode();
                 StartCoroutine(Dash());
-
             }
         }
     }

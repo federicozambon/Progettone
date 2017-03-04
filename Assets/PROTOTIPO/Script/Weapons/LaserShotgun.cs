@@ -15,9 +15,13 @@ public class LaserShotgun : Weapon
     AudioSource shootSound;
     public int startingDamage;
     RocketLauncher rocketRef;
+    EffectSettings[] effectPool;
 
     void Awake()
     {
+        effectPool = new EffectSettings[30];
+  
+
         startingDispersion = maxDispersion;
         rocketRef = GetComponent<RocketLauncher>();
 
@@ -38,6 +42,14 @@ public class LaserShotgun : Weapon
 
         player = FindObjectOfType<Player>();
         shootSound = this.GetComponent<AudioSource>();
+        for (int i = 0; i < 30; i++)
+        {
+            effectPool[i] = pool.GetComponentsInChildren<EffectSettings>(true)[i];  
+        }
+        for (int i = 0; i < 30; i++)
+        {
+            ParticleActivator(this.transform.position);
+        }
     }
     
     
@@ -109,7 +121,7 @@ public class LaserShotgun : Weapon
                         if (hitted != null)
                         {
                             collided = true;
-                            ParticleActivator(transform.position + new Vector3(range * Mathf.Cos(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f)), 0, range * Mathf.Sin(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f))), counter);
+                            ParticleActivator(transform.position + new Vector3(range * Mathf.Cos(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f)), 0, range * Mathf.Sin(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f))));
                             if (counter < 29)
                             {
                                 counter++;
@@ -141,7 +153,7 @@ public class LaserShotgun : Weapon
 
                         if (Physics.Raycast(shootRayBlocked, out shootHitBlocked, range))
                         {
-                            ParticleActivator(transform.position + new Vector3(range * Mathf.Cos(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f)), 0, range * Mathf.Sin(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f))), counter);
+                            ParticleActivator(transform.position + new Vector3(range * Mathf.Cos(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f)), 0, range * Mathf.Sin(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f))));
                             if (counter < 29)
                             {
                                 counter++;
@@ -153,7 +165,7 @@ public class LaserShotgun : Weapon
                         }
                         else
                         {
-                                ParticleActivator(transform.position + new Vector3(range * Mathf.Cos(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y +90 + maxDispersionCoef * f)), 0, range * Mathf.Sin(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f))), counter);
+                                ParticleActivator(transform.position + new Vector3(range * Mathf.Cos(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y +90 + maxDispersionCoef * f)), 0, range * Mathf.Sin(Mathf.Deg2Rad * (-maxDispersion - player.transform.eulerAngles.y + 90 + maxDispersionCoef * f))));
                             if (counter < 29)
                             {
                                 counter++;
@@ -175,14 +187,21 @@ public class LaserShotgun : Weapon
 
     public GameObject pool;
 
-    
 
-    public void ParticleActivator(Vector3 position, int looper)
+    public void ParticleActivator(Vector3 position)
     {
-        transformTr[looper].position = position;
-        pool.GetComponentsInChildren<EffectSettings>(true)[looper].transform.position = this.transform.position;
-        pool.GetComponentsInChildren<EffectSettings>(true)[looper].Target = transformTr[looper].gameObject;
-        pool.GetComponentsInChildren<EffectSettings>(true)[looper].gameObject.SetActive(true);
-    }
+        if (counter < 29)
+        {
+            counter++;
+        }
+        else
+        {
+            counter = 0;
+        }
+        transformTr[counter].position = position;          
+        effectPool[counter].transform.position = this.transform.position;
+        effectPool[counter].Target = transformTr[counter].gameObject;
+        effectPool[counter].gameObject.SetActive(true);
+}
 }
 
