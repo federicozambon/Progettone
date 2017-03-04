@@ -598,9 +598,9 @@ public class Player : MonoBehaviour
 
         ParticleSystem.EmissionModule emitter = trailPs.emission;
 
-        emitter.rate = 100;
+        emitter.rate = 150;
         yield return new WaitForSeconds(0.3f);
-        emitter.rate = 10;
+        emitter.rate = 30;
         isDashing = false;
         playerRigidbody.drag = 5;
         yield return new WaitForSeconds(0.3f);
