@@ -9,7 +9,17 @@ public class Player : MonoBehaviour
     GameObject ammoBox;
     GameObject lifeBox;
     GameObject armorBox;
-    GameObject weaponBox;   
+    GameObject weaponBox;
+
+    bool insideAmmo;
+    bool insideLife;
+    bool insideArmor;
+    bool insideWeapon;
+
+    Transform ammoBoxTr;
+    Transform lifeBoxTr;
+    Transform armorBoxTr;
+    Transform weaponBoxTr;
 
     public bool godMode = false;
     public bool isAlive = true;
@@ -88,6 +98,11 @@ public class Player : MonoBehaviour
         armorBox = GameObject.FindGameObjectWithTag("Armor_PickUp");
         lifeBox = GameObject.FindGameObjectWithTag("Health_PickUp");
         ammoBox = GameObject.FindGameObjectWithTag("Ammo_PickUp");
+
+        weaponBoxTr = weaponBox.transform.FindChild("Pivot");
+        armorBoxTr = armorBox.transform.FindChild("Pivot");
+        lifeBoxTr = lifeBox.transform.FindChild("Pivot");
+        ammoBoxTr = ammoBox.transform.FindChild("Pivot");
     }
 
     public void DestroyAllEnemies()
@@ -217,67 +232,67 @@ public class Player : MonoBehaviour
 
     public int armorUpgrade = 0;
 
-    void OnTriggerEnter(Collider coll)
+    void EnterBox(GameObject nearBox)
     {
-        if (coll.tag == "Health_PickUp")
+        if (nearBox.tag == "Health_PickUp")
         {
             refManager.uicontroller.ShowPrompt();
-            coll.GetComponent<PickUp>().Show();
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[0] * costModifier[0] + " SP";
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
+            nearBox.GetComponent<PickUp>().Show();
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[0] * costModifier[0] + " SP";
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
         }
 
-        if (coll.tag == "Ammo_PickUp")
+        if (nearBox.tag == "Ammo_PickUp")
         {
             refManager.uicontroller.ShowPrompt();
-            coll.GetComponent<PickUp>().Show();
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[1] * costModifier[1] + " SP";
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
+            nearBox.GetComponent<PickUp>().Show();
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[1] * costModifier[1] + " SP";
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
         }
 
-        if (coll.tag == "Weapon_PickUp")
+        if (nearBox.tag == "Weapon_PickUp")
         {
             refManager.uicontroller.ShowPrompt();
-            coll.GetComponent<PickUp>().Show();
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[2] * costModifier[2] + " SP";
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
+            nearBox.GetComponent<PickUp>().Show();
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[2] * costModifier[2] + " SP";
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
         }
 
-        if (coll.tag == "Armor_PickUp")
+        if (nearBox.tag == "Armor_PickUp")
         {
             refManager.uicontroller.ShowPrompt();
-            coll.GetComponent<PickUp>().Show();
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[3] * costModifier[3] + " SP";
+            nearBox.GetComponent<PickUp>().Show();
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[3] * costModifier[3] + " SP";
         }
     }
 
-    void OnTriggerExit(Collider coll)
+    void ExitBox(GameObject nearBox)
     {
-        if (coll.tag == "Health_PickUp")
+        if (nearBox.tag == "Health_PickUp")
         {
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
             refManager.uicontroller.HidePrompt();
-            coll.GetComponent<PickUp>().Hide();
+            nearBox.GetComponent<PickUp>().Hide();
         }
 
-        if (coll.tag == "Ammo_PickUp")
+        if (nearBox.tag == "Ammo_PickUp")
         {
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
             refManager.uicontroller.HidePrompt();
-            coll.GetComponent<PickUp>().Hide();
+            nearBox.GetComponent<PickUp>().Hide();
         }
-        if (coll.tag == "Weapon_PickUp")
+        if (nearBox.tag == "Weapon_PickUp")
         {
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
             refManager.uicontroller.HidePrompt();
-            coll.GetComponent<PickUp>().Hide();
+            nearBox.GetComponent<PickUp>().Hide();
         }
 
-        if (coll.tag == "Armor_PickUp")
+        if (nearBox.tag == "Armor_PickUp")
         {
-            coll.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
+            nearBox.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
             refManager.uicontroller.HidePrompt();
-            coll.GetComponent<PickUp>().Hide();
+            nearBox.GetComponent<PickUp>().Hide();
         }
     }
 
@@ -359,32 +374,99 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        boxToPass = weaponBox;
+        if (Vector3.Distance(this.transform.position, weaponBoxTr.position) < 5)
+        {          
+            if (!insideWeapon)
+            {
+                EnterBox(boxToPass);
+            }
+            insideWeapon = true;
+        }
+        else
+        {
+            if (insideWeapon)
+            {
+                insideWeapon = false;
+                ExitBox(boxToPass);
+            }
+        }
+        boxToPass = ammoBox;
+        if (Vector3.Distance(this.transform.position, ammoBoxTr.position) < 5)
+        {   
+            if (!insideAmmo)
+            {
+                EnterBox(boxToPass);
+            }
+            insideAmmo = true;
+        }
+        else
+        {
+            if (insideAmmo)
+            {
+                insideAmmo = false;
+                ExitBox(boxToPass);
+            }
+        }
+        boxToPass = lifeBox;
+        if (Vector3.Distance(this.transform.position, lifeBoxTr.position) < 5)
+        { 
+            if (!insideLife)
+            {
+                EnterBox(boxToPass);
+            }
+            insideLife = true;
+        }
+        else
+        {
+            if (insideLife)
+            {
+                insideLife = false;
+                ExitBox(boxToPass);
+            }
+        }
+        boxToPass = armorBox;
+        if (Vector3.Distance(this.transform.position, armorBoxTr.position) < 5)
+        {
+            if (!insideArmor)
+            {
+                EnterBox(boxToPass);
+            }
+            insideArmor = true;
+        }
+        else
+        {
+            if (insideArmor)
+            {
+                insideArmor = false;
+                ExitBox(boxToPass);
+            }
+        }
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log(Vector3.Distance(this.transform.position, weaponBox.transform.position));
-            if (Vector3.Distance(this.transform.position, weaponBox.transform.position) < 40)
+            if (insideWeapon)
             {
                 boxToPass = weaponBox;
             }
-            if (Vector3.Distance(this.transform.position, ammoBox.transform.position) < 40)
+            if (insideAmmo)
             {
                 boxToPass = ammoBox;
             }
-            if (Vector3.Distance(this.transform.position, lifeBox.transform.position) < 40)
+            if (insideLife)
             {
                 boxToPass = lifeBox;
             }
-            if (Vector3.Distance(this.transform.position, armorBox.transform.position) < 40)
+            if (insideArmor)
             {
                 boxToPass = armorBox;
-            }    
+            }
             if (boxToPass != null)
             {
-                Debug.Log(boxToPass);
                 UseBox(boxToPass);
             }
             boxToPass = null;
         }
+
 
         if (Input.GetButtonDown("Selection"))
         {
