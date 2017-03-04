@@ -354,6 +354,7 @@ public class UIController : MonoBehaviour
             StartCoroutine(ShowSpecialFeedback("Multi Kill"));
             score += specialScore[2] * specialCounter;
         }
+        UpdateScore();
         killedTimerList.Clear();
 
         specialActualTimer = 0;
