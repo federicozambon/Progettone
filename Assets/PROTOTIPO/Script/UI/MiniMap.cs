@@ -72,22 +72,22 @@ public class MiniMap : MonoBehaviour
         switch (newGo.enemyRef.GetComponent<Enemy>().enemyType)
         {
             case "fante":
-                newGo.imageRef.GetComponent<Image>().color = Color.red;
+                newGo.imageRef.GetComponent<Image>().color = Color.green;
                 break;
             case "furia":
                 newGo.imageRef.GetComponent<Image>().color = Color.green;
                 break;
             case "furiaesplosiva":
-                newGo.imageRef.GetComponent<Image>().color = Color.yellow;
+                newGo.imageRef.GetComponent<Image>().color = new Color(255,165,0);
                 break;
             case "predatore":
-                newGo.imageRef.GetComponent<Image>().color = Color.blue;
+                newGo.imageRef.GetComponent<Image>().color = Color.gray;
                 break;
             case "sniper":
-                newGo.imageRef.GetComponent<Image>().color = Color.magenta;
+                newGo.imageRef.GetComponent<Image>().color = Color.blue;
                 break;
             case "titano":
-                newGo.imageRef.GetComponent<Image>().color = Color.black;
+                newGo.imageRef.GetComponent<Image>().color = Color.yellow;
                 break;
         }
     }
