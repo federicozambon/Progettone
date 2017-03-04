@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        textMesh = transform.FindChild("Text").GetComponent<TextMesh>();
         assaultRef = FindObjectOfType<AssaultRifle>();
         shotgunRef = FindObjectOfType<LaserShotgun>();
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
@@ -124,8 +125,6 @@ public class Player : MonoBehaviour
     {
         if (nearBox.tag == "Health_PickUp")
         {
-            //coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
-            //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
                 if (refManager.uicontroller.score >= baseCost[0] * costModifier[0] && currentHealth != maxHealth)
@@ -147,8 +146,6 @@ public class Player : MonoBehaviour
 
         if (nearBox.tag == "Ammo_PickUp")
         {
-            //coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
-            //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
 
@@ -175,8 +172,6 @@ public class Player : MonoBehaviour
 
         if (nearBox.tag == "Weapon_PickUp")
         {
-            //coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
-            //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
                 if (refManager.uicontroller.score >= baseCost[2] * costModifier[2])
@@ -203,9 +198,6 @@ public class Player : MonoBehaviour
 
         if (nearBox.tag == "Armor_PickUp")
         {
-
-            //coll.gameObject.transform.GetChild(1).LookAt(Camera.main.transform);
-            //coll.gameObject.transform.GetChild(1).Rotate(new Vector3(0, 180, 0));
             if (Input.GetButtonDown("Fire1"))
             {
                 if (refManager.uicontroller.score >= baseCost[3] * costModifier[3])
@@ -300,12 +292,10 @@ public class Player : MonoBehaviour
     {
         if (refManager.flyCamRef.endedCutScene && isAlive == true && tutorial == false)
         {
-
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
             rx = Input.GetAxisRaw("Horizontal_Stick");
             ry = Input.GetAxisRaw("Vertical_Stick");
-
 
             if (isDashing)
             {
@@ -329,8 +319,6 @@ public class Player : MonoBehaviour
                 }
             }
 
-
-
             if (((rx <= 0.15f && rx >= -0.15f) && (ry <= 0.15f && ry >= -0.15f)) || isDashing)
             {
                 rotating = false;
@@ -345,8 +333,6 @@ public class Player : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(shootDirection, Vector3.up);
             }
             lastRotation = transform.rotation;
-
-
         }
     }
 
@@ -617,27 +603,53 @@ public class Player : MonoBehaviour
         newRange = dashRange;
     }
 
+    Coroutine combat;
+    TextMesh textMesh;
+
+    virtual public IEnumerator CombatText(int damage)
+    {
+        textMesh.characterSize = 0.46f;
+        float timer = 0;
+        textMesh.text = "-" + damage.ToString();
+
+        while (timer < 0.5f)
+        {
+            timer += Time.deltaTime;
+            textMesh.transform.localPosition = Vector3.Lerp(new Vector3(0, 2.5f, 0), new Vector3(0, 4, 0), timer * 2);
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.5f);
+        textMesh.transform.localPosition = new Vector3(0, 3, 0);
+        timer = 0;
+        textMesh.characterSize = 0.46f;
+        textMesh.text = "";
+        combat = null;
+    }
+
     public void TakeDamage(float damageTaken)
     {
-        /* if (primoSangue == true)
-         {
-             //primoSangue = false;
-             //dialoghi.SetDialogue(1);
-         }*/
-
         if (godMode == false)
         {
             currentHealth -= (int)damageTaken;
             refManager.uicontroller.DecrementLife((float)damageTaken / 100);
         }
 
+        if (combat == null)
+        {
+            combat = StartCoroutine(CombatText((int)damageTaken));
+        }
+
+        else
+        {
+            StopCoroutine(combat);
+            combat = StartCoroutine(CombatText((int)damageTaken));
+        }
 
         if (currentHealth <= 0 && isAlive == true && godMode == false)
         {
             isAlive = false;
             StartCoroutine(Die());
         }
-
     }
 
     IEnumerator Die()
@@ -645,8 +657,6 @@ public class Player : MonoBehaviour
         refManager.uicontroller.GameOverOn();
         yield return null;
     }
-
-
 
     public IEnumerator StillOccluding(GameObject go)
     {
