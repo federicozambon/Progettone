@@ -201,6 +201,7 @@ public class FlyCamManager : MonoBehaviour
                 yield return null;
             }
         }*/
+        cutSceneCanvas.gameObject.SetActive(false);
         SwitchCamera(camArray[1], mainCamera);
         SwitchCamera(camArray[0], mainCamera);
         playerGo.gameObject.SetActive(true);
