@@ -180,7 +180,7 @@ public class GameOverManager : MonoBehaviour
         {
             while (timer < timeToShow*2)
             {
-                multiMax.text = ((int)Mathf.Lerp(0, tempTotalScore, timer / timeToShow*2)).ToString();
+                totalScore.text = ((int)Mathf.Lerp(0, tempTotalScore, timer / timeToShow*2)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
             }
