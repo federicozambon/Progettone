@@ -56,7 +56,6 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator KilledScore()
     {
-        Debug.Log("killed");
         killedEnemyScore = uiRef.enemyScore;
         float timer = 0;
         if (killedEnemyScore != 0)
@@ -74,13 +73,10 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator WaveScore()
     {
-        Debug.Log("wave");
-        int waveScoreTemp = 0;
         for (int i = 0; i < refManager.waveRef.currentWaveNumber+1; i++)
         {
-            waveScoreTemp += 1000 * (i + 1);
+            waveScoreScore += 1000 * (i + 1);
         }
-        waveScoreScore = waveScoreTemp;
         float timer = 0;
 
         if (waveScoreScore != 0)
@@ -98,7 +94,6 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator TripleScore()
     {
-        Debug.Log("triple");
         tripleKillScore = uiRef.tripleKillCounter;
         float timer = 0;
         if (tripleKillScore!= 0)
@@ -116,7 +111,6 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator QuadraScore()
     {
-        Debug.Log("quadra");
         quadraKillScore = uiRef.quadraKillCounter;
         float timer = 0;
         if (quadraKillScore != 0)
@@ -134,7 +128,6 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator MultiScore()
     {
-        Debug.Log("multi");
         multiKillScore = uiRef.multiKillCounter;
         float timer = 0;
         if (multiKillScore != 0)
@@ -152,7 +145,6 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator SpentScore()
     {
-        Debug.Log("spent");
         spentPointsScore = uiRef.spentScore;
         float timer = 0;
         if (spentPointsScore != 0)
@@ -170,7 +162,6 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator ComboScore()
     {
-        Debug.Log("combo");
         comboMaxScore = (int)Mathf.Pow(3, uiRef.maxComboAchieved);
         float timer = 0;
         if (comboMaxScore != 0)
@@ -188,7 +179,6 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator TotalScore()
     {
-        Debug.Log("total");
         float timer = 0;
         if (tempTotalScore != 0)
         {
@@ -266,7 +256,6 @@ public class GameOverManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(tempTotalScore);
         if (GameOverCanvas.activeInHierarchy && Input.GetButtonDown("Fire1"))
         {
             timeToShow = 0.1f;
