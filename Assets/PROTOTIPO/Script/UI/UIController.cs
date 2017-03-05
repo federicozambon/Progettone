@@ -99,7 +99,14 @@ public class UIController : MonoBehaviour
             lifeAlarm.Play();
         }
 
-        lifeTxt.text = playerRef.currentHealth + " / " + playerRef.maxHealth;
+        if ((float)playerRef.currentHealth / (float)playerRef.maxHealth < 0)
+        {
+            lifeTxt.text = 0 + " / " + playerRef.maxHealth;
+        }
+        else
+        {
+            lifeTxt.text = playerRef.currentHealth + " / " + playerRef.maxHealth;
+        }
         float tempCurrent, tempMax;
         tempCurrent = (float)playerRef.currentHealth;
         tempMax = (float)playerRef.maxHealth;
