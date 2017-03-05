@@ -12,6 +12,8 @@ public class Muoviti : MonoBehaviour
     public GameObject buttonStart;
     public GameObject button;
     public GameObject buttonAchievement;
+    public GameObject AchievementButton;
+    public List<Button> ButtonsAchievement;
     public GameObject buttonOptions;
     public GameObject buttonVolume;
     public GameObject buttonRecords;
@@ -168,6 +170,86 @@ public class Muoviti : MonoBehaviour
             ButtonsTetto[i].transform.GetChild(0).GetComponent<Text>().text = ScoreTetto[i] + " SP";
         }
 
+        UpdateAchievement();
+    }
+
+    void UpdateAchievement()
+    {
+        if (achievement.achievementMontacarichi_1 == 1 || achievement.achievementMontacarichi_2 == 1 || achievement.achievementMontacarichi_3 == 1)
+        {
+            AchievementButton.transform.GetChild(0).gameObject.SetActive(true);
+            ButtonsAchievement[0].transform.GetChild(0).gameObject.SetActive(true);
+
+            if (achievement.achievementMontacarichi_1 == 1)
+                ButtonsMontacarichiA[0].transform.GetChild(1).gameObject.SetActive(true);
+            if (achievement.achievementMontacarichi_2 == 1)
+                ButtonsMontacarichiA[1].transform.GetChild(1).gameObject.SetActive(true);
+            if (achievement.achievementMontacarichi_3 == 1)
+                ButtonsMontacarichiA[2].transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            ButtonsAchievement[0].transform.GetChild(0).gameObject.SetActive(false);
+        }
+        if (achievement.achievementDiscarica_1 == 1 || achievement.achievementDiscarica_2 == 1 || achievement.achievementDiscarica_3 == 1)
+        {
+            AchievementButton.transform.GetChild(0).gameObject.SetActive(true);
+            ButtonsAchievement[1].transform.GetChild(0).gameObject.SetActive(true);
+
+            if (achievement.achievementDiscarica_1 == 1)
+                ButtonsDiscarica[0].transform.GetChild(1).gameObject.SetActive(true);
+            if (achievement.achievementDiscarica_2 == 1)
+                ButtonsDiscarica[1].transform.GetChild(1).gameObject.SetActive(true);
+            if (achievement.achievementDiscarica_3 == 1)
+                ButtonsDiscarica[2].transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            ButtonsAchievement[1].transform.GetChild(0).gameObject.SetActive(false);
+        }
+
+        if (achievement.achievementAscensore_1 == 1 || achievement.achievementAscensore_2 == 1 || achievement.achievementAscensore_3 == 1)
+        {
+            AchievementButton.transform.GetChild(0).gameObject.SetActive(true);
+            ButtonsAchievement[2].transform.GetChild(0).gameObject.SetActive(true);
+
+            if (achievement.achievementAscensore_1 == 1)
+                ButtonsMontacarichiB[0].transform.GetChild(1).gameObject.SetActive(true);
+            if (achievement.achievementAscensore_2 == 1)
+                ButtonsMontacarichiB[1].transform.GetChild(1).gameObject.SetActive(true);
+            if (achievement.achievementAscensore_3 == 1)
+                ButtonsMontacarichiB[2].transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            ButtonsAchievement[2].transform.GetChild(0).gameObject.SetActive(false);
+        }
+
+        if (achievement.achievementTetto_1 == 1 || achievement.achievementTetto_2 == 1 || achievement.achievementTetto_3 == 1)
+        {
+            AchievementButton.transform.GetChild(0).gameObject.SetActive(true);
+            ButtonsAchievement[3].transform.GetChild(0).gameObject.SetActive(true);
+
+            if (achievement.achievementTetto_1 == 1)
+                ButtonsTetto[0].transform.GetChild(1).gameObject.SetActive(true);
+            if (achievement.achievementTetto_2 == 1)
+                ButtonsTetto[1].transform.GetChild(1).gameObject.SetActive(true);
+            if (achievement.achievementTetto_3 == 1)
+                ButtonsTetto[2].transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            ButtonsAchievement[3].transform.GetChild(0).gameObject.SetActive(false);
+        }
+
+        if (achievement.achievementMontacarichi_1 != 1 && achievement.achievementMontacarichi_2 != 1 && achievement.achievementMontacarichi_3 != 1
+            && achievement.achievementDiscarica_1 != 1 && achievement.achievementDiscarica_2 != 1 && achievement.achievementDiscarica_3 != 1
+            && achievement.achievementAscensore_1 != 1 && achievement.achievementAscensore_2 != 1 && achievement.achievementAscensore_3 != 1
+            && achievement.achievementTetto_1 != 1 && achievement.achievementTetto_2 != 1 && achievement.achievementTetto_3 != 1)
+        {
+            AchievementButton.transform.GetChild(0).gameObject.SetActive(false);
+        }
+            
     }
 
     // Update is called once per frame
@@ -348,6 +430,15 @@ public class Muoviti : MonoBehaviour
         if (cb.normalColor == Color.white)
         {
             txtMontacarichiA.text = textMontacarichiA[0];
+            if (achievement.achievementMontacarichi_1 == 1)
+            {
+                achievement.achievementMontacarichi_1 = 2;
+                ButtonsMontacarichiA[0].transform.GetChild(1).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("achievementMontacarichi_1", achievement.achievementMontacarichi_1);
+                PlayerPrefs.Save();
+                UpdateAchievement();
+            }
+
         }
 
     }
@@ -369,6 +460,15 @@ public class Muoviti : MonoBehaviour
         if (cb.normalColor == Color.white)
         {
             txtMontacarichiA.text = textMontacarichiA[1];
+            if (achievement.achievementMontacarichi_2 == 1)
+            {
+                achievement.achievementMontacarichi_2 = 2;
+                ButtonsMontacarichiA[1].transform.GetChild(1).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("achievementMontacarichi_2", achievement.achievementMontacarichi_2);
+                PlayerPrefs.Save();
+                UpdateAchievement();
+            }
+
         }
 
     }
@@ -390,6 +490,15 @@ public class Muoviti : MonoBehaviour
         if (cb.normalColor == Color.white)
         {
             txtMontacarichiA.text = textMontacarichiA[2];
+            if (achievement.achievementMontacarichi_3 == 1)
+            {
+                achievement.achievementMontacarichi_3 = 2;
+                ButtonsMontacarichiA[2].transform.GetChild(1).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("achievementMontacarichi_3", achievement.achievementMontacarichi_3);
+                PlayerPrefs.Save();
+                UpdateAchievement();
+            }
+            
         }
 
     }
@@ -440,6 +549,14 @@ public class Muoviti : MonoBehaviour
         if (cb.normalColor == Color.white)
         {
             txtDiscarica.text = textDiscarica[0];
+            if (achievement.achievementDiscarica_1 == 1)
+            {
+                achievement.achievementDiscarica_1 = 2;
+                ButtonsDiscarica[0].transform.GetChild(1).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("achievementDiscarica_1", achievement.achievementDiscarica_1);
+                PlayerPrefs.Save();
+                UpdateAchievement();
+            }
         }
 
     }
@@ -461,6 +578,14 @@ public class Muoviti : MonoBehaviour
         if (cb.normalColor == Color.white)
         {
             txtDiscarica.text = textDiscarica[1];
+            if (achievement.achievementDiscarica_2 == 1)
+            {
+                achievement.achievementDiscarica_2 = 2;
+                ButtonsDiscarica[1].transform.GetChild(1).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("achievementDiscarica_2", achievement.achievementDiscarica_2);
+                PlayerPrefs.Save();
+                UpdateAchievement();
+            }
         }
 
     }
@@ -482,6 +607,14 @@ public class Muoviti : MonoBehaviour
         if (cb.normalColor == Color.white)
         {
             txtDiscarica.text = textDiscarica[2];
+            if (achievement.achievementDiscarica_3 == 1)
+            {
+                achievement.achievementDiscarica_3 = 2;
+                ButtonsDiscarica[2].transform.GetChild(1).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("achievementDiscarica_3", achievement.achievementDiscarica_3);
+                PlayerPrefs.Save();
+                UpdateAchievement();
+            }
         }
 
     }
@@ -532,6 +665,15 @@ public class Muoviti : MonoBehaviour
         if (cb.normalColor == Color.white)
         {
             txtMontacarichiB.text = textMontacarichiB[0];
+
+            if (achievement.achievementAscensore_1 == 1)
+            {
+                achievement.achievementAscensore_1 = 2;
+                ButtonsMontacarichiB[0].transform.GetChild(1).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("achievementAscensore_1", achievement.achievementAscensore_1);
+                PlayerPrefs.Save();
+                UpdateAchievement();
+            }
         }
 
     }
@@ -553,6 +695,15 @@ public class Muoviti : MonoBehaviour
         if (cb.normalColor == Color.white)
         {
             txtMontacarichiB.text = textMontacarichiB[1];
+
+            if (achievement.achievementAscensore_2 == 1)
+            {
+                achievement.achievementAscensore_2 = 2;
+                ButtonsMontacarichiB[1].transform.GetChild(1).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("achievementAscensore_2", achievement.achievementAscensore_2);
+                PlayerPrefs.Save();
+                UpdateAchievement();
+            }
         }
 
     }
@@ -574,6 +725,15 @@ public class Muoviti : MonoBehaviour
         if (cb.normalColor == Color.white)
         {
             txtMontacarichiB.text = textMontacarichiB[2];
+
+            if (achievement.achievementAscensore_3 == 1)
+            {
+                achievement.achievementAscensore_3 = 2;
+                ButtonsMontacarichiB[2].transform.GetChild(1).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("achievementAscensore_3", achievement.achievementAscensore_3);
+                PlayerPrefs.Save();
+                UpdateAchievement();
+            }
         }
 
     }
@@ -624,6 +784,15 @@ public class Muoviti : MonoBehaviour
         if (cb.normalColor == Color.white)
         {
             txtTetto.text = textTetto[0];
+
+            if (achievement.achievementTetto_1 == 1)
+            {
+                achievement.achievementTetto_1 = 2;
+                ButtonsTetto[0].transform.GetChild(1).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("achievementTetto_1", achievement.achievementTetto_1);
+                PlayerPrefs.Save();
+                UpdateAchievement();
+            }
         }
 
     }
@@ -645,6 +814,15 @@ public class Muoviti : MonoBehaviour
         if (cb.normalColor == Color.white)
         {
             txtTetto.text = textTetto[1];
+
+            if (achievement.achievementTetto_2 == 1)
+            {
+                achievement.achievementTetto_2 = 2;
+                ButtonsTetto[1].transform.GetChild(1).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("achievementTetto_2", achievement.achievementTetto_2);
+                PlayerPrefs.Save();
+                UpdateAchievement();
+            }
         }
 
     }
@@ -666,6 +844,15 @@ public class Muoviti : MonoBehaviour
         if (cb.normalColor == Color.white)
         {
             txtTetto.text = textTetto[2];
+
+            if (achievement.achievementTetto_3 == 1)
+            {
+                achievement.achievementTetto_3 = 2;
+                ButtonsTetto[2].transform.GetChild(1).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("achievementTetto_3", achievement.achievementTetto_3);
+                PlayerPrefs.Save();
+                UpdateAchievement();
+            }
         }
 
     }
@@ -750,6 +937,7 @@ public class Muoviti : MonoBehaviour
         PlayerPrefs.Save();
 
         Options();
+        UpdateAchievement();
     }
 
     public void SetScoreMontacarichiA()
