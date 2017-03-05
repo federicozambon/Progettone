@@ -32,7 +32,7 @@ public class GameOverManager : MonoBehaviour
     public int comboMaxScore;
     public int spentPointsScore;
 
-    float timeToShow = 0.0003f;
+    float timeToShow = 0.003f;
     public bool shown;
 
     public int tempTotalScore = 0;
@@ -49,7 +49,7 @@ public class GameOverManager : MonoBehaviour
 
 	public void GameOverStart ()
     {
-        Time.timeScale = 0.0001f;
+        Time.timeScale = 0.001f;
         GameOverCanvas.SetActive(true);
         StartCoroutine(ShowScore());
 	}
