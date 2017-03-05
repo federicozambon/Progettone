@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -179,7 +180,7 @@ public class GameOverManager : MonoBehaviour
         {
             while (timer < timeToShow*2)
             {
-                multiMax.text = ((int)Mathf.Lerp(0, tempTotalScore, timer / timeToShow*2)).ToString();
+                totalScore.text = ((int)Mathf.Lerp(0, tempTotalScore, timer / timeToShow*2)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
             }
@@ -201,8 +202,22 @@ public class GameOverManager : MonoBehaviour
 
         }
         menu.interactable = true;
+        if ((SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoMontacarichiUI") == 1)||
+            (SceneManager.GetActiveScene().name == "Discarica" && PlayerPrefs.GetInt("sbloccoDiscaricaUI") == 1)||
+            (SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoAscensoreUI") == 1)||
+            (SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoTettoUI") == 1))
+        {
+            next.interactable = true;
+        }
+        if (next.IsInteractable())
+        {
+            EventSystem.current.SetSelectedGameObject(next.gameObject);
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(riprova.gameObject);
+        }
 
-        next.interactable = true;
         riprova.interactable = true;
         FindObjectOfType<Achievement>().SaveScore(tempTotalScore);
     }
@@ -226,7 +241,6 @@ public class GameOverManager : MonoBehaviour
 
     private void Update()
     {
-        totalScore.text = ((int)tempTotalScore).ToString();
         if (GameOverCanvas.activeInHierarchy && Input.GetButtonDown("Fire1"))
         {
             timeToShow = 0.1f;
