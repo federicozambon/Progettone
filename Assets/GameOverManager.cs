@@ -42,6 +42,7 @@ public class GameOverManager : MonoBehaviour
         riprova.interactable = false;        
         next.interactable = false;
         menu.interactable = false;
+        this.gameObject.SetActive(false);
     }
 
 	public void GameOverStart ()
