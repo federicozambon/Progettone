@@ -42,12 +42,12 @@ public class GameOverManager : MonoBehaviour
         riprova.interactable = false;        
         next.interactable = false;
         menu.interactable = false;
-        this.gameObject.SetActive(false);
+        GameOverCanvas.SetActive(false);
     }
 
 	public void GameOverStart ()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 1;
         GameOverCanvas.SetActive(true);
 	}
 
