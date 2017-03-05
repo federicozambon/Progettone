@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Muoviti : MonoBehaviour {
+public class Muoviti : MonoBehaviour
+{
     public GameObject achivementGame;
     public Transform CurrentPos, StartPos, MainPos, Achievement, Crediti, Opzioni, Controlli, Volume, Records,
     AchivMontacarichiA, AchivDiscarica, AchivMontacarichiB, AchivTetto;
@@ -36,12 +37,18 @@ public class Muoviti : MonoBehaviour {
     public AudioSource audioBlock;
     public AudioSource audioSelect;
 
+    int sbloccoMontacarichi = 0;
+    int sbloccoDiscarica = 0;
+    int sbloccoAscensore = 0;
+    int sbloccoTetto = 0;
+
+
 
     // Use this for initialization
-    void Awake ()
+    void Awake()
 
     {
-       
+
         achievement = FindObjectOfType<Achievement>();
         if (achievement == null)
         {
@@ -50,12 +57,16 @@ public class Muoviti : MonoBehaviour {
 
         }
 
-        
+
 
     }
 
     void Start()
     {
+        sbloccoMontacarichi = PlayerPrefs.GetInt("sbloccoMontacarichi", sbloccoMontacarichi);
+        sbloccoDiscarica = PlayerPrefs.GetInt("sbloccoDiscarica", sbloccoDiscarica);
+        sbloccoAscensore = PlayerPrefs.GetInt("sbloccoAscensore", sbloccoAscensore);
+        sbloccoTetto = PlayerPrefs.GetInt("sbloccoTetto", sbloccoTetto);
         /*if(achievement.firstLoad == false)
         {
             CurrentPos = MainPos;
@@ -71,6 +82,14 @@ public class Muoviti : MonoBehaviour {
             ColorBlock cb = MainMenuButtons[0].colors;
             cb.normalColor = Color.white;
             MainMenuButtons[0].colors = cb;
+            if (sbloccoMontacarichi == 0)
+            {
+                sbloccoMontacarichi = 1;
+                MainMenuButtons[0].transform.GetChild(1).gameObject.SetActive(true);
+                PlayerPrefs.SetInt("sbloccoMontacarichi", sbloccoMontacarichi);
+                PlayerPrefs.Save();
+            }
+
         }
         else
         {
@@ -83,6 +102,14 @@ public class Muoviti : MonoBehaviour {
             ColorBlock cb = MainMenuButtons[1].colors;
             cb.normalColor = Color.white;
             MainMenuButtons[1].colors = cb;
+
+            if (sbloccoDiscarica == 0)
+            {
+                sbloccoDiscarica = 1;
+                MainMenuButtons[1].transform.GetChild(1).gameObject.SetActive(true);
+                PlayerPrefs.SetInt("sbloccoDiscarica", sbloccoDiscarica);
+                PlayerPrefs.Save();
+            }
         }
 
         else
@@ -96,6 +123,15 @@ public class Muoviti : MonoBehaviour {
             ColorBlock cb = MainMenuButtons[2].colors;
             cb.normalColor = Color.white;
             MainMenuButtons[2].colors = cb;
+
+            if (sbloccoAscensore == 0)
+            {
+                sbloccoAscensore = 1;
+                MainMenuButtons[2].transform.GetChild(1).gameObject.SetActive(true);
+                PlayerPrefs.SetInt("sbloccoAscensore", sbloccoAscensore);
+                PlayerPrefs.Save();
+            }
+
         }
 
         else
@@ -109,6 +145,14 @@ public class Muoviti : MonoBehaviour {
             ColorBlock cb = MainMenuButtons[3].colors;
             cb.normalColor = Color.white;
             MainMenuButtons[3].colors = cb;
+
+            if (sbloccoTetto == 0)
+            {
+                sbloccoTetto = 1;
+                MainMenuButtons[3].transform.GetChild(1).gameObject.SetActive(true);
+                PlayerPrefs.SetInt("sbloccoTetto", sbloccoTetto);
+                PlayerPrefs.Save();
+            }
         }
 
         else
@@ -118,16 +162,16 @@ public class Muoviti : MonoBehaviour {
 
         for (int i = 0; i < 3; i++)
         {
-            ButtonsMontacarichiA[i].transform.GetChild(0).GetComponent<Text>().text = ScoreMontacarichiA[i] + " SP" ;
+            ButtonsMontacarichiA[i].transform.GetChild(0).GetComponent<Text>().text = ScoreMontacarichiA[i] + " SP";
             ButtonsDiscarica[i].transform.GetChild(0).GetComponent<Text>().text = ScoreDiscarica[i] + " SP";
             ButtonsMontacarichiB[i].transform.GetChild(0).GetComponent<Text>().text = ScoreMontacarichiB[i] + " SP";
             ButtonsTetto[i].transform.GetChild(0).GetComponent<Text>().text = ScoreTetto[i] + " SP";
         }
 
-            }
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         transform.localPosition = Vector3.Lerp(transform.localPosition, CurrentPos.position, 0.05f);
         transform.localRotation = Quaternion.Slerp(transform.localRotation, CurrentPos.rotation, 0.05f);
@@ -161,7 +205,7 @@ public class Muoviti : MonoBehaviour {
                 myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonOptions);
                 backAudioRef.Play();
             }
-                
+
             else if (CurrentPos == AchivMontacarichiA || CurrentPos == AchivDiscarica || CurrentPos == AchivMontacarichiB || AchivTetto)
             {
                 txtMontacarichiA.text = "";
@@ -174,8 +218,8 @@ public class Muoviti : MonoBehaviour {
                 backAudioRef.Play();
             }
 
-            
-             
+
+
 
         }
 
@@ -187,7 +231,7 @@ public class Muoviti : MonoBehaviour {
 
     public void Quit()
     {
-       Application.Quit();
+        Application.Quit();
     }
 
     public void SaveRecords()
@@ -225,7 +269,7 @@ public class Muoviti : MonoBehaviour {
         CurrentPos = Achievement;
         GameObject myEventSystem = GameObject.Find("EventSystem");
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(buttonAchievement);
-    
+
     }
 
     public void MenuRecords()
@@ -241,9 +285,9 @@ public class Muoviti : MonoBehaviour {
     public void Credits()
 
     {
-        
+
         CurrentPos = Crediti;
-     
+
     }
 
     public void VolumeOptions()
@@ -288,9 +332,9 @@ public class Muoviti : MonoBehaviour {
                 cb1.highlightedColor = new Color(0, 33, 255, 255);
                 ButtonsMontacarichiA[i].colors = cb1;
             }
-     }
-        
-            
+        }
+
+
         CurrentPos = AchivMontacarichiA;
         GameObject myEventSystem = GameObject.Find("EventSystem");
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(ButtonsMontacarichiA[0].gameObject);
@@ -299,13 +343,13 @@ public class Muoviti : MonoBehaviour {
     public void SbloccoMontacarichiA_0()
 
     {
-           
-            ColorBlock cb = ButtonsMontacarichiA[0].colors;
-            if (cb.normalColor == Color.white)
-            {
-                txtMontacarichiA.text = textMontacarichiA[0];
-            }
-   
+
+        ColorBlock cb = ButtonsMontacarichiA[0].colors;
+        if (cb.normalColor == Color.white)
+        {
+            txtMontacarichiA.text = textMontacarichiA[0];
+        }
+
     }
 
     public void SbloccoAudioMontacarichiA_0()
@@ -643,6 +687,10 @@ public class Muoviti : MonoBehaviour {
         achievement.discarica = 0;
         achievement.montacarichiB = 0;
         achievement.tetto = 0;
+        sbloccoMontacarichi = 0;
+        sbloccoDiscarica = 0;
+        sbloccoAscensore = 0;
+        sbloccoTetto = 0;
 
         PlayerPrefs.SetInt("scoreMontacarichiA", achievement.montacarichiA);
         PlayerPrefs.SetInt("scoreDiscarica", achievement.discarica);
@@ -650,11 +698,10 @@ public class Muoviti : MonoBehaviour {
         PlayerPrefs.SetInt("scoreTetto", achievement.tetto);
         PlayerPrefs.SetInt("scoreTotale", achievement.total);
 
-        //recordTotale.text = achievement.total.ToString();
-        //recordMontacarichiA.text = "Record : " + achievement.montacarichiA.ToString();
-        //recordDiscarica.text = "Record : " + achievement.discarica.ToString();
-        //recordMontacarichiB.text = "Record : " + achievement.montacarichiB.ToString();
-        //recordTetto.text = "Record : " + achievement.tetto.ToString();
+        PlayerPrefs.SetInt("sbloccoMontacarichi", sbloccoMontacarichi);
+        PlayerPrefs.SetInt("sbloccoDiscarica", sbloccoDiscarica);
+        PlayerPrefs.SetInt("sbloccoAscensore", sbloccoAscensore);
+        PlayerPrefs.SetInt("sbloccoTetto", sbloccoTetto);
 
 
         PlayerPrefs.Save();
@@ -720,7 +767,7 @@ public class Muoviti : MonoBehaviour {
             SceneManager.LoadScene("Intro_Montacarichi1");
         }
 
-        
+
     }
 
     public void Discarica()
@@ -731,7 +778,7 @@ public class Muoviti : MonoBehaviour {
             SceneManager.LoadScene("Intro_Discarica");
         }
 
-        
+
 
     }
 
@@ -743,7 +790,7 @@ public class Muoviti : MonoBehaviour {
             SceneManager.LoadScene("Intro_Montacarichi2");
         }
 
-        
+
     }
 
     public void Tetto()
@@ -754,7 +801,7 @@ public class Muoviti : MonoBehaviour {
             SceneManager.LoadScene("Intro_Tetto");
         }
 
-        
+
 
     }
 
