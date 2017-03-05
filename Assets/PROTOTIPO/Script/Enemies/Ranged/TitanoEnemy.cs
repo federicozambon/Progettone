@@ -8,6 +8,8 @@ public class TitanoEnemy : Enemy
     public GameObject poolP;
     TitanoEnemyFire fireRef;
 
+
+
     void Start()
     {
         fireRef = GetComponent<TitanoEnemyFire>();
@@ -21,9 +23,9 @@ public class TitanoEnemy : Enemy
 
     public override void Attack()
     {
-        if (!GetComponent<TitanoEnemyFire>().isShooting)
+        if (!fireRef.isShooting)
         {
-            StartCoroutine(GetComponent<TitanoEnemyFire>().Shooting());
+            StartCoroutine(fireRef.Shooting());
         }
     }
 

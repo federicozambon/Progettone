@@ -51,6 +51,10 @@ public abstract class Enemy : MonoBehaviour
 
     }
 
+    float startDamage;
+    float startScore;
+    float startHPoints;
+
     public virtual void Awake()
     {
         animRef = GetComponentInChildren<Animator>();
@@ -58,6 +62,10 @@ public abstract class Enemy : MonoBehaviour
         blackRef = GetComponent<BlackBoard>();
         navRef = GetComponent<NavMeshAgent>();
         this.gameObject.SetActive(false);
+
+        startDamage = damage;
+        startHPoints = hPoints;
+        startScore = scoreValue;
         
         aController = FindObjectOfType<AudioController>();   
     }
@@ -85,9 +93,9 @@ public abstract class Enemy : MonoBehaviour
     void Start()
     {
         float coef = Mathf.Pow(1.1f, refManager.waveRef.currentWaveNumber + 1);
-        damage = (damage * coef);
-        scoreValue = (scoreValue * coef);
-        hPoints = (hPoints * coef);
+        damage = (startDamage * coef)/2;
+        scoreValue = (startScore * coef)/2;
+        hPoints = (startHPoints * coef)/2;
         remainHPoints = hPoints;
     }
 
