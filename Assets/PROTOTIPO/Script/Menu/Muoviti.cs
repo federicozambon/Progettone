@@ -78,7 +78,7 @@ public class Muoviti : MonoBehaviour
 
         //achievement.tutorialComplete == true
 
-        if (achievement.montacarichiA >= ScoreMontacarichiA[3])
+        /*if (achievement.montacarichiA >= ScoreMontacarichiA[3])
         {
             MainMenuButtons[0].transform.GetChild(0).GetComponent<Text>().text = "Montacarichi";
             ColorBlock cb = MainMenuButtons[0].colors;
@@ -96,9 +96,9 @@ public class Muoviti : MonoBehaviour
         else
         {
             MainMenuButtons[0].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiA[3] + " SP";
-        }
+        }*/
 
-        if (achievement.discarica >= ScoreDiscarica[3])
+        if (achievement.montacarichiA >= ScoreDiscarica[3])
         {
             MainMenuButtons[1].transform.GetChild(0).GetComponent<Text>().text = "Discarica";
             ColorBlock cb = MainMenuButtons[1].colors;
@@ -119,7 +119,7 @@ public class Muoviti : MonoBehaviour
             MainMenuButtons[1].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreDiscarica[3] + " SP";
         }
 
-        if (achievement.montacarichiB >= ScoreMontacarichiB[3])
+        if (achievement.discarica >= ScoreMontacarichiB[3])
         {
             MainMenuButtons[2].transform.GetChild(0).GetComponent<Text>().text = "Ascensore";
             ColorBlock cb = MainMenuButtons[2].colors;
@@ -141,7 +141,7 @@ public class Muoviti : MonoBehaviour
             MainMenuButtons[2].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiB[3] + " SP";
         }
 
-        if (achievement.tetto >= ScoreTetto[3])
+        if (achievement.montacarichiB >= ScoreTetto[3])
         {
             MainMenuButtons[3].transform.GetChild(0).GetComponent<Text>().text = "Tetto";
             ColorBlock cb = MainMenuButtons[3].colors;
@@ -159,7 +159,7 @@ public class Muoviti : MonoBehaviour
 
         else
         {
-            MainMenuButtons[3].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreDiscarica[3] + " SP";
+            MainMenuButtons[3].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreTetto[3] + " SP";
         }
 
         for (int i = 0; i < 3; i++)
@@ -950,52 +950,48 @@ public class Muoviti : MonoBehaviour
         Options();
         UpdateAchievement();
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 1; i < 4; i++)
         {
             MainMenuButtons[i].transform.GetChild(1).gameObject.SetActive(false);
+
+            ColorBlock cb = MainMenuButtons[i].colors;
+            cb.normalColor = Color.red;
+            MainMenuButtons[i].colors = cb;
         }
 
-        UpdateAchievement();
+
+        MainMenuButtons[1].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiA[3] + " SP";
+        MainMenuButtons[2].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreDiscarica[3] + " SP";
+        MainMenuButtons[3].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiB[3] + " SP";
+
+        UpdateBlockAchievement();
     }
 
     public void SetScoreMontacarichiA()
     {
         recordTotale.text = achievement.montacarichiA.ToString();
         ColorBlock cb = MainMenuButtons[0].colors;
-        if (cb.normalColor != Color.white)
-            audioBlock.Play();
-        else
-            audioSelect.Play();
+   
+         
     }
 
     public void SetScoreDiscarica()
     {
         recordTotale.text = achievement.discarica.ToString();
         ColorBlock cb = MainMenuButtons[1].colors;
-        if (cb.normalColor != Color.white)
-            audioBlock.Play();
-        else
-            audioSelect.Play();
+ 
     }
 
     public void SetScoreMontacarichiB()
     {
         recordTotale.text = achievement.montacarichiB.ToString();
         ColorBlock cb = MainMenuButtons[2].colors;
-        if (cb.normalColor != Color.white)
-            audioBlock.Play();
-        else
-            audioSelect.Play();
     }
 
     public void SetScoreTetto()
     {
         recordTotale.text = achievement.tetto.ToString();
         ColorBlock cb = MainMenuButtons[3].colors;
-        if (cb.normalColor != Color.white)
-            audioBlock.Play();
-        else
-            audioSelect.Play();
     }
 
     public void ResetScore()
@@ -1024,8 +1020,11 @@ public class Muoviti : MonoBehaviour
         ColorBlock cb = MainMenuButtons[1].colors;
         if (cb.normalColor == Color.white)
         {
+            audioSelect.Play();
             SceneManager.LoadScene("Intro_Discarica");
         }
+        else
+            audioBlock.Play();
 
 
 
@@ -1036,8 +1035,11 @@ public class Muoviti : MonoBehaviour
         ColorBlock cb = MainMenuButtons[2].colors;
         if (cb.normalColor == Color.white)
         {
+            audioSelect.Play();
             SceneManager.LoadScene("Intro_Montacarichi2");
         }
+        else
+            audioBlock.Play();
 
 
     }
@@ -1047,9 +1049,11 @@ public class Muoviti : MonoBehaviour
         ColorBlock cb = MainMenuButtons[3].colors;
         if (cb.normalColor == Color.white)
         {
+            audioSelect.Play();
             SceneManager.LoadScene("Intro_Tetto");
         }
-
+        else
+            audioBlock.Play();
 
 
     }
