@@ -221,7 +221,10 @@ public class GameOverManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "Tutorial")
         {
-            next.interactable = true;
+            if (GameObject.FindObjectOfType<Tutorial>().step == 55)
+            {
+                next.interactable = true;
+            }   
         }
         if (next.IsInteractable())
         {

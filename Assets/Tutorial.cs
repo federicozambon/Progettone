@@ -215,9 +215,9 @@ public class Tutorial : MonoBehaviour
             else if (Input.GetButtonDown("Fire1") && step == 55)
             {
                 HideStep();
-                
+
                 //achievement.tutorialComplete = true;
-                SceneManager.LoadScene(indexSC + 1);
+                GameObject.FindObjectOfType<GameOverManager>().GameOverStart();
             }
         }
     }
