@@ -29,6 +29,7 @@ public class SniperEnemyFire : MonoBehaviour
         myParticle = pool.transform.GetChild(id);
         myEffect = myParticle.GetComponentsInChildren<EffectSettings>(true)[0];
         transformTr = myParticle.GetComponentsInChildren<Transform>(true)[1];
+        myDamage = myEffect.GetComponent<SniperEnemyBullet>();
     }
 
     void Start()
@@ -58,6 +59,7 @@ public class SniperEnemyFire : MonoBehaviour
                 if (timer > 3)
                 {
                     aimLine.enabled = false;
+                    damage = (int)enemyRef.damage;
                     refManager.playerRef.TakeDamage(damage);
                     ParticleActivator(playerTr.transform.position);                 
                     isShooting = false;
@@ -92,6 +94,7 @@ public class SniperEnemyFire : MonoBehaviour
     Transform myParticle;
     int id;
     EffectSettings myEffect;
+    SniperEnemyBullet myDamage;
 
     public void ParticleActivator(Vector3 position)
     {

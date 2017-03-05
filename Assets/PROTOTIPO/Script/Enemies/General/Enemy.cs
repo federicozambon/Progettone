@@ -34,20 +34,6 @@ public abstract class Enemy : MonoBehaviour
     public bool knockbacked;
     public bool tutorialMode = false;
 
-    /*
-    public MeshRenderer toOutline;
-    public Material occlusionMaterial;
-    public Material defaultMaterial;
-    */
-    /*
-    public Ray occlusionRay;
-    public RaycastHit[] occlusionHit;
-    public Ray antiOcclusionRay;
-    public RaycastHit[] antiOcclusionHit;
-    public List<GameObject> occludedGoList = new List<GameObject>();
-    public Rigidbody enemyRb;
-    */
-
     public bool isActiveAttractionTrap;
     public bool isActiveElectricTrap;
     public bool isActiveIceTrap;
@@ -65,6 +51,10 @@ public abstract class Enemy : MonoBehaviour
 
     }
 
+    float startDamage;
+    float startScore;
+    float startHPoints;
+
     public virtual void Awake()
     {
         animRef = GetComponentInChildren<Animator>();
@@ -72,6 +62,10 @@ public abstract class Enemy : MonoBehaviour
         blackRef = GetComponent<BlackBoard>();
         navRef = GetComponent<NavMeshAgent>();
         this.gameObject.SetActive(false);
+
+        startDamage = damage;
+        startHPoints = hPoints;
+        startScore = scoreValue;
         
         aController = FindObjectOfType<AudioController>();   
     }
@@ -98,12 +92,10 @@ public abstract class Enemy : MonoBehaviour
 
     void Start()
     {
-        if (refManager.waveRef.currentWaveNumber > 10)
-        {
-            damage *= 1.5f * Mathf.Floor(refManager.waveRef.currentWaveNumber/10);
-            scoreValue *= 1.5f * Mathf.FloorToInt(refManager.waveRef.currentWaveNumber/10);
-            hPoints *= 1.5f * Mathf.FloorToInt(refManager.waveRef.currentWaveNumber/10);
-        }
+        float coef = Mathf.Pow(1.1f, refManager.waveRef.currentWaveNumber + 1);
+        damage = (startDamage * coef)/2;
+        scoreValue = (startScore * coef)/2;
+        hPoints = (startHPoints * coef)/2;
         remainHPoints = hPoints;
     }
 

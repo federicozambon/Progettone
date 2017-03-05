@@ -25,6 +25,7 @@ public class TitanoEnemyFire : MonoBehaviour
 
         transformTr = new Transform[10];
         myEffect = new EffectSettings[10];
+        myDamage = new bugtitanobullet[10];
         enemyRef = GetComponent<TitanoEnemy>();
         pool = GameObject.Find("TitanoParticlePool");
         id = transform.GetSiblingIndex();
@@ -34,6 +35,7 @@ public class TitanoEnemyFire : MonoBehaviour
         {
             transformTr[i] = myParticle.transform.GetChild(i);
             myEffect[i] = myParticle.transform.GetChild(i + 10).GetComponent<EffectSettings>();
+            myDamage[i] = myEffect[i].transform.FindChild("Trail").GetComponent<bugtitanobullet>();
         }
     }
 
@@ -83,11 +85,12 @@ public class TitanoEnemyFire : MonoBehaviour
     Transform myParticle;
     int id;
     EffectSettings[] myEffect;
-
+    bugtitanobullet[] myDamage;
 
     public void ParticleActivator(Vector3 position, int n)
     {
         transformTr[n].position = position;
+        myDamage[n].damage = (int)enemyRef.damage;
         myEffect[n].transform.position = weapon.transform.position;
         myEffect[n].Target = transformTr[n].gameObject;
         myEffect[n].gameObject.SetActive(true);

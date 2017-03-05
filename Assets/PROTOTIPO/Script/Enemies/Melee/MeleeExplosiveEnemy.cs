@@ -64,7 +64,7 @@ public class MeleeExplosiveEnemy : Enemy
             SuicideParticleActivator(this.transform.position);
             if (Vector3.Distance(this.transform.position, refManager.playerObj.transform.position) < 4f)
             {
-                refManager.playerObj.GetComponent<Player>().TakeDamage(damage);
+                refManager.playerRef.TakeDamage(damage);
             }
             StartCoroutine(Die());
         }
