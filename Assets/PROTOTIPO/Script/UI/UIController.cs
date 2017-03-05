@@ -256,7 +256,7 @@ public class UIController : MonoBehaviour
 
     public void IncreaseScore(int scoreToAdd)
     {
-        enemyScore += scoreToAdd;
+        enemyScore += scoreToAdd * comboMulti;
         score += scoreToAdd * comboMulti;
         scoreStreak += scoreToAdd * comboMulti;
 

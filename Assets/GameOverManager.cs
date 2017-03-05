@@ -201,6 +201,7 @@ public class GameOverManager : MonoBehaviour
 
         }
         menu.interactable = true;
+
         next.interactable = true;
         riprova.interactable = true;
         FindObjectOfType<Achievement>().SaveScore(tempTotalScore);
