@@ -32,7 +32,7 @@ public class GameOverManager : MonoBehaviour
     public int comboMaxScore;
     public int spentPointsScore;
 
-    float timeToShow = 0.00003f;
+    float timeToShow = 0.0003f;
     public bool shown;
 
     public int tempTotalScore = 0;
@@ -49,7 +49,7 @@ public class GameOverManager : MonoBehaviour
 
 	public void GameOverStart ()
     {
-        Time.timeScale = 0.00001f;
+        Time.timeScale = 0.0001f;
         GameOverCanvas.SetActive(true);
         StartCoroutine(ShowScore());
 	}
@@ -67,6 +67,7 @@ public class GameOverManager : MonoBehaviour
                 timer += Time.deltaTime;         
                 yield return null;
             }
+            killedEnemy.text = killedEnemyScore.ToString();
         }
     }
 
@@ -89,6 +90,7 @@ public class GameOverManager : MonoBehaviour
                 timer += Time.deltaTime;
                 yield return null;
             }
+            waveScore.text = waveScoreScore.ToString();
         }
     }
 
@@ -105,6 +107,7 @@ public class GameOverManager : MonoBehaviour
                 timer += Time.deltaTime;
                 yield return null;
             }
+            tripleKill.text = tripleKillScore.ToString();
         }
     }
 
@@ -121,6 +124,7 @@ public class GameOverManager : MonoBehaviour
                 timer += Time.deltaTime;
                 yield return null;
             }
+            quadraKill.text = quadraKillScore.ToString();
         }
     }
 
@@ -137,6 +141,7 @@ public class GameOverManager : MonoBehaviour
                 timer += Time.deltaTime;
                 yield return null;
             }
+            multiKill.text = multiKillScore.ToString();
         }
     }
 
@@ -153,8 +158,8 @@ public class GameOverManager : MonoBehaviour
                 timer += Time.deltaTime;
                 yield return null;
             }
+            spentPoints.text = spentPointsScore.ToString();
         }
-        shown = true;
     }
 
     public IEnumerator ComboScore()
@@ -170,6 +175,7 @@ public class GameOverManager : MonoBehaviour
                 timer += Time.deltaTime;
                 yield return null;
             }
+            multiMax.text = comboMaxScore.ToString();
         }
     }
 
@@ -184,7 +190,9 @@ public class GameOverManager : MonoBehaviour
                 timer += Time.deltaTime;
                 yield return null;
             }
+            totalScore.text = tempTotalScore.ToString();
         }
+        shown = true;
     }
 
     public IEnumerator ShowScore()
@@ -199,7 +207,6 @@ public class GameOverManager : MonoBehaviour
             yield return StartCoroutine(ComboScore());
             yield return StartCoroutine(SpentScore());
             yield return StartCoroutine(TotalScore());
-
         }
         menu.interactable = true;
         if ((SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoMontacarichiUI") == 1)||
