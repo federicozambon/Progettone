@@ -472,21 +472,22 @@ public class Player : MonoBehaviour
                 ExitBox(boxToPass);
             }
         }
+        boxToPass = null;
         if (Input.GetButtonDown("Fire1"))
         {
             if (insideWeapon)
             {
                 boxToPass = weaponBox;
             }
-            if (insideAmmo)
+            else if (insideAmmo)
             {
                 boxToPass = ammoBox;
             }
-            if (insideLife)
+            else if (insideLife)
             {
                 boxToPass = lifeBox;
             }
-            if (insideArmor)
+            else if (insideArmor)
             {
                 boxToPass = armorBox;
             }
@@ -494,7 +495,7 @@ public class Player : MonoBehaviour
             {
                 UseBox(boxToPass);
             }
-            boxToPass = null;
+   
         }
 
       

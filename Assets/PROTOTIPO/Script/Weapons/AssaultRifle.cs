@@ -50,6 +50,8 @@ public class AssaultRifle : Weapon
         player = FindObjectOfType<Player>();
     }
 
+    public Coroutine Co;
+
     public void Update()
     {
         timer += Time.deltaTime;
@@ -62,12 +64,22 @@ public class AssaultRifle : Weapon
    
         if (Input.GetButtonDown("Grenade"))
         {
-            
-            StartCoroutine(wSelector.ChangeWeapon(2));
             laserShotgun.enabled = true;
+            this.enabled = false;
+            Debug.Log(Co);
+            if (Co == null && laserShotgun.Co == null)
+            {            
+                Co = StartCoroutine(wSelector.ChangeWeapon(2));
+            }
+            else
+            {
+                wSelector.timer = 1;
+                Co = StartCoroutine(wSelector.ChangeWeapon(2));
+            }
+            
             weaponArray[0].gameObject.SetActive(false);
             weaponArray[1].gameObject.SetActive(true);
-            this.enabled = false;
+
         }        
     } 
 
