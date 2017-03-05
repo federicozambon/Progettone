@@ -170,6 +170,13 @@ public class GameOverManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void NextLvl()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    }
+
     public void MainManu()
     {
         SceneManager.LoadScene("Menu");
