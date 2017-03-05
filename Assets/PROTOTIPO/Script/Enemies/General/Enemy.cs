@@ -221,11 +221,8 @@ public abstract class Enemy : MonoBehaviour
             playSound = true;
         }
         else
-           // Destroy(this.gameObject);
-        yield return new WaitForSeconds(0.2f);
-
-       
-              
+            Destroy(this.gameObject);
+        yield return null; 
     }
 
     public void SpawnMedikit()
