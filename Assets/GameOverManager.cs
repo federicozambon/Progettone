@@ -73,7 +73,7 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator WaveScore()
     {
-        for (int i = 0; i < refManager.waveRef.currentWaveNumber+1; i++)
+        for (int i = 0; i < refManager.waveRef.currentWaveNumber+2; i++)
         {
             waveScoreScore += 1000 * (i + 1);
         }
