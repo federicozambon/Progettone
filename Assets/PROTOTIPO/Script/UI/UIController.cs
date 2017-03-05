@@ -252,8 +252,11 @@ public class UIController : MonoBehaviour
         SbloccoLivello.SetActive(false);
     }
 
+    public int enemyScore = 0;
+
     public void IncreaseScore(int scoreToAdd)
     {
+        enemyScore += scoreToAdd;
         score += scoreToAdd * comboMulti;
         scoreStreak += scoreToAdd * comboMulti;
 
