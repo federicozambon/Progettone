@@ -5,12 +5,18 @@ public class RangedEnemyBullet: MonoBehaviour {
 
 	public int damage = 10;
     public float timer;
+    ReferenceManager refManager;
 
-	void OnTriggerEnter(Collider coll)
+    private void Awake()
+    {
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
+    }
+
+    void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == "Player")
         {
-            FindObjectOfType<Player>().TakeDamage(damage);
+            refManager.playerRef.TakeDamage(damage);
         }
     }
 }
