@@ -61,9 +61,9 @@ public class GameOverManager : MonoBehaviour
         float timer = 0;
         if (killedEnemyScore != 0)
         {
+            tempTotalScore += killedEnemyScore;
             while (timer < timeToShow)
-            {
-                tempTotalScore += killedEnemyScore;
+            {           
                 killedEnemy.text = ((int)Mathf.Lerp(0, killedEnemyScore, timer/timeToShow)).ToString();
                 timer += Time.deltaTime;         
                 yield return null;
@@ -87,8 +87,7 @@ public class GameOverManager : MonoBehaviour
         {
             tempTotalScore += waveScoreScore;
             while (timer < timeToShow)
-            {
-            
+            {         
                 waveScore.text = ((int)Mathf.Lerp(0, waveScoreScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
@@ -106,8 +105,7 @@ public class GameOverManager : MonoBehaviour
         {
             tempTotalScore += tripleKillScore;
             while (timer < timeToShow)
-            {
-        
+            {       
                 tripleKill.text = ((int)Mathf.Lerp(0, tripleKillScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
@@ -125,8 +123,7 @@ public class GameOverManager : MonoBehaviour
         {
             tempTotalScore += quadraKillScore;
             while (timer < timeToShow)
-            {
-          
+            {     
                 quadraKill.text = ((int)Mathf.Lerp(0, quadraKillScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
@@ -144,8 +141,7 @@ public class GameOverManager : MonoBehaviour
         {
             tempTotalScore += multiKillScore;
             while (timer < timeToShow)
-            {
-       
+            {    
                 multiKill.text = ((int)Mathf.Lerp(0, multiKillScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
@@ -163,8 +159,7 @@ public class GameOverManager : MonoBehaviour
         {
             tempTotalScore -= spentPointsScore;
             while (timer < timeToShow)
-            {
-         
+            {       
                 spentPoints.text = "- " + ((int)Mathf.Lerp(0, spentPointsScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
@@ -182,8 +177,7 @@ public class GameOverManager : MonoBehaviour
         {
             tempTotalScore += comboMaxScore;
             while (timer < timeToShow)
-            {
-            
+            {          
                 multiMax.text = ((int)Mathf.Lerp(0, comboMaxScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
