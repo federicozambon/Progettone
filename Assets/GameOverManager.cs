@@ -159,7 +159,7 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator ComboScore()
     {
-        comboMaxScore = (int)Mathf.ClosestPowerOfTwo((int)Mathf.Pow(3, uiRef.maxComboAchieved));
+        comboMaxScore = (int)Mathf.Pow(3, uiRef.maxComboAchieved);
         float timer = 0;
         if (comboMaxScore != 0)
         {
@@ -204,8 +204,8 @@ public class GameOverManager : MonoBehaviour
         menu.interactable = true;
         if ((SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoMontacarichiUI") == 1)||
             (SceneManager.GetActiveScene().name == "Discarica" && PlayerPrefs.GetInt("sbloccoDiscaricaUI") == 1)||
-            (SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoAscensoreUI") == 1)||
-            (SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoTettoUI") == 1))
+            (SceneManager.GetActiveScene().name == "Montacarichi2" && PlayerPrefs.GetInt("sbloccoAscensoreUI") == 1)||
+            (SceneManager.GetActiveScene().name == "Tetto" && PlayerPrefs.GetInt("sbloccoTettoUI") == 1))
         {
             next.interactable = true;
         }
