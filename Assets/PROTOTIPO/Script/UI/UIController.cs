@@ -169,6 +169,9 @@ public class UIController : MonoBehaviour
 
         #endregion
 
+        if (achievement)
+        {
+
         #region SbloccoDiscarica
         if (currentScene == "Discarica" && score >= scoreDiscarica[3] && checkLivello == true && achievement.sbloccoDiscarica == 0)
         {
@@ -296,7 +299,9 @@ public class UIController : MonoBehaviour
             StartCoroutine(SbloccoDialoghi(indexScore));
         }
 
-        #endregion
+            #endregion
+
+        }
     }
 
     IEnumerator SbloccoDialoghi(int step)
