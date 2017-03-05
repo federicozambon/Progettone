@@ -692,6 +692,27 @@ public class Muoviti : MonoBehaviour
         sbloccoAscensore = 0;
         sbloccoTetto = 0;
 
+        achievement.sbloccoMontacarichi = 0;
+        achievement.sbloccoDiscarica = 0;
+        achievement.sbloccoAscensore = 0;
+        achievement.sbloccoTetto = 0;
+
+        achievement.achievementMontacarichi_1 = 0;
+        achievement.achievementMontacarichi_2 = 0;
+        achievement.achievementMontacarichi_3 = 0;
+
+        achievement.achievementDiscarica_1 = 0;
+        achievement.achievementDiscarica_2 = 0;
+        achievement.achievementDiscarica_3 = 0;
+
+        achievement.achievementAscensore_1 = 0;
+        achievement.achievementAscensore_2 = 0;
+        achievement.achievementAscensore_3 = 0;
+
+        achievement.achievementTetto_1 = 0;
+        achievement.achievementTetto_2 = 0;
+        achievement.achievementTetto_3 = 0;
+
         PlayerPrefs.SetInt("scoreMontacarichiA", achievement.montacarichiA);
         PlayerPrefs.SetInt("scoreDiscarica", achievement.discarica);
         PlayerPrefs.SetInt("scoreMontacarichiB", achievement.montacarichiB);
@@ -702,6 +723,28 @@ public class Muoviti : MonoBehaviour
         PlayerPrefs.SetInt("sbloccoDiscarica", sbloccoDiscarica);
         PlayerPrefs.SetInt("sbloccoAscensore", sbloccoAscensore);
         PlayerPrefs.SetInt("sbloccoTetto", sbloccoTetto);
+
+        PlayerPrefs.SetInt("sbloccoMontacarichiUI", achievement.sbloccoMontacarichi);
+        PlayerPrefs.SetInt("sbloccoDiscaricaUI", achievement.sbloccoDiscarica);
+        PlayerPrefs.SetInt("sbloccoAscensoreUI", achievement.sbloccoAscensore);
+        PlayerPrefs.SetInt("sbloccoTettoUI", achievement.sbloccoTetto);
+
+        PlayerPrefs.SetInt("achievementMontacarichi_1", achievement.achievementMontacarichi_1);
+        PlayerPrefs.SetInt("achievementMontacarichi_2", achievement.achievementMontacarichi_2);
+        PlayerPrefs.SetInt("achievementMontacarichi_3", achievement.achievementMontacarichi_3);
+
+        PlayerPrefs.SetInt("achievementDiscarica_1", achievement.achievementDiscarica_1);
+        PlayerPrefs.SetInt("achievementDiscarica_2", achievement.achievementDiscarica_2);
+        PlayerPrefs.SetInt("achievementDiscarica_3", achievement.achievementDiscarica_3);
+
+        PlayerPrefs.SetInt("achievementAscensore_1", achievement.achievementAscensore_1);
+        PlayerPrefs.SetInt("achievementAscensore_2", achievement.achievementAscensore_2);
+        PlayerPrefs.SetInt("achievementAscensore_3", achievement.achievementAscensore_3);
+
+        PlayerPrefs.SetInt("achievementTetto_1", achievement.achievementTetto_1);
+        PlayerPrefs.SetInt("achievementTetto_2", achievement.achievementTetto_2);
+        PlayerPrefs.SetInt("achievementTetto_3", achievement.achievementTetto_3);
+
 
 
         PlayerPrefs.Save();
