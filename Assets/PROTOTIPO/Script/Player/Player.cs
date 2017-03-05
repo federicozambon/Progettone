@@ -400,10 +400,10 @@ public class Player : MonoBehaviour
     }
 
     public GameObject boxToPass;
-    bool weaponActive = true;
-    bool ammoActive = true;
-    bool lifeActive = true;
-    bool armorActive = true;
+    public bool weaponActive = true;
+    public bool ammoActive = true;
+    public bool lifeActive = true;
+    public bool armorActive = true;
 
 
     void Update()
