@@ -7,13 +7,18 @@ public class bugtitanobullet : MonoBehaviour
     public int damage = 15;
     public float timer;
 
+    ReferenceManager refManager;
+
+    private void Awake()
+    {
+        refManager = GameObject.Find("Reference").GetComponent<ReferenceManager>();
+    }
 
     void OnTriggerEnter(Collider coll)
     {
-        Debug.LogError(coll.gameObject);
         if (coll.gameObject.tag == "Player")
         {
-            FindObjectOfType<Player>().TakeDamage(damage);
+            refManager.playerRef.TakeDamage(damage);
         }
     }
 }
