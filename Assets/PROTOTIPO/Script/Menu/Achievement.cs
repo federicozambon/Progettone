@@ -40,9 +40,7 @@ public class Achievement : MonoBehaviour {
             PlayerPrefs.SetInt("scoreTetto", tetto);
 
             PlayerPrefs.Save();
-        }
-       
-            
+        }                 
     }
    
 

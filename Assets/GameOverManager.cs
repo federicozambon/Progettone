@@ -197,6 +197,8 @@ public class GameOverManager : MonoBehaviour
             yield return StartCoroutine(WaveScore());
             yield return StartCoroutine(ComboScore());
             yield return StartCoroutine(SpentScore());
+            yield return StartCoroutine(TotalScore());
+
         }
         menu.interactable = true;
         next.interactable = true;
