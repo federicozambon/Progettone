@@ -36,12 +36,6 @@ public class PauseManager : MonoBehaviour
         CanvasPanel2.SetActive(false);
     }
 
-    void Start()
-    {
-        
-       
-    }
-
     bool moved = false;
     float timer = 0;
 
