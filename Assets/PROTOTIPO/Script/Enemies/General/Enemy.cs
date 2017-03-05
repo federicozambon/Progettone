@@ -51,9 +51,9 @@ public abstract class Enemy : MonoBehaviour
 
     }
 
-    float startDamage;
-    float startScore;
-    float startHPoints;
+    public float startDamage;
+    public float startScore;
+    public float startHPoints;
 
     public virtual void Awake()
     {

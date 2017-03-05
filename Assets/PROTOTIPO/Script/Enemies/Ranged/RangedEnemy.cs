@@ -7,8 +7,9 @@ public class RangedEnemy : Enemy
     public GameObject particlePoolPrefab;
     public RangedEnemyFire rangedFireRef;
 
-    void Start()
+    public override void Awake()
     {
+        base.Awake();
         rangedFireRef = GetComponent<RangedEnemyFire>();
         remainHPoints = hPoints;
     }

@@ -8,10 +8,6 @@ public class SniperEnemy : Enemy
     public GameObject poolP;
     public Coroutine attacking;
 
-    void Start()
-    {
-        remainHPoints = hPoints;
-    }
 
     public override void Attack()
     {

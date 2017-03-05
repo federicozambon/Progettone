@@ -10,10 +10,10 @@ public class TitanoEnemy : Enemy
 
 
 
-    void Start()
+    public override void Awake()
     {
+        base.Awake();
         fireRef = GetComponent<TitanoEnemyFire>();
-        remainHPoints = hPoints;
     }
 
     public override IEnumerator Die()
