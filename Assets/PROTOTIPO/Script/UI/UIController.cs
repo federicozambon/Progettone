@@ -52,8 +52,8 @@ public class UIController : MonoBehaviour
     public List<int> scoreTetto;
     int indexScore = 0;
     bool checkLivello = true;
-    
-    
+
+    public int spentScore = 0;
 
 
     public void UpdateArmorUpgrade(int percent)
@@ -285,6 +285,7 @@ public class UIController : MonoBehaviour
     public void UpdateMultiplier()
     {
         comboMultiplier.text = comboMulti + " X";
+        comboMultiplier.color = gradient.Evaluate(1 - comboMulti / 12);
     }
 
     public void ResetMulti()
@@ -302,8 +303,6 @@ public class UIController : MonoBehaviour
         comboMulti ++;
         UpdateMultiplier();
     }
-
-
 
     public IEnumerator ShowSpecialFeedback(string specialToShow)
     {
@@ -332,19 +331,19 @@ public class UIController : MonoBehaviour
         }
         else if (specialCounter == 3)
         {
-            tripleKillCounter++;
+            tripleKillCounter += specialScore[0] * specialCounter;
             StartCoroutine(ShowSpecialFeedback("Triple Kill"));
             score += specialScore[0] * specialCounter;
         }
         else if (specialCounter == 4)
         {
-            quadraKillCounter++;
+            quadraKillCounter += specialScore[1] * specialCounter;
             StartCoroutine(ShowSpecialFeedback("Quadra Kill"));
             score += specialScore[1] * specialCounter;
         }
         else if (specialCounter >= 5)
         {
-            multiKillCounter++;
+            multiKillCounter += specialScore[2] * specialCounter;
             StartCoroutine(ShowSpecialFeedback("Multi Kill"));
             score += specialScore[2] * specialCounter;
         }
