@@ -28,6 +28,7 @@ public class RangedEnemyFire : MonoBehaviour
         myParticle = pool.transform.GetChild(id);
         myEffect = myParticle.GetComponentsInChildren<EffectSettings>(true)[0];
         transformTr = myParticle.GetComponentsInChildren<Transform>(true)[1];
+        myDamage = myParticle.GetComponent<RangedEnemyBullet>();
     }
 
     public void Update()
@@ -62,9 +63,11 @@ public class RangedEnemyFire : MonoBehaviour
     Transform myParticle;
     int id;
     EffectSettings myEffect;
+    RangedEnemyBullet myDamage;
 
     public void ParticleActivator(Vector3 position)
-    {     
+    {
+        myDamage.damage = (int)enemyRef.damage;
         transformTr.position = position;
         myEffect.transform.position = weapon.transform.position;
         myEffect.Target = transformTr.gameObject;
