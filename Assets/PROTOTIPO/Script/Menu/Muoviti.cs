@@ -95,7 +95,7 @@ public class Muoviti : MonoBehaviour
         }
         else
         {
-            MainMenuButtons[0].transform.GetChild(0).GetComponent<Text>().text = ScoreMontacarichiA[3] + " SP";
+            MainMenuButtons[0].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiA[3] + " SP";
         }
 
         if (achievement.discarica >= ScoreDiscarica[3])
@@ -116,7 +116,7 @@ public class Muoviti : MonoBehaviour
 
         else
         {
-            MainMenuButtons[1].transform.GetChild(0).GetComponent<Text>().text = ScoreDiscarica[3] + " SP";
+            MainMenuButtons[1].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreDiscarica[3] + " SP";
         }
 
         if (achievement.montacarichiB >= ScoreMontacarichiB[3])
@@ -138,7 +138,7 @@ public class Muoviti : MonoBehaviour
 
         else
         {
-            MainMenuButtons[2].transform.GetChild(0).GetComponent<Text>().text = ScoreMontacarichiB[3] + " SP";
+            MainMenuButtons[2].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiB[3] + " SP";
         }
 
         if (achievement.tetto >= ScoreTetto[3])
@@ -159,18 +159,29 @@ public class Muoviti : MonoBehaviour
 
         else
         {
-            MainMenuButtons[3].transform.GetChild(0).GetComponent<Text>().text = ScoreDiscarica[3] + " SP";
+            MainMenuButtons[3].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreDiscarica[3] + " SP";
         }
 
         for (int i = 0; i < 3; i++)
         {
-            ButtonsMontacarichiA[i].transform.GetChild(0).GetComponent<Text>().text = ScoreMontacarichiA[i] + " SP";
-            ButtonsDiscarica[i].transform.GetChild(0).GetComponent<Text>().text = ScoreDiscarica[i] + " SP";
-            ButtonsMontacarichiB[i].transform.GetChild(0).GetComponent<Text>().text = ScoreMontacarichiB[i] + " SP";
-            ButtonsTetto[i].transform.GetChild(0).GetComponent<Text>().text = ScoreTetto[i] + " SP";
+            ButtonsMontacarichiA[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiA[i] + " SP";
+            ButtonsDiscarica[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreDiscarica[i] + " SP";
+            ButtonsMontacarichiB[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiB[i] + " SP";
+            ButtonsTetto[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreTetto[i] + " SP";
         }
 
         UpdateAchievement();
+    }
+
+    void UpdateBlockAchievement()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            ButtonsMontacarichiA[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiA[i] + " SP";
+            ButtonsDiscarica[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreDiscarica[i] + " SP";
+            ButtonsMontacarichiB[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiB[i] + " SP";
+            ButtonsTetto[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreTetto[i] + " SP";
+        }
     }
 
     void UpdateAchievement()
@@ -943,6 +954,8 @@ public class Muoviti : MonoBehaviour
         {
             MainMenuButtons[i].transform.GetChild(1).gameObject.SetActive(false);
         }
+
+        UpdateAchievement();
     }
 
     public void SetScoreMontacarichiA()
