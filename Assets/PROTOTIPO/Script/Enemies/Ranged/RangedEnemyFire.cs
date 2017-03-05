@@ -28,7 +28,7 @@ public class RangedEnemyFire : MonoBehaviour
         myParticle = pool.transform.GetChild(id);
         myEffect = myParticle.GetComponentsInChildren<EffectSettings>(true)[0];
         transformTr = myParticle.GetComponentsInChildren<Transform>(true)[1];
-        myDamage = myParticle.GetComponent<RangedEnemyBullet>();
+        myDamage = myEffect.gameObject.GetComponent<RangedEnemyBullet>();
     }
 
     public void Update()
