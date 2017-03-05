@@ -219,6 +219,10 @@ public class GameOverManager : MonoBehaviour
         {
             next.interactable = false;
         }
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            next.interactable = true;
+        }
         if (next.IsInteractable())
         {
             EventSystem.current.SetSelectedGameObject(next.gameObject);
