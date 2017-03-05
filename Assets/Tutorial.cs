@@ -198,7 +198,7 @@ public class Tutorial : MonoBehaviour
                 
                 NextStep();
                 uiElements.score = 100000;
-                uiElements.actualScore.text = "100000 SP";
+                uiElements.UpdateScore();
                 player.TakeDamage(20);
             }
 
