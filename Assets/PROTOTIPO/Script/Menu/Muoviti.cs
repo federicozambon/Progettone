@@ -938,6 +938,11 @@ public class Muoviti : MonoBehaviour
 
         Options();
         UpdateAchievement();
+
+        for (int i = 0; i < 4; i++)
+        {
+            MainMenuButtons[i].transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
 
     public void SetScoreMontacarichiA()
