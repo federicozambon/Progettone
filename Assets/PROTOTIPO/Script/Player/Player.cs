@@ -400,12 +400,17 @@ public class Player : MonoBehaviour
     }
 
     public GameObject boxToPass;
+    public bool weaponActive = true;
+    public bool ammoActive = true;
+    public bool lifeActive = true;
+    public bool armorActive = true;
+
 
     void Update()
     {
         dashMaterial.SetColor("_TintColor",gradient.Evaluate(1-(float)currentHealth / (float)maxHealth));
         boxToPass = weaponBox;
-        if (Vector3.Distance(this.transform.position, weaponBoxTr.position) < 5)
+        if (Vector3.Distance(this.transform.position, weaponBoxTr.position) < 5 && weaponActive)
         {          
             if (!insideWeapon)
             {
@@ -422,7 +427,7 @@ public class Player : MonoBehaviour
             }
         }
         boxToPass = ammoBox;
-        if (Vector3.Distance(this.transform.position, ammoBoxTr.position) < 5)
+        if (Vector3.Distance(this.transform.position, ammoBoxTr.position) < 5 && ammoActive)
         {   
             if (!insideAmmo)
             {
@@ -439,7 +444,7 @@ public class Player : MonoBehaviour
             }
         }
         boxToPass = lifeBox;
-        if (Vector3.Distance(this.transform.position, lifeBoxTr.position) < 5)
+        if (Vector3.Distance(this.transform.position, lifeBoxTr.position) < 5 && lifeActive)
         { 
             if (!insideLife)
             {
@@ -456,7 +461,7 @@ public class Player : MonoBehaviour
             }
         }
         boxToPass = armorBox;
-        if (Vector3.Distance(this.transform.position, armorBoxTr.position) < 5)
+        if (Vector3.Distance(this.transform.position, armorBoxTr.position) < 5 && armorActive)
         {
             if (!insideArmor)
             {
@@ -472,21 +477,22 @@ public class Player : MonoBehaviour
                 ExitBox(boxToPass);
             }
         }
+        boxToPass = null;
         if (Input.GetButtonDown("Fire1"))
         {
             if (insideWeapon)
             {
                 boxToPass = weaponBox;
             }
-            if (insideAmmo)
+            else if (insideAmmo)
             {
                 boxToPass = ammoBox;
             }
-            if (insideLife)
+            else if (insideLife)
             {
                 boxToPass = lifeBox;
             }
-            if (insideArmor)
+            else if (insideArmor)
             {
                 boxToPass = armorBox;
             }
@@ -494,7 +500,7 @@ public class Player : MonoBehaviour
             {
                 UseBox(boxToPass);
             }
-            boxToPass = null;
+   
         }
 
       

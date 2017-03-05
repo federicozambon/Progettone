@@ -51,18 +51,29 @@ public class LaserShotgun : Weapon
             ParticleActivator(this.transform.position);
         }
     }
-    
-    
+
+    public Coroutine Co;
 
     void Update()
-    {
+    { 
         if (Input.GetButtonDown("Grenade"))
         {
-            StartCoroutine(wSelector.ChangeWeapon(1));
             GetComponent<AssaultRifle>().enabled = true;
+            this.enabled = false;
+            Debug.Log(Co);
+            if (Co == null && assaultRifle.Co == null)
+            {
+                Co = StartCoroutine(wSelector.ChangeWeapon(1));
+            }
+            else
+            {
+                wSelector.timer = 1;
+                Co = StartCoroutine(wSelector.ChangeWeapon(1));
+            }
+      
             weaponArray[0].gameObject.SetActive(true);
             weaponArray[1].gameObject.SetActive(false);
-            this.enabled = false;
+
         }
     
          timer += Time.deltaTime;

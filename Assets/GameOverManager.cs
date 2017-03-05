@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class GameOverManager : MonoBehaviour
     public int comboMaxScore;
     public int spentPointsScore;
 
-    float timeToShow = 3f;
+    float timeToShow = 0.0003f;
     public bool shown;
 
     public int tempTotalScore = 0;
@@ -48,29 +49,32 @@ public class GameOverManager : MonoBehaviour
 
 	public void GameOverStart ()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 0.0001f;
         GameOverCanvas.SetActive(true);
         StartCoroutine(ShowScore());
 	}
 
     public IEnumerator KilledScore()
     {
+        Debug.Log("killed");
         killedEnemyScore = uiRef.enemyScore;
         float timer = 0;
         if (killedEnemyScore != 0)
         {
+            tempTotalScore += killedEnemyScore;
             while (timer < timeToShow)
-            {
-                tempTotalScore += killedEnemyScore;
+            {           
                 killedEnemy.text = ((int)Mathf.Lerp(0, killedEnemyScore, timer/timeToShow)).ToString();
                 timer += Time.deltaTime;         
                 yield return null;
             }
+            killedEnemy.text = killedEnemyScore.ToString();
         }
     }
 
     public IEnumerator WaveScore()
     {
+        Debug.Log("wave");
         int waveScoreTemp = 0;
         for (int i = 0; i < refManager.waveRef.currentWaveNumber+1; i++)
         {
@@ -81,109 +85,122 @@ public class GameOverManager : MonoBehaviour
 
         if (waveScoreScore != 0)
         {
+            tempTotalScore += waveScoreScore;
             while (timer < timeToShow)
-            {
-                tempTotalScore += waveScoreScore;
+            {         
                 waveScore.text = ((int)Mathf.Lerp(0, waveScoreScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
             }
+            waveScore.text = waveScoreScore.ToString();
         }
     }
 
     public IEnumerator TripleScore()
     {
+        Debug.Log("triple");
         tripleKillScore = uiRef.tripleKillCounter;
         float timer = 0;
         if (tripleKillScore!= 0)
         {
+            tempTotalScore += tripleKillScore;
             while (timer < timeToShow)
-            {
-                tempTotalScore += tripleKillScore;
+            {       
                 tripleKill.text = ((int)Mathf.Lerp(0, tripleKillScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
             }
+            tripleKill.text = tripleKillScore.ToString();
         }
     }
 
     public IEnumerator QuadraScore()
     {
+        Debug.Log("quadra");
         quadraKillScore = uiRef.quadraKillCounter;
         float timer = 0;
         if (quadraKillScore != 0)
         {
+            tempTotalScore += quadraKillScore;
             while (timer < timeToShow)
-            {
-                tempTotalScore += quadraKillScore;
+            {     
                 quadraKill.text = ((int)Mathf.Lerp(0, quadraKillScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
             }
+            quadraKill.text = quadraKillScore.ToString();
         }
     }
 
     public IEnumerator MultiScore()
     {
+        Debug.Log("multi");
         multiKillScore = uiRef.multiKillCounter;
         float timer = 0;
         if (multiKillScore != 0)
         {
+            tempTotalScore += multiKillScore;
             while (timer < timeToShow)
-            {
-                tempTotalScore += multiKillScore;
+            {    
                 multiKill.text = ((int)Mathf.Lerp(0, multiKillScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
             }
+            multiKill.text = multiKillScore.ToString();
         }
     }
 
     public IEnumerator SpentScore()
     {
+        Debug.Log("spent");
         spentPointsScore = uiRef.spentScore;
         float timer = 0;
         if (spentPointsScore != 0)
         {
+            tempTotalScore -= spentPointsScore;
             while (timer < timeToShow)
-            {
-                tempTotalScore -= spentPointsScore;
-                spentPoints.text = ((int)Mathf.Lerp(0, spentPointsScore, timer / timeToShow)).ToString();
+            {       
+                spentPoints.text = "- " + ((int)Mathf.Lerp(0, spentPointsScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
             }
+            spentPoints.text = spentPointsScore.ToString();
         }
-        shown = true;
     }
 
     public IEnumerator ComboScore()
     {
-        comboMaxScore = (int)Mathf.ClosestPowerOfTwo((int)Mathf.Pow(3, uiRef.maxComboAchieved));
+        Debug.Log("combo");
+        comboMaxScore = (int)Mathf.Pow(3, uiRef.maxComboAchieved);
         float timer = 0;
         if (comboMaxScore != 0)
         {
+            tempTotalScore += comboMaxScore;
             while (timer < timeToShow)
-            {
-                tempTotalScore += comboMaxScore;
+            {          
                 multiMax.text = ((int)Mathf.Lerp(0, comboMaxScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
             }
+            multiMax.text = comboMaxScore.ToString();
         }
     }
 
     public IEnumerator TotalScore()
     {
+        Debug.Log("total");
         float timer = 0;
         if (tempTotalScore != 0)
         {
             while (timer < timeToShow*2)
             {
-                multiMax.text = ((int)Mathf.Lerp(0, tempTotalScore, timer / timeToShow*2)).ToString();
+                totalScore.text = ((int)Mathf.Lerp(0, tempTotalScore, timer / timeToShow*2)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
             }
+            totalScore.text = tempTotalScore.ToString();
         }
+        shown = true;
     }
 
     public IEnumerator ShowScore()
@@ -198,11 +215,34 @@ public class GameOverManager : MonoBehaviour
             yield return StartCoroutine(ComboScore());
             yield return StartCoroutine(SpentScore());
             yield return StartCoroutine(TotalScore());
-
         }
         menu.interactable = true;
+        if ((SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoDiscaricaUI") != 0)||
+            (SceneManager.GetActiveScene().name == "Discarica" && PlayerPrefs.GetInt("sbloccoAscensoreUI") != 0)||
+            (SceneManager.GetActiveScene().name == "Montacarichi2" && PlayerPrefs.GetInt("sbloccoTettoUI") != 0))
+        {
+            next.interactable = true;
+        }
+        if (SceneManager.GetActiveScene().name == "Tetto")
+        {
+            next.interactable = false;
+        }
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            if (GameObject.FindObjectOfType<Tutorial>().step == 55)
+            {
+                next.interactable = true;
+            }   
+        }
+        if (next.IsInteractable())
+        {
+            EventSystem.current.SetSelectedGameObject(next.gameObject);
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(riprova.gameObject);
+        }
 
-        next.interactable = true;
         riprova.interactable = true;
         FindObjectOfType<Achievement>().SaveScore(tempTotalScore);
     }
@@ -226,7 +266,7 @@ public class GameOverManager : MonoBehaviour
 
     private void Update()
     {
-        totalScore.text = ((int)tempTotalScore).ToString();
+        Debug.Log(tempTotalScore);
         if (GameOverCanvas.activeInHierarchy && Input.GetButtonDown("Fire1"))
         {
             timeToShow = 0.1f;
