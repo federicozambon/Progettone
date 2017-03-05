@@ -56,6 +56,7 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator KilledScore()
     {
+        Debug.Log("killed");
         killedEnemyScore = uiRef.enemyScore;
         float timer = 0;
         if (killedEnemyScore != 0)
@@ -73,6 +74,7 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator WaveScore()
     {
+        Debug.Log("wave");
         int waveScoreTemp = 0;
         for (int i = 0; i < refManager.waveRef.currentWaveNumber+1; i++)
         {
@@ -83,9 +85,10 @@ public class GameOverManager : MonoBehaviour
 
         if (waveScoreScore != 0)
         {
+            tempTotalScore += waveScoreScore;
             while (timer < timeToShow)
             {
-                tempTotalScore += waveScoreScore;
+            
                 waveScore.text = ((int)Mathf.Lerp(0, waveScoreScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
@@ -96,13 +99,15 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator TripleScore()
     {
+        Debug.Log("triple");
         tripleKillScore = uiRef.tripleKillCounter;
         float timer = 0;
         if (tripleKillScore!= 0)
         {
+            tempTotalScore += tripleKillScore;
             while (timer < timeToShow)
             {
-                tempTotalScore += tripleKillScore;
+        
                 tripleKill.text = ((int)Mathf.Lerp(0, tripleKillScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
@@ -113,13 +118,15 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator QuadraScore()
     {
+        Debug.Log("quadra");
         quadraKillScore = uiRef.quadraKillCounter;
         float timer = 0;
         if (quadraKillScore != 0)
         {
+            tempTotalScore += quadraKillScore;
             while (timer < timeToShow)
             {
-                tempTotalScore += quadraKillScore;
+          
                 quadraKill.text = ((int)Mathf.Lerp(0, quadraKillScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
@@ -130,13 +137,15 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator MultiScore()
     {
+        Debug.Log("multi");
         multiKillScore = uiRef.multiKillCounter;
         float timer = 0;
         if (multiKillScore != 0)
         {
+            tempTotalScore += multiKillScore;
             while (timer < timeToShow)
             {
-                tempTotalScore += multiKillScore;
+       
                 multiKill.text = ((int)Mathf.Lerp(0, multiKillScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
@@ -147,14 +156,16 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator SpentScore()
     {
+        Debug.Log("spent");
         spentPointsScore = uiRef.spentScore;
         float timer = 0;
         if (spentPointsScore != 0)
         {
+            tempTotalScore -= spentPointsScore;
             while (timer < timeToShow)
             {
-                tempTotalScore -= spentPointsScore;
-                spentPoints.text = ((int)Mathf.Lerp(0, spentPointsScore, timer / timeToShow)).ToString();
+         
+                spentPoints.text = "- " + ((int)Mathf.Lerp(0, spentPointsScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
             }
@@ -164,13 +175,15 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator ComboScore()
     {
+        Debug.Log("combo");
         comboMaxScore = (int)Mathf.Pow(3, uiRef.maxComboAchieved);
         float timer = 0;
         if (comboMaxScore != 0)
         {
+            tempTotalScore += comboMaxScore;
             while (timer < timeToShow)
             {
-                tempTotalScore += comboMaxScore;
+            
                 multiMax.text = ((int)Mathf.Lerp(0, comboMaxScore, timer / timeToShow)).ToString();
                 timer += Time.deltaTime;
                 yield return null;
@@ -181,6 +194,7 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator TotalScore()
     {
+        Debug.Log("total");
         float timer = 0;
         if (tempTotalScore != 0)
         {
@@ -258,6 +272,7 @@ public class GameOverManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(tempTotalScore);
         if (GameOverCanvas.activeInHierarchy && Input.GetButtonDown("Fire1"))
         {
             timeToShow = 0.1f;
