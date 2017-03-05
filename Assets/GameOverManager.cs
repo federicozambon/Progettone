@@ -38,6 +38,7 @@ public class GameOverManager : MonoBehaviour
 
     void Awake()
     {
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
         uiRef = FindObjectOfType<UIController>();
         riprova.interactable = false;        
         next.interactable = false;
@@ -49,36 +50,44 @@ public class GameOverManager : MonoBehaviour
     {
         Time.timeScale = 1;
         GameOverCanvas.SetActive(true);
+        StartCoroutine(ShowScore());
 	}
 
     public IEnumerator KilledScore()
     {
         killedEnemyScore = uiRef.enemyScore;
         float timer = 0;
-        while (timer < timeToShow)
+        if (killedEnemyScore != 0)
         {
-            tempTotalScore += (int)Mathf.SmoothStep(0, killedEnemyScore, timer / timeToShow);
-            killedEnemy.text = Mathf.SmoothStep(0, killedEnemyScore, timer/timeToShow).ToString();
-            timer += Time.deltaTime;         
-            yield return null;
+            while (timer < timeToShow)
+            {
+                tempTotalScore += killedEnemyScore;
+                killedEnemy.text = ((int)Mathf.Lerp(0, killedEnemyScore, timer/timeToShow)).ToString();
+                timer += Time.deltaTime;         
+                yield return null;
+            }
         }
     }
 
     public IEnumerator WaveScore()
     {
         int waveScoreTemp = 0;
-        for (int i = 0; i < refManager.waveRef.currentWaveNumber; i++)
+        for (int i = 0; i < refManager.waveRef.currentWaveNumber+1; i++)
         {
             waveScoreTemp += 1000 * (i + 1);
         }
         waveScoreScore = waveScoreTemp;
         float timer = 0;
-        while (timer < timeToShow)
+
+        if (waveScoreScore != 0)
         {
-            tempTotalScore += (int)Mathf.SmoothStep(0, waveScoreScore, timer / timeToShow);
-            waveScore.text = Mathf.SmoothStep(0, waveScoreScore, timer / timeToShow).ToString();
-            timer += Time.deltaTime;
-            yield return null;
+            while (timer < timeToShow)
+            {
+                tempTotalScore += waveScoreScore;
+                waveScore.text = ((int)Mathf.Lerp(0, waveScoreScore, timer / timeToShow)).ToString();
+                timer += Time.deltaTime;
+                yield return null;
+            }
         }
     }
 
@@ -86,12 +95,15 @@ public class GameOverManager : MonoBehaviour
     {
         tripleKillScore = uiRef.tripleKillCounter;
         float timer = 0;
-        while (timer < timeToShow)
+        if (tripleKillScore!= 0)
         {
-            tempTotalScore += (int)Mathf.SmoothStep(0, tripleKillScore, timer / timeToShow);
-            tripleKill.text = Mathf.SmoothStep(0, tripleKillScore, timer / timeToShow).ToString();
-            timer += Time.deltaTime;
-            yield return null;
+            while (timer < timeToShow)
+            {
+                tempTotalScore += tripleKillScore;
+                tripleKill.text = ((int)Mathf.Lerp(0, tripleKillScore, timer / timeToShow)).ToString();
+                timer += Time.deltaTime;
+                yield return null;
+            }
         }
     }
 
@@ -99,12 +111,15 @@ public class GameOverManager : MonoBehaviour
     {
         quadraKillScore = uiRef.quadraKillCounter;
         float timer = 0;
-        while (timer < timeToShow)
+        if (quadraKillScore != 0)
         {
-            tempTotalScore += (int)Mathf.SmoothStep(0, quadraKillScore, timer / timeToShow);
-            quadraKill.text = Mathf.SmoothStep(0, quadraKillScore, timer / timeToShow).ToString();
-            timer += Time.deltaTime;
-            yield return null;
+            while (timer < timeToShow)
+            {
+                tempTotalScore += quadraKillScore;
+                quadraKill.text = ((int)Mathf.Lerp(0, quadraKillScore, timer / timeToShow)).ToString();
+                timer += Time.deltaTime;
+                yield return null;
+            }
         }
     }
 
@@ -112,12 +127,15 @@ public class GameOverManager : MonoBehaviour
     {
         multiKillScore = uiRef.multiKillCounter;
         float timer = 0;
-        while (timer < timeToShow)
+        if (multiKillScore != 0)
         {
-            tempTotalScore += (int)Mathf.SmoothStep(0, multiKillScore, timer / timeToShow);
-            multiKill.text = Mathf.SmoothStep(0, multiKillScore, timer / timeToShow).ToString();
-            timer += Time.deltaTime;
-            yield return null;
+            while (timer < timeToShow)
+            {
+                tempTotalScore += multiKillScore;
+                multiKill.text = ((int)Mathf.Lerp(0, multiKillScore, timer / timeToShow)).ToString();
+                timer += Time.deltaTime;
+                yield return null;
+            }
         }
     }
 
@@ -125,12 +143,15 @@ public class GameOverManager : MonoBehaviour
     {
         spentPointsScore = uiRef.spentScore;
         float timer = 0;
-        while (timer < timeToShow)
+        if (spentPointsScore != 0)
         {
-            tempTotalScore -= (int)Mathf.SmoothStep(0, spentPointsScore, timer / timeToShow);
-            spentPoints.text = Mathf.SmoothStep(0, spentPointsScore, timer / timeToShow).ToString();
-            timer += Time.deltaTime;
-            yield return null;
+            while (timer < timeToShow)
+            {
+                tempTotalScore -= spentPointsScore;
+                spentPoints.text = ((int)Mathf.Lerp(0, spentPointsScore, timer / timeToShow)).ToString();
+                timer += Time.deltaTime;
+                yield return null;
+            }
         }
         shown = true;
     }
@@ -139,12 +160,29 @@ public class GameOverManager : MonoBehaviour
     {
         comboMaxScore = (int)Mathf.ClosestPowerOfTwo((int)Mathf.Pow(3, uiRef.maxComboAchieved));
         float timer = 0;
-        while (timer < timeToShow)
+        if (comboMaxScore != 0)
         {
-            tempTotalScore += (int)Mathf.SmoothStep(0, comboMaxScore, timer / timeToShow);
-            multiMax.text = Mathf.SmoothStep(0, comboMaxScore, timer / timeToShow).ToString();
-            timer += Time.deltaTime;
-            yield return null;
+            while (timer < timeToShow)
+            {
+                tempTotalScore += comboMaxScore;
+                multiMax.text = ((int)Mathf.Lerp(0, comboMaxScore, timer / timeToShow)).ToString();
+                timer += Time.deltaTime;
+                yield return null;
+            }
+        }
+    }
+
+    public IEnumerator TotalScore()
+    {
+        float timer = 0;
+        if (tempTotalScore != 0)
+        {
+            while (timer < timeToShow*2)
+            {
+                multiMax.text = ((int)Mathf.Lerp(0, tempTotalScore, timer / timeToShow*2)).ToString();
+                timer += Time.deltaTime;
+                yield return null;
+            }
         }
     }
 
@@ -185,8 +223,8 @@ public class GameOverManager : MonoBehaviour
 
     private void Update()
     {
-        totalScore.text = tempTotalScore.ToString();
-        if (Input.GetButtonDown("Fire1"))
+        totalScore.text = ((int)tempTotalScore).ToString();
+        if (GameOverCanvas.activeInHierarchy && Input.GetButtonDown("Fire1"))
         {
             timeToShow = 0.1f;
         }
