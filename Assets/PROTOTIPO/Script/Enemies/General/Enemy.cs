@@ -212,8 +212,31 @@ public abstract class Enemy : MonoBehaviour
             refManager.spawnRef.StoreEnemy(this.gameObject);
             playSound = true;
         }
-        else
-            Destroy(this.gameObject);
+        else if (dieController == true && tutorialMode == true)
+        {
+            ParticleActivator(this.transform.position);
+            refManager.miniMapRef.DeleteEnemy(this.gameObject);
+            refManager.waveRef.IsWaveFinished();
+            dieController = false;
+            refManager.uicontroller.IncreaseScore((int)scoreValue);
+            refManager.spawnRef.StoreEnemy(this.gameObject);
+            playSound = true;
+            switch (FindObjectOfType<Tutorial>().counter)
+            {
+                case 0:
+                    FindObjectOfType<Tutorial>().nemico1 = null;
+                    FindObjectOfType<Tutorial>().counter++;
+                    break;
+                case 1:
+                    FindObjectOfType<Tutorial>().nemico2 = null;
+                    FindObjectOfType<Tutorial>().counter++;
+                    break;
+                case 2:
+                    FindObjectOfType<Tutorial>().nemico3 = null;
+                    break;
+            }
+    
+        }
         yield return null; 
     }
 

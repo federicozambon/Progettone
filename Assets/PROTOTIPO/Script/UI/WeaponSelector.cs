@@ -12,6 +12,7 @@ public class WeaponSelector : MonoBehaviour {
 
     AssaultRifle assault;
     LaserShotgun shotgun;
+    public bool canSwitch = true;
 
     void Start()
     {
@@ -22,34 +23,37 @@ public class WeaponSelector : MonoBehaviour {
 
     public IEnumerator ChangeWeapon(int weaponNumber)
     {
-        switch (weaponNumber)
+        if (canSwitch)
         {
-            case 1:
-                while (timer < 1)
-                {
-                    timer += Time.deltaTime;
-                    float a = Mathf.Lerp(0, 0.9f, timer);
-                    uiElements.assault.color = new Color(1, 1, 1, a);
-                    uiElements.shotgun.color = new Color(1, 1, 1, 1-a);
-                    yield return null;
-                }
-                assault.Co = null;
-                shotgun.Co = null;
-                timer = 0;
-                break;
-            case 2:
-                while (timer < 1)
-                {
-                    timer += Time.deltaTime;
-                    float a = Mathf.Lerp(0, 0.9f, timer);
-                    uiElements.shotgun.color = new Color(1, 1, 1, a);
-                    uiElements.assault.color = new Color(1, 1, 1, 1 - a);
-                    yield return null;
-                }
-                assault.Co = null;
-                shotgun.Co = null;
-                timer = 0;
-                break;        
+            switch (weaponNumber)
+            {
+                case 1:
+                    while (timer < 1)
+                    {
+                        timer += Time.deltaTime;
+                        float a = Mathf.Lerp(0, 0.9f, timer);
+                        uiElements.assault.color = new Color(1, 1, 1, a);
+                        uiElements.shotgun.color = new Color(1, 1, 1, 1 - a);
+                        yield return null;
+                    }
+                    assault.Co = null;
+                    shotgun.Co = null;
+                    timer = 0;
+                    break;
+                case 2:
+                    while (timer < 1)
+                    {
+                        timer += Time.deltaTime;
+                        float a = Mathf.Lerp(0, 0.9f, timer);
+                        uiElements.shotgun.color = new Color(1, 1, 1, a);
+                        uiElements.assault.color = new Color(1, 1, 1, 1 - a);
+                        yield return null;
+                    }
+                    assault.Co = null;
+                    shotgun.Co = null;
+                    timer = 0;
+                    break;
+            }
         }
     }
 }

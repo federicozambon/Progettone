@@ -73,10 +73,11 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator WaveScore()
     {
-        for (int i = 0; i < refManager.waveRef.currentWaveNumber+2; i++)
+        for (int i = 0; i < refManager.waveRef.currentWaveNumber+1; i++)
         {
             waveScoreScore += 1000 * (i + 1);
         }
+
         float timer = 0;
 
         if (waveScoreScore != 0)
@@ -234,7 +235,10 @@ public class GameOverManager : MonoBehaviour
         }
 
         riprova.interactable = true;
-        FindObjectOfType<Achievement>().SaveScore(tempTotalScore);
+        if (SceneManager.GetActiveScene().name != "Tutorial")
+        {
+            FindObjectOfType<Achievement>().SaveScore(tempTotalScore);
+        }
     }
 
     public void RetryLvl()
@@ -258,7 +262,7 @@ public class GameOverManager : MonoBehaviour
     {
         if (GameOverCanvas.activeInHierarchy && Input.GetButtonDown("Fire1"))
         {
-            timeToShow = 0.1f;
+            timeToShow = 0.001f;
         }
     }
 }

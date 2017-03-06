@@ -20,6 +20,8 @@ public class Tutorial : MonoBehaviour
     Achievement achievement;
     int indexSC;
 
+
+
     bool tutorialMode = true;
 
     void Awake ()
@@ -28,6 +30,8 @@ public class Tutorial : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().name;
         if (currentScene == "Tutorial")
         {
+            FindObjectOfType<RocketLauncher>().canFire = false;
+            FindObjectOfType<WeaponSelector>().canSwitch = false;
             FindObjectOfType<FlyCamManager>().tutorial = true;
             flyElements = FindObjectOfType<FlyCamManager>();
             player = FindObjectOfType<Player>();
@@ -144,6 +148,9 @@ public class Tutorial : MonoBehaviour
         }
     }
 
+    bool showingGameOver;
+    public int counter = 0;
+
     void Update ()
     {
         float h = Input.GetAxisRaw("Horizontal");
@@ -164,7 +171,7 @@ public class Tutorial : MonoBehaviour
             {
                 HideStep();
             }
-            if (step == 3 && (player.rx > 0 || player.ry > 0)) 
+            if (step == 3 && (player.rx > 0.1f || player.ry > 0.1f || player.rx < -0.1f || player.ry < -0.1f)) 
             {
                 HideStep();
                 player.noWeapons = false;
@@ -174,30 +181,32 @@ public class Tutorial : MonoBehaviour
             }
             if (Input.GetButtonDown("Jump") && step == 31)
             {
+                FindObjectOfType<WeaponSelector>().canSwitch = true;
                 HideStep();
                 nemico2.gameObject.SetActive(true);
                 step = 40;
             }
             if (rocket > 0 && step == 41)
             {
+                FindObjectOfType<RocketLauncher>().canFire = true;
                 HideStep();
                 nemico3.gameObject.SetActive(true);
                 step = 50;
             }
-            if (step == 30 && nemico1.gameObject == null)
-            {
-                Debug.Log("nemico uno seccato");
-                NextStep();
-            }
-            if (step == 40 && nemico2.gameObject == null)
+            if (step == 30 && nemico1 == null)
             {
                 NextStep();
             }
-            if (step == 50 && nemico3.gameObject == null)
+            if (step == 40 && nemico2 == null)
+            {
+                NextStep();
+            }
+            if (step == 50 && nemico3 == null)
             {
                 
                 NextStep();
                 uiElements.score = 100000;
+                uiElements.enemyScore = 100000;
                 uiElements.UpdateScore();
                 player.TakeDamage(20);
             }
@@ -208,10 +217,10 @@ public class Tutorial : MonoBehaviour
                 NextStep();
             }*/
 
-            else if (Input.GetButtonDown("Fire1") && step == 55)
+            else if (Input.GetButtonDown("Fire1") && step == 55 && !showingGameOver)
             {
                 HideStep();
-
+                showingGameOver = true;
                 //achievement.tutorialComplete = true;
                 GameObject.FindObjectOfType<GameOverManager>().GameOverStart();
             }
