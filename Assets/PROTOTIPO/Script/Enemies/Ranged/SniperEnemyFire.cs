@@ -32,9 +32,10 @@ public class SniperEnemyFire : MonoBehaviour
         myDamage = myEffect.GetComponent<SniperEnemyBullet>();
     }
 
-    void Start()
+    void OnEnable()
     {
         playerTr = FindObjectOfType<Player>().transform.FindChild("Head");
+        enemyRef.attacking = null;
     }
 
     public IEnumerator Shooting()
