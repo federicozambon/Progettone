@@ -21,7 +21,7 @@ public class PauseManager : MonoBehaviour
     public AudioSource backAudioRef;
     FlyCamManager flyRef;
 
-    bool paused;
+    public bool paused;
     bool audioMode = false;
 
     void Awake()
@@ -40,24 +40,33 @@ public class PauseManager : MonoBehaviour
 
     bool moved = false;
     float timer = 0;
-
+    public float late = 0;
     void Update()
     {
+        if (paused)
+        {
+            late += Time.deltaTime;
+        }
         if ((Input.GetButtonDown("GodMode") || (audioMode == false && paused && Input.GetButtonDown("Cancel")))&& !flyRef.cutScene && playerRef.currentHealth>0)
         {
-
+   
             Debug.Log("qui qui qui");
 
             if (!paused)
             {
+                playerRef.pausePosition = playerRef.transform.position;
+                
+                //playerRef.transform.position = new Vector3(1000, 1000, 1000);
                 PauseActiveMenu();
                 
-                Time.timeScale = 0.001f;
+                Time.timeScale = 0f;
                 paused = true;
                 
             }
             else
             {
+             
+                //playerRef.transform.position = playerRef.pausePosition;
                 CanvasPanel1.SetActive(false);
                 CanvasPanel2.SetActive(false);
                 eventRef.SetSelectedGameObject(null);

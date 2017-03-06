@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
+    public Vector3 pausePosition;
+
     GameObject ammoBox;
     GameObject lifeBox;
     GameObject armorBox;

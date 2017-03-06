@@ -12,6 +12,8 @@ public class Spawner : MonoBehaviour
     public List<GameObject> predatorPool;
     public List<GameObject> titanoPool;
 
+    PauseManager pauseRef;
+
     [System.Serializable]
     public struct SpawnerDataBase
     {
@@ -42,8 +44,14 @@ public class Spawner : MonoBehaviour
 
     public int enemyCount;
 
+    private void Awake()
+    {
+        pauseRef = FindObjectOfType<PauseManager>();
+    }
+
     void Start()
     {
+     
         waveRef = FindObjectOfType<WaveController>();
         arrayList = new List<SpawnerDataBase[]>();
 
@@ -215,8 +223,7 @@ public class Spawner : MonoBehaviour
         foreach (var enemy in arrayList[waveNumber])
         {
             frameToSkip += 1;
-            StartCoroutine(SpawnEnemy(enemy, frameToSkip));
-         
+            StartCoroutine(SpawnEnemy(enemy, frameToSkip));        
         }
         frameToSkip = 0;
     }
@@ -227,10 +234,11 @@ public class Spawner : MonoBehaviour
         {
             for (int i = frameToSkip + 1; i > 0; i--)
             {
-                yield return null;
+                //yield return null;
             }
         }
         yield return new WaitForSeconds(spawnerDB.timerEnemy);
+        //yield return new WaitForSeconds(spawnerDB.timerEnemy);
         GameObject enemyToManage = PickEnemy(spawnerDB.typeEnemy, out enemyToSpawn);
         Debug.Log(enemyToSpawn);
         StartCoroutine(PlaceAndResetEnemy(enemyToManage, spawnerDB.spawnEnemy.transform.position));
