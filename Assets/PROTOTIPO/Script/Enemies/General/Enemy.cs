@@ -74,6 +74,14 @@ public abstract class Enemy : MonoBehaviour
 
     void OnEnable()
     {
+        float attCoef = Mathf.Pow(1.1f, refManager.waveRef.currentWaveNumber + 1);
+        float pointCoef = Mathf.Pow(1.1f, refManager.waveRef.currentWaveNumber + 1);
+        float hpCoef = Mathf.Pow(1.1f, refManager.waveRef.currentWaveNumber + 1);
+        damage = (startDamage * attCoef) / 2;
+        scoreValue = (startScore * pointCoef) / 2;
+        hPoints = (startHPoints * hpCoef) / 2;
+        remainHPoints = hPoints;
+
         refManager.miniMapRef.NewEnemy(this.gameObject);
         if (!this.navRef.isOnNavMesh)
         {
@@ -92,11 +100,7 @@ public abstract class Enemy : MonoBehaviour
 
     void Start()
     {
-        float coef = Mathf.Pow(1.1f, refManager.waveRef.currentWaveNumber + 1);
-        damage = (startDamage * coef)/2;
-        scoreValue = (startScore * coef)/2;
-        hPoints = (startHPoints * coef)/2;
-        remainHPoints = hPoints;
+     
     }
 
 
