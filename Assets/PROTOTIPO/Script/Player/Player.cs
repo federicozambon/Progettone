@@ -676,6 +676,15 @@ public class Player : MonoBehaviour
         combat = null;
     }
 
+    public Coroutine Co;
+
+    public IEnumerator DefrostPlayer()
+    {
+        yield return new WaitForSeconds(5);
+        speed = 6;
+        Co = null;
+    }
+
     public void TakeDamage(float damageTaken)
     {
         if (godMode == false)

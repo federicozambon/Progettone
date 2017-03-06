@@ -15,15 +15,6 @@ public class IceTrap : Trap
         player = FindObjectOfType<Player>();      
     }
 
-    Coroutine Co;
-
-    IEnumerator DefrostPlayer()
-    {
-        yield return new WaitForSeconds(5);
-        player.speed = 6;
-        Co = null;
-    }
-
 	public override IEnumerator ActivateTrap()
     {
         activeTrap = false;
@@ -34,14 +25,14 @@ public class IceTrap : Trap
             {
                 colliders[i].GetComponent<Player>().speed = 3;
 
-                if (Co == null)
+                if (player.Co == null)
                 {
-                    Co = StartCoroutine(DefrostPlayer());
+                    player.Co = StartCoroutine(player.DefrostPlayer());
                 }
                 else
                 {
-                    StopCoroutine(Co);
-                    Co = StartCoroutine(DefrostPlayer());
+                    StopCoroutine(player.Co);
+                    player.Co = StartCoroutine(player.DefrostPlayer());
                 }
         
                 playerTrapped = true;
