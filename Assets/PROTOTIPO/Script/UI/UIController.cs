@@ -153,8 +153,12 @@ public class UIController : MonoBehaviour
             indexScore = 1;
             StartCoroutine(SbloccoDialoghi(indexScore));
         }
+        else if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[0] && indexScore == 0 && achievement.achievementMontacarichi_1 != 0)
+        {
+            indexScore = 1;
+        }
 
-        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[1] && indexScore == 1 && achievement.achievementMontacarichi_2 == 0)
+            if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[1] && indexScore == 1 && achievement.achievementMontacarichi_2 == 0)
         {
             achievement.achievementMontacarichi_2 = 1;
             PlayerPrefs.SetInt("achievementMontacarichi_2", achievement.achievementMontacarichi_2);
@@ -163,8 +167,12 @@ public class UIController : MonoBehaviour
             indexScore = 2;
             StartCoroutine(SbloccoDialoghi(indexScore));
         }
+        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[1] && indexScore == 1 && achievement.achievementMontacarichi_2 != 0)
+        {
+            indexScore = 2;
+        }
 
-        if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[2] && indexScore == 2 && achievement.achievementMontacarichi_3 == 0)
+            if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[2] && indexScore == 2 && achievement.achievementMontacarichi_3 == 0)
         {
             achievement.achievementMontacarichi_3 = 1;
             PlayerPrefs.SetInt("achievementMontacarichi_3", achievement.achievementMontacarichi_3);
@@ -173,8 +181,12 @@ public class UIController : MonoBehaviour
             indexScore = 3;
             StartCoroutine(SbloccoDialoghi(indexScore));
         }
+        else if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[2] && indexScore == 2 && achievement.achievementMontacarichi_3 != 0)
+        {
+            indexScore = 3;
+        }
 
-        #endregion
+            #endregion
 
             if (achievement)
             {
@@ -199,8 +211,12 @@ public class UIController : MonoBehaviour
                 indexScore = 1;
                 StartCoroutine(SbloccoDialoghi(indexScore));
             }
+            if (currentScene == "Discarica" && score >= scoreDiscarica[0] && indexScore == 0 && achievement.achievementDiscarica_1 != 0)
+            {
+                indexScore = 1;
+            }
 
-            if (currentScene == "Discarica" && score >= scoreDiscarica[1] && indexScore == 1 && achievement.achievementDiscarica_2 == 0)
+                if (currentScene == "Discarica" && score >= scoreDiscarica[1] && indexScore == 1 && achievement.achievementDiscarica_2 == 0)
             {
                 achievement.achievementDiscarica_2 = 1;
                 PlayerPrefs.SetInt("achievementDiscarica_2", achievement.achievementDiscarica_2);
@@ -209,8 +225,12 @@ public class UIController : MonoBehaviour
                 indexScore = 2;
                 StartCoroutine(SbloccoDialoghi(indexScore));
             }
+            if (currentScene == "Discarica" && score >= scoreDiscarica[1] && indexScore == 1 && achievement.achievementDiscarica_2 != 0)
+            {
+                indexScore = 2;
+            }
 
-            if (currentScene == "Discarica" && score >= scoreDiscarica[2] && indexScore == 2 && achievement.achievementDiscarica_3 == 0)
+                if (currentScene == "Discarica" && score >= scoreDiscarica[2] && indexScore == 2 && achievement.achievementDiscarica_3 == 0)
             {
                 achievement.achievementDiscarica_3 = 1;
                 PlayerPrefs.SetInt("achievementDiscarica_3", achievement.achievementDiscarica_3);
@@ -219,11 +239,15 @@ public class UIController : MonoBehaviour
                 indexScore = 3;
                 StartCoroutine(SbloccoDialoghi(indexScore));
             }
+            else if (currentScene == "Discarica" && score >= scoreDiscarica[2] && indexScore == 2 && achievement.achievementDiscarica_3 != 0)
+            {
+                indexScore = 3;
+            }
 
-            #endregion
+                #endregion
 
-            #region SbloccoMontacarichi2
-            if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[3] && checkLivello == true && achievement.sbloccoAscensore == 0)
+                #region SbloccoMontacarichi2
+                if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[3] && checkLivello == true && achievement.sbloccoAscensore == 0)
             {
                 achievement.sbloccoAscensore = 1;
                 PlayerPrefs.SetInt("sbloccoAscensore", achievement.sbloccoAscensore);
@@ -242,8 +266,12 @@ public class UIController : MonoBehaviour
                 indexScore = 1;
                 StartCoroutine(SbloccoDialoghi(indexScore));
             }
+            else if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[0] && indexScore == 0 && achievement.achievementAscensore_1 != 0)
+            {
+                indexScore = 1;
+            }
 
-            if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[1] && indexScore == 1 && achievement.achievementAscensore_2 == 0)
+                if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[1] && indexScore == 1 && achievement.achievementAscensore_2 == 0)
             {
                 achievement.achievementAscensore_2 = 1;
                 PlayerPrefs.SetInt("achievementAscensore_2", achievement.achievementAscensore_2);
@@ -252,8 +280,12 @@ public class UIController : MonoBehaviour
                 indexScore = 2;
                 StartCoroutine(SbloccoDialoghi(indexScore));
             }
+            else if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[1] && indexScore == 1 && achievement.achievementAscensore_2 != 0)
+            {
+                indexScore = 2;
+            }
 
-            if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[2] && indexScore == 2 && achievement.achievementAscensore_3 == 0)
+                if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[2] && indexScore == 2 && achievement.achievementAscensore_3 == 0)
             {
                 achievement.achievementAscensore_3 = 1;
                 PlayerPrefs.SetInt("achievementAscensore_3", achievement.achievementAscensore_3);
@@ -262,11 +294,15 @@ public class UIController : MonoBehaviour
                 indexScore = 3;
                 StartCoroutine(SbloccoDialoghi(indexScore));
             }
+            else if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[2] && indexScore == 2 && achievement.achievementAscensore_3 != 0)
+            {
+                indexScore = 3;
+            }
 
-            #endregion
+                #endregion
 
-            #region SbloccoTetto
-            if (currentScene == "Tetto" && score >= scoreTetto[3] && checkLivello == true && achievement.sbloccoTetto == 0)
+                #region SbloccoTetto
+                if (currentScene == "Tetto" && score >= scoreTetto[3] && checkLivello == true && achievement.sbloccoTetto == 0)
             {
                 achievement.sbloccoTetto = 1;
                 PlayerPrefs.SetInt("sbloccoTetto", achievement.sbloccoTetto);
@@ -285,8 +321,12 @@ public class UIController : MonoBehaviour
                 indexScore = 1;
                 StartCoroutine(SbloccoDialoghi(indexScore));
             }
+            else if (currentScene == "Tetto" && score >= scoreTetto[0] && indexScore == 0 && achievement.achievementTetto_1 != 0)
+            {
+                indexScore = 1;
+            }
 
-            if (currentScene == "Tetto" && score >= scoreTetto[1] && indexScore == 1 && achievement.achievementTetto_2 == 0)
+                if (currentScene == "Tetto" && score >= scoreTetto[1] && indexScore == 1 && achievement.achievementTetto_2 == 0)
             {
                 achievement.achievementTetto_2 = 1;
                 PlayerPrefs.SetInt("achievementTetto_2", achievement.achievementTetto_2);
@@ -295,8 +335,12 @@ public class UIController : MonoBehaviour
                 indexScore = 2;
                 StartCoroutine(SbloccoDialoghi(indexScore));
             }
+            else if (currentScene == "Tetto" && score >= scoreTetto[1] && indexScore == 1 && achievement.achievementTetto_2 != 0)
+            {
+                indexScore = 2;
+            }
 
-            if (currentScene == "Tetto" && score >= scoreTetto[2] && indexScore == 2 && achievement.achievementTetto_3 == 0)
+                if (currentScene == "Tetto" && score >= scoreTetto[2] && indexScore == 2 && achievement.achievementTetto_3 == 0)
             {
                 achievement.achievementTetto_3 = 1;
                 PlayerPrefs.SetInt("achievementTetto_3", achievement.achievementTetto_3);
@@ -305,10 +349,14 @@ public class UIController : MonoBehaviour
                 indexScore = 3;
                 StartCoroutine(SbloccoDialoghi(indexScore));
             }
+            else if (currentScene == "Tetto" && score >= scoreTetto[2] && indexScore == 2 && achievement.achievementTetto_3 != 0)
+            {
+                indexScore = 3;
+            }
 
                 #endregion
 
-        }
+            }
     }
 
     IEnumerator SbloccoDialoghi(int step)

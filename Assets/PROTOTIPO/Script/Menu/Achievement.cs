@@ -95,13 +95,13 @@ public class Achievement : MonoBehaviour
             PlayerPrefs.SetInt("achievementDiscarica_2", achievementDiscarica_2);
             PlayerPrefs.SetInt("achievementDiscarica_3", achievementDiscarica_3);
 
-            PlayerPrefs.SetInt("achievementDiscarica_1", achievementAscensore_1);
-            PlayerPrefs.SetInt("achievementDiscarica_2", achievementAscensore_2);
-            PlayerPrefs.SetInt("achievementDiscarica_3", achievementAscensore_3);
+            PlayerPrefs.SetInt("achievementAscensore_1", achievementAscensore_1);
+            PlayerPrefs.SetInt("achievementAscensore_2", achievementAscensore_2);
+            PlayerPrefs.SetInt("achievementAscensore_3", achievementAscensore_3);
 
-            PlayerPrefs.SetInt("achievementDiscarica_1", achievementTetto_1);
-            PlayerPrefs.SetInt("achievementDiscarica_2", achievementTetto_2);
-            PlayerPrefs.SetInt("achievementDiscarica_3", achievementTetto_3);
+            PlayerPrefs.SetInt("achievementTetto_1", achievementTetto_1);
+            PlayerPrefs.SetInt("achievementTetto_2", achievementTetto_2);
+            PlayerPrefs.SetInt("achievementTetto_3", achievementTetto_3);
 
             PlayerPrefs.Save();
         }
