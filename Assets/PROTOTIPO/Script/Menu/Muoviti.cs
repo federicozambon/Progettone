@@ -527,26 +527,30 @@ public class Muoviti : MonoBehaviour
     public void AchievementDiscarica()
 
     {
-        for (int i = 0; i < 3; i++)
-        {
-            if (i == 0)
-                ButtonsDiscarica[0].transform.GetChild(0).GetComponent<Text>().text = "Inizio";
-            else if (i == 1)
-                ButtonsDiscarica[1].transform.GetChild(0).GetComponent<Text>().text = "Intermezzo";
-            else if (i == 2)
-                ButtonsDiscarica[2].transform.GetChild(0).GetComponent<Text>().text = "Fine";
-
+        
+            for (int i = 0; i < 3; i++)
+            {
             if (achievement.discarica >= ScoreDiscarica[i])
             {
-                ColorBlock cb = ButtonsDiscarica[i].colors;
-                cb.normalColor = Color.white;
-                ButtonsDiscarica[i].colors = cb;
-                ColorBlock cb1 = ButtonsDiscarica[i].colors;
-                cb1.highlightedColor = new Color(0, 33, 255, 255);
-                ButtonsDiscarica[i].colors = cb1;
-            }
-        }
+                if (i == 0)
+                    ButtonsDiscarica[0].transform.GetChild(0).GetComponent<Text>().text = "Inizio";
+                else if (i == 1)
+                    ButtonsDiscarica[1].transform.GetChild(0).GetComponent<Text>().text = "Intermezzo";
+                else if (i == 2)
+                    ButtonsDiscarica[2].transform.GetChild(0).GetComponent<Text>().text = "Fine";
 
+                if (achievement.discarica >= ScoreDiscarica[i])
+                {
+                    ColorBlock cb = ButtonsDiscarica[i].colors;
+                    cb.normalColor = Color.white;
+                    ButtonsDiscarica[i].colors = cb;
+                    ColorBlock cb1 = ButtonsDiscarica[i].colors;
+                    cb1.highlightedColor = new Color(0, 33, 255, 255);
+                    ButtonsDiscarica[i].colors = cb1;
+                }
+            }
+            }
+        
 
         CurrentPos = AchivDiscarica;
         GameObject myEventSystem = GameObject.Find("EventSystem");
