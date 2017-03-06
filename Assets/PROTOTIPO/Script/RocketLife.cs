@@ -56,9 +56,11 @@ public class RocketLife : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
         foreach (var enemy in enemies)
         {
-            enemy.TakeDamage(damagePerShot);
-        }
-        
+            if (enemy.gameObject.activeInHierarchy)
+            {
+                enemy.TakeDamage(damagePerShot);
+            }
+        }      
         yield return new WaitForSeconds(0.5f);
         Destroy(this.gameObject);
     }

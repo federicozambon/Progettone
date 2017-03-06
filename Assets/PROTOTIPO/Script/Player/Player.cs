@@ -89,6 +89,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+     
         textMesh = transform.FindChild("Text").GetComponent<TextMesh>();
         assaultRef = FindObjectOfType<AssaultRifle>();
         shotgunRef = FindObjectOfType<LaserShotgun>();
@@ -113,6 +114,7 @@ public class Player : MonoBehaviour
         armorBoxTr = armorBox.transform.FindChild("Pivot");
         lifeBoxTr = lifeBox.transform.FindChild("Pivot");
         ammoBoxTr = ammoBox.transform.FindChild("Pivot");
+        deniedBox = lifeBox.GetComponent<AudioSource>();
 
         currentScene = SceneManager.GetActiveScene().name;
     }
@@ -131,6 +133,8 @@ public class Player : MonoBehaviour
 
     int damageUp = 0;
     int armorUp = 0;
+
+    public AudioSource deniedBox;
 
     void UseBox(GameObject nearBox)
     {
@@ -158,6 +162,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
+                    deniedBox.Play();
                     nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
                 }
             }
@@ -191,6 +196,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
+                    deniedBox.Play();
                     nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
                 }
             }
@@ -224,6 +230,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
+                    deniedBox.Play();
                     nearBox.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
                 }
 
@@ -259,6 +266,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
+                    deniedBox.Play();
                     nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
                 }
             }
