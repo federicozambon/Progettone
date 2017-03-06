@@ -17,8 +17,9 @@ public class MeleeExplosiveEnemy : Enemy
         this.gameObject.SetActive(false);
     }
 
-    void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         refManager.miniMapRef.NewEnemy(this.gameObject);
         isAttacking = false;
         isExploded = false;

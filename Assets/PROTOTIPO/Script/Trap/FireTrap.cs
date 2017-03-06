@@ -72,6 +72,7 @@ public class FireTrap: Trap
             }
         }
         yield return new WaitForSeconds(timeToDisable);
+        Destroy(this.transform.parent.gameObject);
     }
 
     Coroutine Co;
@@ -96,10 +97,8 @@ public class FireTrap: Trap
             if (Co == null)
             {
                 Co = StartCoroutine(MiniTrap());
-            }
-      
-
-            Destroy(this.transform.parent.gameObject);
+            }     
+        
         }   
 
         if (resetTrap)
