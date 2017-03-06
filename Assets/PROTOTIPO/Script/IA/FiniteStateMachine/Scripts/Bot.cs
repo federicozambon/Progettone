@@ -311,15 +311,15 @@ namespace FSM
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                             }
-                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) < 20f)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) < 10f)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeA);
                             }
-                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 15f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 30 && canSeePlayer)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 10f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 30 && canSeePlayer)
                             {
                                 sm.HandleInput(Inputs.Attack);
                             }
-                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 15f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 30 && !canSeePlayer)
+                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 10f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 30 && !canSeePlayer)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                             }

@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     public int rocketAmmo = 10;
     public float damageModifier = 1;
 
-    public float[] costModifier = new float[4];
+    public float[] costModifier = new float[4] { 1, 1, 1, 1 };
     public int[] baseCost = new int[4];
 
     public Ray occlusionRay;
@@ -136,18 +136,19 @@ public class Player : MonoBehaviour
 
     public AudioSource deniedBox;
 
+
     void UseBox(GameObject nearBox)
     {
         if (nearBox.tag == "Health_PickUp")
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                if (refManager.uicontroller.score >= baseCost[0] * costModifier[0] && currentHealth != maxHealth)
+                if (refManager.uicontroller.score >= baseCost[0] * Mathf.Pow(1.2f, costModifier[0])/2 && currentHealth != maxHealth)
                 {
                     aController.playSound(AudioContainer.Self.Health_PickUp);
-                    refManager.uicontroller.score -= (int)(baseCost[0] * costModifier[0]);
-                    refManager.uicontroller.spentScore += (int)(baseCost[0] * costModifier[0]);
-                    costModifier[0] += 0.5f;
+                    refManager.uicontroller.score -= (int)(baseCost[0] * Mathf.Pow(1.2f, costModifier[0]) / 2);
+                    refManager.uicontroller.spentScore += (int)(baseCost[0] * Mathf.Pow(1.2f, costModifier[0]) / 2);
+                    costModifier[0] += 1;
                     nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[0] * costModifier[0] + " SP";
                     refManager.uicontroller.UpdateScore();
                     currentHealth = maxHealth;
@@ -173,11 +174,11 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
 
-                if (refManager.uicontroller.score >= baseCost[1] * costModifier[1] && rocketAmmo != 10)
+                if (refManager.uicontroller.score >= baseCost[1] * Mathf.Pow(1.2f, costModifier[1]) / 2 && rocketAmmo != 10)
                 {
                     aController.playSound(AudioContainer.Self.Ammo_PickUp);
-                    refManager.uicontroller.score -= (int)(baseCost[1] * costModifier[1]);
-                    refManager.uicontroller.spentScore += (int)(baseCost[1] * costModifier[1]);
+                    refManager.uicontroller.score -= (int)(baseCost[1] * Mathf.Pow(1.2f, costModifier[1]) / 2);
+                    refManager.uicontroller.spentScore += (int)(baseCost[1] * Mathf.Pow(1.2f, costModifier[1]) / 2);
                     costModifier[1] += 0.5f;
                     nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[1] * costModifier[1] + " SP";
                     refManager.uicontroller.UpdateScore();
@@ -206,7 +207,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                if (refManager.uicontroller.score >= baseCost[2] * costModifier[2])
+                if (refManager.uicontroller.score >= baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) / 2)
                 {
 
                     aController.playSound(AudioContainer.Self.Weapon_PickUp);
@@ -214,10 +215,10 @@ public class Player : MonoBehaviour
                     assaultRef.damagePerShot += (int)(assaultRef.startingDamage * 0.25f);
                     shotgunRef.damagePerShot += (int)(shotgunRef.startingDamage * 0.25f);
                     refManager.uicontroller.UpdateWeaponUpgrade(25);
-                    refManager.uicontroller.score -= (int)(baseCost[2] * costModifier[2]);
-                    refManager.uicontroller.spentScore += (int)(baseCost[2] * costModifier[2]);
+                    refManager.uicontroller.score -= (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) / 2);
+                    refManager.uicontroller.spentScore += (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) / 2);
                     costModifier[2] += 0.5f;
-                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[2] * costModifier[2] + " SP";
+                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) / 2) + " SP";
                     refManager.uicontroller.UpdateScore();
                     damageUp += 25;
                     refManager.uicontroller.UpdateWeaponUpgrade(damageUp);
@@ -242,11 +243,11 @@ public class Player : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                if (refManager.uicontroller.score >= baseCost[3] * costModifier[3])
+                if (refManager.uicontroller.score >= baseCost[3] * Mathf.Pow(1.2f, costModifier[3]) / 2)
                 {
                     aController.playSound(AudioContainer.Self.Armor_PickUp);
-                    refManager.uicontroller.score -= (int)(baseCost[3] * costModifier[3]);
-                    refManager.uicontroller.spentScore += (int)(baseCost[3] * costModifier[3]);
+                    refManager.uicontroller.score -= (int)(baseCost[3] * Mathf.Pow(1.2f, costModifier[3]) / 2);
+                    refManager.uicontroller.spentScore += (int)(baseCost[3] * Mathf.Pow(1.2f, costModifier[3]) / 2);
                     costModifier[3] += 0.5f;
                     nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[3] * costModifier[3] + " SP";
                     refManager.uicontroller.UpdateScore();
@@ -281,7 +282,7 @@ public class Player : MonoBehaviour
         {
             refManager.uicontroller.ShowPrompt();
             nearBox.GetComponent<PickUp>().Show();
-            nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[0] * costModifier[0] + " SP";
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[0] * Mathf.Pow(1.2f, costModifier[0]) / 2 + " SP";
             nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
         }
 
@@ -289,7 +290,7 @@ public class Player : MonoBehaviour
         {
             refManager.uicontroller.ShowPrompt();
             nearBox.GetComponent<PickUp>().Show();
-            nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[1] * costModifier[1] + " SP";
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[1] * Mathf.Pow(1.2f, costModifier[1]) / 2 + " SP";
             nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
         }
 
@@ -297,7 +298,7 @@ public class Player : MonoBehaviour
         {
             refManager.uicontroller.ShowPrompt();
             nearBox.GetComponent<PickUp>().Show();
-            nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[2] * costModifier[2] + " SP";
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) / 2 + " SP";
             nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.white;
         }
 
@@ -305,7 +306,7 @@ public class Player : MonoBehaviour
         {
             refManager.uicontroller.ShowPrompt();
             nearBox.GetComponent<PickUp>().Show();
-            nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[3] * costModifier[3] + " SP";
+            nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = baseCost[3] * Mathf.Pow(1.2f, costModifier[3]) / 2 + " SP";
         }
     }
 

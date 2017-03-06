@@ -11,7 +11,7 @@ public class bugtitanobullet : MonoBehaviour
 
     private void Awake()
     {
-        refManager = GameObject.Find("Reference").GetComponent<ReferenceManager>();
+        refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
     }
 
     void OnTriggerEnter(Collider coll)
