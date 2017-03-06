@@ -688,7 +688,14 @@ public class Player : MonoBehaviour
 
     public IEnumerator DefrostPlayer()
     {
-        yield return new WaitForSeconds(5);
+        float timer = 0;
+        while (timer < 5)
+        {
+            Debug.Log("waiting");
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        Debug.Log("defrosted");
         speed = 6;
         Co = null;
     }
