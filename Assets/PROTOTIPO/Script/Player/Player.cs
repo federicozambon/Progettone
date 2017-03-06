@@ -218,7 +218,7 @@ public class Player : MonoBehaviour
                         damageModifier += 0.25f;
                         assaultRef.damagePerShot += (int)(assaultRef.startingDamage * 0.25f);
                         shotgunRef.damagePerShot += (int)(shotgunRef.startingDamage * 0.25f);
-                        shotgunRef.damagePerShot += (int)(rocke.startingDamage * 0.25f);
+                        rocketRef.damagePerShot += (int)(rocketRef.startingDamage * 0.25f);
                         refManager.uicontroller.UpdateWeaponUpgrade(25);
                         refManager.uicontroller.score -= (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) * 2);
                         refManager.uicontroller.spentScore += (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) * 2);
