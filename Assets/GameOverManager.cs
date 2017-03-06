@@ -214,6 +214,11 @@ public class GameOverManager : MonoBehaviour
             (SceneManager.GetActiveScene().name == "Montacarichi2" && PlayerPrefs.GetInt("sbloccoTetto") != 0))
         {
             next.interactable = true;
+            next.GetComponentInChildren<Text>().text = "Nuovo Livello";
+        }
+        else
+        {
+            next.GetComponentInChildren<Text>().text = "Livello Bloccato";
         }
         if (SceneManager.GetActiveScene().name == "Tetto")
         {
