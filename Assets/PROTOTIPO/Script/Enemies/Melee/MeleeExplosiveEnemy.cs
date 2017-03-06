@@ -30,24 +30,12 @@ public class MeleeExplosiveEnemy : Enemy
     public bool isAttacking = false;
     bool isExploded;
 
+
     public void StartAttack()
     {
-        StartCoroutine(ChargeAttack());    
         isAttacking = true;     
     }
 
-    IEnumerator ChargeAttack()
-    {
-        yield return new WaitForSecondsRealtime(0.1f);
-        if (isAttacking)
-        {
-            StartCoroutine(ChargeAttack());
-        }
-        else
-        {
-            StopCoroutine(ChargeAttack());
-        }
-    }
 
     public Transform transformTr;
     Transform myParticle;
@@ -77,6 +65,10 @@ public class MeleeExplosiveEnemy : Enemy
 
     public void Update()
     {
+        if (timer> 0.4f)
+        {
+            Attack();
+        }
         animRef.SetFloat("Speed", navRef.velocity.magnitude);
 
         if (isAttacking)
@@ -87,10 +79,6 @@ public class MeleeExplosiveEnemy : Enemy
         else
         {
             animRef.SetBool("Attack", false);
-        }
-        if (timer >= attackTimer)
-        {
-            Attack();
         }
     }
 }
