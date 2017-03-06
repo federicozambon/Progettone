@@ -59,7 +59,7 @@ public class PauseManager : MonoBehaviour
                 //playerRef.transform.position = new Vector3(1000, 1000, 1000);
                 PauseActiveMenu();
                 
-                Time.timeScale = 0f;
+                Time.timeScale = 0.001f;
                 paused = true;
                 
             }

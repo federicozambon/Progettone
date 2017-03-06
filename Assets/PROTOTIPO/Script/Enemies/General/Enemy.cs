@@ -155,7 +155,7 @@ public abstract class Enemy : MonoBehaviour
        
             if (remainHPoints <= 0)
             {
-                StartCoroutine("Die");
+                Die();
                 if (playSound == true && myDie != null)
                 {
                     playSound = false;
@@ -194,7 +194,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    virtual public IEnumerator Die()
+    virtual public void Die()
     {
         ResetCombatText();
         if (dieController == true && tutorialMode == false)
@@ -232,7 +232,6 @@ public abstract class Enemy : MonoBehaviour
             }
     
         }
-        yield return null; 
     }
 
     public void SpawnMedikit()
