@@ -17,10 +17,10 @@ public class SniperEnemy : Enemy
         }
     }
 
-    public override IEnumerator Die()
+    public override void Die()
     {
         //poolP.SetActive(false);
-        return base.Die();
+        base.Die();
     }
 
     void Update()

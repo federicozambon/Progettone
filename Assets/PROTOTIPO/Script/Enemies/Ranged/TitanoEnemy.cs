@@ -16,9 +16,9 @@ public class TitanoEnemy : Enemy
         fireRef = GetComponent<TitanoEnemyFire>();
     }
 
-    public override IEnumerator Die()
+    public override void Die()
     {
-        return base.Die();
+        base.Die();
     }
 
     public override void Attack()

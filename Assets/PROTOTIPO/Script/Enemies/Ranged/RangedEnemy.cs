@@ -14,10 +14,10 @@ public class RangedEnemy : Enemy
         remainHPoints = hPoints;
     }
 
-    public override IEnumerator Die()
+    public override void Die()
     {
         rangedFireRef.isShooting = false;
-        return base.Die();
+        base.Die();
     }
 
     public override void Attack()
