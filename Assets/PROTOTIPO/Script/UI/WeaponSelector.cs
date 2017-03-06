@@ -21,27 +21,19 @@ public class WeaponSelector : MonoBehaviour {
         shotgun = FindObjectOfType<LaserShotgun>();
     }
 
-    public IEnumerator ChangeWeapon(int weaponNumber)
+    public void ChangeWeapon(int weaponNumber)
     {
         if (canSwitch)
         {
-            switch (weaponNumber)
+            if (weaponNumber == 1)
             {
-                case 1:
-                    { 
-                        uiElements.assault.color = new Color(1, 1, 1, 1);
-                        uiElements.shotgun.color = new Color(1, 1, 1, 0);
-                        yield return null;
-                    }
-                    break;
-                case 2:
-                    while (timer < 0.1f)
-                    {
-                        uiElements.shotgun.color = new Color(1, 1, 1, 1);
-                        uiElements.assault.color = new Color(1, 1, 1, 0);
-                        yield return null;
-                    }
-                    break;
+                uiElements.assault.color = new Color(1, 1, 1, 1);
+                uiElements.shotgun.color = new Color(1, 1, 1, 0.2f);
+            }
+            else
+            {
+                uiElements.shotgun.color = new Color(1, 1, 1, 1);
+                uiElements.assault.color = new Color(1, 1, 1, 0.2f);
             }
         }
     }
