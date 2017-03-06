@@ -13,7 +13,7 @@ public class MeleeExplosiveEnemy : Enemy
         suicidePool = GameObject.Find("ExplosiveFuriaParticlePool");
         id = transform.GetSiblingIndex();
         myParticle = suicidePool.transform.GetChild(id);
-        myEffect = myParticle.GetComponentsInChildren<EffectSettings>(true)[0];
+        myEffect = myParticle.gameObject;
         this.gameObject.SetActive(false);
     }
 
@@ -48,11 +48,12 @@ public class MeleeExplosiveEnemy : Enemy
     public Transform transformTr;
     Transform myParticle;
     int id;
-    EffectSettings myEffect;
+    GameObject myEffect;
 
     public void SuicideParticleActivator(Vector3 position)
     {
-        myEffect.transform.position = transform.position;
+        Debug.Log(this.transform.position);
+        myEffect.transform.position = position;
         myEffect.gameObject.SetActive(true);
     }
 
