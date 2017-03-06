@@ -135,12 +135,18 @@ public class UIController : MonoBehaviour
 
         if (achievement)
         {
+<<<<<<< HEAD
             #region SbloccoMontacarichi1
             if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[3] && checkLivello == true && achievement.sbloccoMontacarichi == 0)
             {
                 achievement.sbloccoMontacarichi = 1;
                 PlayerPrefs.SetInt("sbloccoMontacarichi", achievement.sbloccoMontacarichi);
                 PlayerPrefs.Save();
+=======
+            achievement.sbloccoMontacarichi = 1;
+            PlayerPrefs.SetInt("sbloccoMontacarichiUI", achievement.sbloccoMontacarichi);
+            PlayerPrefs.Save();
+>>>>>>> 61521109ad5b545e36c7c9eff7ed736d80627e2f
 
                 checkLivello = false;
                 StartCoroutine(SbloccoLivelli());
@@ -195,7 +201,7 @@ public class UIController : MonoBehaviour
             if (currentScene == "Discarica" && score >= scoreDiscarica[3] && checkLivello == true && achievement.sbloccoDiscarica == 0)
             {
                 achievement.sbloccoDiscarica = 1;
-                PlayerPrefs.SetInt("sbloccoDiscarica", achievement.sbloccoDiscarica);
+                PlayerPrefs.SetInt("sbloccoDiscaricaUI", achievement.sbloccoDiscarica);
                 PlayerPrefs.Save();
 
                 checkLivello = false;
@@ -250,7 +256,7 @@ public class UIController : MonoBehaviour
             if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[3] && checkLivello == true && achievement.sbloccoAscensore == 0)
             {
                 achievement.sbloccoAscensore = 1;
-                PlayerPrefs.SetInt("sbloccoAscensore", achievement.sbloccoAscensore);
+                PlayerPrefs.SetInt("sbloccoAscensoreUI", achievement.sbloccoAscensore);
                 PlayerPrefs.Save();
 
                 checkLivello = false;
@@ -305,7 +311,7 @@ public class UIController : MonoBehaviour
             if (currentScene == "Tetto" && score >= scoreTetto[3] && checkLivello == true && achievement.sbloccoTetto == 0)
             {
                 achievement.sbloccoTetto = 1;
-                PlayerPrefs.SetInt("sbloccoTetto", achievement.sbloccoTetto);
+                PlayerPrefs.SetInt("sbloccoTettoUI", achievement.sbloccoTetto);
                 PlayerPrefs.Save();
 
                 checkLivello = false;
