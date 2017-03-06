@@ -11,6 +11,8 @@ public class RocketLauncher : Weapon
     private bool shoot = false;
     public bool startGame = false;
     LineRenderer lineRef;
+    public int startingDamage = 150;
+
   
     public float speed = 10;
     
@@ -20,6 +22,7 @@ public class RocketLauncher : Weapon
 
     private void Awake()
     {
+        damagePerShot = startingDamage;
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
         lineRef = GetComponent<LineRenderer>();
     }
@@ -33,6 +36,7 @@ public class RocketLauncher : Weapon
     public void Shooting()
     {  
         GameObject newBullet = (GameObject)Instantiate(projectile, this.transform.position, Quaternion.identity);
+        newBullet.GetComponent<RocketLife>().damagePerShot = damagePerShot;
         newBullet.transform.forward = weapon.transform.forward;
         StartCoroutine(GunShotSound());
     }

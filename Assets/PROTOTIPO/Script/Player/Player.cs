@@ -83,9 +83,10 @@ public class Player : MonoBehaviour
 
     AssaultRifle assaultRef;
     LaserShotgun shotgunRef;
+    RocketLauncher rocketRef;
 
     string currentScene;
-    
+
 
     void Awake()
     {
@@ -93,6 +94,7 @@ public class Player : MonoBehaviour
         textMesh = transform.FindChild("Text").GetComponent<TextMesh>();
         assaultRef = FindObjectOfType<AssaultRifle>();
         shotgunRef = FindObjectOfType<LaserShotgun>();
+        rocketRef = FindObjectOfType<RocketLauncher>();
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
         anim = GetComponentInChildren<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
@@ -139,136 +141,140 @@ public class Player : MonoBehaviour
 
     void UseBox(GameObject nearBox)
     {
-        if (nearBox.tag == "Health_PickUp")
+        if (currentHealth > 0)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (nearBox.tag == "Health_PickUp")
             {
-                if (refManager.uicontroller.score >= (int)(baseCost[0] * Mathf.Pow(1.2f, costModifier[0])*2) && currentHealth != maxHealth)
+                if (Input.GetButtonDown("Fire1"))
                 {
-                    aController.playSound(AudioContainer.Self.Health_PickUp);
-                    refManager.uicontroller.score -= (int)(baseCost[0] * Mathf.Pow(1.2f, costModifier[0]) * 2);
-                    refManager.uicontroller.spentScore += (int)(baseCost[0] * Mathf.Pow(1.2f, costModifier[0]) * 2);
-                    costModifier[0] += 1;
-                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = (int)(baseCost[0] * Mathf.Pow(1.2f, costModifier[0]) * 2) + " SP";
-                    refManager.uicontroller.UpdateScore();
-                    currentHealth = maxHealth;
-                    refManager.uicontroller.IncreaseLife();
-     
-
-                    if (currentScene == "Tutorial" && tutorialElements.step == 51)
+                    if (refManager.uicontroller.score >= (int)(baseCost[0] * Mathf.Pow(1.2f, costModifier[0]) * 2) && currentHealth != maxHealth)
                     {
-                        tutorialElements.HideStep();
-                        tutorialElements.NextStep();
+                        aController.playSound(AudioContainer.Self.Health_PickUp);
+                        refManager.uicontroller.score -= (int)(baseCost[0] * Mathf.Pow(1.2f, costModifier[0]) * 2);
+                        refManager.uicontroller.spentScore += (int)(baseCost[0] * Mathf.Pow(1.2f, costModifier[0]) * 2);
+                        costModifier[0] += 1;
+                        nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = (int)(baseCost[0] * Mathf.Pow(1.2f, costModifier[0]) * 2) + " SP";
+                        refManager.uicontroller.UpdateScore();
+                        currentHealth = maxHealth;
+                        refManager.uicontroller.IncreaseLife();
+
+
+                        if (currentScene == "Tutorial" && tutorialElements.step == 51)
+                        {
+                            tutorialElements.HideStep();
+                            tutorialElements.NextStep();
+                        }
                     }
-                }
-                else
-                {
-                    deniedBox.Play();
-                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
+                    else
+                    {
+                        deniedBox.Play();
+                        nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
+                    }
                 }
             }
-        }
 
-        if (nearBox.tag == "Ammo_PickUp")
-        {
-            if (Input.GetButtonDown("Fire1"))
+            if (nearBox.tag == "Ammo_PickUp")
             {
-
-                if (refManager.uicontroller.score >= (int)(baseCost[1] * Mathf.Pow(1.2f, costModifier[1]) * 2) && rocketAmmo != 10)
+                if (Input.GetButtonDown("Fire1"))
                 {
-                    aController.playSound(AudioContainer.Self.Ammo_PickUp);
-                    refManager.uicontroller.score -= (int)(baseCost[1] * Mathf.Pow(1.2f, costModifier[1]) * 2);
-                    refManager.uicontroller.spentScore += (int)(baseCost[1] * Mathf.Pow(1.2f, costModifier[1]) * 2);
-                    costModifier[1] += 0.5f;
-                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = (int)(baseCost[1] * Mathf.Pow(1.2f, costModifier[1]) * 2) + " SP";
-                    refManager.uicontroller.UpdateScore();
-                    rocketAmmo += 5;
-                    if (rocketAmmo > 10)
-                    {
-                        rocketAmmo = 10;
-                    }
-                    refManager.uicontroller.ammo.text = rocketAmmo.ToString();
 
-                    if (currentScene == "Tutorial" && tutorialElements.step == 52)
+                    if (refManager.uicontroller.score >= (int)(baseCost[1] * Mathf.Pow(1.2f, costModifier[1]) * 2) && rocketAmmo != 10)
                     {
-                        tutorialElements.HideStep();
-                        tutorialElements.NextStep();
+                        aController.playSound(AudioContainer.Self.Ammo_PickUp);
+                        refManager.uicontroller.score -= (int)(baseCost[1] * Mathf.Pow(1.2f, costModifier[1]) * 2);
+                        refManager.uicontroller.spentScore += (int)(baseCost[1] * Mathf.Pow(1.2f, costModifier[1]) * 2);
+                        costModifier[1] += 0.5f;
+                        nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = (int)(baseCost[1] * Mathf.Pow(1.2f, costModifier[1]) * 2) + " SP";
+                        refManager.uicontroller.UpdateScore();
+                        rocketAmmo += 5;
+                        if (rocketAmmo > 10)
+                        {
+                            rocketAmmo = 10;
+                        }
+                        refManager.uicontroller.ammo.text = rocketAmmo.ToString();
+
+                        if (currentScene == "Tutorial" && tutorialElements.step == 52)
+                        {
+                            tutorialElements.HideStep();
+                            tutorialElements.NextStep();
+                        }
                     }
-                }
-                else
-                {
-                    deniedBox.Play();
-                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
+                    else
+                    {
+                        deniedBox.Play();
+                        nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
+                    }
                 }
             }
-        }
 
-        if (nearBox.tag == "Weapon_PickUp")
-        {
-            if (Input.GetButtonDown("Fire1"))
+            if (nearBox.tag == "Weapon_PickUp")
             {
-                if (refManager.uicontroller.score >= (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) * 2))
+                if (Input.GetButtonDown("Fire1"))
                 {
-
-                    aController.playSound(AudioContainer.Self.Weapon_PickUp);
-                    damageModifier += 0.25f;
-                    assaultRef.damagePerShot += (int)(assaultRef.startingDamage * 0.25f);
-                    shotgunRef.damagePerShot += (int)(shotgunRef.startingDamage * 0.25f);
-                    refManager.uicontroller.UpdateWeaponUpgrade(25);
-                    refManager.uicontroller.score -= (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2])*2);
-                    refManager.uicontroller.spentScore += (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) * 2);
-                    costModifier[2] += 0.5f;
-                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) * 2) + " SP";
-                    refManager.uicontroller.UpdateScore();
-                    damageUp += 25;
-                    refManager.uicontroller.UpdateWeaponUpgrade(damageUp);
-
-                    if (currentScene == "Tutorial" && tutorialElements.step == 54)
+                    if (refManager.uicontroller.score >= (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) * 2))
                     {
-                        tutorialElements.HideStep();
-                        tutorialElements.NextStep();
+
+                        aController.playSound(AudioContainer.Self.Weapon_PickUp);
+                        damageModifier += 0.25f;
+                        assaultRef.damagePerShot += (int)(assaultRef.startingDamage * 0.25f);
+                        shotgunRef.damagePerShot += (int)(shotgunRef.startingDamage * 0.25f);
+                        shotgunRef.damagePerShot += (int)(rocke.startingDamage * 0.25f);
+                        refManager.uicontroller.UpdateWeaponUpgrade(25);
+                        refManager.uicontroller.score -= (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) * 2);
+                        refManager.uicontroller.spentScore += (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) * 2);
+                        costModifier[2] += 0.5f;
+                        nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = (int)(baseCost[2] * Mathf.Pow(1.2f, costModifier[2]) * 2) + " SP";
+                        refManager.uicontroller.UpdateScore();
+                        damageUp += 25;
+                        refManager.uicontroller.UpdateWeaponUpgrade(damageUp);
+
+                        if (currentScene == "Tutorial" && tutorialElements.step == 54)
+                        {
+                            tutorialElements.HideStep();
+                            tutorialElements.NextStep();
+                        }
                     }
-                }
-                else
-                {
-                    deniedBox.Play();
-                    nearBox.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
-                }
+                    else
+                    {
+                        deniedBox.Play();
+                        nearBox.gameObject.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
+                    }
 
 
+                }
             }
-        }
 
-        if (nearBox.tag == "Armor_PickUp")
-        {
-            if (Input.GetButtonDown("Fire1"))
+            if (nearBox.tag == "Armor_PickUp")
             {
-                if (refManager.uicontroller.score >= baseCost[3] * Mathf.Pow(1.2f, costModifier[3]) * 2)
+                if (Input.GetButtonDown("Fire1"))
                 {
-                    aController.playSound(AudioContainer.Self.Armor_PickUp);
-                    refManager.uicontroller.score -= (int)(baseCost[3] * Mathf.Pow(1.2f, costModifier[3]) * 2);
-                    refManager.uicontroller.spentScore += (int)(baseCost[3] * Mathf.Pow(1.2f, costModifier[3]) * 2);
-                    costModifier[3] += 0.5f;
-                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = (int)(baseCost[3] * Mathf.Pow(1.2f, costModifier[3]) * 2) + " SP";
-                    refManager.uicontroller.UpdateScore();
-                    maxHealth += 25;
-                    currentHealth += 25;
-                    armorUpgrade += 25;
-                    armorUp += 25;
-                    refManager.uicontroller.UpdateArmorUpgrade(armorUp);
-                    refManager.uicontroller.IncreaseLife();
-
-                    if (currentScene == "Tutorial" && tutorialElements.step == 53)
+                    if (refManager.uicontroller.score >= baseCost[3] * Mathf.Pow(1.2f, costModifier[3]) * 2)
                     {
-                        tutorialElements.HideStep();
-                        tutorialElements.NextStep();
-                    }
+                        aController.playSound(AudioContainer.Self.Armor_PickUp);
+                        refManager.uicontroller.score -= (int)(baseCost[3] * Mathf.Pow(1.2f, costModifier[3]) * 2);
+                        refManager.uicontroller.spentScore += (int)(baseCost[3] * Mathf.Pow(1.2f, costModifier[3]) * 2);
+                        costModifier[3] += 0.5f;
+                        nearBox.transform.GetChild(1).GetComponent<TextMesh>().text = (int)(baseCost[3] * Mathf.Pow(1.2f, costModifier[3]) * 2) + " SP";
+                        refManager.uicontroller.UpdateScore();
+                        maxHealth += 25;
+                        currentHealth += 25;
+                        armorUpgrade += 25;
+                        armorUp += 25;
+                        refManager.uicontroller.UpdateArmorUpgrade(armorUp);
+                        refManager.uicontroller.IncreaseLife();
 
-                }
-                else
-                {
-                    deniedBox.Play();
-                    nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
+                        if (currentScene == "Tutorial" && tutorialElements.step == 53)
+                        {
+                            tutorialElements.HideStep();
+                            tutorialElements.NextStep();
+                        }
+
+                    }
+                    else
+                    {
+                        deniedBox.Play();
+                        nearBox.transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
+                    }
                 }
             }
         }
@@ -417,10 +423,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        dashMaterial.SetColor("_TintColor",gradient.Evaluate(1-(float)currentHealth / (float)maxHealth));
+        dashMaterial.SetColor("_TintColor", gradient.Evaluate(1 - (float)currentHealth / (float)maxHealth));
         boxToPass = weaponBox;
         if (Vector3.Distance(this.transform.position, weaponBoxTr.position) < 5 && weaponActive)
-        {          
+        {
             if (!insideWeapon)
             {
                 EnterBox(boxToPass);
@@ -437,7 +443,7 @@ public class Player : MonoBehaviour
         }
         boxToPass = ammoBox;
         if (Vector3.Distance(this.transform.position, ammoBoxTr.position) < 5 && ammoActive)
-        {   
+        {
             if (!insideAmmo)
             {
                 EnterBox(boxToPass);
@@ -454,7 +460,7 @@ public class Player : MonoBehaviour
         }
         boxToPass = lifeBox;
         if (Vector3.Distance(this.transform.position, lifeBoxTr.position) < 5 && lifeActive)
-        { 
+        {
             if (!insideLife)
             {
                 EnterBox(boxToPass);
@@ -509,10 +515,10 @@ public class Player : MonoBehaviour
             {
                 UseBox(boxToPass);
             }
-   
+
         }
 
-      
+
 
         if (Input.GetButtonDown("Selection"))
         {
