@@ -309,7 +309,7 @@ public class UIController : MonoBehaviour
                 PlayerPrefs.Save();
 
                 checkLivello = false;
-                StartCoroutine(SbloccoLivelli());
+               // StartCoroutine(SbloccoLivelli());
             }
 
             if (currentScene == "Tetto" && score >= scoreTetto[0] && indexScore == 0 && achievement.achievementTetto_1 == 0)
