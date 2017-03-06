@@ -83,10 +83,6 @@ public abstract class Enemy : MonoBehaviour
         remainHPoints = hPoints;
 
         refManager.miniMapRef.NewEnemy(this.gameObject);
-        if (!this.navRef.isOnNavMesh)
-        {
-            Debug.LogError(this.name);
-        }
     }
 
     public IEnumerator TrapController(float durataDanno)
@@ -96,11 +92,6 @@ public abstract class Enemy : MonoBehaviour
         }
         yield return new WaitForSeconds(durataDanno);
         trapped = false;
-    }
-
-    void Start()
-    {
-     
     }
 
 
