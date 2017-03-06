@@ -12,9 +12,11 @@ public class WaveController : MonoBehaviour
     public int currentWaveNumber;
     public int killedCounter = 0;
     public bool isWaveFinished;
+    PauseManager pauseRef;
 
     void Awake()
     {
+        pauseRef = FindObjectOfType<PauseManager>();
         flyRef = FindObjectOfType<FlyCamManager>();
         spawnRef = FindObjectOfType<Spawner>();
         uiElements = FindObjectOfType<UIController>();
@@ -28,7 +30,11 @@ public class WaveController : MonoBehaviour
         isWaveFinished = false;
         StartCoroutine(uiElements.NextWave());
         yield return new WaitForSeconds(3);
-        spawnRef.Spawn(currentWaveNumber%10);
+        if (pauseRef.paused)
+        {
+            yield return null;
+        }
+        StartCoroutine(spawnRef.Spawn(currentWaveNumber%10));
     }
 
     public void IsWaveFinished()

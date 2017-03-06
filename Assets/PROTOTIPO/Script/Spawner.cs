@@ -216,14 +216,20 @@ public class Spawner : MonoBehaviour
         enemyToStore.SetActive(false);
     }
 
-    public void Spawn(int waveNumber)
+    Coroutine myCo;
+
+    public IEnumerator Spawn(int waveNumber)
     {
         int frameToSkip = 0;
         toSpawnCounter = arrayList[waveNumber].Length;
         foreach (var enemy in arrayList[waveNumber])
         {
             frameToSkip += 1;
-            StartCoroutine(SpawnEnemy(enemy, frameToSkip));        
+            if (myCo != null)
+            {
+                yield return null;
+            }
+            myCo = StartCoroutine(SpawnEnemy(enemy, frameToSkip));        
         }
         frameToSkip = 0;
     }
@@ -234,13 +240,18 @@ public class Spawner : MonoBehaviour
         {
             for (int i = frameToSkip + 1; i > 0; i--)
             {
-                //yield return null;
+                yield return null;
             }
         }
         yield return new WaitForSeconds(spawnerDB.timerEnemy);
-        //yield return new WaitForSeconds(spawnerDB.timerEnemy);
         GameObject enemyToManage = PickEnemy(spawnerDB.typeEnemy, out enemyToSpawn);
         Debug.Log(enemyToSpawn);
         StartCoroutine(PlaceAndResetEnemy(enemyToManage, spawnerDB.spawnEnemy.transform.position));
+
+        while (pauseRef.paused)
+        {
+            yield return null;
+        }
+        myCo = null;
     }
 }
