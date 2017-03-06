@@ -23,11 +23,11 @@ public class Blinker : MonoBehaviour
 
         if (textRef)
         {
-            textRef.color = new Color(1, 1, 1, ping);
+            textRef.color = new Color(textRef.color.r, textRef.color.g, textRef.color.b, ping);
         }
         else
         {
-            imageRef.color = new Color(1, 1, 1, ping);
+            imageRef.color = new Color(imageRef.color.r, imageRef.color.g, imageRef.color.b, ping);
         }
     }
 }

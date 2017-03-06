@@ -14,12 +14,12 @@ public class PauseManager : MonoBehaviour
 
     public bool paused;
     bool audioMode = false;
+    public Text textRef;
 
     void Awake()
     {
         playerRef = FindObjectOfType<Player>();
         flyRef = FindObjectOfType<FlyCamManager>();
-
         CanvasPanel1.SetActive(false);
     }
 
@@ -36,6 +36,7 @@ public class PauseManager : MonoBehaviour
         if ((Input.GetButton("GodMode") && paused))
         {
             late += Time.deltaTime;
+            textRef.text = "Tieni premuto start se vuoi ritirarti... " + (3-Mathf.RoundToInt(late));
         }
         else
         {
@@ -43,9 +44,12 @@ public class PauseManager : MonoBehaviour
             CanvasPanel1.SetActive(false);
             paused = false;
         }
-        if (late > 2)
+        if (late > 3)
         {
-            FindObjectOfType<Achievement>().SaveScore(FindObjectOfType<UIController>().score);
+            if (FindObjectOfType<Achievement>())
+            {
+                FindObjectOfType<Achievement>().SaveScore(FindObjectOfType<UIController>().score);
+            }            
             SceneManager.LoadScene("Menu");
         }
     }

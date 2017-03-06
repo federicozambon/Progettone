@@ -66,8 +66,8 @@ public abstract class Enemy : MonoBehaviour
         startDamage = damage;
         startHPoints = hPoints;
         startScore = scoreValue;
-        
-        aController = FindObjectOfType<AudioController>();   
+
+        aController = FindObjectOfType<AudioController>();
     }
 
     bool firstTime = true;
@@ -107,20 +107,20 @@ public abstract class Enemy : MonoBehaviour
         blackRef.textMesh.characterSize = 0.46f;
         float timer = 0;
         blackRef.textMesh.text = damage.ToString();
-        blackRef.textMesh.color = gradient.Evaluate(1-remainHPoints/hPoints);
+        blackRef.textMesh.color = gradient.Evaluate(1 - remainHPoints / hPoints);
         if (isCrit)
         {
             blackRef.textMesh.characterSize = 0.8f;
         }
-        while (timer <0.5f)
+        while (timer < 0.5f)
         {
             timer += Time.deltaTime;
-            blackRef.textMesh.transform.localPosition = Vector3.Lerp(new Vector3(0,2.5f,0),new Vector3(0,4,0), timer*2);
+            blackRef.textMesh.transform.localPosition = Vector3.Lerp(new Vector3(0, 2.5f, 0), new Vector3(0, 4, 0), timer * 2);
             yield return null;
         }
         yield return new WaitForSeconds(0.5f);
         blackRef.textMesh.transform.localPosition = new Vector3(0, 3, 0);
-        timer = 0; 
+        timer = 0;
         blackRef.textMesh.characterSize = 0.46f;
         blackRef.textMesh.text = "";
         combat = null;
@@ -135,7 +135,7 @@ public abstract class Enemy : MonoBehaviour
 
         if (Random.value > 0.9f)
         {
-            isCrit = true;  
+            isCrit = true;
             damagePerShot *= 2;
         }
 
@@ -144,15 +144,15 @@ public abstract class Enemy : MonoBehaviour
             remainHPoints -= damagePerShot;
             if (combat == null)
             {
-                 combat = StartCoroutine(CombatText(damagePerShot, isCrit));       
+                combat = StartCoroutine(CombatText(damagePerShot, isCrit));
             }
             else
             {
                 StopCoroutine(combat);
-                combat = StartCoroutine(CombatText(damagePerShot,isCrit));
+                combat = StartCoroutine(CombatText(damagePerShot, isCrit));
             }
-  
-       
+
+
             if (remainHPoints <= 0)
             {
                 Die();
@@ -229,27 +229,27 @@ public abstract class Enemy : MonoBehaviour
                 case 2:
                     FindObjectOfType<Tutorial>().nemico3 = null;
                     break;
-            }  
+            }
         }
     }
 
     public void SpawnMedikit()
-    {        
+    {
         for (int i = 0; i < spawnObject; i++)
         {
             int nRandom;
             nRandom = Random.Range(1, 10);
             Debug.Log(nRandom);
             if (spawnObject == nRandom)
-            {             
+            {
                 if (spawnTrue == false)
                 {
                     spawnTrue = true;
                     GameObject nuovoMedikit = Instantiate(medikit.gameObject);
-                    nuovoMedikit.transform.position = this.transform.position + new Vector3(0,1.2f,0);
+                    nuovoMedikit.transform.position = this.transform.position + new Vector3(0, 1.2f, 0);
                 }
             }
-        }   
+        }
     }
     /*
     virtual public void Occlusion()
