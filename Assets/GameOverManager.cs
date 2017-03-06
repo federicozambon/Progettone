@@ -208,9 +208,9 @@ public class GameOverManager : MonoBehaviour
             yield return StartCoroutine(TotalScore());
         }
         menu.interactable = true;
-        if ((SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoDiscaricaUI") != 0)||
-            (SceneManager.GetActiveScene().name == "Discarica" && PlayerPrefs.GetInt("sbloccoAscensoreUI") != 0)||
-            (SceneManager.GetActiveScene().name == "Montacarichi2" && PlayerPrefs.GetInt("sbloccoTettoUI") != 0))
+        if ((SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoMontacarichi") != 0)||
+            (SceneManager.GetActiveScene().name == "Discarica" && PlayerPrefs.GetInt("sbloccoDiscarica") != 0)||
+            (SceneManager.GetActiveScene().name == "Montacarichi2" && PlayerPrefs.GetInt("sbloccoAscensore") != 0))
         {
             next.interactable = true;
         }

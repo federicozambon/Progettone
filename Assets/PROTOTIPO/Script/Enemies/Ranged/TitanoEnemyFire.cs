@@ -59,13 +59,12 @@ public class TitanoEnemyFire : MonoBehaviour
             enemyRef.animRef.SetBool("PreAttack", false);
             enemyRef.animRef.SetBool("Attack", true);
             for (int i = 0; i < 10; i++)
-            {
-              
+            {            
                 if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(refManager.playerObj.transform.position, this.transform.position) < 15)
                 {
                     ParticleActivator(refManager.playerObj.transform.FindChild("Head").position,i);
                 }
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.35f);
             }
             isShooting = false;
             enemyRef.animRef.SetBool("Attack", false);
@@ -74,10 +73,8 @@ public class TitanoEnemyFire : MonoBehaviour
             {
                 StopAllCoroutines();
             }
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(1f);
         }
-
-        yield return new WaitForSeconds(1);
     }
 
     public GameObject pool;
