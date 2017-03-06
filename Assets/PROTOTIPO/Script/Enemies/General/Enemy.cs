@@ -72,7 +72,7 @@ public abstract class Enemy : MonoBehaviour
 
     bool firstTime = true;
 
-    void OnEnable()
+    public virtual void OnEnable()
     {
         float attCoef = Mathf.Pow(1.1f, refManager.waveRef.currentWaveNumber + 1);
         float pointCoef = Mathf.Pow(1.1f, refManager.waveRef.currentWaveNumber + 1);
