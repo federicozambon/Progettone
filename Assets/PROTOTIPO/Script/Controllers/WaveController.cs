@@ -20,7 +20,6 @@ public class WaveController : MonoBehaviour
         flyRef = FindObjectOfType<FlyCamManager>();
         spawnRef = FindObjectOfType<Spawner>();
         uiElements = FindObjectOfType<UIController>();
-
         currentWaveNumber = 0;
     }
 
@@ -30,10 +29,6 @@ public class WaveController : MonoBehaviour
         isWaveFinished = false;
         StartCoroutine(uiElements.NextWave());
         yield return new WaitForSeconds(3);
-        if (pauseRef.paused)
-        {
-            yield return null;
-        }
         StartCoroutine(spawnRef.Spawn(currentWaveNumber%10));
     }
 
