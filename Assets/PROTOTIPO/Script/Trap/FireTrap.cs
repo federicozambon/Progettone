@@ -66,12 +66,15 @@ public class FireTrap: Trap
 
             if (coll.gameObject.tag == "Player")
             {
+
                 playerRef.TakeDamage(playerPointDamage);
+
             }
         }
         yield return new WaitForSeconds(timeToDisable);
-        Destroy(this.transform.parent.gameObject);
     }
+
+    Coroutine Co;
 
     void Update()
     {
@@ -84,12 +87,19 @@ public class FireTrap: Trap
 
         if (isMiniTrap)
         {
+        
             particle.Play();
             playSound = false;
             aController.playSound(myDie);
             this.transform.parent.GetComponent<MeshRenderer>().enabled = false;
             isMiniTrap = false;
-            StartCoroutine(MiniTrap());
+            if (Co == null)
+            {
+                Co = StartCoroutine(MiniTrap());
+            }
+      
+
+            Destroy(this.transform.parent.gameObject);
         }   
 
         if (resetTrap)
