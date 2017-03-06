@@ -27,7 +27,7 @@ public class StateSearch : State
                 blackRef.botMovement.destination = randomDestination;
                 break;
             case "cecchino":
-                blackRef.botMovement.destination = randomDestination;
+                blackRef.botMovement.destination = this.transform.position;
                 break;
         }
     }

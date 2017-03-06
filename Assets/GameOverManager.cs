@@ -49,6 +49,7 @@ public class GameOverManager : MonoBehaviour
 
 	public void GameOverStart ()
     {
+        uiRef.lifeAlarm.Stop();
         Time.timeScale = 0.001f;
         GameOverCanvas.SetActive(true);
         StartCoroutine(ShowScore());
@@ -235,9 +236,12 @@ public class GameOverManager : MonoBehaviour
         }
 
         riprova.interactable = true;
-        if (SceneManager.GetActiveScene().name != "Tutorial")
+        if (FindObjectOfType<Achievement>())
         {
-            FindObjectOfType<Achievement>().SaveScore(tempTotalScore);
+            if (SceneManager.GetActiveScene().name != "Tutorial")
+            {
+                FindObjectOfType<Achievement>().SaveScore(tempTotalScore);
+            }
         }
     }
 

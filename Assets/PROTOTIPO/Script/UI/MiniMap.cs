@@ -103,11 +103,14 @@ public class MiniMap : MonoBehaviour
             case "predatore":
                 newGo.imageRef.GetComponent<Image>().color = Color.gray;
                 break;
-            case "sniper":
+            case "cecchino":
                 newGo.imageRef.GetComponent<Image>().color = Color.blue;
                 break;
             case "titano":
                 newGo.imageRef.GetComponent<Image>().color = Color.yellow;
+                break;
+            default:
+                Debug.Log("Errore minimappa");
                 break;
         }
         newGo.imageRef.SetActive(true);

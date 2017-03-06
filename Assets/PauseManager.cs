@@ -53,7 +53,7 @@ public class PauseManager : MonoBehaviour
                 PauseActiveMenu();
                 
 
-                Time.timeScale = 0;
+                Time.timeScale = 0.001f;
                 paused = true;
                 
             }

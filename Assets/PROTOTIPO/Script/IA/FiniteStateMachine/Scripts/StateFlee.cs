@@ -25,7 +25,7 @@ public class StateFlee : State
                 blackRef.navRef.destination = playerToBot;
                 break;
             case "cecchino":
-                blackRef.navRef.destination = playerToBot;
+                blackRef.botMovement.destination = this.transform.position;
                 break;
         }
     }

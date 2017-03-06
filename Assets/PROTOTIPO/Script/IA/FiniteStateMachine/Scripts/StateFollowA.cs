@@ -40,7 +40,7 @@ public class StateFollowA : State
                 break;
             case "cecchino":
                 blackRef.navRef.speed = blackRef.botMovement.rangeAspeed;
-                blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.botMovement.destination = this.transform.position;
                 blackRef.navRef.stoppingDistance = 0;
                 break;
         }

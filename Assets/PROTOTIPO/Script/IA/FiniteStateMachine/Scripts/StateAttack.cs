@@ -85,6 +85,7 @@ public class StateAttack : State
                 blackRef.enemyRef.Attack();
                 break;
             case "cecchino":
+                blackRef.botMovement.destination = this.transform.position;
                 blackRef.enemyRef.Attack();
                 break;
         }
