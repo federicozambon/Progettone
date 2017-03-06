@@ -20,7 +20,7 @@ public class RocketLife : MonoBehaviour {
         if (!isExploded)
         {
             this.transform.position += transform.forward * speed;
-            Collider[] colliders = Physics.OverlapCapsule(this.transform.position, this.transform.position + new Vector3(0, 0, 1), 1);
+            Collider[] colliders = Physics.OverlapCapsule(this.transform.position, this.transform.position + new Vector3(0, 0, 1), 0.2f);
             foreach (var item in colliders)
             {
                 if (item.tag != "Player" && isExploded == false && item.tag != "Trap" && item.tag != "Bulltes")
