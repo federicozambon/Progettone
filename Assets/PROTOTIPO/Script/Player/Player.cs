@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-     
+        Time.timeScale = 1;
         textMesh = transform.FindChild("Text").GetComponent<TextMesh>();
         assaultRef = FindObjectOfType<AssaultRifle>();
         shotgunRef = FindObjectOfType<LaserShotgun>();

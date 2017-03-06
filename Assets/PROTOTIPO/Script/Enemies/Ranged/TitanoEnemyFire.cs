@@ -65,7 +65,7 @@ public class TitanoEnemyFire : MonoBehaviour
                 {
                     ParticleActivator(refManager.playerObj.transform.FindChild("Head").position,i);
                 }
-                yield return new WaitForSeconds(0.4f);
+                yield return new WaitForSeconds(0.3f);
             }
             isShooting = false;
             enemyRef.animRef.SetBool("Attack", false);
