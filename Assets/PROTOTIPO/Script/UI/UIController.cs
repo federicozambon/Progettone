@@ -459,19 +459,19 @@ public class UIController : MonoBehaviour
         else if (specialCounter == 3)
         {
             tripleKillCounter += specialScore[0] * specialCounter;
-            StartCoroutine(ShowSpecialFeedback("Triple Kill"));
+            StartCoroutine(ShowSpecialFeedback("Tripla Combo"));
             score += specialScore[0] * specialCounter;
         }
         else if (specialCounter == 4)
         {
             quadraKillCounter += specialScore[1] * specialCounter;
-            StartCoroutine(ShowSpecialFeedback("Quadra Kill"));
+            StartCoroutine(ShowSpecialFeedback("Quadra Combo"));
             score += specialScore[1] * specialCounter;
         }
         else if (specialCounter >= 5)
         {
             multiKillCounter += specialScore[2] * specialCounter;
-            StartCoroutine(ShowSpecialFeedback("Multi Kill"));
+            StartCoroutine(ShowSpecialFeedback("Multi Combo"));
             score += specialScore[2] * specialCounter;
         }
         UpdateScore();
@@ -512,7 +512,7 @@ public class UIController : MonoBehaviour
     public IEnumerator WaveFinished()
     {
         waveEnd.color = Color.green;
-        waveEnd.text = "WAVE COMPLETED";
+        waveEnd.text = "WAVE COMPLETATA";
 
         yield return new WaitForSeconds(2f);
 
@@ -524,7 +524,7 @@ public class UIController : MonoBehaviour
     public IEnumerator NextWave()
     {
         waveEnd.color = Color.red;
-        waveEnd.text = "ENEMIES INCOMING";
+        waveEnd.text = "NEMICI IN ARRIVO";
 
         yield return new WaitForSeconds(2f);
 
