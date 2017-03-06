@@ -229,8 +229,7 @@ public abstract class Enemy : MonoBehaviour
                 case 2:
                     FindObjectOfType<Tutorial>().nemico3 = null;
                     break;
-            }
-    
+            }  
         }
     }
 
