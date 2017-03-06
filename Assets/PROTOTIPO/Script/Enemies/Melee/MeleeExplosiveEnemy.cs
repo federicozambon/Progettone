@@ -32,16 +32,20 @@ public class MeleeExplosiveEnemy : Enemy
 
     public void StartAttack()
     {
-        StartCoroutine(ChargeAttack());
+        StartCoroutine(ChargeAttack());    
         isAttacking = true;     
     }
 
     IEnumerator ChargeAttack()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         if (isAttacking)
         {
             StartCoroutine(ChargeAttack());
+        }
+        else
+        {
+            StopCoroutine(ChargeAttack());
         }
     }
 
