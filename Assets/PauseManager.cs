@@ -14,6 +14,7 @@ public class PauseManager : MonoBehaviour
 
     public GameObject generalVolume;
 
+    public Player playerRef;
     public EventSystem eventRef;
     public StandaloneInputModule standRef;
 
@@ -25,6 +26,7 @@ public class PauseManager : MonoBehaviour
 
     void Awake()
     {
+        playerRef = FindObjectOfType<Player>();
         flyRef = FindObjectOfType<FlyCamManager>();
         //resume = GameObject.Find("Resume");
         //options = GameObject.Find("Options");
@@ -41,18 +43,15 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetButtonDown("GodMode") || (audioMode == false && paused && Input.GetButtonDown("Cancel")))&& !flyRef.cutScene)
+        if ((Input.GetButtonDown("GodMode") || (audioMode == false && paused && Input.GetButtonDown("Cancel")))&& !flyRef.cutScene && playerRef.currentHealth>0)
         {
 
             Debug.Log("qui qui qui");
 
             if (!paused)
             {
-
-
                 PauseActiveMenu();
                 
-
                 Time.timeScale = 0.001f;
                 paused = true;
                 

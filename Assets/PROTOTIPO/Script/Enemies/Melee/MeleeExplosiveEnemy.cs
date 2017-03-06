@@ -20,7 +20,6 @@ public class MeleeExplosiveEnemy : Enemy
     public override void OnEnable()
     {
         base.OnEnable();
-        refManager.miniMapRef.NewEnemy(this.gameObject);
         isAttacking = false;
         isExploded = false;
         timer = 0;
