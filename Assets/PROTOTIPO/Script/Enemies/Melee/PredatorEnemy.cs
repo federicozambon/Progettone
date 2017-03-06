@@ -6,6 +6,8 @@ using System.Collections.Generic;
 public class PredatorEnemy : Enemy
 {
     public Transform face;
+    public Transform face1;
+    public Transform face2;
 
     RaycastHit losRayHit;
     public bool isShooting;
@@ -13,9 +15,11 @@ public class PredatorEnemy : Enemy
 
     void Update()
     {
+        myEffect1.transform.position = face1.position;
+        myEffect2.transform.position = face2.position;
         if (!isShooting)
         {
-            animRef.SetBool("Attack", false);
+            //animRef.SetBool("Attack", false);
         }
         animRef.SetFloat("Speed", blackRef.navRef.velocity.magnitude);
     }
@@ -26,8 +30,10 @@ public class PredatorEnemy : Enemy
         face = headRef;
         poolP = GameObject.Find("PredatorParticlePool");
         id = transform.GetSiblingIndex();
-        myParticle = poolP.transform.GetChild(id);
-        myEffect = myParticle.GetComponent<EffectSettings>();
+        myParticle1 = poolP.transform.GetChild(id);
+        myParticle2 = poolP.transform.GetChild(20+id);
+        myEffect1 = myParticle1.gameObject;
+        myEffect2 = myParticle2.gameObject;
     }
 
     public float attackTimer = 2;
@@ -42,14 +48,16 @@ public class PredatorEnemy : Enemy
 
     public override void Attack()
     {
-        AttackParticleActivator(face.transform.position);
+      
         refManager.playerRef.TakeDamage(damage);
         StartCoroutine(AttackCd());
     }
 
     public IEnumerator AttackCd()
     {
+        AttackParticleActivator(face.transform.position);
         yield return new WaitForSeconds(2);
+        animRef.SetBool("Attack", false);
         isShooting = false;
     }
     public IEnumerator Shooting()
@@ -61,12 +69,14 @@ public class PredatorEnemy : Enemy
         {
             if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(face.transform.position, refManager.playerObj.transform.position) < 3)
             {
-                animRef.SetBool("Attack", true);
+               
+              
                 //transform.LookAt(new Vector3(playerGo.transform.position.x, this.transform.position.y, playerGo.transform.position.z));
                 timer += Time.deltaTime;
                 yield return null;
                 if (timer > attackTimer)
                 {
+                    animRef.SetBool("Attack", true);
                     Attack();
                     break;
                 }
@@ -85,14 +95,15 @@ public class PredatorEnemy : Enemy
     }
 
     public GameObject poolP;
-    Transform myParticle;
+    Transform myParticle1;
+    Transform myParticle2;
     int id;
-    EffectSettings myEffect;
+    GameObject myEffect1;
+    GameObject myEffect2;
 
     public void AttackParticleActivator(Vector3 position)
     {
-        myEffect.Target = headRef.gameObject;
-        myEffect.transform.position = headRef.position;
-        myEffect.gameObject.SetActive(true);
+        myEffect1.gameObject.SetActive(true);
+        myEffect2.gameObject.SetActive(true);
     }
 }

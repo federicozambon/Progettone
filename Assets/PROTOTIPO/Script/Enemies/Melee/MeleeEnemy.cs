@@ -12,6 +12,7 @@ public class MeleeEnemy : Enemy
 
     void Update()
     {
+        myEffect.transform.position = headRef.position;
         if (!isShooting)
         {
             animRef.SetBool("Attack", false);
@@ -26,7 +27,7 @@ public class MeleeEnemy : Enemy
         poolP = GameObject.Find("FuriaParticlePool");
         id = transform.GetSiblingIndex();
         myParticle = poolP.transform.GetChild(id);
-        myEffect = myParticle.GetComponent<EffectSettings>();
+        myEffect = myParticle.gameObject;
     }
 
     public float attackTimer = 1;
@@ -88,12 +89,10 @@ public class MeleeEnemy : Enemy
     public GameObject poolP;
     Transform myParticle;
     int id;
-    EffectSettings myEffect;
+    GameObject myEffect;
 
     public void AttackParticleActivator(Vector3 position)
     {
-        myEffect.Target = headRef.gameObject;
-        myEffect.transform.position = headRef.position;
         myEffect.gameObject.SetActive(true);
     }
 }
