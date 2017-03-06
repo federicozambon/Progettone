@@ -15,8 +15,7 @@ public class RangedEnemyFire : MonoBehaviour
     bool sparo = true;
 
     void Start()
-    {
-   
+    {   
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
     }
 
