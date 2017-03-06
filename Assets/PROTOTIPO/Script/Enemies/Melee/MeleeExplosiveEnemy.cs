@@ -67,7 +67,7 @@ public class MeleeExplosiveEnemy : Enemy
             {
                 refManager.playerRef.TakeDamage(damage);
             }
-            StartCoroutine(Die());
+            Die();
         }
     }
 

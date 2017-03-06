@@ -34,7 +34,7 @@ public class WaveController : MonoBehaviour
     public void IsWaveFinished()
     {
         killedCounter++;
-        if (killedCounter == spawnRef.toSpawnCounter)
+        if (killedCounter == spawnRef.toSpawnCounter)   
         {
             isWaveFinished = true;
             currentWaveNumber++;
