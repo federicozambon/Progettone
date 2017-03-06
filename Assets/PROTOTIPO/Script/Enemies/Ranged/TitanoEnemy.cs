@@ -7,6 +7,7 @@ public class TitanoEnemy : Enemy
     public GameObject particlePoolPrefab;
     public GameObject poolP;
     TitanoEnemyFire fireRef;
+    public Coroutine attacking;
 
 
 
@@ -23,9 +24,9 @@ public class TitanoEnemy : Enemy
 
     public override void Attack()
     {
-        if (!fireRef.isShooting)
+        if (attacking == null)
         {
-            StartCoroutine(fireRef.Shooting());
+            attacking = StartCoroutine(fireRef.Shooting());
         }
     }
 

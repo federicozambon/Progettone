@@ -39,9 +39,10 @@ public class TitanoEnemyFire : MonoBehaviour
         }
     }
 
-    void Start()
+    void OnEnable()
     {
-        playerTr = FindObjectOfType<Player>().transform.FindChild("Head");
+        playerTr = FindObjectOfType<Player>().transform.FindChild("Head"); 
+        enemyRef.attacking = null;
     }
 
     public void Update()
@@ -69,11 +70,17 @@ public class TitanoEnemyFire : MonoBehaviour
             isShooting = false;
             enemyRef.animRef.SetBool("Attack", false);
 
-            if (enemyRef.hPoints < 0)
+            yield return new WaitForSeconds(1f);
+
+            if (GetComponent<TitanoEnemy>().hPoints > 0)
+            {
+                StartCoroutine(Shooting());
+            }
+            else
             {
                 StopAllCoroutines();
             }
-            yield return new WaitForSeconds(1f);
+
         }
     }
 
