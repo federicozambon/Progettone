@@ -56,7 +56,7 @@ public class RocketLauncher : Weapon
         RaycastHit hit;
         float rocket = Input.GetAxisRaw("RightTrigger");
 
-        if (refManager.playerRef.rocketAmmo > 0 && canFire)
+        if (refManager.playerRef.rocketAmmo > 0 && canFire && refManager.playerRef.currentHealth > 0)
         {
             if (aiming)
             {
