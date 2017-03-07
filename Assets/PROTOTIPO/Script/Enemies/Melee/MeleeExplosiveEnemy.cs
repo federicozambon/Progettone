@@ -32,18 +32,9 @@ public class MeleeExplosiveEnemy : Enemy
 
     public void StartAttack()
     {
-        StartCoroutine(ChargeAttack());
         isAttacking = true;     
     }
 
-    IEnumerator ChargeAttack()
-    {
-        yield return new WaitForSeconds(0.1f);
-        if (isAttacking)
-        {
-            StartCoroutine(ChargeAttack());
-        }
-    }
 
     public Transform transformTr;
     Transform myParticle;

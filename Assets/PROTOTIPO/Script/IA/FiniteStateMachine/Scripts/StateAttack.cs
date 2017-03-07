@@ -72,7 +72,7 @@ public class StateAttack : State
                 blackRef.navRef.stoppingDistance = 0.1f;
                 blackRef.navRef.speed = blackRef.botMovement.rangeAspeed;
                 blackRef.botMovement.destination = blackRef.playerTr.position;
-                blackRef.enemyRef.Attack();
+                //blackRef.enemyRef.Attack();
                 break;
             case "predatore":
                 blackRef.botMovement.destination = blackRef.playerTr.position;
