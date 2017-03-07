@@ -19,10 +19,9 @@ public class MeleeExplosiveEnemy : Enemy
 
     public override void OnEnable()
     {
+ 
         base.OnEnable();
-        isAttacking = false;
-        isExploded = false;
-        timer = 0;
+
     }
 
     public float timer;
@@ -58,6 +57,9 @@ public class MeleeExplosiveEnemy : Enemy
             {
                 refManager.playerRef.TakeDamage(damage);
             }
+            isAttacking = false;
+            isExploded = false;
+            timer = 0;
             Die();
         }
     }
