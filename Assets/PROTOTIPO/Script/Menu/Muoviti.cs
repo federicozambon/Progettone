@@ -369,13 +369,10 @@ public class Muoviti : MonoBehaviour
         if (Input.anyKey && CurrentPos == StartPos)
             Menu();
 
-
-        if (Input.GetButtonDown("X") && Input.GetButtonDown("Previous Weapon"))
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.B) && Input.GetKey(KeyCode.G) && Input.GetKey(KeyCode.A))
         {
             UnlockAll();
         }
-
-
     }
 
     public void Quit()
