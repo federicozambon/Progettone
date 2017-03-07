@@ -551,6 +551,16 @@ public class Player : MonoBehaviour
             {
                 DestroyAllEnemies();
             }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                Time.timeScale += 1;
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                Time.timeScale -= 1;
+            }
         }
 
 
