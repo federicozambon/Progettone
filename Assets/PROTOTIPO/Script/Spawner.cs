@@ -203,7 +203,7 @@ public class Spawner : MonoBehaviour
     {
         Enemy enemyToReset = enemyToPlace.GetComponent<Enemy>();
         enemyToReset.SpawnParticleActivator(position);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         enemyToReset.remainHPoints = enemyToReset.hPoints;
         enemyToPlace.transform.position = position;
         enemyToReset.dead = false;
