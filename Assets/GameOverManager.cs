@@ -274,7 +274,10 @@ public class GameOverManager : MonoBehaviour
         {
             SceneManager.LoadScene("Epilogo");
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     public void MainManu()
