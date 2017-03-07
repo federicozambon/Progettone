@@ -567,34 +567,6 @@ public class Player : MonoBehaviour
 
         if (refManager.flyCamRef.endedCutScene)
         {
-            occlusionRay = new Ray(this.transform.position, Camera.main.transform.position - this.transform.position);
-
-            occlusionHit = Physics.RaycastAll(occlusionRay);
-            foreach (var mesh in occlusionHit)
-            {
-                if (mesh.collider.gameObject.tag != "MainCamera" && mesh.collider.gameObject.tag != "Player" && mesh.collider.gameObject.tag != "ringhiera" && mesh.collider.tag != "Destructible" && mesh.collider.tag != "Enemy" && mesh.collider.tag != "Terrain" && mesh.collider.GetComponent<MeshRenderer>())
-                {
-                    if (mesh.collider.gameObject != this)
-                    {
-                        int counter = 0;
-                        foreach (var diobubu in occludedGoList)
-                        {
-                            if (diobubu.occludedObj == mesh.collider.gameObject)
-                            {
-                                counter++;
-                            }
-                        }
-                        if (counter == 0)
-                        {
-                            StartCoroutine(LerpAlpha(mesh.collider.gameObject, 1));
-
-                            StartCoroutine(StillOccluding(mesh.collider.gameObject));
-                        }
-                        counter = 0;
-                    }
-                }
-            }
-
             if (Input.GetButton("Dash") && dashAttivo == true)
             {
                 DashTutorialMode();
@@ -757,7 +729,7 @@ public class Player : MonoBehaviour
         refManager.uicontroller.GameOverOn();
         yield return null;
     }
-
+    /*
     public IEnumerator StillOccluding(GameObject go)
     {
         bool found = false;
@@ -804,7 +776,7 @@ public class Player : MonoBehaviour
                     occludedGoList[occludedGoList.Count - 1].meshRef.materials[i].DisableKeyword("_ALPHATEST_ON");
                     occludedGoList[occludedGoList.Count - 1].meshRef.materials[i].EnableKeyword("_ALPHABLEND_ON");
                     occludedGoList[occludedGoList.Count - 1].meshRef.materials[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                    occludedGoList[occludedGoList.Count - 1].meshRef.materials[i].renderQueue = 3000;
+                    occludedGoList[occludedGoList.Count - 1].meshRef.materials[i].renderQueue = 2000;
                 }
 
                 while (occludedGoList[occludedGoList.Count - 1].meshRef.material.color.a > 0.4f)
@@ -828,5 +800,5 @@ public class Player : MonoBehaviour
                 occludedGoList.Remove(occludedGoList[occludedGoList.Count - 1]);
             }
         }
-    }
+    }*/
 }

@@ -228,9 +228,17 @@ public class GameOverManager : MonoBehaviour
         else
         {
             next.GetComponentInChildren<Text>().text = "Livello Bloccato";
+            next.interactable = false;
         }
-        if (SceneManager.GetActiveScene().name == "Tetto")
+
+        if (SceneManager.GetActiveScene().name == "Tetto" && FindObjectOfType<UIController>().score >= 500000)
         {
+            next.GetComponentInChildren<Text>().text = "Epilogo";
+            next.interactable = true;
+        }
+        else if(SceneManager.GetActiveScene().name == "Tetto" && FindObjectOfType<UIController>().score < 500000)
+        {
+            next.GetComponentInChildren<Text>().text = "Livello Bloccato";
             next.interactable = false;
         }
         if (SceneManager.GetActiveScene().name == "Tutorial")
@@ -262,6 +270,10 @@ public class GameOverManager : MonoBehaviour
     public void NextLvl()
     {
         Time.timeScale = 1;
+        if (SceneManager.GetActiveScene().name == "Tetto" && FindObjectOfType<UIController>().score > 500000)
+        {
+            SceneManager.LoadScene("Epilogo");
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
