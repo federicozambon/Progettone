@@ -208,10 +208,19 @@ public class GameOverManager : MonoBehaviour
             yield return StartCoroutine(SpentScore());
             yield return StartCoroutine(TotalScore());
         }
+
+        if (FindObjectOfType<Achievement>())
+        {
+            if (SceneManager.GetActiveScene().name != "Tutorial")
+            {
+                FindObjectOfType<Achievement>().SaveScore(tempTotalScore);
+            }
+        }
+
         menu.interactable = true;
-        if ((SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoDiscarica") != 0)||
-            (SceneManager.GetActiveScene().name == "Discarica" && PlayerPrefs.GetInt("sbloccoAscensore") != 0)||
-            (SceneManager.GetActiveScene().name == "Montacarichi2" && PlayerPrefs.GetInt("sbloccoTetto") != 0))
+        if ((SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoMontacarichi1") != 0)||
+            (SceneManager.GetActiveScene().name == "Discarica" && PlayerPrefs.GetInt("sbloccoDiscarica") != 0)||
+            (SceneManager.GetActiveScene().name == "Montacarichi2" && PlayerPrefs.GetInt("sbloccoAscensore") != 0))
         {
             next.interactable = true;
             next.GetComponentInChildren<Text>().text = "Nuovo Livello";
@@ -241,13 +250,7 @@ public class GameOverManager : MonoBehaviour
         }
 
         riprova.interactable = true;
-        if (FindObjectOfType<Achievement>())
-        {
-            if (SceneManager.GetActiveScene().name != "Tutorial")
-            {
-                FindObjectOfType<Achievement>().SaveScore(tempTotalScore);
-            }
-        }
+   
     }
 
     public void RetryLvl()
