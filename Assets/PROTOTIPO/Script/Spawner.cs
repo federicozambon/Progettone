@@ -199,10 +199,11 @@ public class Spawner : MonoBehaviour
         return null;
     }
 
-    public void PlaceAndResetEnemy(GameObject enemyToPlace, Vector3 position)
+    public IEnumerator PlaceAndResetEnemy(GameObject enemyToPlace, Vector3 position)
     {
         Enemy enemyToReset = enemyToPlace.GetComponent<Enemy>();
-        enemyToReset.SpawnParticleActivator(position);   
+        enemyToReset.SpawnParticleActivator(position);
+        yield return new WaitForSeconds(0.7f);
         enemyToReset.remainHPoints = enemyToReset.hPoints;
         enemyToPlace.transform.position = position;
         enemyToReset.dead = false;
@@ -245,7 +246,7 @@ public class Spawner : MonoBehaviour
         yield return new WaitForSeconds(spawnerDB.timerEnemy);
         GameObject enemyToManage = PickEnemy(spawnerDB.typeEnemy, out enemyToSpawn);
         Debug.Log(enemyToSpawn);
-        PlaceAndResetEnemy(enemyToManage, spawnerDB.spawnEnemy.transform.position);
+        StartCoroutine(PlaceAndResetEnemy(enemyToManage, spawnerDB.spawnEnemy.transform.position));
 
         while (pauseRef.paused)
         {
