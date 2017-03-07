@@ -245,6 +245,7 @@ public class GameOverManager : MonoBehaviour
         {
             if (GameObject.FindObjectOfType<Tutorial>().step == 55)
             {
+                next.GetComponentInChildren<Text>().text = "Nuovo Livello";
                 next.interactable = true;
             }   
         }
