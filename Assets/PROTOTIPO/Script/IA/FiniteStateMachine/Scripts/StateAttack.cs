@@ -15,7 +15,7 @@ public class StateAttack : State
                 blackRef.navRef.updateRotation = false;
                 break;
             case "furiaesplosiva":
-                blackRef.navRef.updateRotation = false;
+                //blackRef.navRef.updateRotation = false;
                 break;
             case "predatore":
                 //blackRef.navRef.updateRotation = false;
@@ -39,7 +39,7 @@ public class StateAttack : State
                 blackRef.navRef.updateRotation = true;
                 break;
             case "furiaesplosiva":
-                blackRef.navRef.updateRotation = true;
+                //blackRef.navRef.updateRotation = true;
                 break;
             case "predatore":
                 //blackRef.navRef.updateRotation = true;
@@ -69,9 +69,11 @@ public class StateAttack : State
                 blackRef.enemyRef.Attack();
                 break;
             case "furiaesplosiva":
-                blackRef.navRef.stoppingDistance = 0.1f;
-                blackRef.navRef.speed = blackRef.botMovement.rangeAspeed;
                 blackRef.botMovement.destination = blackRef.playerTr.position;
+                blackRef.navRef.speed = 12;
+                blackRef.navRef.updateRotation = true;
+                blackRef.navRef.stoppingDistance = 0f;
+                blackRef.navRef.angularSpeed = 1080;
                 //blackRef.enemyRef.Attack();
                 break;
             case "predatore":

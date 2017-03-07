@@ -5,7 +5,7 @@ namespace FSM
 {
     public class Bot : MonoBehaviour
     {
-        private StateMachine sm;
+        public StateMachine sm;
         public BlackBoard blackRef;
         public ReferenceManager refManager;
 

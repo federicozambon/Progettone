@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using FSM;
 
 public class MeleeExplosiveEnemy : Enemy
 {
@@ -19,7 +20,7 @@ public class MeleeExplosiveEnemy : Enemy
 
     public override void OnEnable()
     {
- 
+       
         base.OnEnable();
 
     }
@@ -60,6 +61,7 @@ public class MeleeExplosiveEnemy : Enemy
             isAttacking = false;
             isExploded = false;
             timer = 0;
+            GetComponent<Bot>().sm.currentState = this.gameObject.GetComponent<Bot>().sm.stateFollowC;
             Die();
         }
     }
