@@ -48,19 +48,15 @@ public class Muoviti : MonoBehaviour
 
     // Use this for initialization
     void Awake()
-
     {
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         achievement = FindObjectOfType<Achievement>();
         if (achievement == null)
         {
             Instantiate(achivementGame);
             achievement = FindObjectOfType<Achievement>();
-
         }
-
-
-
     }
 
     void Start()

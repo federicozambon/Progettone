@@ -416,6 +416,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    bool cheatMode = false;
+
     public GameObject boxToPass;
     public bool weaponActive = true;
     public bool ammoActive = true;
@@ -425,6 +427,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.B) && Input.GetKey(KeyCode.G) && Input.GetKey(KeyCode.A))
+        {
+            cheatMode = true;
+        }
+
         dashMaterial.SetColor("_TintColor", gradient.Evaluate(1 - (float)currentHealth / (float)maxHealth));
         boxToPass = weaponBox;
         if (Vector3.Distance(this.transform.position, weaponBoxTr.position) < 5 && weaponActive)
@@ -520,33 +527,33 @@ public class Player : MonoBehaviour
 
         }
 
-
-
-        if (Input.GetButtonDown("Selection"))
+        if (cheatMode)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
-        if (Input.GetButtonDown("Previous Weapon"))
-        {
-            if (godMode == false)
+            if (Input.GetButtonDown("Selection"))
             {
-                godMode = true;
-                refManager.uicontroller.GodModeOn();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
-
-            else if (godMode == true)
+            if (Input.GetButtonDown("Previous Weapon"))
             {
-                godMode = false;
-                refManager.uicontroller.GodModeOff();
+                if (godMode == false)
+                {
+                    godMode = true;
+                    refManager.uicontroller.GodModeOn();
+                }
+
+                else if (godMode == true)
+                {
+                    godMode = false;
+                    refManager.uicontroller.GodModeOff();
+                }
             }
-
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                DestroyAllEnemies();
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DestroyAllEnemies();
-        }
+
 
         if (refManager.flyCamRef.endedCutScene)
         {
