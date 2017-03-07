@@ -218,9 +218,9 @@ public class GameOverManager : MonoBehaviour
         }
 
         menu.interactable = true;
-        if ((SceneManager.GetActiveScene().name == "Montacarichi1" && PlayerPrefs.GetInt("sbloccoDiscarica") != 0)||
-            (SceneManager.GetActiveScene().name == "Discarica" && PlayerPrefs.GetInt("sbloccoAscensore") != 0)||
-            (SceneManager.GetActiveScene().name == "Montacarichi2" && PlayerPrefs.GetInt("sbloccoTetto") != 0))
+        if ((SceneManager.GetActiveScene().name == "Montacarichi1" && FindObjectOfType<Achievement>().sbloccoMontacarichi == 1)||
+            (SceneManager.GetActiveScene().name == "Discarica" && FindObjectOfType<Achievement>().sbloccoDiscarica == 1)||
+            (SceneManager.GetActiveScene().name == "Montacarichi2" && FindObjectOfType<Achievement>().sbloccoAscensore == 1))
         {
             next.interactable = true;
             next.GetComponentInChildren<Text>().text = "Nuovo Livello";
