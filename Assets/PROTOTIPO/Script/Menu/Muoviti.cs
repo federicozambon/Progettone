@@ -72,28 +72,103 @@ public class Muoviti : MonoBehaviour
 
         SaveRecords();
 
-        //achievement.tutorialComplete == true
+        LevelBlock();
 
-        /*if (achievement.montacarichiA >= ScoreMontacarichiA[3])
+        for (int i = 0; i < 3; i++)
         {
-            MainMenuButtons[0].transform.GetChild(0).GetComponent<Text>().text = "Montacarichi";
-            ColorBlock cb = MainMenuButtons[0].colors;
-            cb.normalColor = Color.white;
-            MainMenuButtons[0].colors = cb;
-            if (sbloccoMontacarichi == 0)
-            {
-                sbloccoMontacarichi = 1;
-                MainMenuButtons[0].transform.GetChild(1).gameObject.SetActive(true);
-                PlayerPrefs.SetInt("sbloccoMontacarichi", sbloccoMontacarichi);
-                PlayerPrefs.Save();
-            }
-
+            ButtonsMontacarichiA[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiA[i] + " SP";
+            ButtonsDiscarica[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreDiscarica[i] + " SP";
+            ButtonsMontacarichiB[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiB[i] + " SP";
+            ButtonsTetto[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreTetto[i] + " SP";
         }
-        else
-        {
-            MainMenuButtons[0].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiA[3] + " SP";
-        }*/
 
+        UpdateAchievement();
+    }
+
+    void UnlockAll()
+    {
+        achievement.sbloccoMontacarichi = 0;
+        achievement.sbloccoDiscarica = 0;
+        achievement.sbloccoAscensore = 0;
+        achievement.sbloccoTetto = 0;
+
+        achievement.achievementMontacarichi_1 = 1;
+        achievement.achievementMontacarichi_2 = 1;
+        achievement.achievementMontacarichi_3 = 1;
+
+        achievement.achievementDiscarica_1 = 1;
+        achievement.achievementDiscarica_2 = 1;
+        achievement.achievementDiscarica_3 = 1;
+
+        achievement.achievementAscensore_1 = 1;
+        achievement.achievementAscensore_2 = 1;
+        achievement.achievementAscensore_3 = 1;
+
+        achievement.achievementTetto_1 = 1;
+        achievement.achievementTetto_2 = 1;
+        achievement.achievementTetto_3 = 1;
+
+        achievement.sbloccoMontacarichi = 1;
+        achievement.sbloccoDiscarica = 1;
+        achievement.sbloccoAscensore = 1;
+        achievement.sbloccoTetto = 1;
+
+        achievement.total = 1000000;
+        achievement.montacarichiA = 1000000;
+        achievement.discarica = 1000000;
+        achievement.montacarichiB = 1000000;
+        achievement.tetto = 1000000;
+
+
+        PlayerPrefs.SetInt("sbloccoMontacarichiUI", sbloccoMontacarichi);
+        PlayerPrefs.SetInt("sbloccoDiscaricaUI", sbloccoDiscarica);
+        PlayerPrefs.SetInt("sbloccoAscensoreUI", sbloccoAscensore);
+        PlayerPrefs.SetInt("sbloccoTettoUI", sbloccoTetto);
+
+        PlayerPrefs.SetInt("achievementMontacarichi_1", achievement.achievementMontacarichi_1);
+        PlayerPrefs.SetInt("achievementMontacarichi_2", achievement.achievementMontacarichi_2);
+        PlayerPrefs.SetInt("achievementMontacarichi_3", achievement.achievementMontacarichi_3);
+
+        PlayerPrefs.SetInt("achievementDiscarica_1", achievement.achievementDiscarica_1);
+        PlayerPrefs.SetInt("achievementDiscarica_2", achievement.achievementDiscarica_2);
+        PlayerPrefs.SetInt("achievementDiscarica_3", achievement.achievementDiscarica_3);
+
+        PlayerPrefs.SetInt("achievementAscensore_1", achievement.achievementAscensore_1);
+        PlayerPrefs.SetInt("achievementAscensore_2", achievement.achievementAscensore_2);
+        PlayerPrefs.SetInt("achievementAscensore_3", achievement.achievementAscensore_3);
+
+        PlayerPrefs.SetInt("achievementTetto_1", achievement.achievementTetto_1);
+        PlayerPrefs.SetInt("achievementTetto_2", achievement.achievementTetto_2);
+        PlayerPrefs.SetInt("achievementTetto_3", achievement.achievementTetto_3);
+
+        PlayerPrefs.SetInt("scoreTotale", achievement.total);
+        PlayerPrefs.SetInt("scoreMontacarichiA", achievement.montacarichiA);
+        PlayerPrefs.SetInt("scoreDiscarica", achievement.discarica);
+        PlayerPrefs.SetInt("scoreMontacarichiB", achievement.montacarichiB);
+        PlayerPrefs.SetInt("scoreTetto", achievement.tetto);
+
+
+        PlayerPrefs.Save();
+
+        LevelBlock();
+
+        UpdateAchievement();
+    }
+
+
+    void UpdateBlockAchievement()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            ButtonsMontacarichiA[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiA[i] + " SP";
+            ButtonsDiscarica[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreDiscarica[i] + " SP";
+            ButtonsMontacarichiB[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiB[i] + " SP";
+            ButtonsTetto[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreTetto[i] + " SP";
+        }
+    }
+
+    void LevelBlock()
+    {
         if (achievement.montacarichiA >= ScoreDiscarica[3])
         {
             MainMenuButtons[1].transform.GetChild(0).GetComponent<Text>().text = "Discarica";
@@ -156,27 +231,6 @@ public class Muoviti : MonoBehaviour
         else
         {
             MainMenuButtons[3].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreTetto[3] + " SP";
-        }
-
-        for (int i = 0; i < 3; i++)
-        {
-            ButtonsMontacarichiA[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiA[i] + " SP";
-            ButtonsDiscarica[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreDiscarica[i] + " SP";
-            ButtonsMontacarichiB[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiB[i] + " SP";
-            ButtonsTetto[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreTetto[i] + " SP";
-        }
-
-        UpdateAchievement();
-    }
-
-    void UpdateBlockAchievement()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            ButtonsMontacarichiA[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiA[i] + " SP";
-            ButtonsDiscarica[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreDiscarica[i] + " SP";
-            ButtonsMontacarichiB[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreMontacarichiB[i] + " SP";
-            ButtonsTetto[i].transform.GetChild(0).GetComponent<Text>().text = "Per sbloccare : " + ScoreTetto[i] + " SP";
         }
     }
 
@@ -315,7 +369,10 @@ public class Muoviti : MonoBehaviour
         if (Input.anyKey && CurrentPos == StartPos)
             Menu();
 
-
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.B) && Input.GetKey(KeyCode.G) && Input.GetKey(KeyCode.A))
+        {
+            UnlockAll();
+        }
     }
 
     public void Quit()
