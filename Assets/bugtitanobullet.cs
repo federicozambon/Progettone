@@ -18,6 +18,7 @@ public class bugtitanobullet : MonoBehaviour
     {
         if (coll.gameObject.tag == "Player")
         {
+            Debug.Log("colpito");
             refManager.playerRef.TakeDamage(damage);
         }
     }

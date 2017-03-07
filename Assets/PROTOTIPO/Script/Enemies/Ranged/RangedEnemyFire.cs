@@ -44,8 +44,6 @@ public class RangedEnemyFire : MonoBehaviour
             if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(refManager.playerObj.transform.position, this.transform.position) < 15)
             {
                 ParticleActivator(refManager.playerObj.transform.FindChild("Head").position);
-                Debug.Log(refManager.playerObj.transform.FindChild("Head").position);
-                Debug.Log(refManager.playerObj.transform.FindChild("Head"));
             }
         }
         yield return new WaitForSeconds(1.5f);
@@ -68,7 +66,7 @@ public class RangedEnemyFire : MonoBehaviour
     {
         myDamage.damage = (int)enemyRef.damage;
         transformTr.position = position;
-        myEffect.transform.position = weapon.transform.position;
+        myEffect.transform.position = weapon.transform.position + weapon.transform.forward;
         myEffect.Target = transformTr.gameObject;
         myEffect.gameObject.SetActive(true);
     }

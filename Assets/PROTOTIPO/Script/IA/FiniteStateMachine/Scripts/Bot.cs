@@ -307,19 +307,19 @@ namespace FSM
                                 }
                             }
 
-                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) > 30)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) > 20)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                             }
-                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) < 10f)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) < 5f)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeA);
                             }
-                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 10f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 30 && canSeePlayer)
+                            if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 5f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 20 && canSeePlayer)
                             {
                                 sm.HandleInput(Inputs.Attack);
                             }
-                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 10f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 30 && !canSeePlayer)
+                            else if (Vector3.Distance(this.transform.position, blackRef.playerTr.position) >= 5f && Vector3.Distance(this.transform.position, blackRef.playerTr.position) <= 20 && !canSeePlayer)
                             {
                                 sm.HandleInput(Inputs.PlayerRangeC);
                             }

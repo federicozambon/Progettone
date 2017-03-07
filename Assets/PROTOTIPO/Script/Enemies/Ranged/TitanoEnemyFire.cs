@@ -23,19 +23,19 @@ public class TitanoEnemyFire : MonoBehaviour
         refManager = GameObject.FindGameObjectWithTag("Reference").GetComponent<ReferenceManager>();
         blackRef = GetComponent<BlackBoard>();
 
-        transformTr = new Transform[10];
-        myEffect = new EffectSettings[10];
-        myDamage = new bugtitanobullet[10];
+        transformTr = new Transform[5];
+        myEffect = new EffectSettings[5];
+        myDamage = new bugtitanobullet[5];
         enemyRef = GetComponent<TitanoEnemy>();
         pool = GameObject.Find("TitanoParticlePool");
         id = transform.GetSiblingIndex();
         myParticle = pool.transform.GetChild(id);
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
             transformTr[i] = myParticle.transform.GetChild(i);
-            myEffect[i] = myParticle.transform.GetChild(i + 10).GetComponent<EffectSettings>();
-            myDamage[i] = myEffect[i].transform.FindChild("Trail").GetComponent<bugtitanobullet>();
+            myEffect[i] = myParticle.transform.GetChild(i + 5).GetComponent<EffectSettings>();
+            myDamage[i] = myEffect[i].transform.FindChild("MovedTrail").GetComponent<bugtitanobullet>();
         }
     }
 
@@ -52,38 +52,35 @@ public class TitanoEnemyFire : MonoBehaviour
 
     public IEnumerator Shooting()
     {
+        Debug.Log("ciao");
         isShooting = true;
         if (Physics.Linecast(weapon.transform.position, refManager.playerObj.transform.position, out losRayHit))
         {
             enemyRef.animRef.SetBool("PreAttack", true);
-            yield return new WaitForSeconds(0.35f);
             enemyRef.animRef.SetBool("PreAttack", false);
             enemyRef.animRef.SetBool("Attack", true);
-            for (int i = 0; i < 10; i++)
-            {            
-                if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(refManager.playerObj.transform.position, this.transform.position) < 15)
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (losRayHit.collider.gameObject.tag == "Player" && Vector3.Distance(refManager.playerObj.transform.position, this.transform.position) < 30)
                 {
-                    ParticleActivator(refManager.playerObj.transform.FindChild("Head").position,i);
+                    ParticleActivator(refManager.playerObj.transform.FindChild("Head").position + this.transform.forward * 5, i);
                 }
-                yield return new WaitForSeconds(0.35f);
+                yield return new WaitForSeconds(0.3f);
             }
-            isShooting = false;
-            enemyRef.animRef.SetBool("Attack", false);
+        
+        }
+        enemyRef.animRef.SetBool("Attack", false);
 
-            yield return new WaitForSeconds(1f);
-
-            if (GetComponent<TitanoEnemy>().hPoints > 0)
-            {
-                StartCoroutine(Shooting());
-            }
-            else
-            {
-                StopAllCoroutines();
-            }
-
+        yield return new WaitForSeconds(1);
+        isShooting = false;
+        enemyRef.attacking = null;
+        if (GetComponent<TitanoEnemy>().hPoints < 0)
+        {
+            StopAllCoroutines();
         }
     }
-
+   
     public GameObject pool;
     public Transform[] transformTr;
     Transform myParticle;
@@ -91,12 +88,15 @@ public class TitanoEnemyFire : MonoBehaviour
     EffectSettings[] myEffect;
     bugtitanobullet[] myDamage;
 
-    public void ParticleActivator(Vector3 position, int n)
+    int counter = 0; 
+
+    public void ParticleActivator(Vector3 position, int f)
     {
-        transformTr[n].position = position;
-        myDamage[n].damage = (int)enemyRef.damage;
-        myEffect[n].transform.position = weapon.transform.position;
-        myEffect[n].Target = transformTr[n].gameObject;
-        myEffect[n].gameObject.SetActive(true);
+        myDamage[f].damage = (int)enemyRef.damage;
+        transformTr[f].position = position;
+        myDamage[f].transform.localPosition = new Vector3(0, 0, 0);
+        myEffect[f].transform.position = weapon.transform.position;    
+        myEffect[f].Target = transformTr[f].gameObject;
+        myEffect[f].gameObject.SetActive(true);
     }
 }
