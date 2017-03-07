@@ -136,7 +136,7 @@ public class UIController : MonoBehaviour
         if (achievement)
         {
             #region SbloccoMontacarichi1
-            if (currentScene == "Montacarichi1" && score >= scoreMontacarichiA[3] && checkLivello == true && achievement.sbloccoMontacarichi == 0)
+            if (currentScene == "Montacarichi1" && score >= scoreDiscarica[3] && checkLivello == true && achievement.sbloccoMontacarichi == 0)
             {
                 achievement.sbloccoMontacarichi = 1;
                 PlayerPrefs.SetInt("sbloccoMontacarichiUI", achievement.sbloccoMontacarichi);
@@ -192,7 +192,7 @@ public class UIController : MonoBehaviour
 
 
             #region SbloccoDiscarica
-            if (currentScene == "Discarica" && score >= scoreDiscarica[3] && checkLivello == true && achievement.sbloccoDiscarica == 0)
+            if (currentScene == "Discarica" && score >= scoreMontacarichiB[3] && checkLivello == true && achievement.sbloccoDiscarica == 0)
             {
                 achievement.sbloccoDiscarica = 1;
                 PlayerPrefs.SetInt("sbloccoDiscaricaUI", achievement.sbloccoDiscarica);
@@ -247,7 +247,7 @@ public class UIController : MonoBehaviour
             #endregion
 
             #region SbloccoMontacarichi2
-            if (currentScene == "Montacarichi2" && score >= scoreMontacarichiB[3] && checkLivello == true && achievement.sbloccoAscensore == 0)
+            if (currentScene == "Montacarichi2" && score >= scoreTetto[3] && checkLivello == true && achievement.sbloccoAscensore == 0)
             {
                 achievement.sbloccoAscensore = 1;
                 PlayerPrefs.SetInt("sbloccoAscensoreUI", achievement.sbloccoAscensore);
