@@ -32,7 +32,7 @@ public class Activators : MonoBehaviour {
 
     public IEnumerator ActiveTrap()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         myTrap.GetComponent<Trap>().activeTrap = true;
     }
 

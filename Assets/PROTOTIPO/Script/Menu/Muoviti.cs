@@ -214,7 +214,7 @@ public class Muoviti : MonoBehaviour
 
         if (achievement.montacarichiB >= ScoreTetto[3])
         {
-            MainMenuButtons[3].transform.GetChild(0).GetComponent<Text>().text = "Tetto";
+            MainMenuButtons[3].transform.GetChild(0).GetComponent<Text>().text = "Città proibita";
             ColorBlock cb = MainMenuButtons[3].colors;
             cb.normalColor = Color.white;
             MainMenuButtons[3].colors = cb;
